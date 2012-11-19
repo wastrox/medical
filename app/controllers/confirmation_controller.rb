@@ -13,7 +13,7 @@ class ConfirmationController < ApplicationController
   end
 
   def applicant
-    @account.update_type!
+    @account.create_type("Applicant")
 		redirect_to :controller => "applicants", :action => "new" if @account.type?
   end
 

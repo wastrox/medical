@@ -1,5 +1,6 @@
-class Applicant < ActiveRecord::Base
+class Applicant < Account 
   attr_accessible :about_me, :city, :date, :firstname, :lastname, :phone, :surename, :experiences_attributes, :educations_attributes, :languages_attributes, :pc_skills_attributes
+	attr_accessor :about_me, :city, :date, :firstname, :lastname, :phone, :surename, :experiences_attributes, :educations_attributes, :languages_attributes, :pc_skills_attributes
 
 	has_many :experiences , :dependent => :destroy
 		accepts_nested_attributes_for :experiences , :allow_destroy => true

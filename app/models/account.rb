@@ -1,9 +1,12 @@
 class Account < ActiveRecord::Base
+set_inheritance_column :account_type
 attr_accessible :email, :password, :account_type => :false
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   has_secure_password
   before_save :encrypt_password, :access_token 
+		
+	has_one :applicant, :conditions => { :major_applicant => true }, :dependent => :destroy
 	
 
   def self.authenticate(email, password)
@@ -36,8 +39,8 @@ attr_accessible :email, :password, :account_type => :false
 		account_type
 	end
 
-	def update_type!
-     self.account_type = "applicant"
+	def create_type(person)
+     self.account_type = person
 		 save
   end
 
