@@ -1,0 +1,12 @@
+h1 {color: #95b33e; font-size: 1.55em; font-weight: normal; margin: 0;}
+.current {color: #80a611;}
+#tab_left {font-size: 0.7em; font-weight: bold; background: #b6d94c no-repeat top left url(img/corner_green_tl.gif); text-align: center;}
+#tab_right {font-size: 0.7em; background: #71c1d1 no-repeat top right url(img/corner_blue_tr.gif); border-top: 1px solid #fff; border-bottom: 1px solid #fff; border-left: 1px solid #fff; text-align: center;}
+#tab_right a {color: #333; display: block; width: 100%; padding: 5px 0;}
+#form_left {height: 75px; padding: 0 21px 0 15px; background: #b6d94c no-repeat bottom left url(img/corner_green_bl.gif);}
+#form_right {width: 85px; background: #b6d94c no-repeat top right url(img/corner_green_tr.gif);}
+td.bottom {height: 70px; border-top: 2px solid #b6d94c; color: #666;}
+td.content {padding: 12px 30px 30px 0;}
+p.li {font-size: 0.7em; padding-left: 1.25em; margin: 0 0 0.2em 0; background: no-repeat top left url(img/li_green.gif);}
+td.right p.li {background: no-repeat top left url(img/li_green.gif)}
+

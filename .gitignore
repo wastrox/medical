@@ -1,0 +1,16 @@
+Gemfile.lock
+pkg/*
+.rvmrc
+*.swp
+bin
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+*~
+\#*\#
+*.swp
+public/
+config/database.yml
+internal_user_files/*
+

@@ -1,0 +1,8 @@
+table.paper {width: 100%; border: 1px solid #888; margin-top: 30px; text-align: left;}
+table.paper th {padding: 20px 0;}
+table.paper td {padding: 5px 0 6px 20px; border-bottom: 1px solid #d9d9d3;}
+table.paper h2 {text-align: left; font-size: 1.55em; margin: 0;}
+table.paper h3 {text-align: left; font-size: 1.4em; font-weight: normal; margin: 0;}
+table.paper h4 {text-align: left; font-size: 0.7em; margin: 0;}
+table.paper p {margin: 0;}
+table.paper p.comment {margin-top: 4px;}

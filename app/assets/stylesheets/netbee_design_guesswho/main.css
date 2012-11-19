@@ -1,0 +1,27 @@
+html {height: 100%;}
+body {margin: 0; padding: 0; height: 100%; width: 100%; color: #333; background: #fff; font-family: Tahoma, Verdana, Arial;}
+img {border: 0;}
+div.divider {background: #ddd; height: 1px; margin: 1.4em 0 0 0;}
+form {margin: 0;}
+input, select, textarea {font-family: Tahoma, Verdana, Arial; color: #333; font-size: 0.7em; padding-bottom: 2px;}
+input.btn {font-size: 0.7em; height: 2.1em; padding: 0 0.3em; cursor: hand;}
+a {color: #2447b3;}
+a.service {color: #333;}
+span.date {font-size: 0.9em; color: #666;}
+h2 {font-size: 1.1em; font-weight: normal; margin: 0 0 0.2em 0;}
+h3 {font-size: 0.8em; margin-bottom: 1em; line-height: 1.3em;}
+p {font-size: 0.7em; margin: 0; line-height: 1.3em;}
+td.shortnews p.li {margin-left: 3.9em; background: no-repeat top left url(img/li_yellow.gif)}
+td.bottom a {color: #666;}
+td.content h2 {font-size: 1.4em; margin-top: 1em;}
+td.content p {margin-bottom: 1em;}
+td.content p.li {margin-bottom: 0.2em;}
+p.service {line-height: 1.5em;}
+p.service a {color: #333;}
+td.right {padding: 20px 0 30px 30px;}
+td.right h2 {margin: 1em 0 0.5em 0;}
+td.right p {margin-bottom: 0.5em;}
+td.right {padding: 20px 0 30px 30px;}
+td.right h2 {margin: 1em 0 0.5em 0;}
+td.right p {margin-bottom: 0.5em;}
+#tooltip {z-index: 2; color: #111; background: #ffff9f; font-size: 0.7em; border: 1px solid #111; margin: 0; padding: 3px 5px; position: absolute; visibility: hidden; width: auto;}

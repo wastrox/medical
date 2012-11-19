@@ -1,0 +1,18 @@
+ol {font-size: 0.8em; margin: 0 0 0 3em; padding: 0;}
+ol li {color: #333; margin-bottom: 1em; line-height: 1.3em;}
+li h3 {font-size: 1em; margin-bottom: 0.4em;}
+ol span.date {font-size: 0.8em; color: #888;}
+
+div.note {font-size: 0.85em; color: #444; margin-top: 0.5em; line-height: 1.3em;}
+div.note p {font-size: 1em;}
+div.note ul, div.note ol {font-size: 1em; margin: 0; padding: 0; line-height: 1.3em;}
+div.note ul li {margin: 0 0 0 3em; padding: 0; list-style: disc;}
+div.note ol li {margin: 0 0 0 3em; padding: 0;}
+
+
+p.list {line-height: 1.5em;}
+
+span.active {background: #ffe359; padding: 2px 0;}
+p.counter a {color: #333; padding: 2px 5px 4px 5px;}
+p.counter span.active {padding: 2px 5px 4px 5px;}
+span.passive {padding: 2px 5px 4px 5px;}

@@ -1,0 +1,15 @@
+html {height: 100%;}
+body {margin: 0; padding: 0; height: 100%; width: 100%; color: #333; background: #fff; font-family: Tahoma, Verdana, Arial;}
+a {color: #2447b3;}
+h2 {font-size: 1.1em; font-weight: normal; margin: 0 0 0.2em 0;}
+h3 {font-size: 0.8em; margin-bottom: 1em; line-height: 1.3em;}
+p {font-size: 0.7em; margin: 0; line-height: 1.3em;}
+
+table.print {width: 100%;}
+table.print th {padding: 20px 0;}
+table.print td {padding: 5px 0 6px 20px; border-bottom: 1px solid #d9d9d3;}
+table.print h2 {text-align: left; font-size: 1.55em; margin: 0;}
+table.print h3 {text-align: left; font-size: 1.4em; font-weight: normal; margin: 0;}
+table.print h4 {text-align: left; font-size: 0.7em; margin: 0;}
+table.print p {margin: 0;}
+table.print p.comment {margin-top: 4px;}

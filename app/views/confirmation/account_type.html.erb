@@ -1,0 +1,9 @@
+<div class="modal" style="position: absolute; margin-top: 0px;">
+  <div class="modal-header">Начнем регистрацию. Скажите нам, что вы ищите</div>
+  <div class="modal-body">
+    <div class="btn-group">
+        <!--<button class="btn btn-success" data-content="Есть рабочие места, вам сюда" rel="popover" >Даю работу</button><%# button_to "Ищу работу", :controller => "accounts", :action => "person", :token => @current_user.token, :method => :post, :class => "btn btn-success", :rel => "popover" %>-->
+    </div>
+		<%= link_to "Даю работу", :controller => "confirmation", :action => "employer", :token => current_user.token %><%= link_to "Ищу работу", :controller => "confirmation", :action => "applicant", :token => current_user.token %>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<style>
+ .welcome{padding-left: 65px; font-size: 12px;}	
+</style>
+<table style="height: 0%; width: 100%;" cellpadding="0" cellspacing="0">
+<tr>
+	<td class="welcome"><% if current_user %>Здравтствуйте <%= current_user.email %><% end %></td>
+	<td colspan="2" style="height: 50px; width: 35%;"></td>
+	<td valign="top" nowrap="nowrap" style="width: 15%; padding: 2px 0 0 30px; background: no-repeat bottom left url(/assets/img/corner_gray_bl.gif) #edede6;">
+	<% if current_user %>
+		<img width="19" height="21" src="/assets/img/ico_exit_green.gif" style="position: relative; top: 9px; margin-right: 9px;" tooltip="Выйти из секции зарегистрированных пользователей">
+		<%= link_to "Выход", logout_path %>
+	<% else %>
+		<img width="20" height="27" style="position: relative; top: 11px; margin-right: 7px;" src="/assets/img/ico_my.gif" alt="Мой Netbee" title="Перейти в секцию зарегистрированных пользователей" /> 
+		 <%= link_to "Вход", login_path %>
+	<% end %>
+	</td>	
+	<td valign="top" nowrap="nowrap" style="width: 15%; padding: 6px 0 0 30px; background: #edede6;">
+	<% if current_user %>
+		<a href="my_profile_green.html">
+		<img width="23" height="28" src="/assets/img/ico_profile.gif" style="position: relative; top: 11px; margin-right: 7px;" tooltip="Редактировать личную информацию">
+		</a>
+		<a class="service" href="my_profile_green.html" tooltip="Редактировать личную информацию">Мой профиль</a>
+	<% else%>
+		<img width="22" height="23" style="position: relative; top: 6px; margin-right: 7px;" src="/assets/img/ico_registration.gif" alt="Регистрация" title="Зарегистрировать нового пользователя" />
+		<%= link_to "Регистрация", signup_path %>
+	<% end %>
+	</td>
+	<td valign="top" nowrap="nowrap" style="padding: 4px 0 0 30px; background: #edede6;"><a href="#"><img width="21" height="25" style="position: relative; top: 9px; margin-right: 7px;" src="/assets/img/ico_about.gif" alt="О проекте" title="Подробная информация о проекте" /></a><a class="service" href="#" title="Подробная информация о проекте">О&nbsp;проекте</a></td>
+</tr>
+</table>

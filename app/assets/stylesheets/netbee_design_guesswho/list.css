@@ -1,0 +1,6 @@
+table.list {width: 100%; margin-top: 20px;}
+table.list th {text-align: left; font-size: 0.7em; padding: 0 5px 1em 5px;}
+table.list td {padding: 5px 5px 6px 5px; border-top: 1px solid #d9d9d3;}
+table.list td h3 {margin: 0;}
+table.list td p {margin: 0;}
+a.invisible {color: #a7b5e1;}
