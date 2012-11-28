@@ -1,14 +1,12 @@
 class Account < ActiveRecord::Base
 set_inheritance_column :account_type
+
 attr_accessible :email, :password, :account_type => :false
   validates_presence_of :password, :on => :create
-  validates_presence_of :email
+  validates :email, :uniqueness => true
   has_secure_password
   before_save :encrypt_password, :access_token 
 		
-	has_one :applicant, :conditions => { :major_applicant => true }, :dependent => :destroy
-	
-
   def self.authenticate(email, password)
      account = find_by_email(email)
      if account && account.password_digest == BCrypt::Engine.hash_secret(password)
@@ -43,6 +41,7 @@ attr_accessible :email, :password, :account_type => :false
      self.account_type = person
 		 save
   end
+
 
 	private
 

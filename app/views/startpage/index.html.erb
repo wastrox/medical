@@ -50,7 +50,7 @@ a.task {border: 3px inset #333; padding: 3px; color: #333}
 </tr>
 <tr>
 	<td></td>
-	<td colspan="2" valign="top" style="padding-left: 12px;"><a href="#"><img width="24" height="28" style="position: relative; top: 11px; margin-right: 5px;" src="/assets/img/ico_resume.gif" alt="Создать резюме" title="Добавить резюме в базу данных" /></a><%= link_to "Создать резюме", :controller => "resume", :action => "new" %></td>
+	<td colspan="2" valign="top" style="padding-left: 12px;"><a href="#"><img width="24" height="28" style="position: relative; top: 11px; margin-right: 5px;" src="/assets/img/ico_resume.gif" alt="Создать резюме" title="Добавить резюме в базу данных" /></a><%= link_to "Создать резюме", new_applicant_resume_path %></td>
 	<td colspan="2" valign="top" style="padding-top: 12px;">
 		<div id="advanced_link" style="height: 120px;"><div style="padding: 5px 0 0 10px;"><a onclick="hide('advanced_link');  show('advanced_form');" href="#"><img style="position: relative; top: 1px; margin-right: 5px;" width="9" height="9" src="/assets/img/ico_+.gif" alt="+" title="Указать дополнительные параметры поиска" /></a><a onclick="hide('advanced_link'); show('advanced_form');" class="service" href="#" title="Указать дополнительные параметры поиска">Указать дополнительные параметры</a></div></div>
 		<div id="advanced_form" style="display: none; height: 120px;">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107121433) do
+ActiveRecord::Schema.define(:version => 20121121142001) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -38,21 +38,21 @@ ActiveRecord::Schema.define(:version => 20121107121433) do
   end
 
   create_table "educations", :force => true do |t|
-    t.integer  "applicant_id"
+    t.integer  "resume_id"
     t.string   "college"
     t.boolean  "student"
     t.string   "profession"
     t.string   "diploma"
     t.string   "faculty"
     t.date     "till"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "educations", ["applicant_id"], :name => "index_educations_on_applicant_id"
+  add_index "educations", ["resume_id"], :name => "index_educations_on_resume_id"
 
   create_table "experiences", :force => true do |t|
-    t.integer  "applicant_id"
+    t.integer  "resume_id"
     t.string   "position"
     t.string   "company"
     t.text     "achievements"
@@ -62,26 +62,50 @@ ActiveRecord::Schema.define(:version => 20121107121433) do
     t.datetime "updated_at",   :null => false
   end
 
-  add_index "experiences", ["applicant_id"], :name => "index_experiences_on_applicant_id"
+  add_index "experiences", ["resume_id"], :name => "index_experiences_on_resume_id"
 
   create_table "languages", :force => true do |t|
-    t.integer  "applicant_id"
+    t.integer  "resume_id"
     t.string   "language"
     t.integer  "skill"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "languages", ["applicant_id"], :name => "index_languages_on_applicant_id"
+  add_index "languages", ["resume_id"], :name => "index_languages_on_resume_id"
 
   create_table "pc_skills", :force => true do |t|
-    t.integer  "applicant_id"
+    t.integer  "resume_id"
     t.string   "name"
     t.integer  "skill"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "pc_skills", ["resume_id"], :name => "index_pc_skills_on_resume_id"
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "resume_id"
+    t.integer  "applicant_id"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "surename"
+    t.date     "date"
+    t.string   "city"
+    t.integer  "phone"
+    t.text     "about_me"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
 
-  add_index "pc_skills", ["applicant_id"], :name => "index_pc_skills_on_applicant_id"
+  add_index "profiles", ["resume_id"], :name => "index_profiles_on_resume_id"
+
+  create_table "resumes", :force => true do |t|
+    t.integer  "applicant_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "resumes", ["applicant_id"], :name => "index_resumes_on_applicant_id"
 
 end

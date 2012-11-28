@@ -14,7 +14,7 @@ class ConfirmationController < ApplicationController
 
   def applicant
     @account.create_type("Applicant")
-		redirect_to :controller => "applicants", :action => "new" if @account.type?
+		redirect_to new_applicant_resume_path if @account.type?
   end
 
 private

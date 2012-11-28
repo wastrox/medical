@@ -1,0 +1,67 @@
+<style>
+	.logo {margin: 65px; }
+</style>
+<a class="logo" href="/"><img id="logo" src="/assets/img/logo_txt.gif" alt="netbee"></a>
+<table style="width: 100%;" cellpadding="0" cellspacing="0">
+	    <% if current_user%>	
+<tr>
+	<td width="8%"></td>
+	<td class="content" colspan="3" valign="top">
+		<h2><a class="service" href="my_green.html">Мой Netbee</a> / <a class="service" href="my_resumes_full_green.html">Мои резюме</a> / <span class="current">Бизнес-аналитик</span></h2>
+		<table style="width: 100%; font-size: 0.7em; background: #edede6; margin-top: 20px;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td rowspan="2" style="width: 15px; background: no-repeat top left url(/assets/img/corner_gray_tl.gif);"><img width="15" height="1" src="/assets/img/spacer.gif" alt="" /></td>
+			<td colspan="7" style="height: 15px;"></td>
+			<td rowspan="2" style="width: 15px; background: no-repeat top right url(/assets/img/corner_gray_tr.gif);"><img width="15" height="1" src="/assets/img/spacer.gif" alt="" /></td>
+		</tr>
+		<tr>	
+			<td nowrap="nowrap"><a href="my_resume_template_green.html"><img width="12" height="11" src="/assets/img/ico_edit.gif" style="position: relative; top: 2px; margin-right:  4px;" alt="Редактировать" title="Перейти к мастеру текущего резюме" /></a><a title="Перейти к мастеру текущего резюме" href="my_resume_template_green.html">Редактировать</a></td>
+			<td style="width: 33%;"></td>
+			<td nowrap="nowrap"><a href="#"><img width="12" height="12" src="/assets/img/ico_delete.gif" style="position: relative; top: 2px; margin-right:  4px;" alt="" title="" /></a><%= link_to "Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?' %></td>
+			<td style="width: 33%;"></td>
+			<td nowrap="nowrap"><a target="_blank" href="resume_print.html"><img width="12" height="12" src="/assets/img/ico_visibility.gif" style="position: relative; top: 2px; margin-right:  4px;" alt="" title="" /></a><a title=""  target="_blank" href="">Версия для&nbsp;печати</a></td>
+			<td style="width: 33%;"></td>
+			<td nowrap="nowrap"><a href="#"><img width="12" height="12" src="/assets/img/ico_pdf.gif" style="position: relative; top: 2px; margin-right:  4px;" alt="Экспортировать в PDF" title="Сохранить резюме на жестком диске в формате PDF (Adobe Reader)" /></a><a title="Сохранить резюме на жестком диске в формате PDF (Adobe Reader)" href="#">Экспортировать в&nbsp;PDF</a></td>
+		</tr>
+			<% end %>
+		<tr>
+			<td style="height: 15px; width: 15px; background: no-repeat bottom left url(/assets/img/corner_gray_bl.gif);"></td>
+			<td colspan="7"></td>
+			<td style="height: 15px; width: 15px;"></td>
+		</tr>
+		</table>
+		<table cellpadding="0" cellspacing="0" class="paper">
+		<tr><td style="width: 20px; border: 0;" rowspan="30"><img width="20" height="1" src="/assets/img/spacer.gif" alt="" /></td><th colspan="2"><h2>Василий Иванович Пупкин</h2></th><td style="width: 20px; border: 0;" rowspan="30"><img width="30" height="1" src="/assets/img/spacer.gif" alt="" /></td></tr>
+		<tr><td nowrap="nowrap"><h4>Желаемая должность:</h4></td><td><p>Бизнес-аналитик</p></td></tr>
+		<tr><td nowrap="nowrap"><h4>Регион:</h4></td><td><p>Киев</p></td></tr>
+		<tr><td nowrap="nowrap"><h4>Год рождения:</h4></td><td><p>1979</p></td></tr>
+		<tr><td nowrap="nowrap"><h4>Почтовый адрес:</h4></td><td><p>22233, ул. Самоваров 9/12</p></td></tr>
+		<tr><td nowrap="nowrap"><h4>Электронная почта:</h4></td><td><p><a href="#">poupkine@yandex.ru</a></p></td></tr>
+		<tr><td nowrap="nowrap"><h4>Веб-сайт:</h4></td><td><p><a href="#">http://poupkine.netbee.com.ua/</a></p></td></tr>
+		<tr><td nowrap="nowrap"><h4>Телефон мобильный:</h4></td><td><p>+38 (050) 551-18-25</p></td></tr>
+		<tr><td nowrap="nowrap"><h4>Телефон домашний:</h4></td><td><p>+38 (044) 225-04-04</p></td></tr>
+		<!--Cюда -- все комментарии. Возможность смены места жительства -- как автокомментарий--><tr><td style="border: 0;" nowrap="nowrap"><h4>Дополнительно:</h4></td><td style="border: 0;"><p>В случае необходимости, место жительства может быть изменено.</p></td></tr>
+		<tr><th colspan="2"><h3>Образование</h3></th></tr>
+		<tr><td colspan="2" style="border: 0;"><p>Высшее техническое: математика, физика, химия, машиностроение, к-л промышленное производство.</p></td></tr>
+		<tr><th colspan="2"><h3>Опыт работы</h3></th></tr>
+		<tr><td><h4>Бизнес-аналитиком:</h4></td><td><p>Более трех лет.</p></td></tr>
+		<tr><td><h4>Системным аналитиком:</h4></td><td><p>До года.</p></td></tr>
+		<tr><td><h4>Продакт-менеджером:</h4></td><td><p>Более трех лет.</p><!--Комментарий к продакт-менеджеру--><p>Разрабатывал концепции внедрения новых программных продуктов по автоматизации пищевой промышленности.</p></td></td></tr>
+		<tr><td style="border: 0;"><h4>Другой опыт:</h4></td><td style="border: 0;"><p>Работал топ-менедером в крупной компании, занимающейся зернохранением. Основная обязанность &#151; анализ рынков сбыта зерна в Азии и Африке.</p></td></tr>
+		<tr><th colspan="2"><h3>Знания и навыки</h3></th></tr>
+		<tr><td><h4>Участие в проектах внедрения формализованных бизнес-процессов:</h4></td><td><p>Опыт участия в подобных проектах.</p></td></tr>
+		<tr><td><h4>Опыт подготовки бизнес-моделей:</h4></td><td><p>Более года в разработке бизнес-моделей.</p></td></tr>
+		<tr><td><h4>Знание средств описания диаграмм:</h4></td><td><p>UML.</p></td></tr>
+		<tr><td><h4>Владение CASE-средствами:</h4></td><td><p>Rational Rose.</p></td></tr>
+		<tr><td><h4>Другие знания:</h4></td><td><p>Знание методов сбора и формализации.</p><p>Знание основ теории управления качеством, стандарты в области качества.</p></td></tr>
+		<tr><td><h4>Английский язык:</h4></td><td><p>Свободно</p></td></tr>
+		<tr><td style="border: 0;"><h4>Знание офисного программного обеспечения и оргтехники:</h4></td><td style="border: 0;"><p>Опытный пользователь.</p></td></tr>
+		<tr><th colspan="2"><h3>Рекомендации</h3></th></tr>
+		<tr><td colspan="2" style="border: 0; padding-bottom: 30px;"><p>Замечательный работник! Очень рекомендуем всем коллективом.</p></td></tr>
+		</table>
+	</td>
+	<td width="21%" valign="top" class="right">
+	</td>
+</tr>
+<tr><td class="bottom">&nbsp;</td><td class="bottom"><p>&copy; 2012</p><td class="bottom" align="center" style="padding: 0 5px 0 10px;"></td><td class="bottom" align="center" style="padding: 0 10px 0 5px;"></td><td class="bottom" align="right"</td><td class="bottom">&nbsp;</td></tr>
+</table>

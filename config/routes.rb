@@ -1,5 +1,4 @@
 Medical::Application.routes.draw do
-  get "resume/new"
 
   get "confirmation/index"
 
@@ -15,5 +14,9 @@ Medical::Application.routes.draw do
   resources :accounts
   resources :sessions
 	resources :applicants
-	#match 'applicants/:'
+	
+  namespace :applicant, :as => 'applicant' do	
+		resources :resumes #, :as => 'resume' #, :path => 'resume'
+	end
+
 end

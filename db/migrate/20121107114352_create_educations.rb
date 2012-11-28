@@ -1,7 +1,7 @@
 class CreateEducations < ActiveRecord::Migration
   def change
     create_table :educations do |t|
-      t.references :applicant
+      t.references :resume
       t.string :college
       t.boolean :student
       t.string :profession
@@ -11,6 +11,6 @@ class CreateEducations < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :educations, :applicant_id
+    add_index :educations, :resume_id
   end
 end

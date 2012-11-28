@@ -1,0 +1,64 @@
+<style>
+	#content-resume {
+		margin: 0 auto;
+		position: relative;
+		width: 921px;
+	}
+	#logo {
+		margin: 0 0 0 -187px;
+	}
+	#profes-resume{
+		margin: 15px 0 0 0;
+	}
+	input { width: 316px; }
+  textarea { width: 316px; height: 220px; }
+	fieldset {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 20px;
+  }
+.hint, .hint-pc {
+		background-color: #F0F0F0;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		float: left;
+		display: block;
+		height: 20px;
+		font-size: 14px;
+		padding-bottom: 4px;
+		padding-left: 0px;
+		padding-right: 0px;
+		margin: 0 15px 0 0;
+		text-align: center;
+		width: 100px;
+	}
+	.star, .star-pc {
+		float: left;
+		margin: 0 15px 0 15px;	
+	}
+</style>
+<div id="content-resume">
+<a href="/"><img id="logo" src="/assets/img/logo_txt.gif" alt="netbee"></a>
+<h3>Анкета <%= current_user.email %></h3>
+<p><strong>Персональная информация</strong></p>
+<%# nested_form_for([:applicant, @profile]) do |profile_fields| %>
+<div id="person-profile">
+	<%# render :partial => 'profile', :locals => {:profile => profile_fields} %>
+</div>
+<%# end %>
+<%= nested_form_for([:applicant, @resume]) do |applicant_fields| %>
+<div id="person-resume">
+<p><strong>Профессиональная информация</strong></p>
+	 <strong style="">Образование, Опыт, Языки, Компьютерные навыки</strong>
+	<%# render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
+</div>
+<%= submit_tag %>
+<% end %>
+	<div class="clear"></div>
+</div>
+
+
+
+
