@@ -7,4 +7,7 @@ class Applicant < Account
 		resume
 	end
 
+  def profile?
+		profile
+	end
 end

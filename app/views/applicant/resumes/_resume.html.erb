@@ -1,19 +1,21 @@
+<div class="person-profile">
+<p><strong>Персональная информация</strong></p>
+    <%= applicant_fields.fields_for :profile do |profile_fields|%>
+			<%= render :partial => 'profile_fields', :locals => {:profile => profile_fields.object, :f => profile_fields} %>
+		<% end %>
+</div>
+<div id="person-resume">
+<p><strong>Профессиональная информация</strong></p>
 <p>Опыт Работы</p>
-
-  
         <%= applicant_fields.fields_for :experiences do |experience_fields| %>
           <%= render :partial => "experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
         <%end %>
         <%= applicant_fields.link_to_add "Добавить место работы", :experiences %>
 
-
 <p>Образование</p>
-
-
       <%= applicant_fields.fields_for :educations do |education_fields| %>
         <%= render :partial => "education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
       <% end %>
-
       <%= applicant_fields.link_to_add "Добавить место учебы", :educations %>
 
 <p>Знание языков</p>
@@ -27,4 +29,4 @@
 		<%= render :partial => "pc_skill_fields", :locals =>  {:pc_skills => pc_skill_fields.object, :f => pc_skill_fields} %>
  	<% end %>
 <%= applicant_fields.link_to_add "Добавить компьютерные навыки", :pc_skills %>
-
+</div>

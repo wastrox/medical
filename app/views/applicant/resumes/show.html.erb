@@ -1,67 +1,117 @@
-<style>
-	.logo {margin: 65px; }
-</style>
-<a class="logo" href="/"><img id="logo" src="/assets/img/logo_txt.gif" alt="netbee"></a>
-<table style="width: 100%;" cellpadding="0" cellspacing="0">
-	    <% if current_user%>	
-<tr>
-	<td width="8%"></td>
-	<td class="content" colspan="3" valign="top">
-		<h2><a class="service" href="my_green.html">РњРѕР№ Netbee</a> / <a class="service" href="my_resumes_full_green.html">РњРѕРё СЂРµР·СЋРјРµ</a> / <span class="current">Р‘РёР·РЅРµСЃ-Р°РЅР°Р»РёС‚РёРє</span></h2>
-		<table style="width: 100%; font-size: 0.7em; background: #edede6; margin-top: 20px;" cellpadding="0" cellspacing="0">
-		<tr>
-			<td rowspan="2" style="width: 15px; background: no-repeat top left url(/assets/img/corner_gray_tl.gif);"><img width="15" height="1" src="/assets/img/spacer.gif" alt="" /></td>
-			<td colspan="7" style="height: 15px;"></td>
-			<td rowspan="2" style="width: 15px; background: no-repeat top right url(/assets/img/corner_gray_tr.gif);"><img width="15" height="1" src="/assets/img/spacer.gif" alt="" /></td>
-		</tr>
-		<tr>	
-			<td nowrap="nowrap"><a href="my_resume_template_green.html"><img width="12" height="11" src="/assets/img/ico_edit.gif" style="position: relative; top: 2px; margin-right:  4px;" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" title="РџРµСЂРµР№С‚Рё Рє РјР°СЃС‚РµСЂСѓ С‚РµРєСѓС‰РµРіРѕ СЂРµР·СЋРјРµ" /></a><a title="РџРµСЂРµР№С‚Рё Рє РјР°СЃС‚РµСЂСѓ С‚РµРєСѓС‰РµРіРѕ СЂРµР·СЋРјРµ" href="my_resume_template_green.html">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></td>
-			<td style="width: 33%;"></td>
-			<td nowrap="nowrap"><a href="#"><img width="12" height="12" src="/assets/img/ico_delete.gif" style="position: relative; top: 2px; margin-right:  4px;" alt="" title="" /></a><%= link_to "РЈРґР°Р»РёС‚СЊ", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?' %></td>
-			<td style="width: 33%;"></td>
-			<td nowrap="nowrap"><a target="_blank" href="resume_print.html"><img width="12" height="12" src="/assets/img/ico_visibility.gif" style="position: relative; top: 2px; margin-right:  4px;" alt="" title="" /></a><a title=""  target="_blank" href="">Р’РµСЂСЃРёСЏ РґР»СЏ&nbsp;РїРµС‡Р°С‚Рё</a></td>
-			<td style="width: 33%;"></td>
-			<td nowrap="nowrap"><a href="#"><img width="12" height="12" src="/assets/img/ico_pdf.gif" style="position: relative; top: 2px; margin-right:  4px;" alt="Р­РєСЃРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ РІ PDF" title="РЎРѕС…СЂР°РЅРёС‚СЊ СЂРµР·СЋРјРµ РЅР° Р¶РµСЃС‚РєРѕРј РґРёСЃРєРµ РІ С„РѕСЂРјР°С‚Рµ PDF (Adobe Reader)" /></a><a title="РЎРѕС…СЂР°РЅРёС‚СЊ СЂРµР·СЋРјРµ РЅР° Р¶РµСЃС‚РєРѕРј РґРёСЃРєРµ РІ С„РѕСЂРјР°С‚Рµ PDF (Adobe Reader)" href="#">Р­РєСЃРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ РІ&nbsp;PDF</a></td>
-		</tr>
-			<% end %>
-		<tr>
-			<td style="height: 15px; width: 15px; background: no-repeat bottom left url(/assets/img/corner_gray_bl.gif);"></td>
-			<td colspan="7"></td>
-			<td style="height: 15px; width: 15px;"></td>
-		</tr>
-		</table>
-		<table cellpadding="0" cellspacing="0" class="paper">
-		<tr><td style="width: 20px; border: 0;" rowspan="30"><img width="20" height="1" src="/assets/img/spacer.gif" alt="" /></td><th colspan="2"><h2>Р’Р°СЃРёР»РёР№ РРІР°РЅРѕРІРёС‡ РџСѓРїРєРёРЅ</h2></th><td style="width: 20px; border: 0;" rowspan="30"><img width="30" height="1" src="/assets/img/spacer.gif" alt="" /></td></tr>
-		<tr><td nowrap="nowrap"><h4>Р–РµР»Р°РµРјР°СЏ РґРѕР»Р¶РЅРѕСЃС‚СЊ:</h4></td><td><p>Р‘РёР·РЅРµСЃ-Р°РЅР°Р»РёС‚РёРє</p></td></tr>
-		<tr><td nowrap="nowrap"><h4>Р РµРіРёРѕРЅ:</h4></td><td><p>РљРёРµРІ</p></td></tr>
-		<tr><td nowrap="nowrap"><h4>Р“РѕРґ СЂРѕР¶РґРµРЅРёСЏ:</h4></td><td><p>1979</p></td></tr>
-		<tr><td nowrap="nowrap"><h4>РџРѕС‡С‚РѕРІС‹Р№ Р°РґСЂРµСЃ:</h4></td><td><p>22233, СѓР». РЎР°РјРѕРІР°СЂРѕРІ 9/12</p></td></tr>
-		<tr><td nowrap="nowrap"><h4>Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°:</h4></td><td><p><a href="#">poupkine@yandex.ru</a></p></td></tr>
-		<tr><td nowrap="nowrap"><h4>Р’РµР±-СЃР°Р№С‚:</h4></td><td><p><a href="#">http://poupkine.netbee.com.ua/</a></p></td></tr>
-		<tr><td nowrap="nowrap"><h4>РўРµР»РµС„РѕРЅ РјРѕР±РёР»СЊРЅС‹Р№:</h4></td><td><p>+38 (050) 551-18-25</p></td></tr>
-		<tr><td nowrap="nowrap"><h4>РўРµР»РµС„РѕРЅ РґРѕРјР°С€РЅРёР№:</h4></td><td><p>+38 (044) 225-04-04</p></td></tr>
-		<!--CСЋРґР° -- РІСЃРµ РєРѕРјРјРµРЅС‚Р°СЂРёРё. Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЃРјРµРЅС‹ РјРµСЃС‚Р° Р¶РёС‚РµР»СЊСЃС‚РІР° -- РєР°Рє Р°РІС‚РѕРєРѕРјРјРµРЅС‚Р°СЂРёР№--><tr><td style="border: 0;" nowrap="nowrap"><h4>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ:</h4></td><td style="border: 0;"><p>Р’ СЃР»СѓС‡Р°Рµ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё, РјРµСЃС‚Рѕ Р¶РёС‚РµР»СЊСЃС‚РІР° РјРѕР¶РµС‚ Р±С‹С‚СЊ РёР·РјРµРЅРµРЅРѕ.</p></td></tr>
-		<tr><th colspan="2"><h3>РћР±СЂР°Р·РѕРІР°РЅРёРµ</h3></th></tr>
-		<tr><td colspan="2" style="border: 0;"><p>Р’С‹СЃС€РµРµ С‚РµС…РЅРёС‡РµСЃРєРѕРµ: РјР°С‚РµРјР°С‚РёРєР°, С„РёР·РёРєР°, С…РёРјРёСЏ, РјР°С€РёРЅРѕСЃС‚СЂРѕРµРЅРёРµ, Рє-Р» РїСЂРѕРјС‹С€Р»РµРЅРЅРѕРµ РїСЂРѕРёР·РІРѕРґСЃС‚РІРѕ.</p></td></tr>
-		<tr><th colspan="2"><h3>РћРїС‹С‚ СЂР°Р±РѕС‚С‹</h3></th></tr>
-		<tr><td><h4>Р‘РёР·РЅРµСЃ-Р°РЅР°Р»РёС‚РёРєРѕРј:</h4></td><td><p>Р‘РѕР»РµРµ С‚СЂРµС… Р»РµС‚.</p></td></tr>
-		<tr><td><h4>РЎРёСЃС‚РµРјРЅС‹Рј Р°РЅР°Р»РёС‚РёРєРѕРј:</h4></td><td><p>Р”Рѕ РіРѕРґР°.</p></td></tr>
-		<tr><td><h4>РџСЂРѕРґР°РєС‚-РјРµРЅРµРґР¶РµСЂРѕРј:</h4></td><td><p>Р‘РѕР»РµРµ С‚СЂРµС… Р»РµС‚.</p><!--РљРѕРјРјРµРЅС‚Р°СЂРёР№ Рє РїСЂРѕРґР°РєС‚-РјРµРЅРµРґР¶РµСЂСѓ--><p>Р Р°Р·СЂР°Р±Р°С‚С‹РІР°Р» РєРѕРЅС†РµРїС†РёРё РІРЅРµРґСЂРµРЅРёСЏ РЅРѕРІС‹С… РїСЂРѕРіСЂР°РјРјРЅС‹С… РїСЂРѕРґСѓРєС‚РѕРІ РїРѕ Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё РїРёС‰РµРІРѕР№ РїСЂРѕРјС‹С€Р»РµРЅРЅРѕСЃС‚Рё.</p></td></td></tr>
-		<tr><td style="border: 0;"><h4>Р”СЂСѓРіРѕР№ РѕРїС‹С‚:</h4></td><td style="border: 0;"><p>Р Р°Р±РѕС‚Р°Р» С‚РѕРї-РјРµРЅРµРґРµСЂРѕРј РІ РєСЂСѓРїРЅРѕР№ РєРѕРјРїР°РЅРёРё, Р·Р°РЅРёРјР°СЋС‰РµР№СЃСЏ Р·РµСЂРЅРѕС…СЂР°РЅРµРЅРёРµРј. РћСЃРЅРѕРІРЅР°СЏ РѕР±СЏР·Р°РЅРЅРѕСЃС‚СЊ &#151; Р°РЅР°Р»РёР· СЂС‹РЅРєРѕРІ СЃР±С‹С‚Р° Р·РµСЂРЅР° РІ РђР·РёРё Рё РђС„СЂРёРєРµ.</p></td></tr>
-		<tr><th colspan="2"><h3>Р—РЅР°РЅРёСЏ Рё РЅР°РІС‹РєРё</h3></th></tr>
-		<tr><td><h4>РЈС‡Р°СЃС‚РёРµ РІ РїСЂРѕРµРєС‚Р°С… РІРЅРµРґСЂРµРЅРёСЏ С„РѕСЂРјР°Р»РёР·РѕРІР°РЅРЅС‹С… Р±РёР·РЅРµСЃ-РїСЂРѕС†РµСЃСЃРѕРІ:</h4></td><td><p>РћРїС‹С‚ СѓС‡Р°СЃС‚РёСЏ РІ РїРѕРґРѕР±РЅС‹С… РїСЂРѕРµРєС‚Р°С….</p></td></tr>
-		<tr><td><h4>РћРїС‹С‚ РїРѕРґРіРѕС‚РѕРІРєРё Р±РёР·РЅРµСЃ-РјРѕРґРµР»РµР№:</h4></td><td><p>Р‘РѕР»РµРµ РіРѕРґР° РІ СЂР°Р·СЂР°Р±РѕС‚РєРµ Р±РёР·РЅРµСЃ-РјРѕРґРµР»РµР№.</p></td></tr>
-		<tr><td><h4>Р—РЅР°РЅРёРµ СЃСЂРµРґСЃС‚РІ РѕРїРёСЃР°РЅРёСЏ РґРёР°РіСЂР°РјРј:</h4></td><td><p>UML.</p></td></tr>
-		<tr><td><h4>Р’Р»Р°РґРµРЅРёРµ CASE-СЃСЂРµРґСЃС‚РІР°РјРё:</h4></td><td><p>Rational Rose.</p></td></tr>
-		<tr><td><h4>Р”СЂСѓРіРёРµ Р·РЅР°РЅРёСЏ:</h4></td><td><p>Р—РЅР°РЅРёРµ РјРµС‚РѕРґРѕРІ СЃР±РѕСЂР° Рё С„РѕСЂРјР°Р»РёР·Р°С†РёРё.</p><p>Р—РЅР°РЅРёРµ РѕСЃРЅРѕРІ С‚РµРѕСЂРёРё СѓРїСЂР°РІР»РµРЅРёСЏ РєР°С‡РµСЃС‚РІРѕРј, СЃС‚Р°РЅРґР°СЂС‚С‹ РІ РѕР±Р»Р°СЃС‚Рё РєР°С‡РµСЃС‚РІР°.</p></td></tr>
-		<tr><td><h4>РђРЅРіР»РёР№СЃРєРёР№ СЏР·С‹Рє:</h4></td><td><p>РЎРІРѕР±РѕРґРЅРѕ</p></td></tr>
-		<tr><td style="border: 0;"><h4>Р—РЅР°РЅРёРµ РѕС„РёСЃРЅРѕРіРѕ РїСЂРѕРіСЂР°РјРјРЅРѕРіРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЏ Рё РѕСЂРіС‚РµС…РЅРёРєРё:</h4></td><td style="border: 0;"><p>РћРїС‹С‚РЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ.</p></td></tr>
-		<tr><th colspan="2"><h3>Р РµРєРѕРјРµРЅРґР°С†РёРё</h3></th></tr>
-		<tr><td colspan="2" style="border: 0; padding-bottom: 30px;"><p>Р—Р°РјРµС‡Р°С‚РµР»СЊРЅС‹Р№ СЂР°Р±РѕС‚РЅРёРє! РћС‡РµРЅСЊ СЂРµРєРѕРјРµРЅРґСѓРµРј РІСЃРµРј РєРѕР»Р»РµРєС‚РёРІРѕРј.</p></td></tr>
-		</table>
-	</td>
-	<td width="21%" valign="top" class="right">
-	</td>
-</tr>
-<tr><td class="bottom">&nbsp;</td><td class="bottom"><p>&copy; 2012</p><td class="bottom" align="center" style="padding: 0 5px 0 10px;"></td><td class="bottom" align="center" style="padding: 0 10px 0 5px;"></td><td class="bottom" align="right"</td><td class="bottom">&nbsp;</td></tr>
-</table>
+<%# encoding: cp1251 %>
+<script>
+	$(document).ready(function(){	
+		$(".profile").addClass("chosen");
+	});	
+</script>
+<body onload="focus();">
+    <section>
+        <div class="content clearfix">
+					<!--<h2><a class="service" href="my_green.html">Мой Netbee</a> / <a class="service" href="my_resumes_full_green.html">Мои резюме</a> / <span class="current">Бизнес-аналитик</span></h2>--> <!-- Хлебные крошки оставленные, удачно подобраны цвета  -->
+            <div class="middle clearfix">
+                    <ul class="middle-menu clearfix">
+                        <li>
+                            <img width="12" height="11" style="position: relative; top: 2px; margin-right: 4px;" src="/assets/img/ico_edit.gif" tooltip="Перейти к мастеру текущего резюме">
+														<%= link_to("Редактировать", edit_applicant_resume_path(@resume.id)) %>
+                        </li>
+                        <li>
+                            <img width="12" height="12" style="position: relative; top: 2px; margin-right: 4px;" src="/assets/img/ico_delete.gif" tooltip="Назначить текущее резюме резюме по умолчанию">
+														<%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?') %>
+                        </li>
+                        <li><a href="#">
+
+                            <img width="12" height="12" style="position: relative; top: 2px; margin-right: 4px;" src="/assets/img/ico_print.gif" tooltip="Распечатать резюме на принтере">
+
+                            Версия для&nbsp;печати
+                        </a></li>
+                        <li><a href="#">
+                            <img width="12" height="12" style="position: relative; top: 2px; margin-right: 4px;" src="/assets/img/ico_pdf.gif" tooltip="Распечатать резюме на принтере">
+														Экспортировать в PDF
+                        </a></li>
+                    </ul>
+
+								<div class="middle-nav"><!-- Начало левой панели навигации моего кабинета  -->
+										<ul class="nav nav-tabs nav-stacked"> 
+											<li><a href="#">Профиль</a></li>
+											<li><a href="#">Аккаунт</a></li>
+											<li><a href="#">Поиск</a></li>
+											<li class="hover"><a href="#">Резюме</a></li>
+											<li><a href="#">Вакансии</a></li>
+  				          </ul>
+								</div> <!-- Коненц левой панели навигации -->
+
+                <div class="middle-left">
+                    <!--<h2 class="breadcrumbs">
+                        <a href="#">  Мой Netbee</a>
+                        <a href="#" > / Мои резюме </a>
+                        <a href="#" class="current">/ Бизнес-аналитик</a>
+                    </h2>-->
+                    <table cellpadding="0" cellspacing="0" class="paper">
+                        <tr><td style="width: 20px; border: 0;" rowspan="30"><img width="20" height="1" src="img/spacer.gif" alt="" /></td><th colspan="2"><h2>Василий Иванович Пупкин</h2></th><td style="width: 20px; border: 0;" rowspan="30"><img width="30" height="1" src="img/spacer.gif" alt="" /></td></tr>
+                        <tr><td nowrap="nowrap"><h4>Желаемая должность:</h4></td><td><p>Бизнес-аналитик</p></td></tr>
+                        <tr><td nowrap="nowrap"><h4>Регион:</h4></td><td><p>Киев</p></td></tr>
+                        <tr><td nowrap="nowrap"><h4>Год рождения:</h4></td><td><p>1979</p></td></tr>
+                        <tr><td nowrap="nowrap"><h4>Почтовый адрес:</h4></td><td><p>22233, ул. Самоваров 9/12</p></td></tr>
+                        <tr><td nowrap="nowrap"><h4>Электронная почта:</h4></td><td><p><a href="#">poupkine@yandex.ru</a></p></td></tr>
+                        <tr><td nowrap="nowrap"><h4>Веб-сайт:</h4></td><td><p><a href="#">http://poupkine.netbee.com.ua/</a></p></td></tr>
+                        <tr><td nowrap="nowrap"><h4>Телефон мобильный:</h4></td><td><p>+38 (050) 551-18-25</p></td></tr>
+                        <tr><td nowrap="nowrap"><h4>Телефон домашний:</h4></td><td><p>+38 (044) 225-04-04</p></td></tr>
+                        <!--Cюда -- все комментарии. Возможность смены места жительства -- как автокомментарий--><tr><td style="border: 0;" nowrap="nowrap"><h4>Дополнительно:</h4></td><td style="border: 0;"><p>В случае необходимости, место жительства может быть изменено.</p></td></tr>
+                        <tr><th colspan="2"><h3>Образование</h3></th></tr>
+                        <tr><td colspan="2" style="border: 0;"><p>Высшее техническое: математика, физика, химия, машиностроение, к-л промышленное производство.</p></td></tr>
+                        <tr><th colspan="2"><h3>Опыт работы</h3></th></tr>
+                        <tr><td><h4>Бизнес-аналитиком:</h4></td><td><p>Более трех лет.</p></td></tr>
+                        <tr><td><h4>Системным аналитиком:</h4></td><td><p>До года.</p></td></tr>
+                        <tr><td><h4>Продакт-менеджером:</h4></td><td><p>Более трех лет.</p><!--Комментарий к продакт-менеджеру--><p>Разрабатывал концепции внедрения новых программных продуктов по автоматизации пищевой промышленности.</p></td></td></tr>
+                        <tr><td style="border: 0;"><h4>Другой опыт:</h4></td><td style="border: 0;"><p>Работал топ-менедером в крупной компании, занимающейся зернохранением. Основная обязанность &#151; анализ рынков сбыта зерна в Азии и Африке.</p></td></tr>
+                        <tr><th colspan="2"><h3>Знания и навыки</h3></th></tr>
+                        <tr><td><h4>Участие в проектах внедрения формализованных бизнес-процессов:</h4></td><td><p>Опыт участия в подобных проектах.</p></td></tr>
+                        <tr><td><h4>Опыт подготовки бизнес-моделей:</h4></td><td><p>Более года в разработке бизнес-моделей.</p></td></tr>
+                        <tr><td><h4>Знание средств описания диаграмм:</h4></td><td><p>UML.</p></td></tr>
+                        <tr><td><h4>Владение CASE-средствами:</h4></td><td><p>Rational Rose.</p></td></tr>
+                        <tr><td><h4>Другие знания:</h4></td><td><p>Знание методов сбора и формализации.</p><p>Знание основ теории управления качеством, стандарты в области качества.</p></td></tr>
+                        <tr><td><h4>Английский язык:</h4></td><td><p>Свободно</p></td></tr>
+                        <tr><td style="border: 0;"><h4>Знание офисного программного обеспечения и оргтехники:</h4></td><td style="border: 0;"><p>Опытный пользователь.</p></td></tr>
+                        <tr><th colspan="2"><h3>Рекомендации</h3></th></tr>
+                        <tr><td colspan="2" style="border: 0; padding-bottom: 30px;"><p>Замечательный работник! Очень рекомендуем всем коллективом.</p></td></tr>
+                    </table>
+
+                </div>
+                <!--<div class="middle-right">
+
+                    <h2>Что такое «резюме по умолчанию»?</h2>
+
+                    <p>Событие, описанное в этом словаре, произошло, видимо, в VIII или в IX веке нашей эры (возможно,
+                        было несколько подобных событий), и в специальной литературе оно обычно называется «хазарской полемикой».</p>
+
+                    <h2>Что такое «экспорт в PDF»</h2>
+
+                    <p>Хазары, независимое и сильное племя, воинственные кочевники, в момент,
+                        не известный истории, появились с Востока, гонимые жаркой тишиной,и в период с VII по Х век населяли сушу
+                        между двумя морями —Каспийским и Черным.</p>
+
+                </div>-->
+            </div>
+        </div>
+
+    </section>
+
+<footer>
+    <div class="footer">
+        <div>
+            <p>&copy; 2005 <a href="#">Staff Centre Group Of Companies</a></p>
+        </div>
+        <div>
+            <p>25 135 вакансий</p>
+        </div>
+        <div>
+            <p>10 009 резюме</p>
+        </div>
+        <div>
+            <p><a href="#">Guess Who designed it</a></p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

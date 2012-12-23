@@ -1,71 +1,44 @@
-<script type="text/javascript">
-function focus()
-{document.form_search.input_search.focus();}
-function show(arg)
-{document.getElementById(arg).style.display = "block";}
-function hide(arg)
-{document.getElementById(arg).style.display = "none";}
+<script>
+	$(document).ready(function(){
+		$(".form-search, .search-applicant").css("display", "none");
+	});
 </script>
-
-<style type="text/css">
-html {height: 100%;}
-body {margin: 0; padding: 0; height: 100%; width: 100%; color: #333; background: #fff; font-family: Tahoma, Verdana, Arial;}
-td {font-size: 0.7em;}
-img {border: 0;}
-form {margin: 0;}
-input, select {font-size: 1em; padding-bottom: 2px;}
-input.btn {font-size: 1em; height: 2.1em; padding: 0 0.3em; cursor: hand;}
-a {color: #2447b3;}
-a.service {color: #333;}
-a.task {border: 3px inset #333; padding: 3px; color: #333}
+<style>
+	.create-button {
+			width: 250px;
+	}
+	.create-resume{
+			padding: 30px;
+			background: none;
+			border: 1px solid #767676;
+			border-radius: 10px;	
+	}		
 </style>
+						<div class="search"> 
+                <ul>
+                    <li class="active"><a href="#">Работу</a></li>
+                    <li><a href="#">Сотрудника</a></li>
+                </ul>
+                <div class="search-box clearfix">
+                    <input type="text" value="" class="input-text">
+                    <input type="submit" value="Найти" class="input-sub">
+                </div>
+            </div> 
+    <div class="alert alert-success" style="margin-top: 20px;">
+				<button class="close" data-dismiss="alert" type="button">×</button>
+		    <div class="create-button">
+					<a id="create-resume" href="#">Создать резюме</a> <hr>
+					<a id="create-vacancy" href="#">Разместить вакансию</a> 
+				</div>
+    </div>
+            <!--<div class="info-link clearfix">
+                <a href="#">
+                    <img width="27" src="img/ico_my_resume.gif" style="z-index: 1; position: relative; top: 11px; margin-right: 5px;" heistyleght="27" tooltip="Перейти к менеджеру резюме">
+                    Мои резюме <span>(2 из 3)</span>
+                </a>
+                <a href="#">
+                    <img width="22" height="21" src="img/ico_search.gif" style="z-index: 1; position: relative; top: 6px; margin-right: 5px;" tooltip="Перейти на страницу расширенного поиска">
 
-<body onload="focus();">
-<table style="height: 100%; width: 100%;" cellpadding="0" cellspacing="0">
-
-<tr>
-	<td align="right" valign="bottom" style="padding: 63px 0 34px 0;"><a href="vacancies_green.html"><img width="28" height="35" src="/assets/img/logo_sign.gif" alt="Netbee" title="Перейти к полному каталогу вакансий" /></a></td>
-	<td colspan="2" style="padding: 63px 0 34px 0;" valign="bottom"><a href="vacancies_green.html"><img width="124" height="35" src="/assets/img/logo_txt.gif" alt="Netbee" title="Перейти к полному каталогу вакансий" /></a></td>
-	<td colspan="3"></td>
-</tr>
-<tr>
-	<td style="height: 25px; width: 20%;"></td>
-	<td style="width: 15%; background: #b6d94c no-repeat top left url(/assets/img/corner_green_tl.gif);" align="center"><strong>Работу</strong></td>
-	<td style="width: 15%; background: #71c1d1 no-repeat top right url(/assets/img/corner_blue_tr.gif); border-top: 1px solid #fff; border-bottom: 1px solid #fff; border-left: 1px solid #fff;" align="center"><a class="service" style="display: block; width: 100%; padding: 5px 0;" href="index_blue.html" title="Переключиться в режим поиска сотрудников">Сотрудника</a></td>
-	<td colspan="3"></td>
-</tr>
-<tr>
-	<td style="height: 75px;"></td>
-	<td colspan="4">
-		<form name="form_search" method="post" action="results_green.html">
-		<table style="height: 75px; width: 100%;" cellpadding="0" cellspacing="0">
-		<tr>
-			<td style="height: 75px; padding: 0 15px; background: #b6d94c no-repeat bottom left url(/assets/img/corner_green_bl.gif);"><input name="input_search" style="width: 100%;" /></td>
-			<td style="width: 85px; background: #b6d94c no-repeat top right url(/assets/img/corner_green_tr.gif);"><input class="btn" type="submit" value="Найти" title="Начать поиск" /></td>
-		</tr>
-		</table>
-		</form>
-	</td>
-	<td nowrap="nowrap" style="width: 20%; padding: 0 5px 0 15px;" align="right"><a style="margin-right: 5px;" href="vacancies_green.html" title="Перейти к полному каталогу вакансий">К каталогу вакансий</a><a href="vacancies_green.html"><img style="position: relative; top: 3px;" width="12" height="11" src="/assets/img/arrow_green.gif" alt="К каталогу вакансий" title="Перейти к полному каталогу вакансий" /></a></td>
-</tr>
-<tr>
-	<td></td>
-	<td colspan="2" valign="top" style="padding-left: 12px;"><a href="#"><img width="24" height="28" style="position: relative; top: 11px; margin-right: 5px;" src="/assets/img/ico_resume.gif" alt="Создать резюме" title="Добавить резюме в базу данных" /></a><%= link_to "Создать резюме", new_applicant_resume_path %></td>
-	<td colspan="2" valign="top" style="padding-top: 12px;">
-		<div id="advanced_link" style="height: 120px;"><div style="padding: 5px 0 0 10px;"><a onclick="hide('advanced_link');  show('advanced_form');" href="#"><img style="position: relative; top: 1px; margin-right: 5px;" width="9" height="9" src="/assets/img/ico_+.gif" alt="+" title="Указать дополнительные параметры поиска" /></a><a onclick="hide('advanced_link'); show('advanced_form');" class="service" href="#" title="Указать дополнительные параметры поиска">Указать дополнительные параметры</a></div></div>
-		<div id="advanced_form" style="display: none; height: 120px;">
-			<form method="post" action="#">
-			<table style="height: 100%; width: 100%; border: 1px solid #b6d94c;" cellpadding="0" cellspacing="0">
-			<tr><td colspan="3" valign="top" style="height: 30px; padding: 4px 0 0 9px;"><a onclick="hide('advanced_form'); show('advanced_link');" href="#"><img style="position: relative; top: 1px; margin-right: 5px;" width="9" height="9" src="/assets/img/ico_-.gif" alt="-" title="Скрыть дополнительные параметры поиска" /></a><a onclick="hide('advanced_form'); show('advanced_link');" class="service" href="#" title="Скрыть дополнительные параметры поиска">Скрыть дополнительные параметры</a></td></tr>
-			<tr><td align="right" style="padding: 0 10px;"><label for="salary">Зарплата&nbsp;от:</label></td><td style="width: 100%; padding-right: 5px;"><input id="salary" style="width: 100%;" /></td><td style="padding-right: 10px;"><select><option>USD</option><option>грн</option><option>EURO</option></select></td></tr>
-			<tr><td align="right" style="padding: 0 10px;"><label for="region">Регион:</label></td><td colspan="2" style="padding-right: 10px;"><select id="region" style="width: 100%;"><option>Вся Украина&hellip;</option><option>Киев</option><option>Винница</option><option>Днепропетровск</option><option>Донецк</option><option>Житомир</option><option>Закарпатье</option><option>Запорожье</option><option>Ивано-Франковск</option><option>Кировоград</option><option>Крым</option><option>Луганск</option><option>Луцк</option><option>Львов</option><option>Николаев</option><option>Одесса</option><option>Полтава</option><option>Ровно</option><option>Сумы</option><option>Тернополь</option><option>Харьков</option><option>Херсон</option><option>Хмельницкий</option><option>Черкассы</option><option>Чернигов</option><option>Черновцы</option></select></td></tr>
-			<tr><td style="height: 15px;"></td></tr>
-			</table>
-			</form>
-		</div>
-	</td>
-	<td></td>
-</tr>
-<tr><td colspan="3" style="height: 50px; padding: 0 15px; color: #666;" align="right">&copy; 2005 Staff Centre Group Of Companies</td><td colspan="3" style="padding: 0 15px;"><a style="color: #666;" href="#">Guess Who designed it</a></td></tr>
-</table>
-</body>
+                    Расширенный поиск
+                </a>
+            </div>

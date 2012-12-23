@@ -1,7 +1,12 @@
 <style>
-	.signup{margin: 10px 629px; }
+	a#signup {margin: 12px 0 0 218px; float: left; }
 </style>
-<h1 class="signup">Регистрация</h1>
+
+<script>
+  $(document).ready(function(){
+    $("a.btn").removeClass("btn"); 
+  });
+</script>
 <div class="modal" style="position: absolute; margin-top: 0px;" >
   <div class="modal-body">
 <%= form_for @account do |f| %>

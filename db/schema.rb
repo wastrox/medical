@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20121121142001) do
   create_table "profiles", :force => true do |t|
     t.integer  "resume_id"
     t.integer  "applicant_id"
+    t.string   "title"
     t.string   "firstname"
     t.string   "lastname"
     t.string   "surename"

@@ -4,7 +4,7 @@ class CreateProfiles < ActiveRecord::Migration
 
       t.references :resume
 			t.integer :applicant_id
-
+      t.string :title
       t.string :firstname
       t.string :lastname
       t.string :surename

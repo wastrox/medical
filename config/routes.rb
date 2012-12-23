@@ -1,4 +1,6 @@
 Medical::Application.routes.draw do
+	match "testIndex" => "startpage#testIndex" #Тестовая страница для верстки главной страницы, прототипа
+	match "resume" => "startpage#resume" #Тестовое резюме, переверстанное в div
 
   get "confirmation/index"
 

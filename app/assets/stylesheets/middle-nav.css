@@ -1,0 +1,22 @@
+.middle-nav {
+    width: 220px;
+    float: left;
+    /*background: none repeat scroll 0 0 #EFEFEF;*/
+    border-radius: 10px 10px 10px 10px;
+		margin: 0px 30px 0 0;	
+		}
+.nav-tabs.nav-stacked > li:first-child > a {
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+}
+
+.nav-tabs.nav-stacked > li:last-child > a {
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+li.hover a {border-color: #DDDDDD;
+					z-index: 2;
+					color: #767676;
+					background-color: #EEEEEE;
+					cursor: default; }

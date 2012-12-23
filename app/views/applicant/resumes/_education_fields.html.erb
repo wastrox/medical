@@ -13,5 +13,5 @@
 				<%= f.check_box :student %><%= f.label :student, "Еще учусь" %>
 		
   			<%= f.hidden_field :_destroy %>
-  			<%= link_to "remove", '#', class: "remove_fields" %>
+  			<%= f.link_to_remove "remove" %>
 </fieldset>
