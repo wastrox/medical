@@ -21,11 +21,10 @@
         </div>
 <% else %>
 	        <div class="header clearfix">
-						<%= link_to(signup_path, :class => "btn", :id => "signup") do %>
-							<h1>Регистрация</h1>
-						<% end %>
+						<%# link_to(signup_path, :class => "btn", :id => "signup") do %>
 						<h1 class="login" style="display: none;">Вход</h1>
             <div class="header-menu clearfix">
+								<%= link_to "Регистрация", signup_path, :id => "signup" %>
 								<%= link_to "Вход", login_path, :id => "login" %>
                 <a href="#">О проекте</a>
             </div>

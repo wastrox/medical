@@ -177,6 +177,7 @@ table.paper {
 
 .search {
     clear: both;
+		margin-bottom: 20px;
 }
 
 .search  li {
