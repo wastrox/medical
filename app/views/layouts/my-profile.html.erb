@@ -14,7 +14,17 @@
 
 	<div class="wrapper">
 		<section>
+			<div class="content clearfix">
+				<div class="middle clearfix">
+					<div id="content-left">
 						<%= yield %>
+					</div>
+					<div class="middle-nav"><!-- Начало левой панели навигации моего кабинета  -->                     
+						<%= render :partial => 'layouts/middle-nav'%>
+					</div> <!-- Коненц левой панели навигации -->
+				</div>
+			 </div>
+			</div>
 		</section>
 	</div>
 	<footer>

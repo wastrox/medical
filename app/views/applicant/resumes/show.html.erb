@@ -3,26 +3,22 @@
 		$(".profile").addClass("chosen");
 	});	
 </script>
-<body onload="focus();">  
+
 
 					<!--<h2><a class="service" href="my_green.html">Мой Netbee</a> / <a class="service" href="my_resumes_full_green.html">Мои резюме</a> / <span class="current">Бизнес-аналитик</span></h2>--> <!-- Хлебные крошки оставленные, удачно подобраны цвета  -->
 			
                 <ul class="middle-menu clearfix">
+												<li><img width="15" height="1" src="/assets/images/settings-4.png" /> <img width="15" height="1" src="/assets/img/spacer.gif" alt="" /></li>
                         <li>
-                            <img width="12" height="11" style="position: relative; top: 2px; margin-right: 4px;" src="/assets/img/ico_edit.gif" tooltip="Перейти к мастеру текущего резюме">
 														<%= link_to("Редактировать", edit_applicant_resume_path(@resume.id)) %>
                         </li>
                         <li>
-                            <img width="12" height="12" style="position: relative; top: 2px; margin-right: 4px;" src="/assets/img/ico_delete.gif" tooltip="Назначить текущее резюме резюме по умолчанию">
 														<%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?') %>
                         </li>
                         <li><a href="#">
-
-                            <img width="12" height="12" style="position: relative; top: 2px; margin-right: 4px;" src="/assets/img/ico_my.gif" tooltip="Распечатать резюме на принтере">
                               Сделать не активным
                         </a></li>
                         <li><a href="#">
-                            <img width="12" height="12" style="position: relative; top: 2px; margin-right: 4px;" src="/assets/img/ico_pdf.gif" tooltip="Распечатать резюме на принтере">
 														Экспортировать в PDF
                         </a></li>
                     </ul>
@@ -54,5 +50,3 @@
 				
 
 
-</body>
-</html>

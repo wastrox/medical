@@ -1,4 +1,5 @@
 class Applicant::ProfilesController < ApplicationController
+ layout "my-profile"
   def edit
     @applicant = Applicant.find_by_salt(cookies[:salt])
     @profile = @applicant.profile
