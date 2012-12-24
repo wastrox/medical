@@ -15,7 +15,7 @@
 						</form>
             <div class="header-menu clearfix">
                 <a class="search-applicant" href="#">Поиск сотрудника</a>
-                	<a class="profile" href="#"><!--<img style="margin-right: 4px; margin-top: -1px;" src="/assets/marquee.png">--> Мой профиль</a>
+                <!--<img style="margin-right: 4px; margin-top: -1px;" src="/assets/marquee.png">--><%= link_to "Мой профиль", new_applicant_resume_path%>
 								<%= link_to "Выход", logout_path %>
             </div>
         </div>
@@ -23,6 +23,7 @@
 	        <div class="header clearfix">
 						<%# link_to(signup_path, :class => "btn", :id => "signup") do %>
 						<h1 class="login" style="display: none;">Вход</h1>
+						<h1 class="signup" style="display: none;">Регистрация</h1> 
             <div class="header-menu clearfix">
 								<%= link_to "Регистрация", signup_path, :id => "signup" %>
 								<%= link_to "Вход", login_path, :id => "login" %>

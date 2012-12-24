@@ -1,10 +1,11 @@
 <fieldset>
+				<input type="checkbox">Нет опыта работы</input>
 				<%= f.label "Занимаемая должность"%><br />
 				<%= f.text_field :position, :value => f.object.position, :class=>"recent_position validate big ", :default_value => "Какую должность Вы занимали" %>
 	      <%= f.label "Компания"%><br />
-				<%= f.text_field :company, :value => f.object.company, :class=>"recent_company validate", :default_value => "Компания" %>
+				<%= f.text_field :company, :value => f.object.company, :class=>"recent_company validate", :default_value => "Компания" %> <a href="#" style="margin: 0 0 0 7px;">Скрыть название</a>
 
-        <%= f.label :achievements, "Ваши достижения"%><br />
+        <%= f.label :achievements, "Должностные обязанности, достижения"%><br />
 				<%= f.text_area :achievements, :class => "achievements validate", :default_value => "Чем занимались и чего достигли за это время" %><br />
         
         <%= f.label "Период работы"%><br />

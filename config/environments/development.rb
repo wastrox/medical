@@ -35,17 +35,19 @@ Medical::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
+
   config.assets.debug = true
   config.action_mailer.default_url_options = { :host => "localhost:80" }
-	config.action_mailer.delivery_method = :smtp	
-	config.action_mailer.smtp_settings = {
-  :address => "smtp.gmail.com",
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true,
-  :domain => "netbee.ua",
-  :user_name => "nicholauskas@gmail.com",
-  :password => "vekmnbgkbrfnjh"
+  config.action_mailer.delivery_method = :smtp	
+  config.action_mailer.smtp_settings = {
+   :enable_starttls_auto => true,
+   :address => "smtp.gmail.com",
+   :port => 587,
+   :authentication => :plain,
+   :enable_starttls_auto => true,
+   :domain => "netbee.ua",
+   :user_name => "nicholauskas@gmail.com",
+   :password => "netbee-24"
 }
 
 end

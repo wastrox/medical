@@ -1,10 +1,13 @@
 <style>
-	a#signup {margin: 12px 0 0 218px; float: left; }
+	/*a#signup {margin: 12px 0 0 218px; float: left; }*/
+	h1.signup {width: 89px, float:left; margin: 12px 0 0 236px;}
 </style>
 
 <script>
   $(document).ready(function(){
-    $("a.btn").removeClass("btn"); 
+    $("a.btn").removeClass("btn");
+	$("h1.signup").css("display", "inline-block");
+	$("a#signup").css("display", "none");
   });
 </script>
 <div class="modal" style="position: absolute; margin-top: 0px;" >

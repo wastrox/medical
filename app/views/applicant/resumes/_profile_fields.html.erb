@@ -1,15 +1,13 @@
-				<%= f.label 'Фамилия' %><%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
+<%= f.label 'Фамилия' %><%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
 <%= f.label 'Имя' %>
 <%= f.text_field :firstname, :value => "#{@profile.firstname}" %>
 <%= f.label 'Отчество' %>
 <%= f.text_field :surename, :value => "#{@profile.surename}"%>
 <%= f.label 'Дата рождения' %>
 <%= f.text_field :date, :value => "#{@profile.date}" %>
-<%= f.label 'Местонахождение' %>
-<%= f.text_field :city, :value => "#{@profile.city}" %>
-<%= f.label 'Мобильный телефон' %>
-<%= f.text_field :phone, :value => "#{@profile.phone}" %>
-<%= f.label 'О себе' %>
-<%= f.text_area :about_me, :value => "#{@profile.about_me}"%>
 <%= f.label 'Желаемая должность'%>
 <%= f.text_field :title, :value => "#{@profile.title}" %>
+<%= f.label 'Желаемый город работы' %>
+<%= f.text_field :city, :value => "#{@profile.city}" %> <input type="checkbox">Другие страны</input>
+<%= f.label 'Мобильный телефон' %>
+<%= f.text_field :phone, :value => "#{@profile.phone}" %>

@@ -11,7 +11,6 @@ class CreateProfiles < ActiveRecord::Migration
       t.date :date
       t.string :city
       t.integer :phone
-      t.text :about_me
 
       t.timestamps
     end

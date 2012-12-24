@@ -40,7 +40,6 @@
 	}
 </style>
 <div id="content-resume">
-<a href="/"><img id="logo" src="/assets/img/logo_txt.gif" alt="netbee"></a>
 <h3>Анкета <%= current_user.email %></h3>
 <%= nested_form_for([:applicant, @resume]) do |applicant_fields| %>
 	<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>

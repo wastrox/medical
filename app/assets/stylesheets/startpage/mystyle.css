@@ -114,6 +114,7 @@ header {
     -moz-border-radius:  0 0 0  14px;
     border-radius:  0 0 0  14px;
     behavior: url(/css/PIE.php);
+    margin-right: 20px;
 }
 .header-menu a.chosen {
 		border: 2px solid #71C1D1; padding: 6px 10px; font-weight: bold; border-radius: 15px 15px 15px 15px; margin-top: -6px;
@@ -141,6 +142,12 @@ a.service:hover  {
 /*-----Content--------*/
 .content {
     padding: 0 0 0 0;
+}
+
+#content-left{
+	float: left;
+    margin-right: 40px;
+    width: 700px;
 }
 
 .advertisement, .logo-company  {
@@ -221,24 +228,27 @@ table.paper {
     padding: 30px;
 }
 
-input.input-text, input.input-sub  {
+input.input-text, input.input-city, input.input-sub  {
     height: 20px;
     -webkit-border-radius:6px;
     -moz-border-radius:  6px;
     border-radius:  6px;
     behavior: url(/css/PIE.php);
     border: 0;
-    width: 80%;
+    width: 60%;
     padding: 3px 7px;
     color:#000000;
 
     font-size: 13px;
 
 }
+
+input.input-city { width: 27%; }
+
 input.input-sub {
     height: 26px;
     width: 70px;
-
+    margin-top: -10px;
 }
 
 
@@ -257,7 +267,7 @@ input.input-sub {
 
 .middle-left {
     width: 700px;
-    float: right;
+    float: left;
     margin-right: 40px;
 }
 .breadcrumbs {
@@ -280,8 +290,8 @@ input.input-sub {
     border-radius:  10px;
     behavior: url(/css/PIE.php);
     padding:9px 5px;
-		width: 700px;
-		float: right;
+		width: 690px;
+		float: left;
 		margin-right: 35px;
 }
 

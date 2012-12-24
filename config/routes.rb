@@ -1,7 +1,7 @@
 Medical::Application.routes.draw do
 	match "testIndex" => "startpage#testIndex" #Тестовая страница для верстки главной страницы, прототипа
 	match "resume" => "startpage#resume" #Тестовое резюме, переверстанное в div
-
+  
   get "confirmation/index"
 
 	root :to => 'startpage#index'
@@ -19,6 +19,7 @@ Medical::Application.routes.draw do
 	
   namespace :applicant, :as => 'applicant' do	
 		resources :resumes #, :as => 'resume' #, :path => 'resume'
+		resources :profiles
 	end
 
 end

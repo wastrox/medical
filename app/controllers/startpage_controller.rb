@@ -1,5 +1,5 @@
 class StartpageController < ApplicationController
- #layout "startpage"
+ layout "startpage"
 	def index
 	end
 	

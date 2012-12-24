@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medical</title>
+  <%# stylesheet_link_tag    "application", :media => "all" %>
+	<%= stylesheet_link_tag    "middle-nav"%>
+	<%= stylesheet_link_tag    "bootstrap_style/bootstrap", :media => "all" %>
+	<%= stylesheet_link_tag    "startpage/green", "startpage/main", "startpage/mystyle", "startpage/paper", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render :partial => 'layouts/alternative_navbar'%>
+<div class="wrapper">
+	<%= yield %>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<%= form_for([:applicant, @profile]) do |f| %>
+	<%= f.label 'Фамилия' %><%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
+	<%= f.label 'Имя' %>
+	<%= f.text_field :firstname, :value => "#{@profile.firstname}" %>
+	<%= f.label 'Отчество' %>
+	<%= f.text_field :surename, :value => "#{@profile.surename}"%>
+	<%= f.label 'Дата рождения' %>
+	<%= f.text_field :date, :value => "#{@profile.date}" %>
+	<%= f.label 'Мобильный телефон' %>
+	<%= f.text_field :phone, :value => "#{@profile.phone}" %><hr>
+	<%= f.submit %>
+<% end %>

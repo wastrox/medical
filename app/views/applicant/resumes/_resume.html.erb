@@ -23,10 +23,12 @@
 		<%= render :partial => "language_skill_fields", :locals =>  {:language => language_fields.object, :f => language_fields} %>
  <% end %>
 <%= applicant_fields.link_to_add "Добавить языки", :languages, :id => "add_lang_skill" %>
-
-<p>Компьютерные навыки</p>
-	<%= applicant_fields.fields_for :pc_skills do |pc_skill_fields| %>
-		<%= render :partial => "pc_skill_fields", :locals =>  {:pc_skills => pc_skill_fields.object, :f => pc_skill_fields} %>
- 	<% end %>
-<%= applicant_fields.link_to_add "Добавить компьютерные навыки", :pc_skills %>
+<div>
+<input type="checkbox">Защита персональных данных</input>
+</div>
+<!--<p>Компьютерные навыки</p>-->
+	<%# applicant_fields.fields_for :pc_skills do |pc_skill_fields| %>
+		<%# render :partial => "pc_skill_fields", :locals =>  {:pc_skills => pc_skill_fields.object, :f => pc_skill_fields} %>
+ 	<%# end %>
+<%# applicant_fields.link_to_add "Добавить компьютерные навыки", :pc_skills %>
 </div>
