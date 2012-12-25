@@ -42,6 +42,8 @@
 		margin: 0 15px 0 15px;	
 	}
 </style>
+<a href="#">Резюме/Редактировать(крошки)</a>
+<hr>
 <div id="content-resume">
 <h3>Анкета <%= current_user.email %></h3>
 <%= nested_form_for([:applicant, @resume]) do |applicant_fields| %>
