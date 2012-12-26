@@ -1,5 +1,5 @@
 	<ul class="nav nav-tabs nav-stacked"> 
-		<li ><a style="background: none repeat scroll 0 0 #EDEDE6;" href="#">asd<%=debug(@test)%><% if current_user %><%= current_user.email %><% end %></a></li>
+		<li ><a style="background: none repeat scroll 0 0 #EDEDE6;" href="#"><%=debug(current_user)%><% if current_user %><%= current_user.email %><% end %></a></li>
 		<li><a href="#">Профиль</a></li>
 		<li><a href="#">Аккаунт</a></li>
 		<li><a href="#">Поиск</a></li>
