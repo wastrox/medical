@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(:version => 20121121142001) do
     t.date     "date"
     t.string   "city"
     t.integer  "phone"
-    t.text     "about_me"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
