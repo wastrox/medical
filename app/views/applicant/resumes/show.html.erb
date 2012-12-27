@@ -1,7 +1,7 @@
 <script>
-	$(document).ready(function(){	
-		$(".profile").addClass("chosen");
-	});	
+	//$(document).ready(function(){	
+		//$(".profile").addClass("chosen");
+	//});	
 </script>
 <style>
 	.middle-menu {
@@ -43,7 +43,7 @@
 
                 <div class="middle-left">
                     <table cellpadding="0" cellspacing="0" class="paper">
-                        <tr><td style="width: 20px; border: 0;" rowspan="30"><img width="20" height="1" src="img/spacer.gif" alt="" /></td><th colspan="2"><h2><%= @fullName %></h2></th><td style="width: 20px; border: 0;" rowspan="30"><img width="30" height="1" src="img/spacer.gif" alt="" /></td></tr>
+                        <tr><td style="width: 20px; border: 0;" rowspan="30"></td><th colspan="2"><h2><%= @fullName %></h2></th><td style="width: 20px; border: 0;" rowspan="30">
                         <tr><td nowrap="nowrap"><h4>Желаемая должность:</h4></td><td><p><%= @resume.profile.title %></p></td></tr>
                         <tr><td nowrap="nowrap"><h4>Регион:</h4></td><td><p><%= @resume.profile.city %></p></td></tr>
                         <tr><td nowrap="nowrap"><h4>Электронная почта:</h4></td><td><p><a href="#"><%= @applicant.email %></a></p></td></tr>

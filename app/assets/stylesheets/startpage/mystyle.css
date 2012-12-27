@@ -113,9 +113,10 @@ header {
     -webkit-border-radius: 0 0 0 14px;
     -moz-border-radius:  0 0 0  14px;
     border-radius:  0 0 0  14px;
+	width: 350px;
     behavior: url(/css/PIE.php);
 }
-.header-menu a.chosen {
+.header-menu a.active {
 		border: 2px solid #71C1D1; padding: 6px 10px; font-weight: bold; border-radius: 15px 15px 15px 15px; margin-top: -6px;
 										 }
 .header-menu a {

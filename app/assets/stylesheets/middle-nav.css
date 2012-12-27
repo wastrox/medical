@@ -14,9 +14,3 @@
     border-bottom-left-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
 }
-
-li.hover a {border-color: #DDDDDD;
-					z-index: 2;
-					color: #767676;
-					background-color: #EEEEEE;
-					cursor: default; }
