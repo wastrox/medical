@@ -15,7 +15,7 @@ body {
     font-size: 13px;
     margin: 0 auto;
     min-height: 100%;
-    padding: 0 70px;
+    padding: 0 50px;
     position: relative;
     width: 930px;
 		background: none repeat scroll 0 0 #FFFFFF;
@@ -98,26 +98,31 @@ table.paper h2 {
 }
 
 .header, .content, .footer , section {
-    width: 1000px;
+	/*width: 949px;
+	width: 1000px;*/
     margin: 0 auto;
 }
 header {
-    border-bottom: 1px solid #B6D94C;
+    border-bottom: 3px dotted #B6D94C;
     padding-bottom: 10px;
-		margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 .header-menu {
     /*background: #EDEDE6;*/
-    padding: 21px 40px 17px 20px; 
+    padding: 21px 0px 8px 20px; 
     float: right;
     -webkit-border-radius: 0 0 0 14px;
     -moz-border-radius:  0 0 0  14px;
     border-radius:  0 0 0  14px;
-	width: 350px;
+	/*width: 350px;*/
     behavior: url(/css/PIE.php);
 }
 .header-menu a.active {
-		border: 2px solid #71C1D1; padding: 6px 10px; font-weight: bold; border-radius: 15px 15px 15px 15px; margin-top: -6px;
+		border: 2px solid #71C1D1; 
+		padding: 6px 10px; 
+		font-weight: bold; 
+		border-radius: 15px 15px 15px 15px; 
+		margin-top: -6px;
 										 }
 .header-menu a {
     float: left;
@@ -141,13 +146,12 @@ a.service:hover  {
 
 /*-----Content--------*/
 .content {
-    padding: 0 0 0 0;
+    padding: 0 0 40px 0;
 }
 
 #content-left{
 	float: left;
-    margin-right: 40px;
-    width: 700px;
+    width: 670px;
 }
 
 .advertisement, .logo-company  {
@@ -266,9 +270,8 @@ input.input-sub {
 }
 
 .middle-left {
-    width: 700px;
+    width: 670px;
     float: left;
-    margin-right: 40px;
 }
 .breadcrumbs {
     font-size: 24px;

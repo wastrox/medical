@@ -3,7 +3,7 @@
     float: right;
     /*background: none repeat scroll 0 0 #EFEFEF;*/
     border-radius: 10px 10px 10px 10px;
-		margin: 0px 37px 0 0;	
+	margin: 2px 0 0 0;	
 		}
 .nav-tabs.nav-stacked > li:first-child > a {
     border-top-left-radius: 10px !important;
