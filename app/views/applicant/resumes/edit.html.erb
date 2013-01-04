@@ -1,25 +1,13 @@
 <style>
-	#content-resume {
-		/*margin: 0 auto;
-		position: relative;
-		width: 921px;*/
-		border: 1px dashed #000000;
-		padding: 10px;
-	}
-	#logo {
-		margin: 0 0 0 -187px;
-		display: none;
-	}
 	#profes-resume{
 		margin: 15px 0 0 0;
 	}
-	input { width: 316px; }
-  textarea { width: 316px; height: 220px; }
+	/*input { width: 316px; }*/
 	fieldset {
-    border: 1px dashed black;
-    margin: 10px;
-    padding: 20px;
-  }
+    	border: 1px dashed black;
+    	margin: 10px;
+    	padding: 20px;
+  	}
 .hint, .hint-pc {
 		background-color: #F0F0F0;
 		border-bottom-left-radius: 3px;
@@ -39,14 +27,13 @@
 	}
 	.star, .star-pc {
 		float: left;
-		margin: 0 15px 0 15px;	
+		margin: 0 0 0 15px;	
 	}
 </style>
-<a href="#">Резюме/Редактировать(крошки)</a>
+<a href="#">Резюме/Редактировать(хлебные крошки)</a>
 <hr>
 <div id="content-resume">
-<h3>Анкета <%= current_user.email %></h3>
-<%= nested_form_for([:applicant, @resume]) do |applicant_fields| %>
+<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>
 	<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
 <%= applicant_fields.submit %>
 <% end %>

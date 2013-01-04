@@ -1,24 +1,23 @@
-<div class='lang_skill'>
-  			<%= f.text_field :language, :class => "language", :style => "float: left; width: 130px;" %>
-  			<%= f.text_field :skill, :class => "language_skill", :type => "hidden"%>
-  		    <div class="star"></div>
-			<a class="remove_nested_fields" href="javascript:void(0)"></a>
-<div class="clear"></div>
+<div class='language'>
+  <%= f.text_field :language, :class => "language", :style => "float: left; width: 130px;" %>
+  <%= f.text_field :skill, :class => "language_skill", :type => "hidden"%>
+  <div class="star"></div>
+  <div class="hint">&nbsp;</div>
 </div>
 
  <script>
     var createDate = new Date().getTime();
-	var newClass = createDate.toString();
+		var newClass = createDate.toString();
     var starClass = $('.star').attr("id", "star-" + newClass)
-    //var hintClass = $('.hint').attr("id", "hint-" + newClass)
+    var hintClass = $('.hint').attr("id", "hint-" + newClass)
 		//function language_skill(){
 				
 		//}
 
     $(starClass).raty({
-       //target: hintClass,
+       target: hintClass,
        width: '146',
-       //targetKeep: true,
+       targetKeep: true,
        cancel: false,
        cancelPlace: 'left',
        hints: ['минимальный', 'базовый', 'средний', 'продвинутый', 'свободно'],
@@ -31,5 +30,7 @@
 						$("#"+newClassString+" input[id$=_skill]").attr("value", score); 
 		  }					 
     });
+
+  
 </script>
 

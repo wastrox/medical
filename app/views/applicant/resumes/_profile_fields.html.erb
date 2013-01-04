@@ -1,13 +1,42 @@
-<%= f.label 'Фамилия' %><%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
-<%= f.label 'Имя' %>
-<%= f.text_field :firstname, :value => "#{@profile.firstname}" %>
-<%= f.label 'Отчество' %>
-<%= f.text_field :surename, :value => "#{@profile.surename}"%>
-<%= f.label 'Дата рождения' %>
-<%= f.text_field :date, :value => "#{@profile.date}" %>
-<%= f.label 'Желаемая должность'%>
-<%= f.text_field :title, :value => "#{@profile.title}" %>
-<%= f.label 'Желаемый город работы' %>
-<%= f.text_field :city, :value => "#{@profile.city}" %> <input type="checkbox">Другие страны</input>
-<%= f.label 'Мобильный телефон' %>
-<%= f.text_field :phone, :value => "#{@profile.phone}" %>
+<div class='item'>
+	<%= f.label 'Фамилия' %>
+	<div class='field'>
+		<%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
+	</div>
+</div>
+<div class='item'>
+	<%= f.label 'Имя' %>
+	<div class='field'>
+		<%= f.text_field :firstname, :value => "#{@profile.firstname}" %>
+	</div>
+</div>
+<div class='item'>
+	<%= f.label 'Отчество' %>
+	<div class='field'>
+		<%= f.text_field :surename, :value => "#{@profile.surename}"%>
+	</div>
+</div>
+<div class='item'>
+	<%= f.label 'Дата рождения' %>
+	<div class='field'>
+		<%= f.text_field :date, :value => "#{@profile.date}" %>
+	</div>
+</div>
+<div class='item'>
+	<%= f.label 'Желаемая должность'%>
+	<div class='field'>
+		<%= f.text_field :title, :value => "#{@profile.title}" %>
+	</div>
+</div>
+<div class='item'>
+	<%= f.label 'Желаемый город' %>
+	<div class='field'>
+		<%= f.text_field :city, :value => "#{@profile.city}" %>
+	</div>
+</div>
+<div class='item' style="margin-bottom: 0px;">
+	<%= f.label 'Мобильный телефон' %>
+	<div class='field'>
+		<%= f.text_field :phone, :value => "#{@profile.phone}" %><hr>
+	</div>
+</div>

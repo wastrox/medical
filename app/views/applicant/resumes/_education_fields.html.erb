@@ -1,17 +1,37 @@
-<fieldset>
-				<%= f.label :college, "Название вуза"%>
-				<%= f.text_field :college, :value => f.object.college, :class=>"college validate", :default_value => "Название учебного заведения" %>
-				<%= f.label :profession, "Специальность" %>
-				<%= f.text_field :profession, :value => f.object.profession, :class=>"recent_company validate", :default_value => "Специальность" %>
-				<%= f.label :faculty, "Факультет"%>
-				<%= f.text_field :faculty, :value => f.object.faculty, :class=>"validate", :default_value => "Факультет" %>
-				<%= f.label :diploma, "Диплом/степень"%>
-				<%= f.text_field :diploma, :class => "diploma validate", :default_value => "Диплом/степень" %><br />	
-				
-			  <%= f.label "Год окончания:" %>	
-				<%= f.text_field :till, :class=> "only_year recent_till" %><br />
-				<%= f.check_box :student %><%= f.label :student, "Еще учусь" %>
-		
+
+	<div class='item'>
+		<%= f.label :college, "Название вуза"%>
+		<div class='field'>
+			<%= f.text_field :college, :value => f.object.college, :class=>"college validate", :default_value => "Название учебного заведения" %>
+		</div>
+	</div>
+	<div class='item'>
+		<%= f.label :profession, "Специальность" %>
+		<div class='field'>
+			<%= f.text_field :profession, :value => f.object.profession, :class=>"recent_company validate", :default_value => "Специальность" %>
+		</div>
+	</div>
+	<div class='item'>
+		<%= f.label :faculty, "Факультет"%>
+		<div class='field'>
+			<%= f.text_field :faculty, :value => f.object.faculty, :class=>"validate", :default_value => "Факультет" %>
+		</div>
+	</div>
+	<div class='item'>
+		<%= f.label :diploma, "Диплом/степень"%>
+		<div class='field'>
+			<%= f.text_field :diploma, :class => "diploma validate", :default_value => "Диплом/степень" %>
+		</div>
+	</div>
+	<div class='item'>	
+   		<%= f.label "Год окончания:" %>	
+		<div class='field'>		
+			<%= f.text_field :till, :class=> "only_year recent_till" %>
+		</div>
+	</div>
+	<div class='student'>
+		<%= f.check_box :student %>
+		<%= f.label :student, "Еще учусь" %>
+	</div>
   			<%= f.hidden_field :_destroy %>
   			<%= f.link_to_remove "remove" %>
-</fieldset>

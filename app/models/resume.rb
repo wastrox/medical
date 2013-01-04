@@ -1,5 +1,5 @@
 class Resume < ActiveRecord::Base
-	attr_accessible :applicant, :resume, :experiences_attributes, :educations_attributes, :languages_attributes, :profile_attributes #:pc_skills_attributes
+	attr_accessible :applicant, :resume, :experiences_attributes, :educations_attributes, :language_skills_attributes, :profile_attributes #:pc_skills_attributes
 	
   validate :applicant, :uniqueness => true
 
@@ -17,9 +17,6 @@ class Resume < ActiveRecord::Base
   has_many :languages, :dependent => :destroy
     accepts_nested_attributes_for :languages, :allow_destroy => true
  
-  has_many :pc_skills, :dependent => :destroy
-    accepts_nested_attributes_for :pc_skills, :allow_destroy => true
-
-
-
+  #has_many :pc_skills, :dependent => :destroy
+    #accepts_nested_attributes_for :pc_skills, :allow_destroy => true  #в резюме удалили владение компьютером 
 end

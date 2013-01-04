@@ -46,6 +46,7 @@ class Applicant::ResumesController < ApplicationController
   end
 	
 	def edit
+	  @resume.languages.build
 	end
  
   def update

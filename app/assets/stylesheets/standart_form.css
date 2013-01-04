@@ -1,0 +1,60 @@
+form.standart_form {
+	width: 513px;
+	float: left;
+}
+form .item {
+    margin-bottom: 25px;
+    position: relative;
+}
+form .item > label {
+	font-size: 14px;
+	width: 180px;
+	display: inline-block;
+	margin-top: 5px;
+	vertical-align: top;
+}
+form .field {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	width: 260px;
+}
+form.standart_form .item .field .field_error > input[type="text"], form.standart_form .item .field .field_error > input[type="email"], form.standart_form .item .field .field_error > input[type="password"], form.standart_form .item .field > input[type="text"], form.standart_form .item .field > input[type="email"], form.standart_form .item .field > input[type="password"], form.standart_form .item .fields .field_error > input[type="text"], form.standart_form .item .fields .field_error > input[type="email"], form.standart_form .item .fields .field_error > input[type="password"], form.standart_form .item .fields > input[type="text"], form.standart_form .item .fields > input[type="email"], form.standart_form .item .fields > input[type="password"] {
+
+    font-family: "PT Sans",Verdana,sans-serif;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0 5px;
+    width: 248px;
+}
+img.img-rounded {
+	margin-right: 10px;
+}
+form.standart_form .buttons {	
+	padding: 0px 0 0px 160px;
+}
+
+form.standart_form input[type="radio"], input[type="checkbox"] {
+    cursor: pointer;
+    line-height: normal;
+    margin: 0 5px 2px 0;
+}
+
+form.standart_form .item .field textarea {
+	 width: 248px; 
+	 height: 220px; 
+}
+.recent_from, .recent_till {
+	width: 73px;
+}
+
+form.standart_form div.student {
+	margin-left: 180px;
+}
+form.standart_form div.student input[type="checkbox"]{
+	float: left;
+}
+form.standart_form .language {
+}
