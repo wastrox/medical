@@ -15,20 +15,23 @@
 	    padding-top: 8px;
 	}
 </style>
+<hr />
 <div class="person-profile">
-<h3>Персональная информация</h3>
     <%= applicant_fields.fields_for :profile do |profile_fields|%>
 			<%= render :partial => 'profile_fields', :locals => {:profile => profile_fields.object, :f => profile_fields} %>
 		<% end %>
 </div>
 <div id="person-resume">
+	<hr />
 	<p>Опыт Работы</p>
+	<hr />
         <%= applicant_fields.fields_for :experiences do |experience_fields| %>
           <%= render :partial => "experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
         <%end %>
         <%= applicant_fields.link_to_add "Добавить место работы", :experiences %>
-
+    <hr />
 	<p>Образование</p>
+	<hr />
       <%= applicant_fields.fields_for :educations do |education_fields| %>
         <%= render :partial => "education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
       <% end %>

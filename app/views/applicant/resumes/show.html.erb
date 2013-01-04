@@ -1,43 +1,17 @@
-<script>
-	//$(document).ready(function(){	
-		//$(".profile").addClass("chosen");
-	//});	
-</script>
 <style>
-	.middle-menu {
-		display: none;
-	}
-	ul.middle-menu li:first-child {
-		margin-left: 47px;
-	}
-	
-	.nav { margin-bottom: 0px; }
+	.nav { margin-bottom: 0px; } /* Строка навигации Редактировать Удалить Сделать не активным ,,,  */
 	.nav-pills li a {
 		background-color: #EEEEEE; 
 		margin-right: 10px;
-		}
+		} /* Строка навигации Редактировать Удалить Сделать не активным ,,, */
 </style>
 
 					<!--<h2><a class="service" href="my_green.html">Мой Netbee</a> / <a class="service" href="my_resumes_full_green.html">Мои резюме</a> / <span class="current">Бизнес-аналитик</span></h2>--> <!-- Хлебные крошки оставленные, удачно подобраны цвета  -->
 			
-                <ul class="middle-menu clearfix">
-                        <li>
-														<%= link_to("Редактировать", edit_applicant_resume_path(@resume.id)) %>
-                        </li>
-                        <li>
-														<%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?') %>
-                        </li>
-                        <li><a href="#">
-                              Сделать не активным
-                        </a></li>
-                        <li><a href="#">
-														Экспортировать в PDF
-                        </a></li>
-                    </ul>
 	<ul class="nav nav-pills">
-    <li class=""><%= link_to("Редактировать", edit_applicant_resume_path(@resume.id)) %></li>
-    <li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?') %></li>
-    <li><a href="#">Сделать не активным</a></li>
+    	<li class=""><%= link_to("Редактировать", edit_applicant_resume_path(@resume.id)) %></li>
+    	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?') %></li>
+    	<li><a href="#">Сделать не активным</a></li>
 		<li><a href="#">Экспортировать в PDF</a></li>
   </ul>
 

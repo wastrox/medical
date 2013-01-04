@@ -2,13 +2,12 @@
 	#profes-resume{
 		margin: 15px 0 0 0;
 	}
-	/*input { width: 316px; }*/
 	fieldset {
     	border: 1px dashed black;
     	margin: 10px;
     	padding: 20px;
   	}
-.hint, .hint-pc {
+	.hint, .hint-pc {
 		background-color: #F0F0F0;
 		border-bottom-left-radius: 3px;
 		border-bottom-right-radius: 3px;
@@ -29,13 +28,41 @@
 		float: left;
 		margin: 0 0 0 15px;	
 	}
+	.nav { 
+		margin: 0 0 0 0;
+		 } /* Строка навигации Редактировать Удалить Сделать не активным ,,,  */
+	.nav-pills li a {
+		/*background-color: #EEEEEE; */
+		margin-right: 10px;
+		} /* Строка навигации Редактировать Удалить Сделать не активным ,,, */
+	.nav-pills li a.save_edit_resume{
+		background-color: #99D2DE;
+	    color: #FFFFFF;
+	}
+	.nav-pills li a.cancel_edit_resume {
+		background-color: #EEEEEE;
+	}
+	.nav-pills li a.save_edit_resume:hover;{
+		text-decoration: none;
+		color: #fff;
+	}
 </style>
-<a href="#">Резюме/Редактировать(хлебные крошки)</a>
-<hr>
+
+<ul class="nav nav-pills">
+  	<li class=""><%= link_to("Сохранить", edit_applicant_resume_path(@resume.id), :class => 'save_edit_resume' ) %></li>
+  	<li><%= link_to("Отменить", applicant_resume_path(@resume.id), :confirm => 'A you sure?', :class => 'cancel_edit_resume') %></li>
+	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?') %></li>
+	<li><a href="#">Сделать не активным</a></li>
+</ul>
+
 <div id="content-resume">
-<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>
+	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>	
 	<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
 <%= applicant_fields.submit %>
+<ul class="nav nav-pills">
+  	<li class=""><%= link_to("Сохранить", edit_applicant_resume_path(@resume.id), :class => 'save_edit_resume') %></li>
+  	<li><%= link_to("Отменить", applicant_resume_path(@resume.id), :confirm => 'A you sure?', :class => 'cancel_edit_resume') %></li>
+</ul>
 <% end %>
 	<div class="clear"></div>
 </div>
