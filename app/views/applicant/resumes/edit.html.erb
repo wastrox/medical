@@ -32,7 +32,7 @@
 		margin: 0 0 0 0;
 		 } /* Строка навигации Редактировать Удалить Сделать не активным ,,,  */
 	.nav-pills li a {
-		/*background-color: #EEEEEE; */
+		background-color: #EEEEEE; 
 		margin-right: 10px;
 		} /* Строка навигации Редактировать Удалить Сделать не активным ,,, */
 	.nav-pills li a.save_edit_resume{
@@ -42,25 +42,43 @@
 	.nav-pills li a.cancel_edit_resume {
 		background-color: #EEEEEE;
 	}
-	.nav-pills li a.save_edit_resume:hover;{
+	/*.nav-pills li a.save_edit_resume:hover;{
 		text-decoration: none;
 		color: #fff;
+	}*/
+	.standart_form input[type="submit"].save_edit_resume {
+    background-color: #99D2DE;
+    color: #FFFFFF;
+		border-radius: 5px 5px 5px 5px;
+		margin-right: 10px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+		line-height: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+		border-width: 0px;
+		float: left;
+		font-size: 13px;
 	}
 </style>
 
+
+
+<div id="content-resume">
+	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>	
 <ul class="nav nav-pills">
-  	<li class=""><%= link_to("Сохранить", edit_applicant_resume_path(@resume.id), :class => 'save_edit_resume' ) %></li>
+  	<li class=""><%# link_to("Сохранить", edit_applicant_resume_path(@resume.id), :class => 'save_edit_resume' ) %>
+<%= applicant_fields.submit "Сохранить", :class => "save_edit_resume" %></li>
   	<li><%= link_to("Отменить", applicant_resume_path(@resume.id), :confirm => 'A you sure?', :class => 'cancel_edit_resume') %></li>
 	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?') %></li>
 	<li><a href="#">Сделать не активным</a></li>
 </ul>
-
-<div id="content-resume">
-	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>	
 	<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
-<%= applicant_fields.submit %>
+<%= applicant_fields.submit "Сохранить", :class => "save_edit_resume" %>
 <ul class="nav nav-pills">
-  	<li class=""><%= link_to("Сохранить", edit_applicant_resume_path(@resume.id), :class => 'save_edit_resume') %></li>
+  	<li class=""><%# link_to("Сохранить", edit_applicant_resume_path(@resume.id), :class => 'save_edit_resume') %></li>
   	<li><%= link_to("Отменить", applicant_resume_path(@resume.id), :confirm => 'A you sure?', :class => 'cancel_edit_resume') %></li>
 </ul>
 <% end %>

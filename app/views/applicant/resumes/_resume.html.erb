@@ -38,7 +38,7 @@
       <%= applicant_fields.link_to_add "Добавить место учебы", :educations %>
 
   <div>
-	<p style='width: 100px; float:left;'>Знание языков</p>
+	<p style='width: 110px; float:left;'>Знание языков</p>
 	 <%= applicant_fields.fields_for :languages do |language_fields| %>
 	                <%= render :partial => "language_skill_fields", :locals =>  {:language => language_fields.object, :f => language_fields} %>
 	 <% end %>
