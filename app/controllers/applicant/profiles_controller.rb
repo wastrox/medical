@@ -8,7 +8,7 @@ class Applicant::ProfilesController < ApplicationController
     respond_to do |format|
      @profile = Profile.find(params[:id])
       if @profile.update_attributes(params[:profile])
-				format.html { redirect_to :controller => "profile", :action => "show" }
+				format.html { redirect_to :controller => "applicant/profiles", :action => "edit" }
         format.json { render :json => @resume, :status => :created, :location => @resume }
       else
         format.html { render :action => "show" }

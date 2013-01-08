@@ -22,27 +22,7 @@
 		<%= f.text_field :date, :value => "#{@profile.date}" %>
 	</div>
 </div>
-
-		<div class='item'>
-			<%# f.label 'Желаемая должность'%>
-			<div class='field'>
-				<%#= f.text_field :position, :value => "#{@resume.position}" %>
-			</div>
-		</div>
-		<div class='item'>
-			<%#= f.label 'Желаемая зарплата'%>
-			<div class='field'>
-				<%#= f.text_field :salary, :value => "#{@resume.salary}" %>
-			</div>
-		</div>
-		
 <div class='item'>
-	<%= f.label 'Желаемый город' %>
-	<div class='field'>
-		<%= f.text_field :city, :value => "#{@profile.city}" %>
-	</div>
-</div>
-<div class='item' style="margin-bottom: 0px;">
 	<%= f.label 'Мобильный телефон' %>
 	<div class='field'>
 		<%= f.text_field :phone, :value => "#{@profile.phone}" %>

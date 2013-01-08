@@ -15,8 +15,7 @@ class Applicant::ResumesController < ApplicationController
 		@resume.build_profile
     @resume.experiences.build
     @resume.educations.build
-    @resume.languages.build
-    #@resume.pc_skills.build
+    #@resume.languages.build
   end
 	
 	def create
@@ -46,7 +45,7 @@ class Applicant::ResumesController < ApplicationController
   end
 	
 	def edit
-	  @resume.languages.build
+	  #@resume.languages.build
 	end
  
   def update

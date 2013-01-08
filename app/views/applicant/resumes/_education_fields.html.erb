@@ -26,12 +26,13 @@
 	<div class='item'>	
    		<%= f.label "Год окончания:" %>	
 		<div class='field'>		
-			<%= f.text_field :till, :class=> "only_year recent_till" %>
+			<%= f.text_field :till, :class=> "only_year recent_till_education" %>
+			<div class='student'>
+				<%= f.check_box :student %>
+				<%= f.label :student, "Еще учусь" %>
+			</div>
 		</div>
 	</div>
-	<div class='student'>
-		<%= f.check_box :student %>
-		<%= f.label :student, "Еще учусь" %>
-	</div>
+
   			<%= f.hidden_field :_destroy %>
   			<%= f.link_to_remove "remove" %>

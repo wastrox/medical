@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108101536) do
+ActiveRecord::Schema.define(:version => 20130108133724) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -52,26 +52,6 @@ ActiveRecord::Schema.define(:version => 20130108101536) do
 
   add_index "experiences", ["resume_id"], :name => "index_experiences_on_resume_id"
 
-  create_table "languages", :force => true do |t|
-    t.integer  "resume_id"
-    t.string   "language"
-    t.integer  "skill"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "languages", ["resume_id"], :name => "index_languages_on_resume_id"
-
-  create_table "pc_skills", :force => true do |t|
-    t.integer  "resume_id"
-    t.string   "name"
-    t.integer  "skill"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "pc_skills", ["resume_id"], :name => "index_pc_skills_on_resume_id"
-
   create_table "profiles", :force => true do |t|
     t.integer  "resume_id"
     t.integer  "applicant_id"
@@ -79,7 +59,6 @@ ActiveRecord::Schema.define(:version => 20130108101536) do
     t.string   "lastname"
     t.string   "surename"
     t.date     "date"
-    t.string   "city"
     t.integer  "phone"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
@@ -89,10 +68,12 @@ ActiveRecord::Schema.define(:version => 20130108101536) do
 
   create_table "resumes", :force => true do |t|
     t.integer  "applicant_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "position"
     t.string   "salary"
+    t.string   "city"
+    t.string   "additional_info"
   end
 
   add_index "resumes", ["applicant_id"], :name => "index_resumes_on_applicant_id"

@@ -1,10 +1,10 @@
 class Resume < ActiveRecord::Base
-	attr_accessible :applicant, :position, :salary, :experiences_attributes, :educations_attributes, :languages_attributes, :profile_attributes #:pc_skills_attributes
+	attr_accessible :applicant, :position, :salary, :city, :additional_info, :profile_attributes, :experiences_attributes, :educations_attributes #:languages_attributes
 	
   validate :applicant, :uniqueness => true
 
   belongs_to :applicant
-
+  
 	has_one :profile 
     accepts_nested_attributes_for :profile 
 
@@ -14,9 +14,6 @@ class Resume < ActiveRecord::Base
   has_many :educations, :dependent => :destroy
     accepts_nested_attributes_for :educations, :allow_destroy => true
  
-  has_many :languages, :dependent => :destroy
-    accepts_nested_attributes_for :languages, :allow_destroy => true
- 
-  #has_many :pc_skills, :dependent => :destroy
-    #accepts_nested_attributes_for :pc_skills, :allow_destroy => true  #в резюме удалили владение компьютером 
+  #has_many :languages, :dependent => :destroy 
+    #accepts_nested_attributes_for :languages, :allow_destroy => true ---> Это поле заменено на Resume.id.additonal_info
 end

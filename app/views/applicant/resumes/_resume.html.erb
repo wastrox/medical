@@ -16,34 +16,60 @@
 	}
 </style>
 <hr />
+
 <div class="person-profile">
     <%= applicant_fields.fields_for :profile do |profile_fields|%>
 			<%= render :partial => 'profile_fields', :locals => {:profile => profile_fields.object, :f => profile_fields} %>
 		<% end %>
 </div>
+	<div class='item'>
+		<%= applicant_fields.label 'Желаемая должность'%>
+		<div class='field'>
+			<%= applicant_fields.text_field :position, :value => "#{@resume.position}" %>
+		</div>
+	</div>
+	<div class='item'>
+		<%= applicant_fields.label 'Желаемая зарплата'%>
+		<div class='field'>
+			<%= applicant_fields.text_field :salary, :value => "#{@resume.salary}" %>
+		</div>
+	</div>
+	<div class='item'>
+		<%= applicant_fields.label 'Желаемый город' %>
+		<div class='field'>
+			<%= applicant_fields.text_field :city, :value => "#{@resume.city}" %>
+		</div>
+	</div>
 <div id="person-resume">
 	<hr />
 	<p>Опыт Работы</p>
-	<hr />
+
         <%= applicant_fields.fields_for :experiences do |experience_fields| %>
           <%= render :partial => "experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
         <%end %>
         <%= applicant_fields.link_to_add "Добавить место работы", :experiences %>
     <hr />
 	<p>Образование</p>
-	<hr />
       <%= applicant_fields.fields_for :educations do |education_fields| %>
         <%= render :partial => "education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
       <% end %>
       <%= applicant_fields.link_to_add "Добавить место учебы", :educations %>
 
-  <div>
+  <!--<div>
 	<p style='width: 110px; float:left;'>Знание языков</p>
-	 <%= applicant_fields.fields_for :languages do |language_fields| %>
-	                <%= render :partial => "language_skill_fields", :locals =>  {:language => language_fields.object, :f => language_fields} %>
-	 <% end %>
+	 <%#= applicant_fields.fields_for :languages do |language_fields| %>
+	                <%#= render :partial => "language_skill_fields", :locals =>  {:language => language_fields.object, :f => language_fields} %>
+	 <%# end %>
   </div>
-	<%= applicant_fields.link_to_add "Добавить языки", :languages, :id => "add_lang_skill" %>
+	<%#= applicant_fields.link_to_add "Добавить языки", :languages, :id => "add_lang_skill" %>-->
+	<div>
+		<div class='item'>
+			<%= applicant_fields.label 'Дополнительная информация' %>
+			<div class='field'>
+				<%= applicant_fields.text_area :additional_info, :value => "#{@resume.additional_info}" %>
+			</div>
+		</div>
+	</div>
 	<div>
 		<input type="checkbox">Защита персональных данных</input>
 	</div>
