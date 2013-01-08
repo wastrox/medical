@@ -18,7 +18,8 @@
                 <div class="middle-left">
                     <table cellpadding="0" cellspacing="0" class="paper">
                         <tr><td style="width: 20px; border: 0;" rowspan="30"></td><th colspan="2"><h2><%= @fullName %></h2></th><td style="width: 20px; border: 0;" rowspan="30">
-                        <tr><td nowrap="nowrap"><h4>Желаемая должность:</h4></td><td><p><%= @resume.profile.title %></p></td></tr>
+                        <tr><td nowrap="nowrap"><h4>Желаемая должность:</h4></td><td><p><%= @resume.position %></p></td></tr>
+						<tr><td nowrap="nowrap"><h4>Желаемая зарплата:</h4></td><td><p><%= @resume.salary %></p></td></tr>
                         <tr><td nowrap="nowrap"><h4>Регион:</h4></td><td><p><%= @resume.profile.city %></p></td></tr>
                         <tr><td nowrap="nowrap"><h4>Электронная почта:</h4></td><td><p><a href="#"><%= @applicant.email %></a></p></td></tr>
                         <tr><td nowrap="nowrap"><h4>Телефон:</h4></td><td><p><%= @resume.profile.phone %></p></td></tr>
@@ -32,9 +33,7 @@
 							<tr><td colspan="2" style="border: 0;"><% unless education.faculty.empty? %> <%= "Факультет " "#{education.faculty}" %><% end %> <% unless education.profession.empty? %><%= "по специальности " "#{education.profession}" %><% end %></td></tr>
 						<% end %>
                         <tr><td><h4>Английский язык:</h4></td><td><p>Свободно</p></td></tr>
-                        <tr><td style="border: 0;"><h4>Знание офисного программного обеспечения и оргтехники:</h4></td><td style="border: 0;"><p>Опытный пользователь.</p></td></tr>
-                        <tr><th colspan="2"><h3>Рекомендации</h3></th></tr>
-                        <tr><td colspan="2" style="border: 0; padding-bottom: 30px;"><p>Замечательный работник! Очень рекомендуем всем коллективом.</p></td></tr>
+                        <tr><td colspan="2" style="border: 0; padding-bottom: 30px;"></td></tr>
                     </table>
 
                 </div>

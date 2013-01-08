@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104114008) do
+ActiveRecord::Schema.define(:version => 20130108101536) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -23,18 +23,6 @@ ActiveRecord::Schema.define(:version => 20130104114008) do
     t.datetime "activated_at"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-  end
-
-  create_table "applicants", :force => true do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "surename"
-    t.date     "date"
-    t.string   "city"
-    t.integer  "phone"
-    t.text     "about_me"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "educations", :force => true do |t|
@@ -87,7 +75,6 @@ ActiveRecord::Schema.define(:version => 20130104114008) do
   create_table "profiles", :force => true do |t|
     t.integer  "resume_id"
     t.integer  "applicant_id"
-    t.string   "title"
     t.string   "firstname"
     t.string   "lastname"
     t.string   "surename"
@@ -104,6 +91,8 @@ ActiveRecord::Schema.define(:version => 20130104114008) do
     t.integer  "applicant_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "position"
+    t.string   "salary"
   end
 
   add_index "resumes", ["applicant_id"], :name => "index_resumes_on_applicant_id"

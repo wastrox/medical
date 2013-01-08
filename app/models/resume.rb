@@ -1,5 +1,5 @@
 class Resume < ActiveRecord::Base
-	attr_accessible :applicant, :resume, :experiences_attributes, :educations_attributes, :language_skills_attributes, :profile_attributes #:pc_skills_attributes
+	attr_accessible :applicant, :position, :salary, :experiences_attributes, :educations_attributes, :languages_attributes, :profile_attributes #:pc_skills_attributes
 	
   validate :applicant, :uniqueness => true
 

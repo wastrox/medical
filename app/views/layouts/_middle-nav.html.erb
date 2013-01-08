@@ -1,8 +1,8 @@
 	<ul class="nav nav-tabs nav-stacked"> 
 		<li ><a style="background: none repeat scroll 0 0 #EDEDE6;" href="#"><% if current_user %><%= current_user.email %><% end %></a></li>
-		<li><%= link_to "Профиль", edit_applicant_profile_path(current_user.profile.id) %></li>
+		<li><%# link_to "Профиль", edit_applicant_profile_path(current_user.profile.id) %></li>
 		<li><a href="#">Аккаунт</a></li>
 		<li><a href="#">Поиск</a></li>
-		<li><%= link_to "Резюме", applicant_resume_path(current_user.resume.id)%></li>
+		<li><%# link_to "Резюме", applicant_resume_path(current_user.resume.id)%></li>
 		<li><a href="#">Вакансии</a></li>
 </ul>

@@ -33,7 +33,7 @@ img.img-rounded {
 	margin-right: 10px;
 }
 form.standart_form .buttons {	
-	padding: 0px 0 0px 160px;
+	padding: 25px 0 0px 184px;
 }
 
 form.standart_form input[type="radio"], input[type="checkbox"] {
@@ -56,5 +56,20 @@ form.standart_form div.student {
 form.standart_form div.student input[type="checkbox"]{
 	float: left;
 }
-form.standart_form .language {
+
+.standart_form input[type="submit"].save_edit_button {
+background-color: #99D2DE;
+color: #FFFFFF;
+	border-radius: 5px 5px 5px 5px;
+	margin-right: 10px;
+margin-bottom: 2px;
+margin-top: 2px;
+padding-bottom: 6px;
+padding-top: 6px;
+	line-height: 14px;
+padding-left: 12px;
+padding-right: 12px;
+	border-width: 0px;
+	float: left;
+	font-size: 13px;
 }

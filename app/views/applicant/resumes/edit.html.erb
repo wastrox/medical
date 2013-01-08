@@ -46,39 +46,19 @@
 		text-decoration: none;
 		color: #fff;
 	}*/
-	.standart_form input[type="submit"].save_edit_resume {
-    background-color: #99D2DE;
-    color: #FFFFFF;
-		border-radius: 5px 5px 5px 5px;
-		margin-right: 10px;
-    margin-bottom: 2px;
-    margin-top: 2px;
-    padding-bottom: 6px;
-    padding-top: 6px;
-		line-height: 14px;
-    padding-left: 12px;
-    padding-right: 12px;
-		border-width: 0px;
-		float: left;
-		font-size: 13px;
-	}
 </style>
-
-
 
 <div id="content-resume">
 	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>	
 <ul class="nav nav-pills">
   	<li class=""><%# link_to("Сохранить", edit_applicant_resume_path(@resume.id), :class => 'save_edit_resume' ) %>
-<%= applicant_fields.submit "Сохранить", :class => "save_edit_resume" %></li>
+<%= applicant_fields.submit "Сохранить", :class => "save_edit_button" %></li>
   	<li><%= link_to("Отменить", applicant_resume_path(@resume.id), :confirm => 'A you sure?', :class => 'cancel_edit_resume') %></li>
 	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?') %></li>
-	<li><a href="#">Сделать не активным</a></li>
 </ul>
 	<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
-<%= applicant_fields.submit "Сохранить", :class => "save_edit_resume" %>
+<%= applicant_fields.submit "Сохранить", :class => "save_edit_button" %>
 <ul class="nav nav-pills">
-  	<li class=""><%# link_to("Сохранить", edit_applicant_resume_path(@resume.id), :class => 'save_edit_resume') %></li>
   	<li><%= link_to("Отменить", applicant_resume_path(@resume.id), :confirm => 'A you sure?', :class => 'cancel_edit_resume') %></li>
 </ul>
 <% end %>
