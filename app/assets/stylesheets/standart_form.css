@@ -52,7 +52,7 @@ form.standart_form .item .field textarea {
 
 form.standart_form div.student {
 	/*margin-left: 176px;*/
-	width: 85px;
+	width: 92px;
 	float: right;
 }
 form.standart_form div.student input[type="checkbox"]{
@@ -60,7 +60,7 @@ form.standart_form div.student input[type="checkbox"]{
 }
 
 input.recent_till_education {
-	width: 150px;
+	width: 130px !important;
 	float: left;
 }
 
