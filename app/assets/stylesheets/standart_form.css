@@ -88,3 +88,15 @@ input[type="submit"].save_edit_button:active {
 #person-resume + ul.nav {
 	margin-top: 25px;
 }
+
+input.salary {
+	width: 80px !important;
+	float: left;
+	margin-right: 25px !important;
+}
+
+ div#ui-datepicker-div {
+	    left: 501.567px !important;
+	    top: 339px !important;
+
+}

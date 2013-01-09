@@ -29,15 +29,16 @@
 		</div>
 	</div>
 	<div class='item'>
-		<%= applicant_fields.label 'Желаемая зарплата'%>
-		<div class='field'>
-			<%= applicant_fields.text_field :salary, :value => "#{@resume.salary}" %>
-		</div>
-	</div>
-	<div class='item'>
 		<%= applicant_fields.label 'Желаемый город' %>
 		<div class='field'>
 			<%= applicant_fields.text_field :city, :value => "#{@resume.city}" %>
+		</div>
+	</div>
+	<div class='item'>
+		<%= applicant_fields.label 'Желаемая зарплата'%>
+		<div class='field'>
+			<%= applicant_fields.text_field :salary, :value => "#{@resume.salary}", :class => "salary" %>
+			<i class="currency">грн</i>
 		</div>
 	</div>
 <div id="person-resume">

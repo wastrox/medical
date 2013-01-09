@@ -8,9 +8,9 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :firstname
       t.string :lastname
       t.string :surename
-      t.date :date
+      t.date   :date
       t.string :city
-      t.integer :phone
+      t.string :phone
 
       t.timestamps
     end

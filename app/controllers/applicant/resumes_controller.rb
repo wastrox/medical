@@ -45,7 +45,9 @@ class Applicant::ResumesController < ApplicationController
   end
 	
 	def edit
-	  #@resume.languages.build
+	  unless @profile.date.nil? #условие для views -> resume/:id/edit - когда дата рождения заполнена правильно, выводится через переменную @birthday в формате дд/мм/ггг
+	    @birthday = @profile.date.strftime("%m/%d/%Y") 
+	  end
 	end
  
   def update

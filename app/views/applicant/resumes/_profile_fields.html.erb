@@ -1,3 +1,13 @@
+<script>
+	$(function() {
+		$( "#datepicker" ).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dateFormat: "dd/mm/yy",
+			shortYearCutoff: 50
+		});
+	});
+</script>
 <div class='item'>
 	<%= f.label 'Фамилия' %>
 	<div class='field'>
@@ -19,7 +29,7 @@
 <div class='item'>
 	<%= f.label 'Дата рождения' %>
 	<div class='field'>
-		<%= f.text_field :date, :value => "#{@profile.date}" %>
+		<%= f.text_field :date, :value => "#{@birthday}", :id => "datepicker", :placeholder => " дд/мм/гггг" %>
 	</div>
 </div>
 <div class='item'>
