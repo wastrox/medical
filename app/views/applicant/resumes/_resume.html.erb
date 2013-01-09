@@ -43,34 +43,25 @@
 	</div>
 <div id="person-resume">
 	<hr />
-	<p>Опыт Работы</p>
-
+	<h5 id="experiences">Опыт Работы</h5>
+				<%= applicant_fields.link_to_add "Добавить место работы", :experiences, :class => "add_fields_for" %>
         <%= applicant_fields.fields_for :experiences do |experience_fields| %>
           <%= render :partial => "experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
         <%end %>
-        <%= applicant_fields.link_to_add "Добавить место работы", :experiences %>
     <hr />
-	<p>Образование</p>
+	<h5 id="educations">Образование</h5>
       <%= applicant_fields.fields_for :educations do |education_fields| %>
         <%= render :partial => "education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
       <% end %>
-      <%= applicant_fields.link_to_add "Добавить место учебы", :educations %>
+      <%= applicant_fields.link_to_add "Добавить место учебы", :educations, :class => "add_fields_for" %>
 
-  <!--<div>
-	<p style='width: 110px; float:left;'>Знание языков</p>
-	 <%#= applicant_fields.fields_for :languages do |language_fields| %>
-	                <%#= render :partial => "language_skill_fields", :locals =>  {:language => language_fields.object, :f => language_fields} %>
-	 <%# end %>
-  </div>
-	<%#= applicant_fields.link_to_add "Добавить языки", :languages, :id => "add_lang_skill" %>-->
-	<div>
+		<hr />
 		<div class='item'>
 			<%= applicant_fields.label 'Дополнительная информация' %>
 			<div class='field'>
 				<%= applicant_fields.text_area :additional_info, :value => "#{@resume.additional_info}" %>
 			</div>
 		</div>
-	</div>
 	<div>
 		<input type="checkbox">Защита персональных данных</input>
 	</div>

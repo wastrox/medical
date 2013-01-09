@@ -99,4 +99,11 @@ input.salary {
 	    left: 501.567px !important;
 	    top: 339px !important;
 
-}
+ }
+
+ a.add_fields_for {
+    color: #3CA200;
+		margin-top: 10px;
+ }
+
+

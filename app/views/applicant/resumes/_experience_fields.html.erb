@@ -1,10 +1,3 @@
-<input type="checkbox">Нет опыта работы</input>
-<div class='item'>
-	<%= f.label "Занимаемая должность"%>
-	<div class='field'>	  
-		<%= f.text_field :position, :value => f.object.position, :class=>"recent_position validate big ", :default_value => "Какую должность Вы занимали" %>
-	</div>
-</div>
 <div class='item'>
 	<%= f.label "Компания"%>
 	<div class='field'>
@@ -12,6 +5,12 @@
 	</div>
 	<a href="#" style="margin: 0 0 0 10px;">Скрыть</a>
 </div>	
+<div class='item'>
+	<%= f.label "Занимаемая должность"%>
+	<div class='field'>	  
+		<%= f.text_field :position, :value => f.object.position, :class=>"recent_position validate big ", :default_value => "Какую должность Вы занимали" %>
+	</div>
+</div>
 <div class='item'>  
     <%= f.label :achievements, "Обязанности, достижения"%>
 	<div class='field'>
@@ -25,6 +24,5 @@
 		 по <%= f.text_field :till, :class=> "only_date validate recent_till ", :value => f.object.till, :default_value => "дд/мм/гггг" %></p>
 	 </div>					
 </div>	
-  			<%= f.hidden_field :_destroy %>
-  			<%= link_to "remove", '#', class: "remove_fields" %>
-
+        <%= f.hidden_field :_destroy %>
+        <%= f.link_to_remove "remove" %>

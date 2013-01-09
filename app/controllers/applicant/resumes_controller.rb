@@ -15,7 +15,6 @@ class Applicant::ResumesController < ApplicationController
 		@resume.build_profile
     @resume.experiences.build
     @resume.educations.build
-    #@resume.languages.build
   end
 	
 	def create
