@@ -20,7 +20,7 @@
 	<div class='item'>
 		<%= f.label 'Дата рождения' %>
 		<div class='field'>
-			<%= f.text_field :date, :value => "#{@profile.date}" %>
+			<%= f.text_field :date, :value => "#{@profile.date}", :class => "datepicker", :placeholder => " дд/мм/гггг" %>
 		</div>
 	</div>
 	<div class='item' style="margin-bottom: 0px;">

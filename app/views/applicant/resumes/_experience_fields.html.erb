@@ -1,3 +1,12 @@
+ <script>
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: "dd/mm/yy",
+      shortYearCutoff: 50
+    }); 
+</script>                                                                                                                                             
+
 <div class='item'>
 	<%= f.label "Компания"%>
 	<div class='field'>
@@ -20,8 +29,8 @@
 <div class='item'>
      <%= f.label "Период работы"%>
 	 <div class='field'>
-		 <p>с <%= f.text_field :from, :class=> "only_date validate recent_from", :value => f.object.from, :default_value => "дд/мм/гггг" %> 
-		 по <%= f.text_field :till, :class=> "only_date validate recent_till ", :value => f.object.till, :default_value => "дд/мм/гггг" %></p>
+		 <p>с <%= f.text_field :from, :class=> "only_date validate recent_from datepicker", :value => f.object.from, :default_value => "дд/мм/гггг" %> 
+		 по <%= f.text_field :till, :class=> "only_date validate recent_till datepicker", :value => f.object.till, :default_value => "дд/мм/гггг" %></p>
 	 </div>					
 </div>	
         <%= f.hidden_field :_destroy %>
