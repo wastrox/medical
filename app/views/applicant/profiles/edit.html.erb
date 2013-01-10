@@ -1,3 +1,12 @@
+ <script>
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: "dd/mm/yy",
+      shortYearCutoff: 50
+    }); 
+</script>
+
 <%= form_for([:applicant, @profile], :html => { :class => 'standart_form' }) do |f| %>
 	<div class='item'>
 		<%= f.label 'Фамилия' %>
