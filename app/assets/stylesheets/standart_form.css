@@ -1,6 +1,6 @@
 form.standart_form {
 	/*width: 513px;*/
-	width: 563px;
+	width: 603px;
 	float: left;
 }
 form .item {
@@ -19,7 +19,7 @@ form .field {
 	display: inline-block;
 	position: relative;
 	vertical-align: middle;
-	width: 260px;
+	width: 310px;
 }
 form.standart_form .item .field .field_error > input[type="text"], form.standart_form .item .field .field_error > input[type="email"], form.standart_form .item .field .field_error > input[type="password"], form.standart_form .item .field > input[type="text"], form.standart_form .item .field > input[type="email"], form.standart_form .item .field > input[type="password"], form.standart_form .item .fields .field_error > input[type="text"], form.standart_form .item .fields .field_error > input[type="email"], form.standart_form .item .fields .field_error > input[type="password"], form.standart_form .item .fields > input[type="text"], form.standart_form .item .fields > input[type="email"], form.standart_form .item .fields > input[type="password"] {
 
@@ -29,7 +29,7 @@ form.standart_form .item .field .field_error > input[type="text"], form.standart
     line-height: 30px;
     margin: 0;
     padding: 0 5px;
-    width: 248px;
+    width: 300px;
 }
 
 img.img-rounded {
@@ -46,8 +46,8 @@ form.standart_form input[type="radio"], input[type="checkbox"] {
 }
 
 form.standart_form .item .field textarea {
-	 width: 248px; 
-	 height: 220px; 
+	 width: 300px; 
+	 height: 220px;
 }
 .recent_from, .recent_till {
 	width: 96px;
@@ -122,7 +122,7 @@ input.salary {
 span.remove_field {
     background: none repeat scroll 0 0 #FFFFFF;
     color: #949494;
-    left: 238px;
+    left: 258px;
     padding-left: 10px;
     position: absolute;
     text-align: left;
@@ -141,4 +141,8 @@ a.remove_nested_fields {
 a.add_fields_for {
 		  color: #71C1D1;	
 			font-weight: bold;
+}
+
+hr.nav-line-buttom {
+	margin: 10px 0 20px 0;
 }

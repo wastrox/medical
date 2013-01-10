@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20130108133724) do
     t.string   "lastname"
     t.string   "surename"
     t.date     "date"
-    t.integer  "phone"
+    t.string   "phone"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20130108133724) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "position"
-    t.string   "salary"
+    t.integer  "salary"
     t.string   "city"
     t.string   "additional_info"
   end

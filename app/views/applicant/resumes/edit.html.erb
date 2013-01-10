@@ -24,10 +24,6 @@
 		text-align: center;
 		width: 100px;
 	}
-	.star, .star-pc {
-		float: left;
-		margin: 0 0 0 15px;	
-	}
 	.nav { 
 		margin: 0 0 0 0;
 		 } /* Строка навигации Редактировать Удалить Сделать не активным ,,,  */
@@ -48,7 +44,7 @@
 	}*/
 </style>
 
-<div id="content-resume">
+<div class="content-resume">
 	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>	
 <ul class="nav nav-pills">
   	<li class=""><%# link_to("Сохранить", edit_applicant_resume_path(@resume.id), :class => 'save_edit_resume' ) %>
@@ -56,6 +52,7 @@
   	<li><%= link_to("Отменить", applicant_resume_path(@resume.id), :confirm => 'A you sure?', :class => 'cancel_edit_resume') %></li>
 	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?') %></li>
 </ul>
+<hr / class="nav-line-buttom">
 	<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
 
 <ul class="nav nav-pills">
