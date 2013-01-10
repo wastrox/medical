@@ -1,16 +1,18 @@
 form.standart_form {
-	width: 513px;
+	/*width: 513px;*/
+	width: 563px;
 	float: left;
 }
 form .item {
     margin-bottom: 25px;
     position: relative;
+		margin-left: 30px;
 }
 form .item > label {
 	font-size: 14px;
 	width: 180px;
 	display: inline-block;
-	margin-top: 5px;
+	margin: 5px 10px 0 0;
 	vertical-align: top;
 }
 form .field {
@@ -29,6 +31,7 @@ form.standart_form .item .field .field_error > input[type="text"], form.standart
     padding: 0 5px;
     width: 248px;
 }
+
 img.img-rounded {
 	margin-right: 10px;
 }
@@ -47,7 +50,7 @@ form.standart_form .item .field textarea {
 	 height: 220px; 
 }
 .recent_from, .recent_till {
-	width: 98px;
+	width: 96px;
 }
 
 form.standart_form div.student {
@@ -100,8 +103,42 @@ input.salary {
  }
 
  a.add_fields_for {
-    color: #3CA200;
+    /*color: #3CA200;*/
 		margin-top: 10px;
  }
 
+ div.line_top {
+    background: url("/assets/line.png") no-repeat scroll left center transparent;
+    height: 30px;
+    margin-bottom: 4px;
+ }
 
+ div.line_buttom {
+    background: url("/assets/line.png") no-repeat scroll left center transparent;
+    height: 40px;
+    position: relative;
+ }
+ 
+span.remove_field {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #949494;
+    left: 238px;
+    padding-left: 10px;
+    position: absolute;
+    text-align: left;
+    top: 9px;
+    width: 80px;
+}
+
+a.remove_nested_fields {
+      background-image: url("/assets/icon-delete.png");
+      background-position: 0 50%;
+      background-repeat: no-repeat;
+      padding-bottom: 3px;
+      padding-left: 20px;
+}
+
+a.add_fields_for {
+		  color: #71C1D1;	
+			font-weight: bold;
+}

@@ -6,7 +6,7 @@
       shortYearCutoff: 50
     }); 
 </script>                                                                                                                                             
-
+<div class="line_top"></div>
 <div class='item'>
 	<%= f.label "Компания"%>
 	<div class='field'>
@@ -33,5 +33,5 @@
 		 <i>по</i> <%= f.text_field :till, :class=> "only_date validate recent_till datepicker", :value => f.object.till, :default_value => "дд/мм/гггг" %></p>
 	 </div>					
 </div>	
-        <%= f.hidden_field :_destroy %>
-        <%= f.link_to_remove "remove" %>
+
+<div class="line_buttom"><span class="remove_field"><%= f.hidden_field :_destroy %><%= f.link_to_remove "Удалить" %></span></div>

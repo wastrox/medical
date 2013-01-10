@@ -6,7 +6,7 @@
       shortYearCutoff: 50
     }); 
 </script>  
-
+<div class="line_top"></div>
 	<div class='item'>
 		<%= f.label :college, "Название вуза"%>
 		<div class='field'>
@@ -41,6 +41,4 @@
 			</div>
 		</div>
 	</div>
-
-  			<%= f.hidden_field :_destroy %>
-  			<%= f.link_to_remove "remove" %>
+<div class="line_buttom"><span class="remove_field"><%= f.hidden_field :_destroy %><%= f.link_to_remove "Удалить" %></span></div>
