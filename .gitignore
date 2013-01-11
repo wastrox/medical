@@ -11,5 +11,4 @@ tmp/**/*
 \#*\#
 *.swp
 public/
-config/database.yml
 internal_user_files/*
