@@ -4,6 +4,8 @@
 				link_to_if(current_user.profile.nil?, "Профиль", new_applicant_resume_path) do 
 					link_to "Профиль", edit_applicant_profile_path(current_user.profile.id)
 				end
+			%> <%# 
+					TODO: Profile - если резюме удалено, профильные данные исправляются в профайле
 			%>
 		</li>
 		

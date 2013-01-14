@@ -1,10 +1,10 @@
 class Applicant::ResumesController < ApplicationController
  layout "my-profile"
-	before_filter :findApplicant,  :only => [:new, :create, :show, :edit] 
+	before_filter :findApplicant,  :only => [:new, :create, :show, :edit, :update] 
   before_filter :resumeExists?, :only => [:new, :create]  # resumeExists? проверка резюме у applicant, если есть -->> /applicant/resume/show
   before_filter :initResume, :only => [:new, :create]
   before_filter :findResume, :only => [:show, :destroy, :edit, :update]
-	before_filter :findProfile, :only => [:show, :edit]
+	before_filter :findProfile, :only => [:show, :edit, :update] #присваиваем @profile найденный профиль пользователя ( def findApplicant --> @applicant ), чтобы заполнить поля value in partial _profile_fields.html
 
   def new
 		if @applicant.profile?
@@ -51,11 +51,11 @@ class Applicant::ResumesController < ApplicationController
  
   def update
 	  respond_to do |format|
-      if @resume.update_attributes(params[:resume])
+      if @resume.update_attributes(params[:resume]) 
 				format.html { redirect_to :controller => "resumes", :action => "show" }
         format.json { render :json => @resume, :status => :created, :location => @resume }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => "edit"   }
         format.json { render :json => @resume.errors, :status => :unprocessable_entity }
       end
     end

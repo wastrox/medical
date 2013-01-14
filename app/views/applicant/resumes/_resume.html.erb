@@ -1,4 +1,13 @@
-
+<% if @resume.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @resume.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <h5>Профиль</h5>
 <div class="person-profile">
     <%= applicant_fields.fields_for :profile do |profile_fields|%>
