@@ -5,8 +5,6 @@ class Resume < ActiveRecord::Base
 
   validates_presence_of :position, :salary, :city, :message => "Поле обязательно для заполнения"#, :on => :update
 	
-  #validates_associated :profile
-  
   belongs_to :applicant
   
 	has_one :profile 

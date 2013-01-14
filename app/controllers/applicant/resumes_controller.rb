@@ -4,7 +4,8 @@ class Applicant::ResumesController < ApplicationController
   before_filter :resumeExists?, :only => [:new, :create]  # resumeExists? проверка резюме у applicant, если есть -->> /applicant/resume/show
   before_filter :initResume, :only => [:new, :create]
   before_filter :findResume, :only => [:show, :destroy, :edit, :update]
-	before_filter :findProfile, :only => [:show, :edit, :update] #присваиваем @profile найденный профиль пользователя ( def findApplicant --> @applicant ), чтобы заполнить поля value in partial _profile_fields.html
+	before_filter :findProfile, :only => [:show, :edit, :update, :create] #присваиваем @profile найденный профиль пользователя ( def findApplicant --> @applicant ), чтобы заполнить поля value in partial _profile_fields.html
+	before_filter :birthday, :only => [:new, :edit, :update, :create]
 
   def new
 		if @applicant.profile?
@@ -18,23 +19,23 @@ class Applicant::ResumesController < ApplicationController
   end
 	
 	def create
-
-		@resume.applicant = @applicant #когда создается резюме, ему присваивается какому Соискателю принадлежит, так реализовано потому, что нельзя написать Applicant.new и т.д... Applicant наследуется от Account, а аккаунт уже есть в базе. 
-
-		if @applicant.profile? #Это условие необходимо т.к. при удалении резюме, остается Profile, который связан с Applicant. Если у Соискателя есть профиль, его свойство resume_id меняется на актуальное resume_id.
-			@resume.profile = @applicant.profile
-			@resume.profile.update_attributes(params[:resume][:profile_attributes])
-		elsif
-    	@resume.profile.applicant = @applicant
-		end
-
 		respond_to do |format|
-      if @resume.save 
-        format.html { redirect_to :controller => 'resumes', :action => 'show', :id => @resume.id }
-        format.json { render :json => @resume, :status => :created, :location => @resume }
+      if @resume.save 	
+				 @resume.applicant = @applicant #когда создается резюме, ему присваивается какому Соискателю принадлежит, так реализовано потому, что нельзя написать Applicant.new и т.д... Applicant наследуется от Account, а аккаунт уже есть в базе. 
+
+				 if @applicant.profile? #Это условие необходимо т.к. при удалении резюме, остается Profile, который связан с Applicant. Если у Соискателя есть профиль, его свойство resume_id меняется на актуальное resume_id.
+				 		@resume.profile = @applicant.profile
+				 		@resume.profile.update_attributes(params[:resume][:profile_attributes])
+				 elsif
+    				@resume.profile.applicant = @applicant
+			   end
+
+
+         format.html { redirect_to :controller => 'resumes', :action => 'show', :id => @resume.id }
+         format.json { render :json => @resume, :status => :created, :location => @resume }
       else
-        format.html { render :action => "new" }
-        format.json { render :json => @resume.errors, :status => :unprocessable_entity }
+         format.html { render :action => "new" }
+         format.json { render :json => @resume.errors, :status => :unprocessable_entity }
       end
     end
 	end
@@ -44,9 +45,6 @@ class Applicant::ResumesController < ApplicationController
   end
 	
 	def edit
-	  unless @profile.date.nil? #условие для views -> resume/:id/edit - когда дата рождения заполнена правильно, выводится через переменную @birthday в формате дд/мм/ггг
-	    @birthday = @profile.date.strftime("%m/%d/%Y") 
-	  end
 	end
  
   def update
@@ -65,6 +63,13 @@ class Applicant::ResumesController < ApplicationController
 		if @resume.destroy
 			 redirect_to "/"
 		end
+	end
+
+	def birthday
+    unless @profile.date.nil? #условие для views -> resume/:id/edit - когда дата рождения заполнена правильно, выводится через переменную @birthday в формате дд/мм/ггг
+      @birthday = @profile.date.strftime("%m/%d/%Y")
+    end
+
 	end
 
 	protected
