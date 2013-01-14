@@ -3,7 +3,7 @@ class Resume < ActiveRecord::Base
   attr_accessible :applicant, :position, :salary, :city, :additional_info, :profile_attributes, :experiences_attributes, :educations_attributes #:languages_attributes
   validate :applicant, :uniqueness => true
 
-  @validates_presence_of :position, :salary, :city, :message => "Поле обязательно для заполнения", :on => :update
+  #validates_presence_of :position, :salary, :city, :message => "Поле обязательно для заполнения", :on => :update
 	
   #validates_associated :profile
   
