@@ -28,11 +28,11 @@
                         <tr><td nowrap="nowrap"><h4>Телефон:</h4></td><td><p><%= @resume.profile.phone %></p></td></tr>
                         	<tr><th colspan="2"><h3>Опыт работы</h3></th></tr> 
 					<% @resume.experiences.each do |experience| %>
-						<tr><td><h4><%= experience.position %></h4></td><td><p><%= "#{experience.company } с #{experience.from} по #{experience.till}" %></p><p><%= experience.achievements %></p></td></tr>
+						<tr><td><h4><%= experience.position %></h4></td><td><p><%= "#{experience.company }, #{experience.month_from} #{experience.year_from} – #{experience.month_till} #{experience.year_till}" %></p><p><%= experience.achievements %></p></td></tr>
 					<% end %>
 						<tr><th colspan="2"><h3>Образование</h3></th></tr>
 						<% @resume.educations.each do |education| %>
-							<tr><td colspan="2" style="border: 0;"><strong><%= education.college %></strong> <%= education.diploma %> <% unless education.till.nil? %> <%= "год окончания" "#{education.till}"%><% end %></td></tr>
+							<tr><td colspan="2" style="border: 0;"><strong><%= education.college %></strong> <%= education.diploma %> <% unless education.year_till.nil? %> <%= "год окончания" "#{education.year_till}"%><% end %></td></tr>
 							<tr><td colspan="2" style="border: 0;"><% unless education.faculty.empty? %> <%= "Факультет " "#{education.faculty}" %><% end %> <% unless education.profession.empty? %><%= "по специальности " "#{education.profession}" %><% end %></td></tr>
 						<% end %>
 						<tr><th colspan="2"><h3>Дополнительная информация</h3></th></tr>

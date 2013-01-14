@@ -1,3 +1,4 @@
+
 <h5>Профиль</h5>
 <div class="person-profile">
     <%= applicant_fields.fields_for :profile do |profile_fields|%>
@@ -24,18 +25,20 @@
 		</div>
 	</div>
 <div id="person-resume">
+	
 	<h5 id="experiences">Опыт Работы</h5>				
         <%= applicant_fields.fields_for :experiences do |experience_fields| %>
           <%= render :partial => "experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
         <%end %>
 		<%= applicant_fields.link_to_add "Добавить место работы", :experiences, :class => "add_fields_for" %>
+		
 	<h5 id="educations">Образование</h5>
       <%= applicant_fields.fields_for :educations do |education_fields| %>
         <%= render :partial => "education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
       <% end %>
       <%= applicant_fields.link_to_add "Добавить место учебы", :educations, :class => "add_fields_for" %>
   
-  <h5>Дополнительно</h5>
+    <h5>Дополнительно</h5>
 		<div class='item'>
 			<%= applicant_fields.label "Еще знаю и умею" %>
 			<div class='field'>

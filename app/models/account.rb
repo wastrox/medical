@@ -2,6 +2,7 @@ class Account < ActiveRecord::Base
 set_inheritance_column :account_type
 
 attr_accessible :email, :password, :account_type => :false
+
   validates_presence_of :password, :on => :create
   validates :email, :uniqueness => true
   has_secure_password

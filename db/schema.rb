@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108133724) do
+ActiveRecord::Schema.define(:version => 20130114092131) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20130108133724) do
     t.string   "profession"
     t.string   "diploma"
     t.string   "faculty"
-    t.date     "till"
+    t.integer  "year_till"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -44,10 +44,13 @@ ActiveRecord::Schema.define(:version => 20130108133724) do
     t.string   "position"
     t.string   "company"
     t.text     "achievements"
-    t.date     "from"
-    t.date     "till"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "month_from"
+    t.integer  "year_from"
+    t.string   "month_till"
+    t.integer  "year_till"
+    t.boolean  "current_workplace"
   end
 
   add_index "experiences", ["resume_id"], :name => "index_experiences_on_resume_id"
@@ -59,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20130108133724) do
     t.string   "lastname"
     t.string   "surename"
     t.date     "date"
-    t.string   "phone"
+    t.integer  "phone"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -71,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20130108133724) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "position"
-    t.integer  "salary"
+    t.string   "salary"
     t.string   "city"
     t.string   "additional_info"
   end

@@ -1,11 +1,3 @@
- <script>
-    $( ".datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      dateFormat: "dd/mm/yy",
-      shortYearCutoff: 50
-    }); 
-</script>  
 <div class="line_top"></div>
 	<div class='item'>
 		<%= f.label :college, "Название вуза"%>
@@ -34,7 +26,7 @@
 	<div class='item'>	
    		<%= f.label "Год окончания:" %>	
 		<div class='field'>		
-			<%= f.text_field :till, :class=> "only_year recent_till_education datepicker", :placeholder => " дд/мм/гггг" %>
+			<%= f.text_field :year_till, :class=> "only_year recent_till_education" %>
 			<div class='student'>
 				<%= f.check_box :student %>
 				<%= f.label :student, "Еще учусь" %>

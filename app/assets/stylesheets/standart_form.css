@@ -25,10 +25,10 @@ form.standart_form .item .field .field_error > input[type="text"], form.standart
 
     font-family: "PT Sans",Verdana,sans-serif;
     font-size: 14px;
-    height: 30px;
+    /*height: 30px;*/
     line-height: 30px;
-    margin: 0;
-    padding: 0 5px;
+    /*margin: 0;
+    padding: 0 5px;*/
     width: 300px;
 }
 
@@ -63,7 +63,7 @@ form.standart_form div.student input[type="checkbox"]{
 }
 
 input.recent_till_education {
-	width: 130px !important;
+	width: 80px !important;
 	float: left;
 }
 
@@ -145,4 +145,30 @@ a.add_fields_for {
 
 hr.nav-line-buttom {
 	margin: 10px 0 20px 0;
+}
+
+select.month_from, select.month_till {
+	width: 97px !important;
+}
+
+input.year_from, input.year_till {
+	width: 31px !important;
+}
+
+.span_current_workplace {
+	width: 150px;
+	float: right;
+	margin-left: 0px;
+}
+
+.span_current_workplace {
+	margin-top: 8px;
+}
+
+input[type="checkbox"].current_workplace {
+	float: left;
+	margin-top: 3px;
+}
+input[type="checkbox"].current_workplace + label {
+	font-size: 12px !important;
 }

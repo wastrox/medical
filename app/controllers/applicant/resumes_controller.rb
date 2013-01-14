@@ -55,7 +55,7 @@ class Applicant::ResumesController < ApplicationController
 				format.html { redirect_to :controller => "resumes", :action => "show" }
         format.json { render :json => @resume, :status => :created, :location => @resume }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "edit" }
         format.json { render :json => @resume.errors, :status => :unprocessable_entity }
       end
     end

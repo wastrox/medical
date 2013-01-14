@@ -1,5 +1,5 @@
 class Education < ActiveRecord::Base
   belongs_to :resume
-  attr_accessible :till, :college, :profession, :faculty, :diploma, :student
-
+  attr_accessible :year_till, :college, :profession, :faculty, :diploma, :student
+  
 end

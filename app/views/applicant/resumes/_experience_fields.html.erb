@@ -1,12 +1,17 @@
- <script>
-    $( ".datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      dateFormat: "dd/mm/yy",
-      shortYearCutoff: 50
-    }); 
-</script>                                                                                                                                             
-<div class="line_top"></div>
+<script>
+// FIXME: change this for something appropriate
+	$(".current_workplace:checkbox").click(function(){
+	    var check = $(this).attr('checked');
+	    var parent_date = $(this).parent().parent().find(".month_till, .year_till");
+	    if (check == "checked") {
+	        $(parent_date).css('display', 'none');
+			$(this).parent().addClass(".span_current_workplace_active"); //css("margin-top", "8px");
+	    }
+	    else{
+	        $(parent_date).css('display', 'inline');
+	    }
+	 });
+</script>                                                                                                                              <div class="line_top"></div>
 <div class='item'>
 	<%= f.label "Компания"%>
 	<div class='field'>
@@ -25,13 +30,17 @@
 	<div class='field'>
 		<%= f.text_area :achievements, :class => "achievements validate", :default_value => "Чем занимались и чего достигли за это время" %>
 	</div>
-</div>
+</div>	
 <div class='item'>
      <%= f.label "Период работы"%>
 	 <div class='field'>
-		 <p><i>с</i> <%= f.text_field :from, :class=> "only_date validate recent_from datepicker", :value => f.object.from, :default_value => "дд/мм/гггг" %> 
-		 <i>по</i> <%= f.text_field :till, :class=> "only_date validate recent_till datepicker", :value => f.object.till, :default_value => "дд/мм/гггг" %></p>
-	 </div>					
-</div>	
+		 <%= f.select(:month_from, ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"], {:include_blank => true }, {:class => "month_from"}) %> <%= f.text_field :year_from, :default_value => "год", :class => "year_from" %> &ndash;
+		<%= f.select(:month_till, ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"], {:include_blank => true }, {:class => "month_till"}) %> <%= f.text_field :year_till, :default_value => "год", :class => "year_till" %>
+	 	<span class="span_current_workplace">
+		<%= f.check_box(:current_workplace, {:class => "current_workplace"}, "true", "false")%>
+		<%= f.label :current_workplace, "Сейчас работаю здесь"%>
+		</span>
+	 </div>	
+</div>
 
 <div class="line_buttom"><span class="remove_field"><%= f.hidden_field :_destroy %><%= f.link_to_remove "Удалить" %></span></div>
