@@ -1,11 +1,11 @@
 class Applicant::ResumesController < ApplicationController
  layout "my-profile"
-	before_filter :findApplicant,  :only => [:new, :create, :show, :edit, :update] 
+	before_filter :findApplicant,  :only => [:new, :create, :show, :edit, :update, :create] 
   before_filter :resumeExists?, :only => [:new, :create]  # resumeExists? проверка резюме у applicant, если есть -->> /applicant/resume/show
   before_filter :initResume, :only => [:new, :create]
   before_filter :findResume, :only => [:show, :destroy, :edit, :update]
-	before_filter :findProfile, :only => [:show, :edit, :update, :create] #присваиваем @profile найденный профиль пользователя ( def findApplicant --> @applicant ), чтобы заполнить поля value in partial _profile_fields.html
-	before_filter :birthday, :only => [:new, :edit, :update, :create]
+	before_filter :findProfile, :only => [:show, :edit, :update] #присваиваем @profile найденный профиль пользователя ( def findApplicant --> @applicant ), чтобы заполнить поля value in partial _profile_fields.html
+	#before_filter :birthday, :only => [:new, :edit, :update, :create]
 
   def new
 		if @applicant.profile?
@@ -19,8 +19,14 @@ class Applicant::ResumesController < ApplicationController
   end
 	
 	def create
-		respond_to do |format|
-      if @resume.save 	
+
+   	if @applicant.profile?
+       @profile = @applicant.profile
+    else
+       @profile = Profile.new
+    end
+
+			if @resume.valid?
 				 @resume.applicant = @applicant #когда создается резюме, ему присваивается какому Соискателю принадлежит, так реализовано потому, что нельзя написать Applicant.new и т.д... Applicant наследуется от Account, а аккаунт уже есть в базе. 
 
 				 if @applicant.profile? #Это условие необходимо т.к. при удалении резюме, остается Profile, который связан с Applicant. Если у Соискателя есть профиль, его свойство resume_id меняется на актуальное resume_id.
@@ -29,8 +35,10 @@ class Applicant::ResumesController < ApplicationController
 				 elsif
     				@resume.profile.applicant = @applicant
 			   end
+			 end
 
-
+		respond_to do |format|
+      if @resume.save 	
          format.html { redirect_to :controller => 'resumes', :action => 'show', :id => @resume.id }
          format.json { render :json => @resume, :status => :created, :location => @resume }
       else
