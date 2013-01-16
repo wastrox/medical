@@ -13,7 +13,7 @@
 			
 	<ul class="nav nav-pills">
     	<li class=""><%= link_to("Редактировать", edit_applicant_resume_path(@resume.id)) %></li>
-    	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'A you sure?') %></li>
+    	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме?') %></li>
     	<li><a href="#" class='none'>Сделать не активным</a></li>
 		<li><a href="#" class='none'>Экспортировать в PDF</a></li>
   </ul>
@@ -26,20 +26,58 @@
                         <tr><td nowrap="nowrap"><h4>Регион:</h4></td><td><p><%= @resume.city %></p></td></tr>
                         <tr><td nowrap="nowrap"><h4>Электронная почта:</h4></td><td><p><a href="#"><%= @applicant.email %></a></p></td></tr>
                         <tr><td nowrap="nowrap"><h4>Телефон:</h4></td><td><p><%= @resume.profile.phone %></p></td></tr>
+					<% if @resume.experiences.nil?%>
+							<tr><th colspan="2">Нет опыта работы</th></tr>
+					<% else %>
                         	<tr><th colspan="2"><h3>Опыт работы</h3></th></tr> 
-					<% @resume.experiences.each do |experience| %>
-						<tr><td><h4><%= experience.position %></h4></td><td><p><%= "#{experience.company }, #{experience.month_from} #{experience.year_from} – #{experience.month_till} #{experience.year_till}" %></p><p><%= experience.achievements %></p></td></tr>
+						<% @resume.experiences.each do |experience| %>
+							<tr>
+								<td><h4><%= experience.position %></h4></td>
+								<td><p><%= "#{experience.company }, #{experience.month_from} #{experience.year_from}" %> – 
+									<% if experience.current_workplace %> 
+										настоящее время 
+									<% else %> 
+										<%= "#{experience.month_till}  #{experience.year_till}" %> 
+									<% end %></p><p><%= experience.achievements %></p>
+								</td>
+							</tr>
+						<% end %>
 					<% end %>
+					
+					<% unless @resume.educations.nil?%>
 						<tr><th colspan="2"><h3>Образование</h3></th></tr>
 						<% @resume.educations.each do |education| %>
-							<tr><td colspan="2" style="border: 0;"><strong><%= education.college %></strong> <%= education.diploma %> <% unless education.year_till.nil? %> <%= "год окончания" "#{education.year_till}"%><% end %></td></tr>
-							<tr><td colspan="2" style="border: 0;"><% unless education.faculty.empty? %> <%= "Факультет " "#{education.faculty}" %><% end %> <% unless education.profession.empty? %><%= "по специальности " "#{education.profession}" %><% end %></td></tr>
-						<% end %>
-						<tr><th colspan="2"><h3>Дополнительная информация</h3></th></tr>
-                        <tr><td><%= @resume.additional_info%></td></tr>
-                        <tr><td colspan="2" style="border: 0; padding-bottom: 30px;"></td></tr>
-                    </table>
+							<tr>
+								<td colspan="2" style="border: 0;">
+									<strong><%= "#{education.college}" "," %></strong> <%= "#{education.diploma}" "-" %> 
+									<% if education.student %> 
+										еще учусь. 
+									<% else %> 
+										<%= "год окончания" "#{education.year_till}"%>
+									<% end %>
+									
+									<% unless education.faculty.empty? %> 
+										<%= "Факультет " "#{education.faculty}" %>
+									<% end %> 
+									
+									<% unless education.profession.empty? %>
+										<%= "по специальности " "#{education.profession}" %>
+									<% end %>
+								</td>
+							</tr>
+							<!--<tr>
+								 <td colspan="2" style="border: 0;">
 
+								</td>
+							</tr> -->
+						<% end %>
+					<% end %>
+					<% if @resume.additional_info.nil?%>
+						<tr><th colspan="2"><h3>Дополнительная информация</h3></th></tr>
+                        <tr><td><%= @resume.additional_info %></td></tr>
+                        <tr><td colspan="2" style="border: 0; padding-bottom: 30px;"></td></tr>
+					<% end %>
+                    </table>
                 </div>
 	
 				

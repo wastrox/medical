@@ -1,41 +1,11 @@
-<style>
-/*	#logo {
-		margin: 0 0 0 -187px;
-	}
-	#profes-resume{
-		margin: 15px 0 0 0;
-	}
-	/*input { width: 316px; }
-  textarea { width: 316px; height: 220px; }
-	fieldset {
-    border: 1px solid black;
-    margin: 10px;
-    padding: 20px;
-  }*/
-/*
-.hint, .hint-pc {
-		background-color: #F0F0F0;
-		border-bottom-left-radius: 3px;
-		border-bottom-right-radius: 3px;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		float: left;
-		display: block;
-		height: 20px;
-		font-size: 14px;
-		padding-bottom: 4px;
-		padding-left: 0px;
-		padding-right: 0px;
-		margin: 0 15px 0 0;
-		text-align: center;
-		width: 100px;
-	}
-*/
-</style>
 <div class="content-resume">
 <%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>
 	<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
-<%= applicant_fields.submit %>
+<div>
+	<%= applicant_fields.check_box :personal_data %>
+	<%= label :personal_data, "Защита персональных данных" %>
+</div>
+<%= applicant_fields.submit "Сохранить", :class => "save_edit_button" %>
 <% end %>
 	<div class="clear"></div>
 </div>

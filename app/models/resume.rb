@@ -1,12 +1,12 @@
 #encoding: utf-8
 class Resume < ActiveRecord::Base
-  attr_accessible :applicant, :position, :salary, :city, :additional_info, :profile_attributes, :experiences_attributes, :educations_attributes #:languages_attributes
+  attr_accessible :applicant, :position, :salary, :city, :additional_info, :profile_attributes, :experiences_attributes, :educations_attributes, :personal_data
+  
   validate :applicant, :uniqueness => true
-
-  validates_presence_of :position, :salary, :city, :message => "Поле обязательно для заполнения"#, :on => :update
+  validates_presence_of :position, :salary, :city
+  validates_acceptance_of :personal_data, :on => :create #, :allow_nil => :false, :accept => true
 	
   belongs_to :applicant
-  
 	has_one :profile 
     accepts_nested_attributes_for :profile
 

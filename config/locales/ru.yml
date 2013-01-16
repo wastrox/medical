@@ -1,0 +1,33 @@
+ru:
+  activerecord:
+      errors:
+          messages:
+              blank: " - обязательно для заполнения"
+              accepted: "- согласитесь с соглашением ХХХ"
+      models:
+          profile: "Профиль"
+      attributes:
+          resume:
+              position: "Желаемая должность"
+              salary: "Желаемая зарплата"
+              city: "Желаемый город"
+              personal_data: "Важное условие"
+          profile:
+              lastname: "Фамилия"
+              firstname: "Имя"
+              surename: "Отчество"
+              phone: "Телефон"
+          experiences:
+              position: "Занимаемая должность"
+              company: "Компания"
+              achievements: "Обязанности, достижения"
+              month_from: "Период работы, (месяц)"
+              year_from: "Период работы (год)"
+              month_till: "Месяц окончания работы"
+              year_till: "Год окончания работы"
+          educations:
+              college: "Название вуза"
+              profession: "Специальность"
+              faculty: "Факультет"
+              diploma: "Диплом/степень"
+              year_till: "Год окончания"

@@ -1,3 +1,17 @@
+<script>
+//FIXME: В разделах, в html.erb файлах, образование и опыт работы повторяется работы скриптов
+
+$(".student_now:checkbox").click(function(){
+    var check = $(this).attr('checked');
+    var parent_date = $(this).parent().parent().find(".year_till");
+    if (check == "checked") {
+        $(parent_date).css('display', 'none');
+    }
+    else{
+        $(parent_date).css('display', 'inline');
+    }
+ });
+</script>
 <div class="line_top"></div>
 	<div class='item'>
 		<%= f.label :college, "Название вуза"%>
@@ -26,9 +40,9 @@
 	<div class='item'>	
    		<%= f.label "Год окончания:" %>	
 		<div class='field'>		
-			<%= f.text_field :year_till, :class=> "only_year recent_till_education" %>
+			<%= f.text_field :year_till, :class=> "only_year recent_till_education year_till" %>
 			<div class='student'>
-				<%= f.check_box :student %>
+				<%= f.check_box(:student, {:class => "student_now"}, "true", "false") %>
 				<%= f.label :student, "Еще учусь" %>
 			</div>
 		</div>

@@ -1,8 +1,10 @@
   <% if @resume.errors.any? %>
     <div class="error_messages">
-					<% @resume.errors.each do |attribute, errors_array| %>
-				     <li><%= errors_array %></li>
-					<% end %>
+      <ul>
+        <% for message in @resume.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 <h5>Профиль</h5>
@@ -14,7 +16,7 @@
 	<div class='item'>
 		<%= applicant_fields.label 'Желаемая должность'%>
 		<div class='field'>
-			<%= applicant_fields.text_field :position, :value => "#{@resume.position}" %><%# @validate[:position] if @resume.errors.any?%>
+			<%= applicant_fields.text_field :position, :value => "#{@resume.position}" %>
 		</div>
 	</div>
 	<div class='item'>
@@ -51,7 +53,4 @@
 				<%= applicant_fields.text_area :additional_info, :value => "#{@resume.additional_info}" %>
 			</div>
 		</div>
-	<div>
-		<input type="checkbox">Защита персональных данных</input>
-	</div>
 </div>

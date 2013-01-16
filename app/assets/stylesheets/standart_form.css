@@ -67,7 +67,7 @@ input.recent_till_education {
 	float: left;
 }
 
-.standart_form input[type="submit"].save_edit_button {
+input[type="submit"].save_edit_button {
 	background-color: #99D2DE;
 	color: #FFFFFF;
 	border-radius: 5px 5px 5px 5px;
@@ -173,14 +173,48 @@ input[type="checkbox"].current_workplace + label {
 	font-size: 12px !important;
 }
 
+.field_with_errors {
+    display: inline;
+}
+ 
+										/*--=  div.field_with_errors =--*/ 
+
+div.field_with_errors > label {	
+	display: inline-block;
+    font-size: 14px;
+    margin: 5px 10px 0 0;
+    vertical-align: top;
+    width: 180px;
+}
+
+div.field_with_errors > input.year_till, div.field_with_errors > input.year_from {
+	width: 31px !important;
+    border-color: #B94A48 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset !important;
+}
+
+div.field_with_errors input.year_till:focus, div.field_with_errors input.year_from:focus {
+	width: 31px !important;
+    border-color: #953B39 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #D59392 !important;
+}
+
+
 div.field_with_errors input {
-		width: 300px !important;
+	width: 300px !important;
     border-color: #B94A48 !important;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset !important;
 }
 
 div.field_with_errors input:focus {
-		width: 300px !important;
+	width: 300px !important;
     border-color: #953B39 !important;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #D59392 !important;
 }
+
+div.field_with_errors textarea {
+	 border-color: #953B39 !important;
+     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #D59392 !important;
+}
+
+										/*--=  /div.field_with_errors =--*/
