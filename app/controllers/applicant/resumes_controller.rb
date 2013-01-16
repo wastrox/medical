@@ -5,7 +5,6 @@ before_filter :findApplicant, :only => [:new, :create, :show, :edit, :update, :c
   before_filter :initResume, :only => [:new, :create]
   before_filter :findResume, :only => [:show, :destroy, :edit, :update]
   before_filter :findProfile, :only => [:show, :edit, :update] #присваиваем @profile найденный профиль пользователя ( def findApplicant --> @applicant ), чтобы заполнить поля value in partial _profile_fields.html
-  #before_filter :birthday, :only => [:new, :edit, :update, :create]
 
   def new
     # => FIXME: условие для корректного отображения input value => @profile.name. Повторяется в методе create.
@@ -81,11 +80,6 @@ end
     end
   end
 
-  def birthday
-    unless @profile.date.nil? #условие для views -> resume/:id/edit - когда дата рождения заполнена правильно, выводится через переменную @birthday в формате дд/мм/ггг
-      @birthday = @profile.date.strftime("%m/%d/%Y")
-    end
-  end
 
   protected
 
