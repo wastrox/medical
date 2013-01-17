@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
     end
   end
 
-	def	activate
+	def	activate # => после письма подтверждения, на этапе регистрации, попадаем на этот контроллер, если активация прошла успешно - отправляет в контроллер confirmation на страницу выбора типа account ('Даю работу', 'Ищу работу')
 		if @account.activate!
 			cookies.permanent[:salt] = @account.salt
 			redirect_to :controller => 'confirmation', :action => 'account_type'

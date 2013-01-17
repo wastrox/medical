@@ -1,11 +1,11 @@
 class Account < ActiveRecord::Base
-set_inheritance_column :account_type
-
-attr_accessible :email, :password, :account_type => :false
+	set_inheritance_column :account_type
+	attr_accessible :email, :password, :account_type => :false
 
   validates_presence_of :password, :on => :create
   validates :email, :uniqueness => true
-  has_secure_password
+  
+	has_secure_password
   before_save :encrypt_password, :access_token 
 		
   def self.authenticate(email, password)
@@ -34,6 +34,7 @@ attr_accessible :email, :password, :account_type => :false
 	def send_activation_instructions!
 		Notifier.activation_instructions(self).deliver		
 	end
+
   def type?
 		account_type
 	end

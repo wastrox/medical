@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medical</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render :partial => 'layouts/alternative_navbar'%>
+
+	<div class="wrapper">
+		<section>
+			<div class="content clearfix">
+				<div class="middle clearfix">
+					<div id="content-left">
+						<%= yield %>
+					</div>
+					<div class="middle-nav"><!-- Начало левой панели навигации моего кабинета  -->                     
+						<%= render :partial => 'layouts/middle-nav'%>
+					</div> <!-- Коненц левой панели навигации -->
+				</div>
+			 </div>
+			</div>
+		</section>
+	</div>
+	<footer>
+	    <div class="footer">
+	        <div>
+	            <p>&copy; 2005 <a href="#">Staff Centre Group Of Companies</a></p>
+	        </div>
+	        <div>
+	            <p>25 135 вакансий</p>
+	        </div>
+	        <div>
+	            <p>10 009 резюме</p>
+	        </div>
+	        <div>
+	            <p><a href="#">Guess Who designed it</a></p>
+	        </div>
+	    </div>
+	</footer>
+</body>
+</html>

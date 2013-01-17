@@ -1,15 +1,20 @@
 class ConfirmationController < ApplicationController
-	before_filter :find_account, :only => [:applicant]	
+	before_filter :find_account, :only => [:applicant, :employer]	
 
-  #Возможно стоит объединить метод index and account_type, и добавить AJAX
+  # => TODO: Возможно стоит объединить метод index and account_type, и добавить AJAX
   def index	
   end
 
+
+  #	=> после уточнения аквиции в конроллере account -> action activate, нужно выбрать тип account -> Employer OR Applicant
 	def account_type
 	end
 
 	def employer
-    #Update account_type in Employer and redirect the company profile
+    #Update account_type in Employer(Account.find_by_token.account_type = "Employer") and redirect the company profile
+
+		@account.create_type("Employer")
+    redirect_to new_employer_profile_company_path if @account.type?
   end
 
   def applicant
@@ -22,4 +27,5 @@ private
   def find_account
     @account = Account.find_by_token(params[:token])
   end
+
 end

@@ -1,3 +1,5 @@
-class Employer < ActiveRecord::Base
-  # attr_accessible :title, :body
+class Employer < Account 
+
+	has_one :company
+ 
 end

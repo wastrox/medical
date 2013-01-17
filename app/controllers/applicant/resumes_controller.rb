@@ -1,6 +1,6 @@
 class Applicant::ResumesController < ApplicationController
  layout "my-profile"
-before_filter :findApplicant, :only => [:new, :create, :show, :edit, :update, :create]
+  before_filter :findApplicant, :only => [:new, :create, :show, :edit, :update, :create]
   before_filter :resumeExists?, :only => [:new, :create] # resumeExists? проверка резюме у applicant, если есть -->> /applicant/resume/show
   before_filter :initResume, :only => [:new, :create]
   before_filter :findResume, :only => [:show, :destroy, :edit, :update]
