@@ -44,7 +44,7 @@ class Account < ActiveRecord::Base
 		 save
   end
   
- def employer?
+ def employer?  # => FIXME: метод используется в partial layouts/navbar. Заменить универсальным методом для Employer and Applicant
     type = self.account_type
     if type == "Employer"
       return true
