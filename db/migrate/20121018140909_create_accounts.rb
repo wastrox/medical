@@ -1,7 +1,7 @@
 class CreateAccounts < ActiveRecord::Migration
   def change
     create_table :accounts do |t|
-      t.string :email
+      t.string :email, :unique => true
       t.string :password_digest
       t.string :salt
 			t.string :token

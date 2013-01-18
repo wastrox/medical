@@ -2,7 +2,7 @@ class Account < ActiveRecord::Base
 	set_inheritance_column :account_type
 	attr_accessible :email, :password, :account_type => :false
 
-  validates_presence_of :password, :on => :create
+  validates_presence_of [:password, :email], :on => :create
   validates :email, :uniqueness => true
   
 	has_secure_password
@@ -43,7 +43,15 @@ class Account < ActiveRecord::Base
      self.account_type = person
 		 save
   end
-
+  
+ def employer?
+    type = self.account_type
+    if type == "Employer"
+      return true
+    else
+      return false
+    end
+ end
 
 	private
 

@@ -4,7 +4,7 @@ class Resume < ActiveRecord::Base
   
   validate :applicant, :uniqueness => true
   #validates_presence_of :position, :salary, :city
-  #validates_acceptance_of :personal_data, :on => :create #, :allow_nil => :false, :accept => true
+  validates_acceptance_of :personal_data, :on => :create #, :allow_nil => :false, :accept => true
 	
   belongs_to :applicant
 	has_one :profile 
