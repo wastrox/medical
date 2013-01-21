@@ -1,6 +1,5 @@
-<div class="content-company">
-	
-	<%= nested_form_for(@company, :url => {:action=>"create", :controller=>"employer/profile_companies"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
+<div class="content-company">	
+	<%= nested_form_for(@company, :url => {:action=>"update", :controller=>"employer/profile_companies"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
   		<%= render :partial => 'profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
 	
 			<h5>Контактная информация</h5>

@@ -103,7 +103,7 @@ table.paper h2 {
     margin: 0 auto;
 }
 header {
-    border-bottom: 3px dotted #B6D94C;
+    /*border-bottom: 3px dotted #B6D94C;*/
     padding-bottom: 10px;
 	margin-bottom: 20px;
 }

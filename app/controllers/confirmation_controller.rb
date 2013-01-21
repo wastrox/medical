@@ -1,4 +1,5 @@
 class ConfirmationController < ApplicationController
+  layout "choice_worker_or_employer"
 	before_filter :find_account, :only => [:applicant, :employer]	
 
   # => TODO: Возможно стоит объединить метод index and account_type, и добавить AJAX

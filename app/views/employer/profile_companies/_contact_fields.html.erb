@@ -1,0 +1,19 @@
+<%= employer_fields.fields_for :company_contacts do |f|%>
+	<div class="line_top"></div>
+	<div class='item'>
+		<%= f.label :name, "Имя"%>
+		<div class='field'>
+			<%= f.text_field :name %>
+		</div>
+	</div>
+	<div class='item'>
+		<%= f.label :phone, "Телефон"%>
+		<div class='field'>
+			<%= f.text_field :phone %>
+		</div>
+	</div>
+
+	<div class="line_buttom"><span class="remove_field"><%= f.hidden_field :_destroy %><%= f.link_to_remove "Удалить" %></span></div>
+<% end %>
+
+<%= employer_fields.link_to_add "Добавить контакты компании", :company_contacts, :class => "add_fields_for" %>

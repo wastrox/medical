@@ -4,7 +4,7 @@ class Resume < ActiveRecord::Base
   
   validate :applicant, :uniqueness => true
   #validates_presence_of :position, :salary, :city
-  validates_acceptance_of :personal_data, :on => :create #, :allow_nil => :false, :accept => true
+  validates_acceptance_of :personal_data, :on => :create #, :allow_nil => :false
 	
   belongs_to :applicant
 	has_one :profile 
@@ -16,6 +16,4 @@ class Resume < ActiveRecord::Base
   has_many :educations, :dependent => :destroy
     accepts_nested_attributes_for :educations, :allow_destroy => true
  
-  #has_many :languages, :dependent => :destroy 
-    #accepts_nested_attributes_for :languages, :allow_destroy => true ---> Это поле заменено на Resume.id.additonal_info
 end

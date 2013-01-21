@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medical</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>	
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<style>
+		.header a.btn{margin: 6px 0 0 200px; float: left;}
+	</style>
+	<header class="clearfix">
+	        <div class="header clearfix">
+	            <div class="greeting">
+		            <a href="/" class="logo-company"><img src="/assets/img/logo.gif" alt=""></a>
+	            </div>
+		        <div class="header clearfix">
+							<%# link_to(signup_path, :class => "btn", :id => "signup") do %>
+							<h1 class="login" style="display: none;">Вход</h1>
+							<h1 class="signup" style="display: none;">Регистрация</h1> 
+	            		<div class="header-menu clearfix">
+									<%= link_to "Регистрация", signup_path, :id => "signup" %>
+									<%= link_to "Вход", login_path, :id => "login" %>
+	                				<a href="#">О проекте</a>
+	            		</div>
+	        	</div>
+	</header>
+	<div class="wrapper">
+		<section>
+			<%= yield %>
+		</section>
+	</div>
+</body>
+</html>

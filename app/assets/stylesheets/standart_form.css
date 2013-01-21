@@ -47,7 +47,7 @@ form.standart_form input[type="radio"], input[type="checkbox"] {
 
 form.standart_form .item .field textarea {
 	 width: 300px; 
-	 height: 220px;
+	 height: 150px;
 }
 .recent_from, .recent_till {
 	width: 96px;
@@ -218,3 +218,7 @@ div.field_with_errors textarea {
 }
 
 										/*--=  /div.field_with_errors =--*/
+
+div.company-contact {
+	margin-bottom: 25px;
+}

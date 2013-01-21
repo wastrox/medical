@@ -15,12 +15,11 @@
 							</div>
 						</form>
             <div class="header-menu clearfix">
-                <a class="search-applicant" href="#">Поиск сотрудника</a>
 
 				<% if current_user.employer? %>
-					<%= render :partial => 'layouts/employer_link'%>
+					<%= render :partial => 'layouts/employer_link_navbar'%>
 				<% else %>
-					<%= render :partial => 'layouts/applicant_link'%>
+					<%= render :partial => 'layouts/applicant_link_navbar'%>
 				<% end %>
 				
 				<%= link_to "Выход", logout_path %>
