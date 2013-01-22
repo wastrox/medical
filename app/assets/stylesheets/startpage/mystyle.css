@@ -145,6 +145,11 @@ a.service:hover  {
 }
 
 /*-----Content--------*/
+.notice p {
+	font-size: 16px;
+	margin: 5px 0 25px 125px;
+}
+
 .content {
     padding: 0 0 40px 0;
 }

@@ -8,6 +8,7 @@
 </head>
 <body>
 <%= render :partial => 'layouts/navbar'%>
+<div class="notice"><p><%= flash[:notice] %></p></div>
 <div class="wrapper">
 	<%= yield %>
 </div>

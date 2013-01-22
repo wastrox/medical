@@ -1,11 +1,11 @@
 class ConfirmationController < ApplicationController
   layout "choice_worker_or_employer"
+  skip_before_filter :require_login, :only => [:index]
 	before_filter :find_account, :only => [:applicant, :employer]	
-
+  
   # => TODO: Возможно стоит объединить метод index and account_type, и добавить AJAX
   def index	
   end
-
 
   #	=> после уточнения аквиции в конроллере account -> action activate, нужно выбрать тип account -> Employer OR Applicant
 	def account_type
@@ -23,7 +23,7 @@ class ConfirmationController < ApplicationController
 		redirect_to new_applicant_resume_path if @account.type?
   end
 
-private
+  protected
 
   def find_account
     @account = Account.find_by_token(params[:token])

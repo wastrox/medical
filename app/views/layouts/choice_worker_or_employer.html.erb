@@ -17,7 +17,6 @@
 		            <a href="/" class="logo-company"><img src="/assets/img/logo.gif" alt=""></a>
 	            </div>
 		        <div class="header clearfix">
-							<%# link_to(signup_path, :class => "btn", :id => "signup") do %>
 							<h1 class="login" style="display: none;">Вход</h1>
 							<h1 class="signup" style="display: none;">Регистрация</h1> 
 	            		<div class="header-menu clearfix">
@@ -27,6 +26,9 @@
 	            		</div>
 	        	</div>
 	</header>
+	
+	<div class="notice"><p><%= flash[:notice] %></p></div>
+	
 	<div class="wrapper">
 		<section>
 			<%= yield %>

@@ -1,5 +1,7 @@
 class AccountsController < ApplicationController
 	before_filter :find_account, :only => [:activate]
+	skip_before_filter :require_login, :only => [:new, :create, :activate]
+	
   def new
     @account = Account.new
   end
@@ -18,6 +20,8 @@ class AccountsController < ApplicationController
 		if @account.activate!
 			cookies.permanent[:salt] = @account.salt
 			redirect_to :controller => 'confirmation', :action => 'account_type'
+		else
+		  redirect_to :controller => 'confirmation', :action => 'index', notice: "Not activated, because, something went wrong ("
 		end
 	end
 

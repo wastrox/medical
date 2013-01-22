@@ -52,6 +52,15 @@ class Account < ActiveRecord::Base
       return false
     end
  end
+ 
+ def applicant?  # => FIXME: метод используется в partial layouts/navbar. Заменить универсальным методом для Employer and Applicant
+     type = self.account_type
+     if type == "Applicant"
+       return true
+     else
+       return false
+     end
+  end
 
 	private
 
