@@ -20,6 +20,8 @@
 					<%= render :partial => 'layouts/employer_link_navbar'%>
 				<% elsif current_user.applicant? %>
 					<%= render :partial => 'layouts/applicant_link_navbar'%>
+				<% else %>
+					<%= link_to "Выберать тип профиля", confirmation_account_type_url %>
 				<% end %>
 				<%# -------------------------------------------------------- %>
 				<%= link_to "Выход", logout_path %>

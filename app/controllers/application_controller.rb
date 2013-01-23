@@ -1,3 +1,4 @@
+# coding: utf-8
 class ApplicationController < ActionController::Base
   http_basic_authenticate_with :name => "netbee", :password => "netbee"
   protect_from_forgery
@@ -27,11 +28,24 @@ class ApplicationController < ActionController::Base
       !!current_user
     end
     
+    # -----------------------------------------------------------------------------------------------
+    # => FIXME: блок ограничений, используется в контроллерах 'соискателей и работодателей', перебрать-переделать
     def check_account_type
-      if current_user.type?
-        redirect_to root_url, notice: "Logged in!"
-      else
+      unless current_user.type?
         redirect_to confirmation_account_type_url, notice: "You must choose account type!"
       end
     end
+    
+    def require_account_type_employer
+      unless current_user.employer?
+        redirect_to root_url, notice: "Нет доступа к этому разделу. Зарегистрируйтесь как работодатель"
+      end
+    end
+    
+    def require_account_type_applicant
+      unless current_user.applicant?
+        redirect_to root_url, notice: "Нет доступа к этому разделу. Зарегистрируйтесь как соискатель"
+      end
+    end
+    # ------------------------------ *** *** *** --------------------------------------------------
 end

@@ -1,5 +1,6 @@
 class Applicant::ResumesController < ApplicationController
  layout "profile_applicant"
+  before_filter :require_account_type_applicant, :check_account_type
   before_filter :findApplicant, :only => [:new, :create, :show, :edit, :update]
   before_filter :resumeExists?, :only => [:new, :create] # resumeExists? проверка резюме у applicant, если есть -->> /applicant/resume/show
   before_filter :initResume, :only => [:new, :create]
@@ -98,8 +99,7 @@ end
 
   def	resumeExists?
     if @applicant.resume?
-      resumeId = @applicant.resume.id
-      redirect_to applicant_resume_path(resumeId)
+      redirect_to applicant_resume_path(@applicant.resume.id)
     end
   end
 

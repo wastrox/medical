@@ -19,7 +19,7 @@ Medical::Application.routes.draw do
 	
   namespace :applicant, :as => 'applicant' do	
 		resources :resumes #, :as => 'resume' #, :path => 'resume'
-		resources :profiles, :only => [:new, :update]
+		resources :profiles, :only => [:edit, :update]
 	end
 
 	namespace :employer, :as => 'employer' do
