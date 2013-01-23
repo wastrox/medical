@@ -43,7 +43,7 @@ Medical::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-   config.action_controller.asset_host = "http://medical.mac"
+   config.action_controller.asset_host = "http://netbee.net.ua"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   #config.assets.precompile += %w( *.css, *.js )
@@ -64,4 +64,17 @@ Medical::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.action_mailer.default_url_options = { :host => "netbee.net.ua" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+   :enable_starttls_auto => true,
+   :address => "smtp.gmail.com",
+   :port => 587,
+   :authentication => :plain,
+   :enable_starttls_auto => true,
+   :domain => "netbee.ua",
+   :user_name => "nicholauskas@gmail.com",
+   :password => "netbee-24"
+}
+
 end
