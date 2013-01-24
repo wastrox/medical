@@ -34,10 +34,10 @@ class Employer::ProfileCompaniesController < ApplicationController
     @company = Company.find(params[:id])
     respond_to do |format|
       if @company.update_attributes(params[:company])
-				format.html { render :action => "new", notes: "Edit save" }
+				format.html { render :action => "edit", notes: "Edit save" }
         format.json { render :json => @company, :status => :created, :location => @company }
       else
-        format.html { render :action => "new", notes: "Error" }
+        format.html { render :action => "edit", notes: "Error" }
         format.json { render :json => @company.errors, :status => :unprocessable_entity }
       end
     end

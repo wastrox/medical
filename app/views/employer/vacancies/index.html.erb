@@ -1,0 +1,25 @@
+<table class="table">
+  <tr>
+    <th>Название вакансии</th>
+    <th>З/П</th>
+    <th>Регион</th>
+    <th></th>
+    <th></th>
+	<th></th>
+  </tr>
+
+<% @vacancies.each do |vacancy| %>
+  <tr>
+    <td><%= vacancy.name %></td>
+    <td><%= vacancy.salary %></td>
+	<td><%= vacancy.city %></td>
+    <td><%= link_to 'Просмотр', employer_vacancy_url(vacancy.id) %></td>
+    <td><%= link_to 'Редактировать', edit_employer_vacancy_path(vacancy) %></td>
+    <td><%= link_to 'Удалить', ([:employer, vacancy]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить вакансию', new_employer_vacancy_path, :class => "add_fields_for" %>

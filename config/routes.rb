@@ -24,5 +24,6 @@ Medical::Application.routes.draw do
 
 	namespace :employer, :as => 'employer' do
 		resources :profile_companies
+		resources :vacancies
 	end
 end

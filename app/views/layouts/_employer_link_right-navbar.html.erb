@@ -6,5 +6,8 @@
 				end
 			%>
 		</li>
+		<li><%= link_to_if current_user.company?, "Список вакансий", employer_vacancies_path %></li>
+		<li><%= link_to_if current_user.company?, "Добавить вакансию", new_employer_vacancy_path %></li>
+		
 		
 </ul>
