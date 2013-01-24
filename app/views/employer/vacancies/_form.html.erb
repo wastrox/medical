@@ -31,7 +31,9 @@
 <div class='item'>
 	<%= f.label :timetable, "График работы" %>
 	<div class='field'>
-		<%= f.text_field :timetable %>
+		<%= f.radio_button :timetable, "5/2" %> 5/2
+		<%= f.radio_button :timetable, "Посменно" %> Посменно
+		<%= %> 
 	</div>
 </div>
 <div class='item'>
