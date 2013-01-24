@@ -1,3 +1,4 @@
+# coding: utf-8
 class Employer::ProfileCompaniesController < ApplicationController
  layout "profile_company"	
  before_filter :require_account_type_employer, :check_account_type
@@ -11,13 +12,12 @@ class Employer::ProfileCompaniesController < ApplicationController
 	  @company = Company.new(params[:company])
 	  
 	  # => FIXME: DRY --- Присвоим компании определенного работодателя ---
-	  
 	  @employer = Employer.find_by_salt(cookies[:salt])
  	  @company.employer = @employer
-	  # ----------------------------------------------------
+	  # ------------------------------------------------------------------
 	  respond_to do |format|
       if @company.save
-         format.html { redirect_to proc { edit_employer_profile_company_url(@company)}}
+         format.html { redirect_to proc { edit_employer_profile_company_url(@company)}, notes: "Компания зарегестрирована"}
          format.json { render :json => @company, :status => :created, :location => @company }
       else
          format.html { render :action => "new" }
@@ -34,10 +34,10 @@ class Employer::ProfileCompaniesController < ApplicationController
     @company = Company.find(params[:id])
     respond_to do |format|
       if @company.update_attributes(params[:company])
-				format.html { redirect_to proc { edit_employer_profile_company_url(@company)} }
+				format.html { render :action => "new", notes: "Edit save" }
         format.json { render :json => @company, :status => :created, :location => @company }
       else
-        format.html { render :action => "show" }
+        format.html { render :action => "new", notes: "Error" }
         format.json { render :json => @company.errors, :status => :unprocessable_entity }
       end
     end
