@@ -42,4 +42,8 @@ class Employer::ProfileCompaniesController < ApplicationController
       end
     end
   end
+  
+  protected
+  
+
 end

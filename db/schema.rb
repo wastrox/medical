@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124130417) do
+ActiveRecord::Schema.define(:version => 20130129145518) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -117,8 +117,10 @@ ActiveRecord::Schema.define(:version => 20130124130417) do
     t.string   "experiences"
     t.string   "timetable"
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "timetable_other"
+    t.integer  "company_contact_id"
   end
 
   add_index "vacancies", ["company_id"], :name => "index_vacancies_on_company_id"

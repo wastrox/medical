@@ -4,6 +4,7 @@ class Employer::VacanciesController < ApplicationController
   before_filter :require_account_type_employer, :check_account_type
   before_filter :init_vacancy, :only => [:new, :create]
   before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_contacts, :only => [:new, :edit]
   
   def index
     @vacancies = Vacancy.all
@@ -65,5 +66,14 @@ class Employer::VacanciesController < ApplicationController
   
   def find_vacancy
     @vacancy = Vacancy.find(params[:id])
+  end
+  
+  def find_contacts
+    @contacts = CompanyContact.where("company_id = ?", current_user.company.id )
+    #@contacts = CompanyContact.find_by_company_id(current_user.company.id)
+    #@contactsHash = {"fullName" => []}
+    #for c in @contacts
+    #  @contactsHash["fullName"] << ['id' => c.id, 'name' => c.name, 'phone' => c.phone]
+    #end
   end
 end
