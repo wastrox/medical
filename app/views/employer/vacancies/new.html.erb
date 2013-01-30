@@ -1,5 +1,5 @@
 <h5>Создание вакансии</h5><hr>
-<%= form_for([:employer, @vacancy]), :html => {:class => "standart_form"} do |f| %>
+<%= form_for([:employer, @vacancy], :html => {:class => "standart_form"}) do |f| %>
 	<%= render :partial => "form",	 :locals => { :f => f } %>
 	<%= f.submit "Сохранить", :class => "save_edit_button" %>
 <% end %>
