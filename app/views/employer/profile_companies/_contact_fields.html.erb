@@ -1,3 +1,17 @@
+<script>
+	// FIXME: Объединить скрипт в файл standart_form.js
+	// Скрипт для изменения внешнего вида блока который будет удален(remove_nested_form)
+	$(function() {
+	  $("a.remove_nested_fields").hover(
+	  function(){
+	    $(this).parent().parent().parent().css("border", "1px dashed #E69980");
+	  }).mouseleave(
+	    function(){
+	        $(this).parent().parent().parent().css("border", "none");
+	    });
+	  });
+</script>
+
 <%= employer_fields.fields_for :company_contacts do |f|%>
 	<div class="line_top"></div>
 	<div class='item'>
@@ -16,4 +30,4 @@
 	<div class="line_buttom"><span class="remove_field"><%= f.hidden_field :_destroy %><%= f.link_to_remove "Удалить" %></span></div>
 <% end %>
 
-<%= employer_fields.link_to_add "Добавить контакты компании", :company_contacts, :class => "add_fields_for" %>
+<div class="add_company_contacts"><%= employer_fields.link_to_add "Добавить контакты компании", :company_contacts, :class => "add_fields_for" %></div>
