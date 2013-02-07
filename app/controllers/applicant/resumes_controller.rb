@@ -8,7 +8,7 @@ class Applicant::ResumesController < ApplicationController
   before_filter :findProfile, :only => [:show, :edit, :update] #присваиваем @profile найденный профиль пользователя ( def findApplicant --> @applicant ), чтобы заполнить поля value in partial _profile_fields.html
 
   def new
-    # => FIXME: условие для корректного отображения input value => @profile.name. Повторяется в методе create.
+    # FIXME: условие для корректного отображения input value => @profile.name. Повторяется в методе create.
     
     if @applicant.profile?
       @profile = @applicant.profile
@@ -24,7 +24,7 @@ class Applicant::ResumesController < ApplicationController
 
   def create
     
-    # => FIXME: DRY, повторяется в методе new
+    # FIXME: DRY, повторяется в методе new
 
     if @applicant.profile?
        @profile = @applicant.profile

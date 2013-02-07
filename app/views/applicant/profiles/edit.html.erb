@@ -38,8 +38,17 @@
 			<%= f.text_field :phone, :value => "#{@profile.phone}" %>
 		</div>
 	</div>
+	<%# if @profile.photo.present? %>
+	<%# else %>	
+		<div class='item' style="margin-bottom: 0px;">
+   		<%= f.label 'Фото' %>
+   			<div class='field'>
+      		<%= image_tag @profile.photo.url(:small) %>
+      		<%= f.file_field :photo %>
+    		</div>
+  	</div>
+	<%# end %>
 	<div class="buttons">
 		<%= f.submit 'Сохранить', :class => "save_edit_button button_profile" %>
 	</div>
 <% end %>
-<img class="img-rounded" data-src="holder.js/140x140" alt="140x140" style="width: 140px; height: 140px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAAEhklEQVR4nO3Xa08TWxiGYf//T3kHWynQw0gyUA5CbUSlCmSIRQ4DPbD+wrM/MaHCVh+TncbN/eH60K5ppnnnzurqq5SSgN/1atlfAH8XgoGFYGAhGFgIBhaCgYVgYCEYWAgGFoKBhWBgIRhYCAYWgoGFYGAhGFgIBhaCgYVgYCEYWAgGFoKBhWBgIRhYCAYWgoGFYGAhGFgIBhaCgYVgYCEYWAgGFoKBhWBgIRhYCAYWgoGFYGAhGFgIBhaCgYVgYCEYWAgGFoKBhWBgIRhYCAYWgoGFYGAhGFgIBhaCgYVgYCEYWAgGFoKBhWBgIRhYCAYWgoGFYGAhGFj+F8GUZam1tTVdXl4+WRuNRup0OhoMBvV75+fnyvNca2tr6vf7mk6nv32vd+/eKc/zZ9f6/b46nY7Oz8/r94bDodrtttrtto6OjpY+qxcdzHg81mAwULPZVERoPB4vrE8mk3qt3+8rpaS7uztlWaZms6nt7W1FhLa2tn55ry9fvmhnZ0cRoVar9WT95OREEaGI0OnpqVJKOj4+VkSo1+up0+koInRycrL0ub3YYI6Pj9XtdrW6uvpsMPv7+/VDfgjm8+fPigiVZamUkoqiUJZlmk6n6vf76vV6urm5UVVVyvNcOzs7Silpe3tb3W5XKysrT4KZzWZqtVra3d1dCGZzc1ONRkPz+Vyz2UxZlqkoiqXP7cUG8+D9+/dPgrm8vNTr169VVdVCMIeHh4oI3dzcLLy+vr7W2dlZfe3e3p4iYuHnJaWk9fX1J8EMh0Plea7T09OFYFqtljqdTn1dq9VSu91e+rwI5plg3r59q8PDQ6WUFoJ52AVub2+f/WxRFIoIZVlW7y4/C6aqKq2srGg8Hj8JptFoLJx3novtb/O/DKYsS0WERqNRvWvkea7v37/r4OBAEVEfkPf39xURurq6UkpJV1dX9VmkqqpfBrO3t6d2u62zszMNBgNFhAaDge7u7rS6uqr19fX62jdv3mhjY2Pp8yKYH4L5+vVr/dAf293d1dHR0cIZZmtrSxGhyWSyEFBE6ODg4JfBPOxIPyrLUt1uV41GQykl3d/fKyK0ubm59HkRzA/BzGYz3d7e1iJCRVFoOp3WO0hRFCrLUo1GQ71eTyklffv2rV7r9XqKCF1cXPw0mMlkUt/n4V/RaDTSfD7XcDhUROjTp0/68OGDIkIfP35c+rwI5pkzzGOPzzCPr48INZtNXVxcaD6fa2NjQ1mW6fr6uo6n0+no/v7+X4N57MczzGQyqcN72F1ms9nS5/Xig/kTD7vN4xj+K1VV1Yfsv92LDQZ/hmBgIRhYCAYWgoGFYGAhGFgIBhaCgYVgYCEYWAgGFoKBhWBgIRhYCAYWgoGFYGAhGFgIBhaCgYVgYCEYWAgGFoKBhWBgIRhYCAYWgoGFYGAhGFgIBhaCgYVgYCEYWAgGFoKBhWBgIRhYCAYWgoGFYGAhGFgIBhaCgYVgYCEYWAgGFoKBhWBgIRhYCAYWgoGFYGAhGFgIBhaCgYVgYCEYWAgGFoKBhWBgIRhYCAYWgoHlH9ECUTZ6B6FBAAAAAElFTkSuQmCC">

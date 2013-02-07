@@ -28,3 +28,11 @@
 		<%= f.text_field :phone, :value => "#{@profile.phone}" %>
 	</div>
 </div>
+    <div class='item' style="margin-bottom: 0px;">
+      <%= f.label 'Фото' %>
+        <div class='field'>
+          <%= image_tag @profile.photo.url(:small) %>
+          <%= f.file_field :photo %>
+        </div>
+    </div>
+
