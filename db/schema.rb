@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206120818) do
+ActiveRecord::Schema.define(:version => 20130207093305) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -31,8 +31,12 @@ ActiveRecord::Schema.define(:version => 20130206120818) do
     t.string   "scope"
     t.text     "description"
     t.integer  "employer_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "companies", ["employer_id"], :name => "index_companies_on_employer_id"

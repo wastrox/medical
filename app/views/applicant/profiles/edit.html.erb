@@ -38,8 +38,6 @@
 			<%= f.text_field :phone, :value => "#{@profile.phone}" %>
 		</div>
 	</div>
-	<%# if @profile.photo.present? %>
-	<%# else %>	
 		<div class='item' style="margin-bottom: 0px;">
    		<%= f.label 'Фото' %>
    			<div class='field'>
@@ -47,7 +45,6 @@
       		<%= f.file_field :photo %>
     		</div>
   	</div>
-	<%# end %>
 	<div class="buttons">
 		<%= f.submit 'Сохранить', :class => "save_edit_button button_profile" %>
 	</div>

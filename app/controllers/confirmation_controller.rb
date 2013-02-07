@@ -13,7 +13,6 @@ class ConfirmationController < ApplicationController
 
 	def employer
     #Update account_type in Employer(Account.find_by_token.account_type = "Employer") and redirect the company profile
-
 		@account.create_type("Employer")
     redirect_to new_employer_profile_company_path if @account.type?
   end

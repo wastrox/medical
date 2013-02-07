@@ -1,4 +1,11 @@
 <h5>Общая информация</h5>
+<div class='item' style="margin-bottom: 0px;">
+   <%= employer_fields.label 'Логотип' %>
+   <div class='field'>
+     <%= image_tag @company.logo.url(:small) %>
+ 	   <%= employer_fields.file_field :logo %>
+  </div>
+</div>
 <div class='item'>
 	<%= employer_fields.label :name, "Название компании" %>
 	<div class='field'>
