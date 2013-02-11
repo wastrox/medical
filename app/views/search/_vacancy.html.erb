@@ -1,0 +1,14 @@
+<div>
+	<%= image_tag @vacancy.company.logo.url(:small) %>
+	<%= @vacancy.company.name %>
+	<%= @vacancy.company.description %>
+</div>
+<p>Название вакансии: <%= @vacancy.name %></p>
+<p>Регион: <%= @vacancy.city %></p>
+<p>Заработная плата: <%= @vacancy.salary %></p>
+<p>Опыт: <%= @vacancy.experiences %></p>
+<p>График работы: <%= @vacancy.timetable %></p>
+Описание вакансии: 
+<p><%= @vacancy.description %></p>
+<p>Контакты: <%= @vacancy.company.company_contacts.collect {|p| ["#{p.name} - #{p.phone}"] }%></p>
+

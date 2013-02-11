@@ -1,0 +1,5 @@
+<% if current_user.applicant?%>
+	<%= render :partial => "vacancy" %>
+<% else %>
+	<%= render :partial => "employer" %>
+<% end %>

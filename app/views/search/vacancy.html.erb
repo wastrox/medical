@@ -1,0 +1,52 @@
+<script>
+//	FIXME: DELETE SCRIPT
+	
+	$(document).ready(function(){
+		$(".form-search, .search-applicant").css("display", "none");
+	});
+</script>
+<style>
+	.create-button a {
+			font-size: 1.55em;
+			float: left;
+			padding-right: 10px;
+	}
+	.create-resume{
+			padding: 30px;
+			background: none;
+			border: 1px solid #767676;
+			border-radius: 10px;	
+	}		
+</style>
+<%= form_tag search_vacancy_path, method: :get do %>
+						<div class="search"> 
+                <ul>
+                    <li class="active"><a href="#">Работу</a></li>
+                    <li><a href="#">Сотрудника</a></li>
+                </ul>
+                <div class="search-box clearfix">
+                    <%= text_field_tag :search, params[:search], :class => "input-text" %>
+					<input type="text" value="" class="input-city">
+                    <%= submit_tag "Найти", name: nil, :class => "input-sub" %>
+                </div>
+            </div> 	
+<% end %>
+
+<table class="table">
+  <tr>
+    <th>Название вакансии</th>
+    <th>З/П</th>
+    <th>Регион</th>
+  <th></th>
+  </tr>
+
+<% @vacancies.each do |vacancy| %>
+  <tr>
+    <td><%= vacancy.name %></td>
+    <td><%= vacancy.salary %></td>
+  <td><%= vacancy.city %></td>
+    <td><%= link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %></td>
+  </tr>
+<% end %>
+</table>
+
