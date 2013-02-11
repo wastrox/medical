@@ -45,7 +45,7 @@
 	</div>
 </div>
 <div class='item'>
-	<%= f.label :description, "Контакты" %>
+	<%= f.label :company_contact_id, "Контакты" %>
 	<div class='field'>
 		<%# f.collection_select(:company_contact_id, @contactsHash['fullName'], :id, :name) %>
 		<%= f.select("company_contact_id", CompanyContact.where("company_id = ?", current_user.company.id ).collect {|p| [ "#{p.name} - #{p.phone}", p.id ] }, { :include_blank => true }, {:class => "vacancy_company_select", :id => "e2_2"})%>

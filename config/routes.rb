@@ -8,6 +8,10 @@ Medical::Application.routes.draw do
   get 'signup', to: 'accounts#new', as: 'signup'
   get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
+	get "search/applicant", to: "search#applicant"
+	get "search/vacancy", to: "search#vacancy"
+	get "search/vacancy/:id", to: "search#show"
+
 	match "confirmation" => "confirmation#index"
   match "confirmation/account_type" => "confirmation#account_type"	
 	match 'activate(/:token)' => 'accounts#activate', :as => :activate_account
