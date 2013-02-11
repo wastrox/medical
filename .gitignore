@@ -12,3 +12,5 @@ tmp/**/*
 *.swp
 public/
 internal_user_files/*
+db/sphinx/*
+log/*.pid
