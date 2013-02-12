@@ -23,4 +23,7 @@ gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem "paperclip", "~> 3.0"
 gem 'thinking-sphinx', '2.0.10'
-
+gem 'ts-delayed-delta', '1.1.2',
+  :require => 'thinking_sphinx/deltas/delayed_delta'
+gem "daemons"
+gem 'delayed_job_active_record', :git => 'git@github.com:scosman/delayed_job_active_record.git'
