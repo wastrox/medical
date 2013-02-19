@@ -61,6 +61,11 @@ class Account < ActiveRecord::Base
        return false
      end
   end
+	
+	def add_new_session
+		self.session_count += 1
+		save
+	end
 
 	private
 

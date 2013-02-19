@@ -1,7 +1,7 @@
 # coding: utf-8
 class SessionsController < ApplicationController
   before_filter :find_account_by_email, :only =>  [:create, :require_active, :require_account_type]
-  #before_filter :require_active, :only => :create
+  #before_filter :require_active, :only => :create FIXME: ниже есть описание проблемы
   skip_before_filter :require_login, :only => [:new, :create, :destroy]
 
   def new
@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
   def create
     if @account && @account.authenticate(params[:password])
 			cookies.permanent[:salt] = @account.salt
+		  @account.add_new_session 
 			redirect_to root_url, notice: "Logged in!"
     else
       flash.now.alert = "Invalid email or password"
@@ -28,7 +29,7 @@ class SessionsController < ApplicationController
     @account = Account.find_by_email(params[:email])
   end
   #---------------------------------------------------------------
-  # => FIXME: 
+  # FIXME: 
   #метод пороверки активации пользователя перед созданием сессии. 
   #Плохой метод, очень плохой метод. Работает не корректно если 
   #ошибка в email или не существует такогопользователя
