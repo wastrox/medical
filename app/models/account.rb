@@ -62,7 +62,7 @@ class Account < ActiveRecord::Base
      end
   end
 	
-	def add_new_session
+	def add_new_session_count 
 		self.session_count += 1
 		save
 	end
