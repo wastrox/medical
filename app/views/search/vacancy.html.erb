@@ -26,7 +26,7 @@
                 </ul>
                 <div class="search-box clearfix">
                     <%= text_field_tag :search, params[:search], :class => "input-text" %>
-					<input type="text" value="" class="input-city">
+                    <%= text_field_tag :city, params[:city], :class => "input-city" %>
                     <%= submit_tag "Найти", name: nil, :class => "input-sub" %>
                 </div>
             </div> 	

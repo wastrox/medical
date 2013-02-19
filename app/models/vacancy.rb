@@ -5,6 +5,8 @@ class Vacancy < ActiveRecord::Base
 
 	define_index do
 		indexes name 
+		indexes city
+		#has city
 		set_property :delta => :delayed
 	end
 end

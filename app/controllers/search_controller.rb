@@ -1,3 +1,4 @@
+# coding: utf-8
 class SearchController < ApplicationController
 	layout "startpage"
 	
@@ -5,8 +6,9 @@ class SearchController < ApplicationController
 	def applicant 
 	end
 
-	def vacancy 
-		@vacancies = Vacancy.search(params[:search])
+	def vacancy
+    search_params = params[:search].to_s + " " + params[:city].to_s 
+		@vacancies = Vacancy.search(search_params)
 	end
 
 	def show
