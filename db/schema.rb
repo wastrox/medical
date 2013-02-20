@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20130219151957) do
     t.datetime "activated_at"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
-    t.integer  "session_count"
+    t.integer  "session_count",     :default => 0
     t.datetime "session_last_time"
   end
 
