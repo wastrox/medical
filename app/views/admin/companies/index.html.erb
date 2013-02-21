@@ -1,9 +1,15 @@
 <% a = 0%>
 <table class="table table_companies_index">  
+	<tr>
+		<th></th>
+		<th>Название</th>
+		<th>Количество вакансий</th>
+	</tr>
 	<% @companies.each do |company|%>
 	<tr>
 		<td style="width:10px"><%= a += 1%></td>
 		<td><%= link_to company.name, edit_admin_companies_profile_path(company) %> </td>
+		<td><%= company.vacancies.count.to_s %></td>
 	</tr>
 	<% end %>
 </table>

@@ -1,2 +1,5 @@
-<h1>Admin::Companies::Vacancy#edit</h1>
-<p>Find me in app/views/admin/companies/vacancy/edit.html.erb</p>
+<%= render :partial => "admin/companies/navbar_company"%>
+<%= form_for([:admin, :companies, @vacancy], :html => {:class => "standart_form"}) do |f| %>
+	<%= render :partial => "employer/vacancies/form", :locals => { :f => f } %>
+	<%= f.submit "Сохранить", :class => "save_edit_button" %>
+<% end %>

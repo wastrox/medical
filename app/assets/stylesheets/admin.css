@@ -5,3 +5,11 @@
 #navbar_admin {
 	margin-top: 20px;
 }
+
+.company_name {
+	border: 1px solid transparent;
+	line-height: 20px;
+	color: #767676;
+	margin-right: 2px;
+	padding: 8px 12px 8px 12px;
+}

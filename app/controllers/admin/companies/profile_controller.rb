@@ -1,6 +1,6 @@
 class Admin::Companies::ProfileController < ApplicationController
   layout "admin"
-  before_filter :company_find, :only => [:edit, :update]
+  before_filter :company_find, :only => [:edit, :update, :vacancies]
 
   def edit
   end
@@ -15,6 +15,10 @@ class Admin::Companies::ProfileController < ApplicationController
         format.json { render :json => @company.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def vacancies
+    @vacancies = @company.vacancies
   end
   
   protected

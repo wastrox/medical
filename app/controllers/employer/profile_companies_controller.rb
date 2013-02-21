@@ -1,5 +1,6 @@
 # coding: utf-8
 class Employer::ProfileCompaniesController < ApplicationController
+ # FIXME: DRY
  layout "profile_company"	
  before_filter :require_account_type_employer, :check_account_type
 
@@ -11,7 +12,7 @@ class Employer::ProfileCompaniesController < ApplicationController
 	def create
 	  @company = Company.new(params[:company])
 	  
-	  # => FIXME: DRY --- Присвоим компании определенного работодателя ---
+	  # --- Присвоим компании определенного работодателя ---
 	  @employer = Employer.find_by_salt(cookies[:salt])
  	  @company.employer = @employer
 	  # ------------------------------------------------------------------

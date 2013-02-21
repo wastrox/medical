@@ -41,6 +41,7 @@ Medical::Application.routes.draw do
     root :to => 'admin/companies#index'
     get 'companies', to: 'companies#index'
     namespace :companies do
+      match "profile/:id/vacancies", to: "profile#vacancies"
       resources :profile
       resources :vacancy
     end
