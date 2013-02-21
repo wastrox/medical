@@ -1,25 +1,21 @@
 # coding: utf-8
 class Employer::VacanciesController < ApplicationController
-  # FIXME: DRY
   layout "profile_company"	
   before_filter :require_account_type_employer, :check_account_type
+  before_filter :find_employer, :only => [:find_company, :index, :new, :create]
+  before_filter :find_company, :only => [:index, :new, :create]
   before_filter :init_vacancy, :only => [:new, :create]
   before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy]
   before_filter :find_contacts, :only => [:new, :edit]
   
   def index
-    @employer = Employer.find_by_salt(cookies[:salt])
-    @vacancies = @employer.company.vacancies
+    @vacancies = @company.vacancies
   end
   
   def new
   end
   
   def create 
-    #--- Присвоим вакансии определенную компанию ---
-	  @employer = Employer.find_by_salt(cookies[:salt])
- 	  @vacancy.company = @employer.company
-	  # ------------------------------------------------------------------
 	  respond_to do |format|
       if @vacancy.save
          format.html { redirect_to employer_vacancies_url, notes: "Вакансия создана"}
@@ -37,8 +33,7 @@ class Employer::VacanciesController < ApplicationController
   def edit
   end
   
-  def update
-    
+  def update 
     respond_to do |format|
       if @vacancy.update_attributes(params[:vacancy])
   			format.html { redirect_to employer_vacancies_url, notes: "Edit save" }
@@ -61,9 +56,17 @@ class Employer::VacanciesController < ApplicationController
   
   protected
   
+  def find_employer
+    @employer = Employer.find_by_salt(cookies[:salt])
+  end
+  
+  def find_company
+    @company = @employer.company
+  end
+  
   def init_vacancy
-    @vacancy = Vacancy.new(params[:vacancy])
-    @vacancy ||= Vacancy.new
+    @vacancy = @company.vacancies.new(params[:vacancy])
+    @vacancy ||= @company.vacancies.new
   end
   
   def find_vacancy
