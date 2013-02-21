@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medical</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render :partial => 'layouts/navbar_admin'%>
+<div class="notice"><p><%= flash[:notice] %></p></div>
+<div class="wrapper">
+	<section>
+		<div class="content clearfix">
+			<div class="middle clearfix">
+				<div id="content-left">
+					<%= yield %>
+				</div>
+				<div class="middle-nav"><!-- Начало левой панели навигации моего кабинета FIXME: Переименовать middle-nav на right-nav -->                    
+					<%= render :partial => 'layouts/right-nav-admin'%>
+				</div> <!-- Коненц левой панели навигации -->
+			</div>
+		 </div>
+		</div>
+	</section>
+</div>
+</body>
+</html>
+
+

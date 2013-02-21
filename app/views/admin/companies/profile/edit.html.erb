@@ -1,5 +1,6 @@
+<%= render :partial => "admin/companies/navbar_company"%>
 <div class="content-company">	
-	<%= nested_form_for(@company, :url => {:action=>"update", :controller=>"employer/profile_companies"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
+	<%= nested_form_for(@company, :url => {:action=>"update", :controller=>"admin/companies/profile"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
   		<%= render :partial => 'employer/profile_companies/profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
 	
 			<h5>Контактная информация</h5>
@@ -7,4 +8,4 @@
 		
 	<%= employer_fields.submit "Сохранить", :class => "save_edit_button" %>
 <% end %>
-</div> <!-- .content-company -->
+</div>

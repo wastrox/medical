@@ -1,0 +1,16 @@
+<div class="navbar" id="navbar_admin">
+<div class="navbar-inner">
+<%= link_to "Netbee", root_path, :class => "brand"%>
+<ul class="nav nav-tabs-admin">
+		<li class=<%= active_tab(admin_companies_url) %>>
+			<%= link_to "Компании", admin_companies_url %>
+		</li>
+		<li class=<%= active_tab(admin_vacancies_url) %>>
+			<%= link_to "Вакансии", admin_vacancies_url %>
+		</li>
+		<li class=<%= active_tab(admin_resumes_url) %>>
+			<%= link_to "Резюме", admin_resumes_url %>
+		</li>
+	</ul>
+</div>
+</div>

@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs">
+	<li class=<%= active_tab(edit_admin_companies_profile_path(current_user.company)) %>>
+		<%= link_to "Профиль компании", edit_admin_companies_profile_path(current_user.company) %>
+	</li>
+	<li class=<%= active_tab(admin_companies_vacancy_index_path) %>>
+		<%= link_to "Вакансии компании", admin_companies_vacancy_index_path %>
+	</li>
+</ul>

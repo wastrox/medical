@@ -1,0 +1,21 @@
+<%= render :partial => "admin/companies/navbar_company"%>
+<% a = 0%>
+<table class="table table_companies_vacancy_index">
+  <tr>
+    	<th>#</th>
+		<th>Название</th>
+		<th>Статус</th>
+		<th>Дата создания</th>
+		<th>Дата окончания</th>
+  </tr>
+
+<% @vacancies.each do |vacancy| %>
+  <tr>
+    	<td style="width:10px"><%= a += 1%></td>
+		<td><%= vacancy.name %></td>
+		<td>Черновик</td>
+		<td><%= vacancy.created_at.to_formatted_s(:db)%></td>
+		<td><%= vacancy.created_at.next_month.to_formatted_s(:db)%></td>
+  </tr>
+<% end %>
+</table>

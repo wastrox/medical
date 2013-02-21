@@ -1,4 +1,10 @@
 Medical::Application.routes.draw do
+  get "vacancy/index"
+
+  get "vacancy/edit"
+
+  get "resumes/index"
+
 	match "testIndex" => "startpage#testIndex" #Тестовая страница для верстки главной страницы, прототипа
 	match "resume" => "startpage#resume" #Тестовое резюме, переверстанное в div
   
@@ -29,5 +35,16 @@ Medical::Application.routes.draw do
 	namespace :employer, :as => 'employer' do
 		resources :profile_companies, :only => [:edit, :update, :new, :create]
 		resources :vacancies
+	end
+	
+	namespace :admin do
+    root :to => 'admin/companies#index'
+    get 'companies', to: 'companies#index'
+    namespace :companies do
+      resources :profile
+      resources :vacancy
+    end
+    resources :vacancies
+    resources :resumes
 	end
 end

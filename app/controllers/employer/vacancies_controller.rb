@@ -1,5 +1,6 @@
 # coding: utf-8
 class Employer::VacanciesController < ApplicationController
+  # FIXME: DRY
   layout "profile_company"	
   before_filter :require_account_type_employer, :check_account_type
   before_filter :init_vacancy, :only => [:new, :create]
@@ -7,14 +8,15 @@ class Employer::VacanciesController < ApplicationController
   before_filter :find_contacts, :only => [:new, :edit]
   
   def index
-    @vacancies = Vacancy.all
+    @employer = Employer.find_by_salt(cookies[:salt])
+    @vacancies = @employer.company.vacancies
   end
   
   def new
   end
   
-  def create
-    # => FIXME: DRY --- Присвоим вакансии определенную компанию ---
+  def create 
+    #--- Присвоим вакансии определенную компанию ---
 	  @employer = Employer.find_by_salt(cookies[:salt])
  	  @vacancy.company = @employer.company
 	  # ------------------------------------------------------------------

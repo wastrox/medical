@@ -1,0 +1,9 @@
+<% a = 0%>
+<table class="table table_companies_index">  
+	<% @companies.each do |company|%>
+	<tr>
+		<td style="width:10px"><%= a += 1%></td>
+		<td><%= link_to company.name, edit_admin_companies_profile_path(company) %> </td>
+	</tr>
+	<% end %>
+</table>
