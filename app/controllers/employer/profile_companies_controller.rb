@@ -1,21 +1,17 @@
 # coding: utf-8
 class Employer::ProfileCompaniesController < ApplicationController
- # FIXME: DRY
  layout "profile_company"	
+ before_filter :init_company, :only => [:new, :create]
+ before_filter :find_company, :only => [:edit, :update]
+ before_filter :find_employer, :only => [:create]
  before_filter :require_account_type_employer, :check_account_type
 
 	def new
-	  @company = Company.new
 	  @company.company_contacts.build
 	end
 	
-	def create
-	  @company = Company.new(params[:company])
-	  
-	  # --- Присвоим компании определенного работодателя ---
-	  @employer = Employer.find_by_salt(cookies[:salt])
+	def create  
  	  @company.employer = @employer
-	  # ------------------------------------------------------------------
 	  respond_to do |format|
       if @company.save
          format.html { redirect_to proc { edit_employer_profile_company_url(@company)}, notes: "Компания зарегестрирована"}
@@ -28,11 +24,9 @@ class Employer::ProfileCompaniesController < ApplicationController
 	end
 	
 	def edit
-	  @company = Company.find(params[:id])
 	end
 	
   def update
-    @company = Company.find(params[:id])
     respond_to do |format|
       if @company.update_attributes(params[:company])
 				format.html { render :action => "edit", notes: "Edit save" }
@@ -46,5 +40,17 @@ class Employer::ProfileCompaniesController < ApplicationController
   
   protected
   
+  def init_company
+    @company = Company.new(params[:company])
+    @company ||= Company.new
+  end
+  
+  def find_company
+    @company = Company.find(params[:id])
+  end
+  
+  def find_employer
+    @employer = Employer.find_by_salt(cookies[:salt])
+  end
 
 end

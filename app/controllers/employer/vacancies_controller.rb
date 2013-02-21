@@ -75,10 +75,5 @@ class Employer::VacanciesController < ApplicationController
   
   def find_contacts
     @contacts = CompanyContact.where("company_id = ?", current_user.company.id )
-    #@contacts = CompanyContact.find_by_company_id(current_user.company.id)
-    #@contactsHash = {"fullName" => []}
-    #for c in @contacts
-    #  @contactsHash["fullName"] << ['id' => c.id, 'name' => c.name, 'phone' => c.phone]
-    #end
   end
 end
