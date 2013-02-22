@@ -1,6 +1,6 @@
 class Admin::Companies::ProfileController < ApplicationController
   layout "admin"
-  before_filter :company_find, :only => [:edit, :update, :vacancies]
+  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies]
 
   def edit
   end
@@ -19,6 +19,12 @@ class Admin::Companies::ProfileController < ApplicationController
   
   def vacancies
     @vacancies = @company.vacancies
+  end
+  
+  def destroy
+    if @company.destroy
+      redirect_to admin_companies_url
+    end
   end
   
   protected

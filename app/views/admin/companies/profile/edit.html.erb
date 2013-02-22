@@ -1,4 +1,9 @@
 <%= render :partial => "admin/companies/navbar_company"%>
+<ul>
+	<li><%= "Зарегистрирован: #{@company.employer.created_at.localtime.strftime("%F %H:%M")}" %></li>
+	<li><%= "Кол-во посещений: #{@company.employer.session_count}" %></li>
+	<li><%= "Последнее посещение: #{@company.employer.session_last_time.localtime.strftime("%F %H:%M")}" %></li>
+</ul>
 <div class="content-company">	
 	<%= nested_form_for(@company, :url => {:action=>"update", :controller=>"admin/companies/profile"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
   		<%= render :partial => 'employer/profile_companies/profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
@@ -7,5 +12,6 @@
 			<%= render :partial => 'employer/profile_companies/contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
 		
 	<%= employer_fields.submit "Сохранить", :class => "save_edit_button" %>
+	<%= link_to("Удалить", admin_companies_profile_path(@company), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить компанию') %>
 <% end %>
 </div>
