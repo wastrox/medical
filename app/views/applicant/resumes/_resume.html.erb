@@ -22,7 +22,7 @@
 <h5>Профиль</h5>
 <div class="person-profile">
     <%= applicant_fields.fields_for :profile do |profile_fields|%>
-			<%= render :partial => 'profile_fields', :locals => {:profile => profile_fields.object, :f => profile_fields} %>
+			<%= render :partial => 'applicant/resumes/profile_fields', :locals => {:profile => profile_fields.object, :f => profile_fields} %>
 		<% end %>
 </div>
 <h5>Резюме</h5>
@@ -49,13 +49,13 @@
 	
 	<h5 id="experiences">Опыт Работы</h5>				
         <%= applicant_fields.fields_for :experiences do |experience_fields| %>
-          <%= render :partial => "experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
+          <%= render :partial => "applicant/resumes/experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
         <%end %>
 		<%= applicant_fields.link_to_add "Добавить место работы", :experiences, :class => "add_fields_for" %>
 		
 	<h5 id="educations">Образование</h5>
       <%= applicant_fields.fields_for :educations do |education_fields| %>
-        <%= render :partial => "education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
+        <%= render :partial => "applicant/resumes/education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
       <% end %>
       <%= applicant_fields.link_to_add "Добавить место учебы", :educations, :class => "add_fields_for" %>
   

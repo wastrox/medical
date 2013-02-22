@@ -73,7 +73,7 @@ end
         format.json { render :json => @resume.errors, :status => :unprocessable_entity }
       end
     end
-end
+  end
 
   def destroy
     if @resume.destroy

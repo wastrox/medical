@@ -1,2 +1,19 @@
-<h1>Admin::Resumes#index</h1>
-<p>Find me in app/views/admin/resumes/index.html.erb</p>
+<% a = 0%>
+<table class="table">  
+	<tr>
+		<th>#</th>
+		<th>Название</th>
+		<th>Статус</th>
+		<th>Дата создания</th>
+		<th>Дата окончания</th>
+	</tr>
+	<% @resumes.each do |resume|%>
+	<tr>
+		<td style="width:10px"><%= a += 1%></td>
+		<td><%= link_to resume.position, edit_admin_resume_path(resume) %></td>
+		<td>Черновик</td>
+		<td><%= resume.created_at.to_formatted_s(:db)%></td>
+		<td><%= resume.created_at.next_year.to_formatted_s(:db)%></td>
+	</tr>
+	<% end %>
+</table>
