@@ -16,4 +16,33 @@ class Resume < ActiveRecord::Base
   has_many :educations, :dependent => :destroy
     accepts_nested_attributes_for :educations, :allow_destroy => true
  
+  	state_machine :state, :initial => :draft do
+      event :request do
+        transition :draft => :pending
+      end
+
+      event :approve_published do
+        transition [:pending, :deffered, :hot, :secret] => :published
+      end
+
+      event :approve_hot do
+        transition [:pending, :published, :deffered, :secret] => :hot
+      end
+      
+      event :approve_secret do
+        transition [:pending, :published, :hot, :deferred] => :secret
+      end
+
+      event :approve_rejected do
+        transition :pending => :rejected
+      end
+
+      event :defer do
+        transition [:published, :hot, :secret] => :deferred
+      end
+
+      event :edit do
+        transition [:published, :hot, :rejected, :deferred, :secret] => :pending
+      end
+    end
 end

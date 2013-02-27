@@ -14,7 +14,7 @@ class Company < ActiveRecord::Base
       end
 
       event :approve_published do
-        transition :pending => :published
+        transition [:pending, :vip] => :published
       end
 
       event :approve_vip do
