@@ -27,3 +27,5 @@ gem 'ts-delayed-delta', '1.1.2',
   :require => 'thinking_sphinx/deltas/delayed_delta'
 gem "daemons"
 gem 'delayed_job_active_record', :git => 'git@github.com:scosman/delayed_job_active_record.git'
+gem 'state_machine'
+gem 'ruby-graphviz', :require => 'graphviz' # Optional: only required for graphing
