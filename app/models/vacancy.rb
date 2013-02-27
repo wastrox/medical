@@ -7,6 +7,7 @@ class Vacancy < ActiveRecord::Base
 		indexes name 
 		indexes city
 		set_property :delta => :delayed
+		where " vacancies.state IN ('published', 'hot')"
 	end
 	
 	state_machine :state, :initial => :draft do
