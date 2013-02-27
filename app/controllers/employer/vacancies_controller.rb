@@ -18,6 +18,7 @@ class Employer::VacanciesController < ApplicationController
   def create 
 	  respond_to do |format|
       if @vacancy.save
+         @vacancy.request # FIXME: заменить на filter
          format.html { redirect_to employer_vacancies_url, notes: "Вакансия создана"}
          format.json { render :json => @vacancy, :status => :created, :location => @company }
       else
@@ -36,6 +37,7 @@ class Employer::VacanciesController < ApplicationController
   def update 
     respond_to do |format|
       if @vacancy.update_attributes(params[:vacancy])
+        @vacancy.edit # FIXME: заменить на filter
   			format.html { redirect_to employer_vacancies_url, notes: "Edit save" }
         format.json { render :json => @vacancy }
       else

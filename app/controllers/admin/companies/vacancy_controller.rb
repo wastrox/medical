@@ -2,7 +2,7 @@ class Admin::Companies::VacancyController < ApplicationController
   layout "admin"
   before_filter :find_vacancy, :only => [:edit, :update, :find_company]
   before_filter :find_company, :only => [:edit, :update]
-
+    
   def edit
   end
   
