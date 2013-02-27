@@ -22,11 +22,11 @@ class Resume < ActiveRecord::Base
       end
 
       event :approve_published do
-        transition [:pending, :deffered, :hot, :secret] => :published
+        transition [:pending, :deferred, :hot, :secret] => :published
       end
 
       event :approve_hot do
-        transition [:pending, :published, :deffered, :secret] => :hot
+        transition [:pending, :published, :deferred, :secret] => :hot
       end
       
       event :approve_secret do
