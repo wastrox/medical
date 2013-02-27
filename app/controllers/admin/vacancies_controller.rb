@@ -3,7 +3,7 @@ class Admin::VacanciesController < ApplicationController
   before_filter :find_vacancy, :only => [:edit, :update]
   
   def index
-    @vacancies = Vacancy.all
+    @vacancies = Vacancy.where("state = ?", "pending")
   end
 
   def edit

@@ -1,5 +1,15 @@
 ru:
   activerecord:
+      state_machines:
+          states:
+              draft: "Черновик"
+              pending: "Ожидает проверки модератором"
+              published: "Опубликовано"
+              hot: "Опубликовано как горячее"
+              vip: "Опубликовано как vip"
+              secret: "Конфидициально"
+              rejected: "Отклонено модератором"
+              deferred: "Скрыто"
       errors:
           messages:
               blank: " - обязательно для заполнения"

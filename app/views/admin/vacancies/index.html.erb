@@ -11,7 +11,7 @@
 	<tr>
 		<td style="width:10px"><%= a += 1%></td>
 		<td><%= link_to vacancy.name, edit_admin_companies_vacancy_path(vacancy) %></td>
-		<td>Черновик</td>
+		<td><%= vacancy.human_state_name%></td>
 		<td><%= vacancy.created_at.to_formatted_s(:db)%></td>
 		<td><%= vacancy.created_at.next_month.to_formatted_s(:db)%></td>
 	</tr>
