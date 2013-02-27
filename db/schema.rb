@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227112543) do
+ActiveRecord::Schema.define(:version => 20130227122606) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20130227112543) do
     t.integer  "salary"
     t.string   "city"
     t.string   "additional_info"
+    t.string   "state"
   end
 
   add_index "resumes", ["applicant_id"], :name => "index_resumes_on_applicant_id"
