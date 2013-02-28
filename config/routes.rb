@@ -1,16 +1,9 @@
 Medical::Application.routes.draw do
-  get "vacancy/index"
-
-  get "vacancy/edit"
-
-  get "resumes/index"
-
-	match "testIndex" => "startpage#testIndex" #Тестовая страница для верстки главной страницы, прототипа
-	match "resume" => "startpage#resume" #Тестовое резюме, переверстанное в div
-  
-  get "confirmation/index"
-
 	root :to => 'startpage#index'
+  get "vacancy/index"
+  get "vacancy/edit"
+  get "resumes/index"
+  get "confirmation/index"
   get 'signup', to: 'accounts#new', as: 'signup'
   get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
@@ -23,6 +16,7 @@ Medical::Application.routes.draw do
 	match 'activate(/:token)' => 'accounts#activate', :as => :activate_account
 	match 'confirmation/applicant/(/:token)' => 'confirmation#applicant'
 	match 'confirmation/employer/(/:token)' => 'confirmation#employer'
+	
   resources :accounts
   resources :sessions
 	resources :applicants
@@ -41,10 +35,13 @@ Medical::Application.routes.draw do
     root :to => 'admin/companies#index'
     get 'companies', to: 'companies#index'
     namespace :companies do
-      match "profile/:id/vacancies", to: "profile#vacancies"
-      match 'profile/reject/(:id)' => 'profile#reject'
       resources :profile
       resources :vacancy
+      
+      match "profile/:id/vacancies" => "profile#vacancies"
+      match 'profile/reject/(:id)' => 'profile#reject'
+      match 'profile/vacancies/reject/(:id)' => 'vacancy#reject'
+      match 'vacancy/published/(:id)' => 'vacancy#published'
     end
     resources :vacancies
     resources :resumes

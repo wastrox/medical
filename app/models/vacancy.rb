@@ -16,7 +16,7 @@ class Vacancy < ActiveRecord::Base
     end
     
     event :approve_published do
-      transition [:pending, :deferred, :hot] => :published
+      transition [:pending, :deferred, :hot, :rejected] => :published
     end
     
     event :approve_hot do
@@ -24,7 +24,7 @@ class Vacancy < ActiveRecord::Base
     end
     
     event :approve_rejected do
-      transition :pending => :rejected
+      transition [:pending, :published, :hot, :deferred, :draft] => :rejected
     end
     
     event :defer do

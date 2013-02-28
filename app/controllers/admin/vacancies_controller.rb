@@ -5,6 +5,8 @@ class Admin::VacanciesController < ApplicationController
   def index
     @vacancies = Vacancy.where("state = ?", "pending")
   end
+  
+  # FIXME: refactoring, проверить используются action edit and update?
 
   def edit
   end
