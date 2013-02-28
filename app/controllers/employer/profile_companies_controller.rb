@@ -14,6 +14,7 @@ class Employer::ProfileCompaniesController < ApplicationController
  	  @company.employer = @employer
 	  respond_to do |format|
       if @company.save
+         @company.request # FIXME: заменить на фильтр 
          format.html { redirect_to proc { edit_employer_profile_company_url(@company)}, notes: "Компания зарегестрирована"}
          format.json { render :json => @company, :status => :created, :location => @company }
       else
@@ -29,6 +30,13 @@ class Employer::ProfileCompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update_attributes(params[:company])
+        # ---------------------------------------------------------------
+        @company.edit # FIXME: заменить на фильтр
+        # когда компания была отменена модератором все вакансии ожидавшие изменения в профиле компании
+        # снова отправляются на модерацию
+        vacancies = @company.vacancies.where("state = ?", "wait_company")
+        vacancies.each {|v| v.request}
+        # _______________________________________________________________
 				format.html { render :action => "edit", notes: "Edit save" }
         format.json { render :json => @company, :status => :created, :location => @company }
       else

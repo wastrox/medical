@@ -3,7 +3,7 @@ class Admin::CompaniesController < ApplicationController
   before_filter :company_find, :only => [:edit, :update]
   
   def index
-    @companies = Company.all
+    @companies = Company.where("state = ?", "pending")
   end
   
   def edit

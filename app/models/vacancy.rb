@@ -12,7 +12,7 @@ class Vacancy < ActiveRecord::Base
 	
 	state_machine :state, :initial => :draft do
     event :request do
-      transition :draft => :pending
+      transition [:draft, :wait_company] => :pending
     end
     
     event :approve_published do
@@ -37,6 +37,10 @@ class Vacancy < ActiveRecord::Base
     
     event :edit do
       transition [:published, :hot, :rejected, :deferred] => :pending
+    end
+    
+    event :approve_wait do
+      transition :pending => :wait_company
     end
   end
 end

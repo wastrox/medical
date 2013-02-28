@@ -2,18 +2,20 @@
 <table class="table">  
 	<tr>
 		<th>#</th>
-		<th>Название</th>
+		<th>Вакансия</th>
+		<th>Компания</th>
 		<th>Статус</th>
-		<th>Дата создания</th>
-		<th>Дата окончания</th>
+		<th>Создание</th>
+		<th>Окончание</th>
 	</tr>
 	<% @vacancies.each do |vacancy|%>
 	<tr>
 		<td style="width:10px"><%= a += 1%></td>
 		<td><%= link_to vacancy.name, edit_admin_companies_vacancy_path(vacancy) %></td>
+		<td><%= link_to vacancy.company.name, edit_admin_companies_profile_path(vacancy.company)%></td>
 		<td><%= vacancy.human_state_name%></td>
-		<td><%= vacancy.created_at.to_formatted_s(:db)%></td>
-		<td><%= vacancy.created_at.next_month.to_formatted_s(:db)%></td>
+		<td><%= vacancy.created_at.localtime.to_formatted_s(:db)%></td>
+		<td><%= vacancy.created_at.localtime.next_month.to_formatted_s(:db)%></td>
 	</tr>
 	<% end %>
 </table>

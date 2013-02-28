@@ -1,6 +1,6 @@
 class Admin::Companies::ProfileController < ApplicationController
   layout "admin"
-  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies]
+  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject]
 
   def edit
   end
@@ -23,6 +23,14 @@ class Admin::Companies::ProfileController < ApplicationController
   
   def destroy
     if @company.destroy
+      redirect_to admin_companies_url
+    end
+  end
+  
+  def reject
+    if @company.approve_rejected
+      vacancies = @company.vacancies.where("state = ?", "pending")
+      vacancies.each {|v| v.approve_wait}
       redirect_to admin_companies_url
     end
   end

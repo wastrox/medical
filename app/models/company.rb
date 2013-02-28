@@ -26,7 +26,7 @@ class Company < ActiveRecord::Base
       end
 
       event :edit do
-        transition [:published, :vip, :rejected] => :pending
+        transition [:published, :vip, :rejected, :draft] => :pending
       end
     end
 end
