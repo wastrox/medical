@@ -3,7 +3,7 @@ class Admin::VacanciesController < ApplicationController
   before_filter :find_vacancy, :only => [:edit, :update]
   
   def index
-    @vacancies = Vacancy.where("state = ?", "pending")
+    @vacancies = Vacancy.where(:state => ["pending", "wait_company"])
   end
   
   # FIXME: refactoring, проверить используются action edit and update?

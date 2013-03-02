@@ -1,8 +1,8 @@
 # encoding: utf-8
 class Admin::Companies::ProfileController < ApplicationController
   layout "admin"
-  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :published]
-
+  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :published, :find_vacancies_wait_company]
+  after_filter :find_vacancies_wait_company, :only => :published
   def edit
   end
   
@@ -47,4 +47,11 @@ class Admin::Companies::ProfileController < ApplicationController
   def company_find
     @company = Company.find(params[:id])
   end
+
+  def find_vacancies_wait_company
+    if @company.published?
+      vacancies = @company.vacancies.where("state = ?", "wait_company")
+      vacancies.each { |v| v.request } #if vacancies.present? #FIXME: проверить чтобы это условие работало если у компании нет вакансий с статусом wait_company
+    end
+  end  
 end

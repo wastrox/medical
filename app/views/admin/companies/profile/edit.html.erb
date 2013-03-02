@@ -18,6 +18,10 @@
 		end
 	%>
 	<%= link_to("Удалить", admin_companies_profile_path(@company), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить компанию?') %>
-	<%= link_to_if(@company.pending?, "Отклонить", :controller => 'admin/companies/profile', :action => :reject, :id => @company.id, :confirm => 'Компания будет отклонена')%>
+	<%= 
+		link_to_if(@company.pending?, "Отклонить", :controller => 'admin/companies/profile', :action => :reject, :id => @company.id, :confirm => 'Компания будет отклонена') do	
+			"Отклонена"
+		end
+	%>
 <% end %>
 </div>
