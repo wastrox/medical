@@ -38,6 +38,7 @@ Medical::Application.routes.draw do
       resources :profile
       resources :vacancy
       
+      match "profile/:id/published" => "profile#published"
       match "profile/:id/vacancies" => "profile#vacancies"
       match 'profile/reject/(:id)' => 'profile#reject'
       match 'profile/vacancies/reject/(:id)' => 'vacancy#reject'

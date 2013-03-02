@@ -1,6 +1,7 @@
+# encoding: utf-8
 class Admin::Companies::ProfileController < ApplicationController
   layout "admin"
-  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject]
+  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :published]
 
   def edit
   end
@@ -19,6 +20,12 @@ class Admin::Companies::ProfileController < ApplicationController
   
   def vacancies
     @vacancies = @company.vacancies
+  end
+
+  def published
+    if @company.approve_published
+      redirect_to admin_companies_path, notes: "Компания опубликована"
+    end
   end
   
   def destroy
