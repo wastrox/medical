@@ -2,6 +2,7 @@ class Vacancy < ActiveRecord::Base
   belongs_to :company
   belongs_to :company_contact
   attr_accessible :category, :city, :description, :experiences, :name, :salary, :timetable, :timetable_other, :company_contact_id
+  #validates_presence_of :category, :city, :description, :experiences, :name, :salary, :timetable, :timetable_other, :company_contact_id
 
 	define_index do
 		indexes name 
@@ -36,7 +37,7 @@ class Vacancy < ActiveRecord::Base
     end
     
     event :edit do
-      transition [:published, :hot, :rejected, :deferred] => :pending
+      transition [:published, :hot, :rejected, :deferred, :draft] => :pending
     end
     
     event :approve_wait do

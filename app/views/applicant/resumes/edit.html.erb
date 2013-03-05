@@ -58,6 +58,7 @@
 <ul class="nav nav-pills">
 	<li><%= applicant_fields.submit "Сохранить", :class => "save_edit_button" %></li>
   	<li><%= link_to("Отменить", applicant_resume_path(@resume.id), :confirm => 'A you sure?', :class => 'cancel_edit_resume') %></li>
+	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %></li>
 </ul>
 <% end %>
 	<div class="clear"></div>

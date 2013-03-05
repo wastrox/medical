@@ -1,12 +1,7 @@
 <%= render :partial => "admin/companies/navbar_company"%>
 <%= form_for([:admin, :companies, @vacancy], :html => {:class => "standart_form"}) do |f| %>
 	<%= render :partial => "employer/vacancies/form", :locals => { :f => f } %>
-	<%= f.submit "Сохранить", :class => "save_edit_button" %>
-	<%= 
-		link_to_unless(@vacancy.published?, "Опубликовать", :controller => 'admin/companies/vacancy', :action => :published, :id => @vacancy.id) do 
-			"Опубликована"
-		end
-	%>
+	<%= f.submit @name, :class => "save_edit_button" %>
 	<%= link_to("Удалить", admin_companies_vacancy_path(@vacancy), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить вакансию?') %>
 	<%= 
 		link_to_unless(@vacancy.rejected?, "Отклонить", { :controller => 'admin/companies/vacancy', :action => :reject, :id => @vacancy.id }, :confirm => 'Вы, уверены, что хотите отклонить вакансию?') do

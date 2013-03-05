@@ -46,7 +46,8 @@ class Applicant::ResumesController < ApplicationController
     end
 
     respond_to do |format|
-      if @resume.save
+      if @resume.save 
+         @resume.request
          format.html { redirect_to :controller => 'resumes', :action => 'show', :id => @resume.id }
          format.json { render :json => @resume, :status => :created, :location => @resume }
       else
@@ -66,6 +67,7 @@ end
   def update
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
+        @resume.edit
         format.html { redirect_to :controller => "resumes", :action => "show" }
         format.json { render :json => @resume, :status => :created, :location => @resume }
       else

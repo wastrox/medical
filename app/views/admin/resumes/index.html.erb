@@ -11,7 +11,7 @@
 	<tr>
 		<td style="width:10px"><%= a += 1%></td>
 		<td><%= link_to resume.position, edit_admin_resume_path(resume) %></td>
-		<td>Черновик</td>
+		<td><%= resume.human_state_name %></td>
 		<td><%= resume.created_at.to_formatted_s(:db)%></td>
 		<td><%= resume.created_at.next_year.to_formatted_s(:db)%></td>
 	</tr>

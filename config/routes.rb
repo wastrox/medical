@@ -29,20 +29,21 @@ Medical::Application.routes.draw do
 	namespace :employer, :as => 'employer' do
 		resources :profile_companies, :only => [:edit, :update, :new, :create]
 		resources :vacancies
+		match 'vacancies/create_draft' => 'vacancies#create_draft'
 	end
 	
 	namespace :admin do
     root :to => 'admin/companies#index'
     get 'companies', to: 'companies#index'
+    match 'resumes/published/(:id)' => 'resumes#published'
+    match 'resumes/reject/(:id)' => 'resumes#reject'
+    
     namespace :companies do
       resources :profile
-      resources :vacancy
-      
-      match "profile/:id/published" => "profile#published"
+      resources :vacancy  
       match "profile/:id/vacancies" => "profile#vacancies"
       match 'profile/reject/(:id)' => 'profile#reject'
       match 'profile/vacancies/reject/(:id)' => 'vacancy#reject'
-      match 'vacancy/published/(:id)' => 'vacancy#published'
     end
     resources :vacancies
     resources :resumes

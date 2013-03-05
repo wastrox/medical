@@ -10,7 +10,7 @@
 	<tr>
 		<td style="width:10px"><%= a += 1%></td>
 		<td><%= link_to company.name, edit_admin_companies_profile_path(company) %> </td>
-		<td><%= company.human_state_name%></td>
+		<td><%= company.human_state_name %></td>
 		<td><%= link_to company.vacancies.count.to_s, :controller => "admin/companies/profile", :action => :vacancies, :id => company.id %></td>
 	</tr>
 	<% end %>

@@ -39,8 +39,18 @@
 	<%= render :partial => 'applicant/resumes/resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
 
 <ul class="nav nav-pills">
-	<li><%= applicant_fields.submit "Сохранить", :class => "save_edit_button" %></li>
+	<li><%= applicant_fields.submit @name, :class => "save_edit_button" %></li>
 	<li><%= link_to("Удалить", admin_resume_path(@resume), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %></li>
+	<%# 
+		link_to_unless(@resume.published?, "Опубликовать", :controller => :resumes, :action => :published, :id => @resume.id) do 
+			"Опубликовано"
+		end
+	%>
+	<%= 
+		link_to_unless(@resume.rejected?, "Отклонить", {:controller => :resumes, :action => :reject, :id => @resume.id }, :confirm => 'Отклонить резюме?') do	
+			"Отклонено"
+		end
+	%>
 </ul>
 <% end %>
 	<div class="clear"></div>

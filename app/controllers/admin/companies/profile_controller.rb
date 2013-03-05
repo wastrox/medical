@@ -1,14 +1,17 @@
 # encoding: utf-8
 class Admin::Companies::ProfileController < ApplicationController
   layout "admin"
-  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :published, :find_vacancies_wait_company]
-  after_filter :find_vacancies_wait_company, :only => :published
+  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :submit_name_for_form]
+  after_filter :find_vacancies_wait_company, :only => :update
+  before_filter :submit_name_for_form, :only => :edit
+  
   def edit
   end
   
   def update
     respond_to do |format|
       if @company.update_attributes(params[:company])
+        @company.approve_published unless @company.published? #published
 				format.html { redirect_to admin_companies_url }
         format.json { render :json => @company, :status => :created, :location => @company }
       else
@@ -20,12 +23,6 @@ class Admin::Companies::ProfileController < ApplicationController
   
   def vacancies
     @vacancies = @company.vacancies
-  end
-
-  def published
-    if @company.approve_published
-      redirect_to admin_companies_path, notes: "Компания опубликована"
-    end
   end
   
   def destroy
@@ -40,6 +37,14 @@ class Admin::Companies::ProfileController < ApplicationController
       vacancies.each {|v| v.approve_wait}
       redirect_to admin_companies_url
     end
+  end
+  
+  def submit_name_for_form
+    state = @company.state
+    @name = case state
+              when "draft", "vip", "rejected", "pending" then "Опубликовать"
+              when "published" then "Обновить"
+            end
   end
   
   protected

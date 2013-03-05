@@ -1,8 +1,8 @@
 <table class="table">
   <tr>
     <th>Название вакансии</th>
-    <th>З/П</th>
     <th>Регион</th>
+    <th>Статус</th>
     <th></th>
     <th></th>
 	<th></th>
@@ -11,8 +11,8 @@
 <% @vacancies.each do |vacancy| %>
   <tr>
     <td><%= vacancy.name %></td>
-    <td><%= vacancy.salary %></td>
 	<td><%= vacancy.city %></td>
+    <td><%= vacancy.human_state_name %></td>
     <td><%= link_to 'Просмотр', employer_vacancy_url(vacancy.id) %></td>
     <td><%= link_to 'Редактировать', edit_employer_vacancy_path(vacancy) %></td>
     <td><%= link_to 'Удалить', ([:employer, vacancy]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
