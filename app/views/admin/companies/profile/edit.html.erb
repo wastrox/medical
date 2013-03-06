@@ -1,5 +1,6 @@
 <%= render :partial => "admin/companies/navbar_company"%>
 <ul>
+	<li><%= "Статус: #{@company.human_state_name}"%></li>
 	<li><%= "Зарегистрирован: #{@company.employer.created_at.localtime.strftime("%F %H:%M")}" %></li>
 	<li><%= "Кол-во посещений: #{@company.employer.session_count}" %></li>
 	<li><%= "Последнее посещение: #{@company.employer.session_last_time.localtime.strftime("%F %H:%M")}" %></li>
@@ -11,12 +12,8 @@
 			<h5>Контактная информация</h5>
 			<%= render :partial => 'employer/profile_companies/contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
 		
-	<%= employer_fields.submit @name, :class => "save_edit_button" %>
-	<%# 
-		link_to_unless(@company.published?, "Опубликовать", :controller => 'admin/companies/profile', :action => :published, :id => @company.id) do 
-			"Опубликована"
-		end
-	%>
+	<%= employer_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %>
+	<%= employer_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @company.published? %>
 	<%= link_to("Удалить", admin_companies_profile_path(@company), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить компанию?') %>
 	<%= 
 		link_to_unless(@company.rejected?, "Отклонить", :controller => 'admin/companies/profile', :action => :reject, :id => @company.id, :confirm => 'Компания будет отклонена') do	

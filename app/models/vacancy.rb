@@ -44,4 +44,5 @@ class Vacancy < ActiveRecord::Base
       transition :pending => :wait_company
     end
   end
+  
 end

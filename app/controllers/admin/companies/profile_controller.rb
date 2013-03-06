@@ -1,9 +1,9 @@
 # encoding: utf-8
 class Admin::Companies::ProfileController < ApplicationController
   layout "admin"
-  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :submit_name_for_form]
-  after_filter :find_vacancies_wait_company, :only => :update
-  before_filter :submit_name_for_form, :only => :edit
+  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :published ]
+  after_filter :find_vacancies_wait_company, :only => :find_vacancies_wait_company
+  after_filter  :published, :only => :update
   
   def edit
   end
@@ -11,7 +11,6 @@ class Admin::Companies::ProfileController < ApplicationController
   def update
     respond_to do |format|
       if @company.update_attributes(params[:company])
-        @company.approve_published unless @company.published? #published
 				format.html { redirect_to admin_companies_url }
         format.json { render :json => @company, :status => :created, :location => @company }
       else
@@ -39,12 +38,13 @@ class Admin::Companies::ProfileController < ApplicationController
     end
   end
   
-  def submit_name_for_form
-    state = @company.state
-    @name = case state
-              when "draft", "vip", "rejected", "pending" then "Опубликовать"
-              when "published" then "Обновить"
-            end
+  def published
+    if params[:published]
+      case @company.state
+        when "pending", "hot", "rejected", "deferred", "secret"
+          @company.approve_published
+      end
+    end
   end
   
   protected

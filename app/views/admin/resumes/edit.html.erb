@@ -28,6 +28,7 @@
 </style>
 
 <ul>
+	<li><%= "Статус: #{@resume.human_state_name}"%></li>
 	<li><%= "Зарегистрирован: #{@applicant.created_at.localtime.strftime("%F %H:%M")}" %></li>
 	<li><%= "Кол-во посещений: #{@applicant.session_count}" %></li>
 	<li><%= "Последнее посещение: #{@applicant.session_last_time.localtime.strftime("%F %H:%M")}" %></li>
@@ -39,13 +40,9 @@
 	<%= render :partial => 'applicant/resumes/resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
 
 <ul class="nav nav-pills">
-	<li><%= applicant_fields.submit @name, :class => "save_edit_button" %></li>
+	<li><%= applicant_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
+	<li><%= applicant_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @resume.published? %></li>
 	<li><%= link_to("Удалить", admin_resume_path(@resume), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %></li>
-	<%# 
-		link_to_unless(@resume.published?, "Опубликовать", :controller => :resumes, :action => :published, :id => @resume.id) do 
-			"Опубликовано"
-		end
-	%>
 	<%= 
 		link_to_unless(@resume.rejected?, "Отклонить", {:controller => :resumes, :action => :reject, :id => @resume.id }, :confirm => 'Отклонить резюме?') do	
 			"Отклонено"
