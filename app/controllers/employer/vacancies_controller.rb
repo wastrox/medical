@@ -1,4 +1,5 @@
 # coding: utf-8
+# FIXME: DRY
 class Employer::VacanciesController < ApplicationController
   layout "profile_company"	
   before_filter :require_account_type_employer, :check_account_type

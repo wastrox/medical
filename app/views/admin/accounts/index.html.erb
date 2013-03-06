@@ -1,0 +1,33 @@
+<% a = 0%>
+<table class="table">  
+	<tr>
+		<th>#</th>
+		<th>Email</th>
+		<th>Активация</th>
+		<th>Тип аккаунта</th>
+		<th>Посещений</th>
+		<th>Последнее</th>
+	</tr>
+	<% @accounts.each do |account| %>
+	<tr>
+		<td style="width:10px"><%= a += 1%></td>
+		<% if account.employer? %>
+			<% company = Company.find_by_employer_id(account.id)%>
+			<% id = company.id %>
+		<td><%= link_to account.email, edit_admin_companies_profile_path(id) %></td>
+		<% elsif account.applicant? %>
+			<% resume = Resume.find_by_applicant_id(account.id)%>
+			<% id = resume.id %>
+			<td><%= link_to account.email, edit_admin_resume_path(id) %></td>
+		<% else %>
+			<td><%= account.email %></td>
+		<% end %>
+		
+		<%# link_to account.id, helper_link(account.id)%>
+		<td><%= if account.active? then "Активирован" else "Не активирован" end%></td>
+		<td><%= account.account_type %></td>
+		<td><%= account.session_count %></td>
+		<td><%= account.session_last_time.localtime.strftime("%F %H:%M") if account.active? %></td>
+	</tr>
+	<% end %>
+</table>

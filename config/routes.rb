@@ -47,5 +47,6 @@ Medical::Application.routes.draw do
     end
     resources :vacancies
     resources :resumes
+    resources :accounts, :only => :index
 	end
 end
