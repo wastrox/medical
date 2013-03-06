@@ -5,7 +5,7 @@ class Admin::ResumesController < ApplicationController
   before_filter :submit_name_for_form, :only => :edit
   
   def index
-    @resumes = Resume.all
+    @resumes = Resume.where("state = ?", "pending")
   end
   
   def edit
