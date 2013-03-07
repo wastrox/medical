@@ -11,14 +11,13 @@
 	<% @accounts.each do |account| %>
 	<tr>
 		<td style="width:10px"><%= a += 1%></td>
+		<%# FIXME: refactoring this method in the helper method%>
 		<% if account.employer? %>
 			<% company = Company.find_by_employer_id(account.id)%>
-			<% id = company.id %>
-		<td><%= link_to account.email, edit_admin_companies_profile_path(id) %></td>
+		<td><%= link_to account.email, edit_admin_companies_profile_path(company.id) %></td>
 		<% elsif account.applicant? %>
 			<% resume = Resume.find_by_applicant_id(account.id)%>
-			<% id = resume.id %>
-			<td><%= link_to account.email, edit_admin_resume_path(id) %></td>
+			<td><%= link_to account.email, edit_admin_resume_path(resume.id) %></td>
 		<% else %>
 			<td><%= account.email %></td>
 		<% end %>
