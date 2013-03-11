@@ -4,12 +4,22 @@
 	}
 </style>
 
-
 <%= render :partial => "admin/companies/navbar_company"%>
 <%= @message %>
 <%= form_for([:admin, :companies, @vacancy], :html => {:class => "standart_form"}) do |f| %>
+	<div class='item'>
+		<%= label_tag "Статус вакансии" %>
+		<div class='field'>
+			<i><%= @vacancy.human_state_name %></i>
+		</div>
+	</div>
+	<div class='item'>
+		<%= label_tag "Статус компании" %>
+		<div class='field'>
+			<i><%= @company.human_state_name %></i>
+		</div>
+	</div>
 	<%= render :partial => "employer/vacancies/form", :locals => { :f => f } %>
-	<%# content_tag("h5", "Компания не прошла модерацию") if @company.pending? %>
 	<%= f.submit "Обновить", :class => "save_edit_button", :name => "update" %>
 	<%= f.submit "Опубликовать", :class => helpers_class(@company), :name => "published" unless @vacancy.published? %>  
 	<%= link_to("Удалить", admin_companies_vacancy_path(@vacancy), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить вакансию?') %>

@@ -1,0 +1,31 @@
+<h5>Соискатель</h5>
+<div class='item'>
+	<%= label_tag "Email" %>
+	<div class='field'>
+		<%= @resume.applicant.email%>
+	</div>
+</div>
+<div class='item'>
+	<%= label_tag "Статус" %>
+	<div class='field'>
+		<%= @resume.human_state_name%>
+	</div>
+</div>
+<div class='item'>
+	<%= label_tag "Кол-во посещений" %>
+	<div class='field'>
+		<%= @applicant.session_count %>
+	</div>
+</div>
+<div class='item'>
+	<%= label_tag "Зарегистрирован" %>
+	<div class='field'>
+		<%= @applicant.created_at.localtime.strftime("%F %H:%M") %>
+	</div>
+</div>
+<div class='item'>
+	<%= label_tag "Последнее посещение" %>
+	<div class='field'>
+		<%= @applicant.session_last_time.localtime.strftime("%F %H:%M") %>
+	</div>
+</div>

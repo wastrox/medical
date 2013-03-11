@@ -27,18 +27,11 @@
 
 </style>
 
-<ul>
-	<li><%= "Статус: #{@resume.human_state_name}"%></li>
-	<li><%= "Зарегистрирован: #{@applicant.created_at.localtime.strftime("%F %H:%M")}" %></li>
-	<li><%= "Кол-во посещений: #{@applicant.session_count}" %></li>
-	<li><%= "Последнее посещение: #{@applicant.session_last_time.localtime.strftime("%F %H:%M")}" %></li>
-</ul>
-
 <div class="content-resume">
 	<%= nested_form_for([:admin, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>	
-<hr / class="nav-line-buttom">
+<!--<hr / class="nav-line-buttom">-->
+	<%= render :partial => 'applicant_state' %>
 	<%= render :partial => 'applicant/resumes/resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
-
 <ul class="nav nav-pills">
 	<li><%= applicant_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
 	<li><%= applicant_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @resume.published? %></li>
