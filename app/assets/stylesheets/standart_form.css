@@ -232,5 +232,10 @@ div.select2-offscreen {
 }
 
 div.add_company_contacts {
-	margin: 25px 0 25px 0;
+	margin: 15px 0 25px 0;
+}
+
+.body_letter {
+	height: 150px;
+	width:	590px;
 }

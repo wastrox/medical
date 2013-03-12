@@ -20,6 +20,8 @@
 		</div>
 	</div>
 	<%= render :partial => "employer/vacancies/form", :locals => { :f => f } %>
+	<h5>Сообщение от модератора</h5>
+	<%= text_area_tag 'body_letter', nil, :class => "body_letter" %>
 	<ul class="nav nav-pills">
 		<li><%= f.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
 		<li><%= f.submit "Опубликовать", :class => helpers_class(@company), :name => "published" unless @vacancy.published? %></li>

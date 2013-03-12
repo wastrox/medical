@@ -2,7 +2,7 @@
 class Admin::Companies::VacancyController < ApplicationController
   layout "admin"
   before_filter :find_vacancy, :only => [:edit, :update, :find_company, :reject, :destroy, :require_company_moderating, :published]
-  before_filter :find_company, :only => [:edit, :update, :reject]
+  before_filter :find_company, :only => [:edit, :update, :reject, :send_letter_for_employer]
   after_filter  :published, :only => :update  
   
   def edit
@@ -37,6 +37,7 @@ class Admin::Companies::VacancyController < ApplicationController
       case @vacancy.state
         when "pending", "hot", "rejected", "deferred"
           @vacancy.approve_published
+          send_letter_for_employer
       end
     end
   end
@@ -49,6 +50,13 @@ class Admin::Companies::VacancyController < ApplicationController
   
   def find_vacancy
     @vacancy = Vacancy.find(params[:id])
+  end
+  
+  def send_letter_for_employer
+    case @company.state
+      when "pending", "published", "hot", "rejected", "deferred", "secret"
+        @company.employer.send_letter_from_moderator(params[:body_letter])
+    end
   end
 
 end

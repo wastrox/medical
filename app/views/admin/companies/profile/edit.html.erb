@@ -6,6 +6,8 @@
 	
 		<h5>Контактная информация</h5>
 		<%= render :partial => 'employer/profile_companies/contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
+		<h5>Сообщение от модератора</h5>
+		<%= text_area_tag 'body_letter', nil, :class => "body_letter" %>
 		<ul class="nav nav-pills">
 			<li><%= employer_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
 			<li><%= employer_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @company.published? %></li>

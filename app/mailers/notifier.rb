@@ -5,5 +5,10 @@ class Notifier < ActionMailer::Base
 		@account_activation_url = activate_account_url(account.token)
     mail(:to => account.email, :subject => "Welcome to My Awesome Site")
 	end
+	
+	def letter_from_moderator(account, text)
+	  @body_letter = text
+	  mail(:to => account.email, :subject => "Letter from moderator")
+	end
 
 end

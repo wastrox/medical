@@ -1,8 +1,8 @@
 # encoding: utf-8
 class Admin::Companies::ProfileController < ApplicationController
   layout "admin"
-  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :published ]
-  after_filter :find_vacancies_wait_company, :only => :find_vacancies_wait_company
+  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :published, :send_letter_for_employer ]
+  after_filter :find_vacancies_wait_company, :only => :find_vacancies_wait_company # FIXME: ??? (only => published)
   after_filter  :published, :only => :update
   
   def edit
@@ -43,6 +43,7 @@ class Admin::Companies::ProfileController < ApplicationController
       case @company.state
         when "pending", "hot", "rejected", "deferred", "secret"
           @company.approve_published
+          send_letter_for_employer
       end
     end
   end
@@ -51,6 +52,13 @@ class Admin::Companies::ProfileController < ApplicationController
   
   def company_find
     @company = Company.find(params[:id])
+  end
+  
+  def send_letter_for_employer
+    case @company.state
+      when "pending", "published", "hot", "rejected", "deferred", "secret"
+        @company.employer.send_letter_from_moderator(params[:body_letter])
+    end
   end
 
   def find_vacancies_wait_company
