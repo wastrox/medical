@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Admin::ResumesController < ApplicationController
   layout "admin"
-  before_filter :findResume, :only => [:edit, :update, :destroy, :reject, :published]
+  before_filter :findResume, :only => [:edit, :update, :destroy, :reject, :published, :send_letter_for_applicant]
   after_filter  :published, :only => :update
   
   def index
@@ -46,6 +46,7 @@ class Admin::ResumesController < ApplicationController
       case @resume.state
         when "pending", "hot", "rejected", "deferred", "secret"
           @resume.approve_published
+          send_letter_for_applicant
       end
     end
   end
@@ -54,5 +55,12 @@ class Admin::ResumesController < ApplicationController
   
   def findResume
     @resume ||= Resume.find(params[:id])
+  end
+  
+  def send_letter_for_applicant
+    case @resume.state
+      when "pending", "published", "hot", "rejected", "deferred", "secret"
+        @resume.applicant.send_letter_from_moderator(params[:body_letter])
+    end
   end
 end

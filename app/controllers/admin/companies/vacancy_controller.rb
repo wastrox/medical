@@ -54,9 +54,8 @@ class Admin::Companies::VacancyController < ApplicationController
   
   def send_letter_for_employer
     case @company.state
-      when "pending", "published", "hot", "rejected", "deferred", "secret"
+      when "pending", "published", "hot", "rejected", "deferred"
         @company.employer.send_letter_from_moderator(params[:body_letter])
     end
   end
-
 end

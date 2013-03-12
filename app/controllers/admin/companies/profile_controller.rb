@@ -41,7 +41,7 @@ class Admin::Companies::ProfileController < ApplicationController
   def published
     if params[:published]
       case @company.state
-        when "pending", "hot", "rejected", "deferred", "secret"
+        when "pending", "vip", "rejected"
           @company.approve_published
           send_letter_for_employer
       end
@@ -56,7 +56,7 @@ class Admin::Companies::ProfileController < ApplicationController
   
   def send_letter_for_employer
     case @company.state
-      when "pending", "published", "hot", "rejected", "deferred", "secret"
+      when "pending", "published", "vip", "rejected"
         @company.employer.send_letter_from_moderator(params[:body_letter])
     end
   end

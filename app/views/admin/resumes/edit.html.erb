@@ -32,16 +32,18 @@
 <!--<hr / class="nav-line-buttom">-->
 	<%= render :partial => 'applicant_state' %>
 	<%= render :partial => 'applicant/resumes/resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
-<ul class="nav nav-pills">
-	<li><%= applicant_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
-	<li><%= applicant_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @resume.published? %></li>
-	<li><%= link_to("Удалить", admin_resume_path(@resume), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %></li>
-	<li><%= 
+	<h5>Сообщение от модератора</h5>
+	<%= text_area_tag 'body_letter', nil, :class => "body_letter" %>
+	<ul class="nav nav-pills">
+		<li><%= applicant_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
+		<li><%= applicant_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @resume.published? %></li>
+		<li><%= link_to("Удалить", admin_resume_path(@resume), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %></li>
+		<li><%= 
 		link_to_unless(@resume.rejected?, "Отклонить", {:controller => :resumes, :action => :reject, :id => @resume.id }, :confirm => 'Отклонить резюме?') do	
 			"Отклонено"
 		end
-	%></li>
-</ul>
-<% end %>
+		%></li>
+	</ul>
+	<% end %>
 	<div class="clear"></div>
 </div>
