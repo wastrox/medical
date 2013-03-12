@@ -36,11 +36,11 @@
 	<li><%= applicant_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
 	<li><%= applicant_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @resume.published? %></li>
 	<li><%= link_to("Удалить", admin_resume_path(@resume), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %></li>
-	<%= 
+	<li><%= 
 		link_to_unless(@resume.rejected?, "Отклонить", {:controller => :resumes, :action => :reject, :id => @resume.id }, :confirm => 'Отклонить резюме?') do	
 			"Отклонено"
 		end
-	%>
+	%></li>
 </ul>
 <% end %>
 	<div class="clear"></div>

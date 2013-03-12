@@ -37,15 +37,12 @@
     <th>Название вакансии</th>
     <th>З/П</th>
     <th>Регион</th>
-  <th></th>
   </tr>
-
 <% @vacancies.each do |vacancy| %>
   <tr>
-    <td><%= vacancy.name %></td>
+    <td><%= link_to vacancy.name, edit_admin_companies_vacancy_path(vacancy.id) %></td>
     <td><%= vacancy.salary %></td>
-  <td><%= vacancy.city %></td>
-    <td><%= link_to 'Просмотр', :controller => "admin/companies/vacancy", :action => :edit, :id => vacancy.id %></td>
+  	<td><%= vacancy.city %></td>
   </tr>
 <% end %>
 </table>

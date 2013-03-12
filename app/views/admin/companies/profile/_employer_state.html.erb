@@ -1,14 +1,14 @@
 <h5>Работодатель</h5>
 <div class='item'>
-	<%= label_tag "Email" %>
+	<%= label_tag "Статус" %>
 	<div class='field'>
-		<%= @company.employer.email%>
+		<i><%= @company.human_state_name%></i>
 	</div>
 </div>
 <div class='item'>
-	<%= label_tag "Статус" %>
+	<%= label_tag "Email" %>
 	<div class='field'>
-		<%= @company.human_state_name%>
+		<%= @company.employer.email%>
 	</div>
 </div>
 <div class='item'>

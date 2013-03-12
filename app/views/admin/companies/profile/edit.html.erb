@@ -4,16 +4,16 @@
 		<%= render :partial => 'employer_state' %>
   		<%= render :partial => 'employer/profile_companies/profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
 	
-			<h5>Контактная информация</h5>
-			<%= render :partial => 'employer/profile_companies/contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
-		
-	<%= employer_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %>
-	<%= employer_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @company.published? %>
-	<%= link_to("Удалить", admin_companies_profile_path(@company), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить компанию?') %>
-	<%= 
+		<h5>Контактная информация</h5>
+		<%= render :partial => 'employer/profile_companies/contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
+		<ul class="nav nav-pills">
+			<li><%= employer_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
+			<li><%= employer_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @company.published? %></li>
+			<li><%= link_to("Удалить", admin_companies_profile_path(@company), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить компанию?') %></li>
+			<li><%= 
 		link_to_unless(@company.rejected?, "Отклонить", :controller => 'admin/companies/profile', :action => :reject, :id => @company.id, :confirm => 'Компания будет отклонена') do	
 			"Отклонена"
 		end
-	%>
-<% end %>
+		%></li>
+	<% end %>
 </div>

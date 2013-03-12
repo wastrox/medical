@@ -35,15 +35,13 @@
     <th>Название резюме</th>
     <th>З/П</th>
     <th>Регион</th>
-  <th></th>
   </tr>
 
 <% @resumes.each do |resume| %>
   <tr>
-    <td><%= resume.position %></td>
+    <td><%= link_to resume.position, edit_admin_resume_path(resume.id) %></td>
     <td><%= resume.salary %></td>
   	<td><%= resume.city %></td>
-    <td><%= link_to 'Просмотр', edit_admin_resume_path(resume.id) %></td>
   </tr>
 <% end %>
 </table>

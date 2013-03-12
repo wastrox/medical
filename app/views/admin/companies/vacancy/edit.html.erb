@@ -20,12 +20,14 @@
 		</div>
 	</div>
 	<%= render :partial => "employer/vacancies/form", :locals => { :f => f } %>
-	<%= f.submit "Обновить", :class => "save_edit_button", :name => "update" %>
-	<%= f.submit "Опубликовать", :class => helpers_class(@company), :name => "published" unless @vacancy.published? %>  
-	<%= link_to("Удалить", admin_companies_vacancy_path(@vacancy), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить вакансию?') %>
-	<%= 
+	<ul class="nav nav-pills">
+		<li><%= f.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
+		<li><%= f.submit "Опубликовать", :class => helpers_class(@company), :name => "published" unless @vacancy.published? %></li>
+		<li><%= link_to("Удалить", admin_companies_vacancy_path(@vacancy), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить вакансию?') %></li>
+		<li><%= 
 		link_to_unless(@vacancy.rejected?, "Отклонить", { :controller => 'admin/companies/vacancy', :action => :reject, :id => @vacancy.id }, :confirm => 'Вы, уверены, что хотите отклонить вакансию?') do
 			"Отклонена"
 		end
-	%>
+		%></li>
+	</ul>
 <% end %>

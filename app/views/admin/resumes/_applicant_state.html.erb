@@ -1,14 +1,14 @@
 <h5>Соискатель</h5>
 <div class='item'>
-	<%= label_tag "Email" %>
+	<%= label_tag "Статус" %>
 	<div class='field'>
-		<%= @resume.applicant.email%>
+		<i><%= @resume.human_state_name%></i>
 	</div>
 </div>
 <div class='item'>
-	<%= label_tag "Статус" %>
+	<%= label_tag "Email" %>
 	<div class='field'>
-		<%= @resume.human_state_name%>
+		<%= @resume.applicant.email%>
 	</div>
 </div>
 <div class='item'>
