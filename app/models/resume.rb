@@ -15,6 +15,13 @@ class Resume < ActiveRecord::Base
     
   has_many :educations, :dependent => :destroy
     accepts_nested_attributes_for :educations, :allow_destroy => true
+    
+  define_index do
+  	indexes position 
+  	indexes city
+  	set_property :delta => :delayed
+  	where " resumes.state IN ('published', 'hot')" # Индексирует только опубликованные и горячие резюме
+  end
  
   	state_machine :state, :initial => :draft do
       event :request do

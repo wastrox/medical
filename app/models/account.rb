@@ -7,6 +7,12 @@ class Account < ActiveRecord::Base
   
 	has_secure_password
   before_save :encrypt_password, :access_token 
+  
+  
+  define_index do
+		indexes email 
+		set_property :delta => :delayed
+	end
 		
   def self.authenticate(email, password)
      account = find_by_email(email)

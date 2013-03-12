@@ -1,4 +1,6 @@
 Medical::Application.routes.draw do
+  get "vacancies/index"
+
 	root :to => 'startpage#index'
   get "vacancy/index"
   get "vacancy/edit"
@@ -35,6 +37,8 @@ Medical::Application.routes.draw do
 	namespace :admin do
     root :to => 'admin/companies#index'
     get 'companies', to: 'companies#index'
+    get 'search/vacancies' => 'search/vacancies#index'
+    get 'search/resumes' => 'search/resumes#index'
     match 'resumes/published/(:id)' => 'resumes#published'
     match 'resumes/reject/(:id)' => 'resumes#reject'
     
