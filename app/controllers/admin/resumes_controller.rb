@@ -2,7 +2,10 @@
 class Admin::ResumesController < ApplicationController
   layout "admin"
   before_filter :findResume, :only => [:edit, :update, :destroy, :reject, :published, :send_letter_for_applicant]
+  after_filter  :send_letter_for_applicant, :only => :update
   after_filter  :published, :only => :update
+  after_filter  :reject, :only => :update
+  before_filter :destroy, :only => :update
   
   def index
     @resumes = Resume.where("state = ?", "pending")
@@ -20,7 +23,6 @@ class Admin::ResumesController < ApplicationController
   def update
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
-        send_letter_for_employer unless params[:body_letter].empty? #FIXME: добавить фильтром
         format.html { redirect_to :controller => "admin/resumes", :action => "index" }
         format.json { render :json => @resume, :status => :created, :location => @resume }
       else
@@ -30,27 +32,22 @@ class Admin::ResumesController < ApplicationController
     end
   end
   
+  def published
+    if params[:published]
+       @resume.approve_published
+    end
+  end
+  
   def reject
-    if @resume.approve_rejected
-      send_letter_for_employer unless params[:body_letter].empty? #FIXME: так писать - очень хуевый тон, DRY!
-      redirect_to admin_resumes_path
+    if params[:reject] 
+      @resume.approve_rejected
     end
   end
   
   def destroy
-    if @resume.destroy
-      send_letter_for_employer unless params[:body_letter].empty?
+    if params[:destroy] && @resume.destroy
+      send_letter_for_applicant
       redirect_to admin_resumes_path
-    end
-  end
-  
-  def published
-    if params[:published]
-      case @resume.state
-        when "pending", "hot", "rejected", "deferred", "secret"
-          @resume.approve_published
-          send_letter_for_employer unless params[:body_letter].empty?
-      end
     end
   end
   
@@ -61,8 +58,7 @@ class Admin::ResumesController < ApplicationController
   end
   
   def send_letter_for_applicant
-    case @resume.state
-      when "pending", "published", "hot", "rejected", "deferred", "secret"
+    unless params[:body_letter].empty? 
         @resume.applicant.send_letter_from_moderator(params[:body_letter])
     end
   end
