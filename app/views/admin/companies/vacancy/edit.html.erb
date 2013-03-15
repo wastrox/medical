@@ -1,3 +1,5 @@
+<!-- FIXME: В submit 'Опубликовать' используется слишком много проверок, одна в хелпере - результат записывается в класс submit, а вторая в конце. Все это нужно проверить и переписать -->
+
 <style>
 	.disable {
 		display: none;
@@ -24,12 +26,8 @@
 	<%= text_area_tag 'body_letter', nil, :class => "body_letter" %>
 	<ul class="nav nav-pills">
 		<li><%= f.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
-		<li><%= f.submit "Опубликовать", :class => helpers_class(@company), :name => "published" unless @vacancy.published? %></li>
-		<li><%= link_to("Удалить", admin_companies_vacancy_path(@vacancy), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить вакансию?') %></li>
-		<li><%= 
-		link_to_unless(@vacancy.rejected?, "Отклонить", { :controller => 'admin/companies/vacancy', :action => :reject, :id => @vacancy.id }, :confirm => 'Вы, уверены, что хотите отклонить вакансию?') do
-			"Отклонена"
-		end
-		%></li>
+		<li><%= f.submit "Опубликовать", :class => helpers_class(@company), :name => "published" unless @vacancy.published? %></li> 
+		<li><%= f.submit "Отклонить", :class => "save_edit_button", :name => "reject",  :confirm => 'Вы, уверены, хотите отменить компанию?' unless @company.rejected? %></li>
+		<li><%= f.submit "Удалить", :class => "save_edit_button", :name => "destroy",  :confirm => 'Вы, уверены, что хотите удалить компанию?' %></li>
 	</ul>
 <% end %>

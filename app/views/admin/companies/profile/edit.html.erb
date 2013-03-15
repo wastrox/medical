@@ -11,8 +11,7 @@
 		<ul class="nav nav-pills">
 			<li><%= employer_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
 			<li><%= employer_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @company.published? %></li>
-			<li><%# link_to("Удалить", admin_companies_profile_path(@company), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить компанию?') %>
-				<%= employer_fields.submit "Удалить", :class => "save_edit_button", :name => "destroy",  :confirm => 'Вы, уверены, что хотите удалить компанию?' %></li>
-			<li><%= employer_fields.submit "Отклонить", :class => "save_edit_button", :name => "reject",  :confirm => 'Вы, уверены, хотите отменить компанию?' %></li>
+			<li><%= employer_fields.submit "Отклонить", :class => "save_edit_button", :name => "reject",  :confirm => 'Вы, уверены, хотите отменить компанию?' unless @company.rejected? %></li>
+			<li><%= employer_fields.submit "Удалить", :class => "save_edit_button", :name => "destroy",  :confirm => 'Вы, уверены, что хотите удалить компанию?' %></li>
 	<% end %>
 </div>

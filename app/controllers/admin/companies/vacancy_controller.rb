@@ -1,9 +1,12 @@
 # encoding: utf-8
 class Admin::Companies::VacancyController < ApplicationController
   layout "admin"
-  before_filter :find_vacancy, :only => [:edit, :update, :find_company, :reject, :destroy, :require_company_moderating, :published]
-  before_filter :find_company, :only => [:edit, :update, :reject, :send_letter_for_employer]
-  after_filter  :published, :only => :update  
+  before_filter :find_vacancy, :only => [:edit, :update, :find_company, :reject, :destroy, :published]
+  before_filter :find_company, :only => [:edit, :update, :send_letter_for_employer]
+  after_filter  :send_letter_for_employer, :only => :update
+  after_filter  :published, :only => :update
+  after_filter  :reject, :only => :update
+  before_filter :destroy, :only => :update  
   
   def edit
   end
@@ -11,7 +14,6 @@ class Admin::Companies::VacancyController < ApplicationController
   def update
      respond_to do |format|
       if @vacancy.update_attributes(params[:vacancy])
-        send_letter_for_employer unless params[:body_letter].empty? # FIXME: Добавить фильтром
   			format.html { redirect_to :controller => :profile, :action => :vacancies, :id => @company.id }
         format.json { render :json => @vacancy }
       else
@@ -21,27 +23,22 @@ class Admin::Companies::VacancyController < ApplicationController
     end
   end
   
-  def destroy
-    if @vacancy.destroy
-      send_letter_for_employer unless params[:body_letter].empty?
-      redirect_to admin_vacancies_path
+  def published
+    if params[:published]
+       @vacancy.approve_published
     end
   end
   
   def reject
-    if @vacancy.approve_rejected
-      send_letter_for_employer unless params[:body_letter].empty?
-      redirect_to admin_vacancies_path
+    if params[:reject]
+       @vacancy.approve_rejected
     end
   end
   
-  def published
-    if params[:published]
-      case @vacancy.state
-        when "pending", "hot", "rejected", "deferred"
-          @vacancy.approve_published
-          send_letter_for_employer unless params[:body_letter].empty?
-      end
+  def destroy
+    if params[:destroy] && @vacancy.destroy
+      send_letter_for_employer
+      redirect_to admin_vacancies_path
     end
   end
   
@@ -56,8 +53,7 @@ class Admin::Companies::VacancyController < ApplicationController
   end
   
   def send_letter_for_employer
-    case @company.state
-      when "pending", "published", "hot", "rejected", "deferred"
+    unless params[:body_letter].empty? 
         @company.employer.send_letter_from_moderator(params[:body_letter])
     end
   end
