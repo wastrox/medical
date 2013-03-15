@@ -29,4 +29,10 @@ class Company < ActiveRecord::Base
         transition [:published, :vip, :rejected, :draft] => :pending
       end
     end
+    
+    define_index do
+  		indexes name 
+  		set_property :delta => :delayed
+  		#where " companies.state IN ('published', 'vip')" # Индексирует только опубликованные и горячие компании
+  	end
 end

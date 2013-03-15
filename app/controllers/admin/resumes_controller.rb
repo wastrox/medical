@@ -20,6 +20,7 @@ class Admin::ResumesController < ApplicationController
   def update
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
+        send_letter_for_employer unless params[:body_letter].empty? #FIXME: добавить фильтром
         format.html { redirect_to :controller => "admin/resumes", :action => "index" }
         format.json { render :json => @resume, :status => :created, :location => @resume }
       else
@@ -31,12 +32,14 @@ class Admin::ResumesController < ApplicationController
   
   def reject
     if @resume.approve_rejected
+      send_letter_for_employer unless params[:body_letter].empty? #FIXME: так писать - очень хуевый тон, DRY!
       redirect_to admin_resumes_path
     end
   end
   
   def destroy
     if @resume.destroy
+      send_letter_for_employer unless params[:body_letter].empty?
       redirect_to admin_resumes_path
     end
   end
@@ -46,7 +49,7 @@ class Admin::ResumesController < ApplicationController
       case @resume.state
         when "pending", "hot", "rejected", "deferred", "secret"
           @resume.approve_published
-          send_letter_for_applicant
+          send_letter_for_employer unless params[:body_letter].empty?
       end
     end
   end

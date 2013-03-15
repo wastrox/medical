@@ -1,9 +1,16 @@
 # encoding: utf-8
 class Admin::Companies::ProfileController < ApplicationController
   layout "admin"
-  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :published, :send_letter_for_employer ]
-  after_filter :find_vacancies_wait_company, :only => :find_vacancies_wait_company # FIXME: ??? (only => published)
+  
+  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :published, :send_letter_for_employer]
+  after_filter  :send_letter_for_employer, :only => :update
   after_filter  :published, :only => :update
+  after_filter  :reject, :only => :update
+  before_filter :destroy, :only => :update
+  
+  def vacancies
+    @vacancies = @company.vacancies
+  end
   
   def edit
   end
@@ -20,31 +27,23 @@ class Admin::Companies::ProfileController < ApplicationController
     end
   end
   
-  def vacancies
-    @vacancies = @company.vacancies
-  end
-  
-  def destroy
-    if @company.destroy
-      redirect_to admin_companies_url
+  def published
+    if params[:published] && @company.approve_published
+       find_vacancies_wait_company 
     end
   end
   
   def reject
-    if @company.approve_rejected
-      vacancies = @company.vacancies.where("state = ?", "pending")
-      vacancies.each {|v| v.approve_wait}
-      redirect_to admin_companies_url
+    if params[:reject] && @company.approve_rejected
+       vacancies = @company.vacancies.where("state = ?", "pending")
+       vacancies.each {|v| v.approve_wait}
     end
   end
   
-  def published
-    if params[:published]
-      case @company.state
-        when "pending", "vip", "rejected"
-          @company.approve_published
-          send_letter_for_employer
-      end
+  def destroy
+    if params[:destroy] && @company.destroy
+       send_letter_for_employer
+       redirect_to admin_companies_url
     end
   end
   
@@ -55,8 +54,7 @@ class Admin::Companies::ProfileController < ApplicationController
   end
   
   def send_letter_for_employer
-    case @company.state
-      when "pending", "published", "vip", "rejected"
+    unless params[:body_letter].empty? 
         @company.employer.send_letter_from_moderator(params[:body_letter])
     end
   end
@@ -64,7 +62,7 @@ class Admin::Companies::ProfileController < ApplicationController
   def find_vacancies_wait_company
     if @company.published?
       vacancies = @company.vacancies.where("state = ?", "wait_company")
-      vacancies.each { |v| v.request } #if vacancies.present? #FIXME: проверить чтобы это условие работало если у компании нет вакансий с статусом wait_company
+      vacancies.each { |v| v.request }
     end
   end  
 end

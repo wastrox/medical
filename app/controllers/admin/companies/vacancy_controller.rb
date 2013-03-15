@@ -11,6 +11,7 @@ class Admin::Companies::VacancyController < ApplicationController
   def update
      respond_to do |format|
       if @vacancy.update_attributes(params[:vacancy])
+        send_letter_for_employer unless params[:body_letter].empty? # FIXME: Добавить фильтром
   			format.html { redirect_to :controller => :profile, :action => :vacancies, :id => @company.id }
         format.json { render :json => @vacancy }
       else
@@ -22,12 +23,14 @@ class Admin::Companies::VacancyController < ApplicationController
   
   def destroy
     if @vacancy.destroy
+      send_letter_for_employer unless params[:body_letter].empty?
       redirect_to admin_vacancies_path
     end
   end
   
   def reject
     if @vacancy.approve_rejected
+      send_letter_for_employer unless params[:body_letter].empty?
       redirect_to admin_vacancies_path
     end
   end
@@ -37,7 +40,7 @@ class Admin::Companies::VacancyController < ApplicationController
       case @vacancy.state
         when "pending", "hot", "rejected", "deferred"
           @vacancy.approve_published
-          send_letter_for_employer
+          send_letter_for_employer unless params[:body_letter].empty?
       end
     end
   end

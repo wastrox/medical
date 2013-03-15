@@ -37,6 +37,7 @@ Medical::Application.routes.draw do
 	namespace :admin do
     root :to => 'admin/companies#index'
     get 'companies', to: 'companies#index'
+    get 'search/companies' => 'search/companies#index'
     get 'search/vacancies' => 'search/vacancies#index'
     get 'search/resumes' => 'search/resumes#index'
     match 'resumes/published/(:id)' => 'resumes#published'
@@ -46,7 +47,7 @@ Medical::Application.routes.draw do
       resources :profile
       resources :vacancy  
       match "profile/:id/vacancies" => "profile#vacancies"
-      match 'profile/reject/(:id)' => 'profile#reject'
+      match 'profile/reject/(:id)' => 'profile#reject', :via => [:get]
       match 'profile/vacancies/reject/(:id)' => 'vacancy#reject'
     end
     resources :vacancies
