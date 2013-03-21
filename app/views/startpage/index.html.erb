@@ -18,7 +18,7 @@
 			border-radius: 10px;	
 	}		
 </style>
-						<div class="search"> 
+			<!--<div class="search"> 
                 <ul>
                     <li class="active"><a href="#">Работу</a></li>
                     <li><a href="#">Сотрудника</a></li>
@@ -28,11 +28,7 @@
 					<input type="text" value="" class="input-city">
                     <input type="submit" value="Найти" class="input-sub">
                 </div>
-            </div> 
-		    <div class="create-button">
-					<a id="create-resume" href="#">Создать резюме</a>
-					<a id="create-vacancy" href="#">Разместить вакансию</a> 
-				</div>
+            </div>-->
             <!--<div class="info-link clearfix">
                 <a href="#">
                     <img width="27" src="img/ico_my_resume.gif" style="z-index: 1; position: relative; top: 11px; margin-right: 5px;" heistyleght="27" tooltip="Перейти к менеджеру резюме">
@@ -43,4 +39,67 @@
 
                     Расширенный поиск
                 </a>
-            </div>
+            </div>-->
+			<%= form_tag root_path, method: :get do %>
+				<div class="search"> 
+			       <ul>
+			           <li class="active"><a href="#">Работу</a></li>
+			           <li><a href="#">Сотрудника</a></li>
+			       </ul>
+			       <div class="search-box clearfix">
+			       		<%= text_field_tag :search, params[:search], :class => "input-text" %>
+			            <%= text_field_tag :city, params[:city], :class => "input-city" %>
+			            <%= submit_tag "Найти", name: nil, :class => "input-sub" %>
+			       </div>
+			     </div> 	
+			<% end %>
+			<h5 style="color: red;">Горячие вакансии</h5>
+			<div class="row-fluid">
+				<div class="span3">
+					<ul type="circle" style="list-style-type: disc !important;">
+						<li>Одесса, разнорабочий на склад. Германия, Zagrantrud, €1 400</li>
+						<li>Одесса, hTML 5 Game Developer, Апейрон Систем</li>
+						<li>Одесса, менеджер по продажам, RealDruzi, $1 000</li>
+					</ul>
+				</div>
+				<div class="span3">
+					<ul type="circle" style="list-style-type: disc !important;">
+						<li>Одесса, клиент-менеджер, RealDruzi, $1 000</li>
+						<li>Одесса, риэлтор, RealDruzi, $1 000</li>
+						<li>Одесса, менеджер по поиску клиентов, Право на дом</li>
+					</ul>
+				</div>
+				<div class="span3">
+					<ul type="circle" style="list-style-type: disc !important;">
+						<li>Oдесса, банщик-массажист , Русский пар, 4 000 грн</li>
+						<li>Одесса, вышивальщица, Украинская корпоративная одежда</li>
+						<li>Одесса, промышленный альпинист фасадчик, Индустриальное Развитие Донбасса
+						</li>
+					</ul>
+				</div>
+				<div class="span3">
+					<ul type="circle" style="list-style-type: disc !important;">
+						<li>Одесса, разнорабочий на склад. Германия, Zagrantrud, €1 400</li>
+						<li>Одесса, hTML 5 Game Developer, Апейрон Систем</li>
+						<li>Одесса, менеджер по продажам, RealDruzi, $1 000</li>
+					</ul>
+				</div>
+			</div>
+			<table class="table" style="margin-top: 25px;">
+			  <tr>
+			    <th>Название вакансии</th>
+			    <th>З/П</th>
+			    <th>Регион</th>
+			  <th></th>
+			  </tr>
+
+			<% @vacancies.each do |vacancy| %>
+			  <tr>
+			    <td><%= vacancy.name %></td>
+			    <td><%= vacancy.salary %></td>
+			  <td><%= vacancy.city %></td>
+			    <td><%= link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %></td>
+			  </tr>
+			<% end %>
+			</table>
+			
