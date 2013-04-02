@@ -5,10 +5,4 @@ class StartpageController < ApplicationController
 	  search_params = params[:search].to_s + " " + params[:city].to_s 
 		@vacancies = Vacancy.search(search_params)
 	end
-	
-	def testIndex
-	end
-
-	def resume
-	end
 end
