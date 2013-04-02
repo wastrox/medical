@@ -1,5 +1,7 @@
 # coding: utf-8
 class SessionsController < ApplicationController
+  layout "small_window"
+  
   before_filter :find_account_by_email, :only =>  [:create, :require_active, :require_account_typei, :update_time_account_activity]
   #before_filter :require_active, :only => :create FIXME: ниже есть описание проблемы
   skip_before_filter :require_login, :only => [:new, :create, :destroy]

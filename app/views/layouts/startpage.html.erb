@@ -2,15 +2,35 @@
 <html>
 <head>
   <title>Medical</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", :media => "all" %>
+  <%= javascript_include_tag "selectbox" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render :partial => 'layouts/navbar'%>
 <div class="notice"><p><%= flash[:notice] %></p></div>
-<div class="wrapper">
-	<%= yield %>
-</div>
+<div id="wrapper">
+		<header id="header">
+		<img alt="" class="logo" src="http://netbee.net.ua/assets/img/logo.gif">
+		<div id="menu">
+			<div class="login"><%= link_to "Войти", login_path %></div> <div class="separator"></div> <a class="signup" href="#">Зарегистрироваться</a>
+		</div>
+	</header><!-- #header-->
+	<div id="content">
+		<%= yield %>
+	</div><!-- #content-->
+</div><!-- #wrapper -->
+<footer id="footer">
+	<div class="social-networks">
+		<h3>Мы в социальных сетях</h3>
+		<div class="icon">
+			<img alt="facebook" class="facebook" src="/assets/icon-facebook.png">
+			<img alt="twitter" class="twitter" src="/assets/icon-twitter.png">
+			<img alt="vk" class="vk" src="/assets/icon-vk.png">
+		</div>
+		<p>Design by Olga Jour, 2013</p>
+	</div>	
+</footer><!-- #footer -->
 </body>
 </html>

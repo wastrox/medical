@@ -1,105 +1,112 @@
-<script>
-//	FIXME: DELETE SCRIPT
-	
-	$(document).ready(function(){
-		$(".form-search, .search-applicant").css("display", "none");
-	});
-</script>
-<style>
-	.create-button a {
-			font-size: 1.55em;
-			float: left;
-			padding-right: 10px;
-	}
-	.create-resume{
-			padding: 30px;
-			background: none;
-			border: 1px solid #767676;
-			border-radius: 10px;	
-	}		
-</style>
-			<!--<div class="search"> 
-                <ul>
-                    <li class="active"><a href="#">Работу</a></li>
-                    <li><a href="#">Сотрудника</a></li>
-                </ul>
-                <div class="search-box clearfix">
-                    <input type="text" value="" class="input-text">
-					<input type="text" value="" class="input-city">
-                    <input type="submit" value="Найти" class="input-sub">
-                </div>
-            </div>-->
-            <!--<div class="info-link clearfix">
-                <a href="#">
-                    <img width="27" src="img/ico_my_resume.gif" style="z-index: 1; position: relative; top: 11px; margin-right: 5px;" heistyleght="27" tooltip="Перейти к менеджеру резюме">
-                    Мои резюме <span>(2 из 3)</span>
-                </a>
-                <a href="#">
-                    <img width="22" height="21" src="img/ico_search.gif" style="z-index: 1; position: relative; top: 6px; margin-right: 5px;" tooltip="Перейти на страницу расширенного поиска">
-
-                    Расширенный поиск
-                </a>
-            </div>-->
-			<%= form_tag root_path, method: :get do %>
-				<div class="search"> 
-			       <ul>
-			           <li class="active"><a href="#">Работу</a></li>
-			           <li><a href="#">Сотрудника</a></li>
-			       </ul>
-			       <div class="search-box clearfix">
-			       		<%= text_field_tag :search, params[:search], :class => "input-text" %>
-			            <%= text_field_tag :city, params[:city], :class => "input-city" %>
-			            <%= submit_tag "Найти", name: nil, :class => "input-sub" %>
-			       </div>
-			     </div> 	
-			<% end %>
-			<h5 style="color: red;">Горячие вакансии</h5>
-			<div class="row-fluid">
-				<div class="span3">
-					<ul type="circle" style="list-style-type: disc !important;">
-						<li>Одесса, разнорабочий на склад. Германия, Zagrantrud, €1 400</li>
-						<li>Одесса, hTML 5 Game Developer, Апейрон Систем</li>
-						<li>Одесса, менеджер по продажам, RealDruzi, $1 000</li>
-					</ul>
-				</div>
-				<div class="span3">
-					<ul type="circle" style="list-style-type: disc !important;">
-						<li>Одесса, клиент-менеджер, RealDruzi, $1 000</li>
-						<li>Одесса, риэлтор, RealDruzi, $1 000</li>
-						<li>Одесса, менеджер по поиску клиентов, Право на дом</li>
-					</ul>
-				</div>
-				<div class="span3">
-					<ul type="circle" style="list-style-type: disc !important;">
-						<li>Oдесса, банщик-массажист , Русский пар, 4 000 грн</li>
-						<li>Одесса, вышивальщица, Украинская корпоративная одежда</li>
-						<li>Одесса, промышленный альпинист фасадчик, Индустриальное Развитие Донбасса
-						</li>
-					</ul>
-				</div>
-				<div class="span3">
-					<ul type="circle" style="list-style-type: disc !important;">
-						<li>Одесса, разнорабочий на склад. Германия, Zagrantrud, €1 400</li>
-						<li>Одесса, hTML 5 Game Developer, Апейрон Систем</li>
-						<li>Одесса, менеджер по продажам, RealDruzi, $1 000</li>
-					</ul>
-				</div>
+<div class="search">
+				<input type="text" class="input-text" placeholder="Укажите специальность">
+				<input type="text" class="input-city" placeholder="Город">
+				<select class="styled">
+					<option>Работа</option>
+					<option>Резюме</option>
+				</select>
+				<input type="submit" class="input-sub btn btn-warning" value="Найти">
+		</div> <!-- search -->
+		<div class="hot-vacancies">
+			<h4 class="title-hot"><span class="icon-hot">ГОРЯЧИЕ ВАКАНСИИ</span></h4>
+			<span class="label-tail-hot"></span>
+			<div class="hot-content">
+				<h3>Кардиолог</h3>
+				<p>Требуется кардиолог-супермен в супер-клинику в Супер-Городе на супер-условиях</p>
+				<p><a hrep="#">Подробнее</a></p>
 			</div>
-			<table class="table" style="margin-top: 25px;">
-			  <tr>
-			    <th>Название вакансии</th>
-			    <th>З/П</th>
-			    <th>Регион</th>
-			  <th></th>
-			  </tr>
-
-			<% @vacancies.each do |vacancy| %>
-			  <tr>
-			    <td><%= vacancy.name %></td>
-			    <td><%= vacancy.salary %></td>
-			  <td><%= vacancy.city %></td>
-			    <td><%= link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %></td>
-			  </tr>
-			<% end %>
+			<div class="hot-content">
+				<h3>Кардиолог</h3>
+				<p>Требуется кардиолог-супермен в супер-клинику в Супер-Городе на супер-условиях</p>
+				<p><a hrep="#">Подробнее</a></p>
+			</div>
+			<div class="hot-content">
+				<h3>Кардиолог</h3>
+				<p>Требуется кардиолог-супермен в супер-клинику в Супер-Городе на супер-условиях</p>
+				<p><a hrep="#">Подробнее</a></p>
+			</div>
+			<div class="hot-content">
+				<h3>Кардиолог</h3>
+				<p>Требуется кардиолог-супермен в супер-клинику в Супер-Городе на супер-условиях</p>
+				<p><a hrep="#">Подробнее</a></p>
+			</div>
+		</div>
+		<div class="last-vacancies">
+			<h4 class="title-last-vacancies"><span class="icon-last-vacancies">ПОСЛЕДНИИ ВАКАНСИИ</span></h4>
+			<span class="label-tail-last-vacancies"></span>
+			<table class="vacancies" width="100%">
+				<tr>
+					<td><b><a href="#">Стоматолог</a></b></td>
+					<td>Киев</td>
+					<td>8000 - 10000</td>
+				</tr>
+				<tr>
+					<td><b><a href="#">Стоматолог</a></b></td>
+					<td>Киев</td>
+					<td>8000 - 10000</td>
+				</tr>
+				<tr>
+					<td><b><a href="#">Стоматолог</a></b></td>
+					<td>Киев</td>
+					<td>8000 - 10000</td>
+				</tr>
+				<tr>
+					<td><b><a href="#">Стоматолог</a></b></td>
+					<td>Киев</td>
+					<td>8000 - 10000</td>
+				</tr>
+				<tr>
+					<td><b><a href="#">Стоматолог</a></b></td>
+					<td>Киев</td>
+					<td>8000 - 10000</td>
+				</tr>
+				<tr>
+					<td><b><a href="#">Стоматолог</a></b></td>
+					<td>Киев</td>
+					<td>8000 - 10000</td>
+				</tr>
+				<tr>
+					<td><b><a href="#">Стоматолог</a></b></td>
+					<td>Киев</td>
+					<td>8000 - 10000</td>
+				</tr>
+				<tr>
+					<td><b><a href="#">Стоматолог</a></b></td>
+					<td>Киев</td>
+					<td>8000 - 10000</td>
+				</tr>
+				<tr>
+					<td><b><a href="#">Стоматолог</a></b></td>
+					<td>Киев</td>
+					<td>8000 - 10000</td>
+				</tr>
 			</table>
-			
+			<div class="link-more"><b><a href="#">Показать еще</a></b></div>
+		</div>
+		<div class="companies">
+			<h4 class="title-companies"><span class="icon-companies">КОМПАНИИ</span></h4>
+			<span class="label-tail-companies"></span>
+			<table class="companies-logo" width="100%">
+				<tr>
+					<td><img src="/assets/logo-company-1/logo-company-1.png"></td>
+					<td><img src="/assets/logo-company-1/logo-company-2.png"></td>
+				</tr>
+				<tr>
+					<td><img src="/assets/logo-company-1/logo-company-3.png"></td>
+					<td><img src="/assets/logo-company-1/logo-company-4.png"></td>
+				</tr>
+				<tr>
+					<td><img src="/assets/logo-company-1/logo-company-5.png"></td>
+					<td><img src="/assets/logo-company-1/logo-company-6.png"></td>
+				</tr>
+				<tr>
+					<td><img src="/assets/logo-company-1/logo-company-7.png"></td>
+					<td><img src="/assets/logo-company-1/logo-company-8.png"></td>
+				</tr>
+				<tr>
+					<td><img src="/assets/logo-company-1/logo-company-9.png"></td>
+					<td><img src="/assets/logo-company-1/logo-company-10.png"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="clear"></div>

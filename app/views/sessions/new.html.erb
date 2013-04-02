@@ -1,36 +1,25 @@
-<style>
-  .modal {
-    position: relative;
-    top: auto;
-    left: auto;
-    margin: 0 auto 20px;
-    z-index: 1;
-    max-width: 100%;
-  }
-  .modal-body{padding-bottom: 20px;}
-  h1.login {width: 89px, float:left; margin: 12px 0 0 236px;}
-</style>
-
-<script>
-	$(document).ready(function(){
-		$("a.btn").css("display", "none");
-		$("h1.login").css("display", "inline-block")
-		$("a#login").css("display", "none");
-	});
-</script>
-
-<div class="modal">
-	<div class="modal-body">
-<%= form_tag sessions_path do %>
-  <div class="field">
+<%= form_tag(sessions_path, :class => "standart-form") do %>
+  <div class="item">
     <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
+    <div class="field">
+      <%= text_field_tag :email, params[:email] %>
+    </div>
   </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+  <div class="item">
+    <%= label_tag :password, "Пароль" %>
+    <div class="field">
+      <%= password_field_tag :password %>
+    </div>
   </div>
-  <div class="actions"><%= submit_tag "Войти", :class => "save_edit_button" %></div>
+  <div class="item">
+    <div class="field">   
+      <input id="remember_me" type="checkbox" name="remember_me" value="1">
+      <label for="remember_me">Запомнить меня</label>
+    </div>
+  </div>
+  <%= submit_tag "Войти", :class => "input-sub btn btn-warning" %>
 <% end %>
-	</div>
+<div class="link-help">
+  <a href="#">Я забыл пароль</a> 
+  <a href="#">Мне не пришло письмо</a>
 </div>

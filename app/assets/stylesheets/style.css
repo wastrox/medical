@@ -1,0 +1,505 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	height: 100%;
+}
+header, nav, section, article, aside, footer {
+	display: block;
+}
+body {
+	font: 12px/18px Helvetica, Arial, Tahoma, Verdana, sans-serif;
+	width: 100%;
+	height: 100%;
+	background: none repeat scroll 0 0 #f4f7f7;
+}
+a {
+	color: blue;
+	outline: none;
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+p {
+	/*font-family: "Open Sans"*/
+	margin: 0 0 12px;
+}
+img {
+	border: none;
+}
+input {
+	vertical-align: middle;
+}
+
+
+.clearfix:before, .clearfix:after {
+	content: " ";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+	*zoom: 1;
+}
+
+#wrapper {
+	width: 981px;
+	margin: 0 auto;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+}
+
+
+/* Header
+-----------------------------------------------------------------------------*/
+#header {
+	margin-top: 20px;
+	height: 67px;
+}
+
+.logo {
+	float: left; 
+	overflow: hidden; 
+	margin-top: 15px;
+}
+
+.logo img {
+	display: block;
+}
+
+#menu {
+	float: right;
+	padding-top: 30px;
+}
+
+.login {
+	background: url("/assets/login.png") no-repeat scroll left 3px transparent;
+	display: inline-block;
+	padding-left: 18px;
+	line-height: 25px;
+	vertical-align: middle;
+}
+.login a, .signup {
+	font-size: 13px;
+	font-weight: bold;
+	color: #4d4d4d;
+	text-decoration: none;
+}
+.signup {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.separator {
+	width: 1px;
+	height: 18px;
+	display: inline-block;
+	border-right: 1px solid rgba(118, 118, 118, 0.47);
+	vertical-align: middle;
+	line-height: 25px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* Middle
+-----------------------------------------------------------------------------*/
+#content {
+	
+}
+.search {
+	height: 99px;
+	background-color: #2c2b30;
+	border-radius: 14px;
+	/*box-shadow: inset 0 1 0 0 #8d8e8e, inset 0 -3px 0 0 #000000 --- посмотреть синтаксис, как писать несколько теней! */
+	box-shadow: inset 0 -3px 0 0 #000000;
+}
+
+.input-text, .input-city {
+	height: 35px;
+	margin: 32px 0 0 19px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border: 0;
+	color: #000000;
+	font-size: 13px;
+	padding-left: 12px;
+}
+
+input:focus {
+	outline: none;
+	/*border-color: rgba(82, 168, 236, 0.8);
+  	outline: 0;
+  	outline: thin dotted \9;*/
+  	/* IE6-9 */
+ 	 /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);*/
+}
+
+select:focus {
+	outline: none;
+}
+
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #767676;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #767676;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #767676;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #767676;
+}
+
+.input-sub {
+	height: 35px;
+	/*width: 98px;*/
+	margin: 32px 0 0 19px;
+	padding: 2px 12px 4px 12px;
+	/*-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border: 0;
+	color: #000000;*/
+	/*font-size: 13px;*/
+	background: #ffe277;
+	box-shadow: inset 0 -2px 0 0 #bd9643; /*НЕОБХОДИМО ДОБАВИТЬ ВНУТРЕНЮЮ ТЕНЬ НА ВЕРХНЮЮ ЧАСТЬ КНОПКИ, СМОТРЕТЬ СИНТАКСИС! */
+	/*border: 1px inset #bf8d20;*/
+}
+
+input[type="submit"].input-sub {
+	color: rgba(105, 85, 28, 0.69);
+	text-shadow: 0px 1px 1px rgb(255, 255, 255)
+	}
+
+.input-text {
+	width: 445px;
+	margin-left: 23px !important;
+}
+.input-city {
+	width: 151px;
+}
+.input-sub {
+	width: 98px;
+}
+.hot-vacancies {
+	position: relative;
+	margin-top: 30px;
+	height: 172px;
+	width: 981px;
+	border: 1px solid #dadbdb;
+	background-color: #ffffff;
+	border-radius: 14px;
+	box-shadow: inset 0 -3px 0 0 #dadbdb;
+}
+.title-hot {
+	display: block;
+	width: 192px;
+	position: relative;
+	background: url("/assets/label-hot-vacancies.png") no-repeat scroll transparent;
+	height: 21px;
+	margin-left: -10px;
+	text-shadow: #91442a 0 1px 0;
+	color: #ffffff;
+}
+
+.icon-hot {
+	background: url("/assets/icon-hot-vacancies.png") no-repeat scroll left 2px transparent;
+	display: inline-block;
+	margin: 2px 0 0 10px;
+	padding-left: 15px;
+}
+.label-tail-hot {
+	background:  url("/assets/hot-vacancies-tail.png") no-repeat scroll transparent;
+	position: absolute;
+	height: 9px;
+	width: 10px;
+    left: -10px;
+    top: 19px;
+}
+
+.last-vacancies {
+	position: relative;
+	margin-top: 30px;
+	width: 481px;
+	height: 622px;
+	border: 1px solid #dadbdb;
+	background-color: #ffffff;
+	border-radius: 14px;
+	box-shadow: inset 0 -3px 0 0 #dadbdb;
+	float: left;
+}
+.title-last-vacancies {
+	display: inline-block;
+	width: 192px;
+	position: relative;
+	margin-left: -10px;
+	background: url("/assets/label-last-vacancies.png") no-repeat scroll transparent;
+	height: 21px;
+	/*text-shadow: #ffffff 0 1px 0;
+	color: #956f1e;*/ /* цвета и тени с макета дизайнера */
+	color: rgba(133, 100, 29, 0.94); /* Альтернативный цвет */
+	text-shadow: rgba(255, 255, 255, 0.67) 0 1px 0px; 
+}
+.icon-last-vacancies {
+	background: url("/assets/icon-last-vacancies.png") no-repeat scroll left 3px transparent;
+	display: inline-block;
+	margin: 2px 0 0 12px;
+	padding-left: 14px;
+}
+
+.label-tail-last-vacancies {
+	background:  url("/assets/label-tail-yellow.png") no-repeat scroll left 0px transparent;
+	position: absolute;
+	height: 9px;
+	width: 10px;
+	left: -10px;
+    top: 19px;
+}
+.companies {
+	margin: 30px 0 0 15px;
+	width: 481px;
+	height: 622px;
+	border: 1px solid #dadbdb;
+	background-color: #ffffff;
+	border-radius: 14px;
+	box-shadow: inset 0 -3px 0 0 #dadbdb;
+	float: left;
+}
+.title-companies {
+	margin-left: -10px;
+	background: url("/assets/label-companies.png") no-repeat scroll transparent;
+	height: 21px;
+	/*text-shadow: #ffffff 0 1px 0;
+	color: #956f1e;*/ /* цвета и тени с макета дизайнера */
+	color: rgb(150, 113, 33); /* Альтернативный цвет */
+	text-shadow: rgba(255, 255, 255, 0.67) 0 1px 0px;
+}
+.icon-companies {
+	background: url("/assets/icon-companies.png") no-repeat scroll left 2px transparent;
+	display: inline-block;
+	margin: 2px 0 0 11px;
+	padding-left: 15px;
+}
+.label-tail-companies {
+	background:  url("/assets/label-tail-yellow.png") no-repeat scroll left 0px transparent;
+	position: absolute;
+	height: 9px;
+	width: 10px;
+	margin-left: -10px;
+	margin-top: -2px;
+}
+.clear {
+    clear: left; /* Отмена обтекания */
+   }
+   
+/* Рыба
+-----------------------------------------------------------------------------*/
+table.vacancies {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table.vacancies tbody tr td {
+	font-size: 14px; 
+	color: #767676;
+	text-align: center; 
+	padding: 19px;
+	line-height: 20px;
+	vertical-align: top;
+	border-top: 1px solid #bfb7af;	
+   }
+   
+table.vacancies tbody tr td a {
+	font-size: 14px; 
+	color: #767676;
+}
+   
+table.vacancies tbody:first-child tr:first-child td {
+	border-top: 0;
+}
+
+table.vacancies tbody:last-child tr:last-child td {
+	border-bottom: 1px solid #bfb7af;
+}
+
+table.vacancies tbody tr td:nth-of-type(even) {
+	background: #f7f7f7;
+}
+
+.link-more {
+	margin: 21px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.link-more a {
+	font-size: 14px; 
+	color: #767676;
+}
+
+table.companies-logo tbody tr td {
+	text-align: center; 
+	padding: 5px 12px 0 0;	
+   }
+   
+.hot-content {
+	height: 107px;
+	width: 210px;
+	margin-left: 28px;
+	margin-top: 0px;
+	float: left;
+}
+.hot-content p {
+	color: #767676;
+}
+.hot-content a {
+	font-size: 14px;
+	color: #e03007;
+}
+.hot-content h3 {
+	margin: 12px 0;
+	color: #bd451c;
+}
+/* Footer
+-----------------------------------------------------------------------------*/
+#footer {
+	width: 100%;
+	height: 165px;
+	background-color: #e2e2e1;
+	margin-top: 25px;
+}
+.social-networks {
+	width: 981px;
+	padding-top: 25px;
+	margin: 0 auto;
+}
+.social-networks h3, .social-networks p {
+	text-shadow: #ffffff 0 1px 0;
+	color: #7c7b78;
+	text-align:  center;
+}
+.icon {
+	width: 159px;
+	margin: 0 auto;
+	padding-top: 19px;
+}
+.icon .facebook, .icon .twitter {
+	margin-right: 15px;
+}
+
+.social-networks p {
+	margin-top: 19px;
+}
+
+/*-------------------------- page login and signup ---------------------------*/
+
+#small-block > span.logo {
+	width: 411px;
+	display: block;
+	padding: 20px 0;
+	position: relative;
+	float: none;
+	margin: 0 auto;
+}
+
+#small-block > span.logo > img {
+	margin-top: 20px;
+}
+
+#small-block #layout {
+	margin: 0 auto;
+	background-color: #FFFFFF;
+    border: 1px solid #DADBDB;
+    border-radius: 14px 14px 14px 14px;
+    box-shadow: 0 -3px 0 0 #DADBDB inset;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    width: 411px;
+}
+
+#small-block #layout > #content {
+	padding: 0px 28px;
+}
+
+div.link-navigate {
+	border-radius: 14px 14px 0 0;
+	height: 60px;
+	background-color: #2c2b30;
+}
+
+.link-navigate .title {
+	color: #ffcb08;
+	padding: 23px 0 0 28px;
+	float: left;
+}
+
+.link-navigate a {
+	color: #ffcb08;
+	text-decoration: none;
+	padding: 23px 28px 0 0;
+	float: right;
+}
+
+.enter-with {
+	padding: 14px 28px;
+	margin-top: 15px;
+	background-color: #f5f3f1;
+	/*height: 60px;*/
+	padding: ;
+	border-radius: 0 0 14px 14px;
+}
+
+.enter-with .title {
+	margin-right: 7px;
+	color: #767676;
+	display: inline-block;
+}
+
+form label {
+	color: #767676;
+}
+
+.field input[type="text"], .field input[type="email"], .field input[type="password"] {
+	height: 35px;
+	width: 351px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #cccccc;
+	color: #000000;
+	font-size: 13px;
+	padding-left: 7px;
+}
+
+#content .item {
+	margin-top: 15px;
+}
+
+.standart-form .input-sub {
+	margin: 15px 0px !important;
+}
+
+.link-help a {
+	color: #767676;
+	text-decoration: none;
+	margin-right: 15px;
+}
+
+.icon-small {
+	display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-small img {
+	margin-right: 5px;
+}
+/*----------------------------------------------------------------------------*/
