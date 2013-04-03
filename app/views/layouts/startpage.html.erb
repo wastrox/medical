@@ -14,7 +14,19 @@
 		<header id="header">
 		<img alt="" class="logo" src="http://netbee.net.ua/assets/img/logo.gif">
 		<div id="menu">
-			<div class="login"><%= link_to "Войти", login_path %></div> <div class="separator"></div> <a class="signup" href="#">Зарегистрироваться</a>
+				<% if current_user && current_user.employer? %>
+					<%= render :partial => 'layouts/employer_link_navbar'%>
+				<% elsif current_user && current_user.applicant? %>
+					<%= render :partial => 'layouts/applicant_link_navbar'%>
+				<% elsif current_user && current_user.account_type.nil? && current_user.active? %>
+					<%= link_to "Выбрать тип профиля", confirmation_account_type_url %>
+				<% elsif current_user && current_user.active? == false %>
+					<%# FIXME: подлючить ссылку "Ваш профиль не активирован" %>
+					<%= link_to "Ваш профиль не активирован", "#" %>
+				<% end %>
+				<%= link_to_if(current_user, "Выход", logout_path) do
+						render :partial => 'layouts/other_link_navbar' 
+					end %>
 		</div>
 	</header><!-- #header-->
 	<div id="content">

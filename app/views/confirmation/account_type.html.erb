@@ -24,7 +24,12 @@
 <div class="span5 offset3">
 	<h5>Регистрация</h5>
 	<div class="choice">
-		<p><%= link_to "Даю работу", :controller => "confirmation", :action => "employer", :token => current_user.token %> <%= link_to "Ищу работу", :controller => "confirmation", :action => "applicant", :token => current_user.token %></p>
+		<% if current_user.active? %>
+			<p><%= link_to "Даю работу", :controller => "confirmation", :action => "employer", :token => current_user.token %> <%= link_to "Ищу работу", :controller => "confirmation", :action => "applicant", :token => current_user.token %></p>
+		<% else %>
+		    <%# FIXME: подлючить ссылку "Ваш профиль не активирован" %>
+			<%= link_to "Ваш профиль не активирован", "#" %>
+		<% end %>
 	</div>
 
 </div>
