@@ -26,13 +26,13 @@ p {
 	/*font-family: "Open Sans"*/
 	margin: 0 0 12px;
 }
+
 img {
 	border: none;
 }
 input {
 	vertical-align: middle;
 }
-
 
 .clearfix:before, .clearfix:after {
 	content: " ";
@@ -83,7 +83,7 @@ input {
 	line-height: 25px;
 	vertical-align: middle;
 }
-.login a, .signup {
+.login a, .signup, .my-profile a {
 	font-size: 13px;
 	font-weight: bold;
 	color: #4d4d4d;
@@ -94,6 +94,13 @@ input {
 	vertical-align: middle;
 }
 
+.my-profile {
+	background: url("/assets/my-profile.png") no-repeat scroll left 3px transparent;
+	display: inline-block;
+	padding-left: 20px;
+	line-height: 25px;
+	vertical-align: middle;
+}
 .separator {
 	width: 1px;
 	height: 18px;
@@ -108,7 +115,7 @@ input {
 /* Middle
 -----------------------------------------------------------------------------*/
 #content {
-	
+	margin-top: 15px;
 }
 .search {
 	height: 99px;
@@ -465,6 +472,7 @@ div.link-navigate {
 }
 
 form label {
+    font-size: 14px;
 	color: #767676;
 }
 
@@ -475,9 +483,21 @@ form label {
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 	border: 1px solid #cccccc;
-	color: #000000;
-	font-size: 13px;
+	color: #767676;
+	font-size: 14px;
 	padding-left: 7px;
+}
+
+.field textarea {
+	height: 150px;
+	width: 351px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #cccccc;
+	color: #767676;
+	font-size: 14px;
+	7px: padding;
 }
 
 #content .item {
@@ -501,5 +521,196 @@ form label {
 
 .icon-small img {
 	margin-right: 5px;
+}
+/*----------------------------------------------------------------------------*/
+
+/*------------------------- create resume long ------------------------------*/
+
+#frame {
+	/*width: 691px;*/
+	width: 720px;
+	height: auto;
+	float: left;
+	background-color: #FFFFFF;
+    border: 1px solid #DADBDB;
+    border-radius: 14px 14px 14px 14px;
+    box-shadow: 0 -3px 0 0 #DADBDB inset;
+    display: inline-block;
+}
+
+.cap {
+	background-color: #f5f3f1;
+    border-radius: 14px 14px 0 0;
+    padding: 19px 22px 18px 30px;
+}
+
+.cap a {
+	margin-left: 6px;
+	color: #7a7979;
+	text-decoration: none;
+	border-bottom: 1px dashed #7a7979;
+}
+
+.cap a:hover {
+	border-bottom: none;
+}
+
+.cap img:first-child {
+	margin-left: 0;
+}
+
+.cap img {
+	vertical-align: middle;
+	margin-left: 36px;
+	margin-bottom: 2px;
+}
+
+.boxed {
+	padding: 24px 36px;
+}
+
+.boxed form a {
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.boxed form h2 {
+	color: #686868;
+	float: left;
+    margin-bottom: 23px;
+    width: 470px;
+}
+
+.boxed form .item > label {
+    display: inline-block;
+    margin: 5px 10px 0 0;     
+    vertical-align: top;
+    width: 180px;
+}
+
+.boxed form .item {
+	position: relative;
+}
+
+.boxed form .item > .field {
+	display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    /*width: 310px;*/
+}
+
+form #button-bottom {
+	display: block;
+	float: right;
+	margin-right: 65px;
+	margin-bottom: 18px;
+}
+
+form #button-bottom input[type="submit"]:first-child {
+	margin-right: 10px !important;
+}
+
+.line-bottom {
+	height: 5px;
+	background: url(/assets/border-line-for-profile.png) repeat-x scroll left center transparent;
+	display: block;
+	margin: 15px 0 30px;
+}
+
+#account-nav {
+	width: 231px;
+	height: auto;
+	background-color: #FFFFFF;
+    border: 1px solid #DADBDB;
+    border-radius: 14px 14px 14px 14px;
+    box-shadow: 0 -3px 0 0 #DADBDB inset;
+    display: inline-block;
+    float: right;
+}
+
+#account-nav .boxed-nav {
+	padding: 14px 36px;;
+}
+
+#account-nav .boxed-nav ul li {
+	list-style-type: none;
+	list-style-position: outside;
+}
+
+#account-nav .boxed-nav ul li a {
+	font-size: 14px;
+	color: #7a7979;
+	text-decoration: none;	
+}
+
+#account-nav .boxed-nav ul span.line-bottom {
+	margin: 10px -36px 14px -29px !important;
+}
+
+a.yellow-link {
+	float: right;
+	color: #e69800;
+	border-bottom: 1px dashed #e69800;
+}
+
+a.yellow-link:hover {
+	padding-bottom: 1px;
+	border-bottom: none;
+}
+
+a.red-link {
+	float: right;
+	color: #e74d25;
+	border-bottom: 1px dashed #e74d25;
+} 
+
+a.red-link:hover {
+	padding-bottom: 1px;
+	border-bottom: none;
+}
+
+a.yellow-link, a.red-link {
+	margin-bottom: 15px;
+}
+
+input.datepicker, input[type="tel"] {
+	width: 117px !important;
+}
+
+input[type="tel"] {
+	border: 1px solid #CCCCCC;
+    border-radius: 6px 6px 6px 6px;
+    color: #767676;
+    font-size: 14px;
+    height: 35px;
+    padding-left: 7px;
+    width: 351px;
+}
+
+a.upload-photo {
+	display: inline-block;
+	color: #e69800;
+	border-bottom: 1px dashed #e69800;
+	cursor: pointer;
+}
+
+form img {
+	font-size: 14px;
+	color: #767676;
+	display: block;
+	margin-bottom: 15px;
+}
+
+input#salary {
+	width: 70px;
+}
+
+input#salary + span {
+	font-size: 14px;
+	color: #767676;
+}
+
+input#education-year-till {
+	width: 80px;
 }
 /*----------------------------------------------------------------------------*/

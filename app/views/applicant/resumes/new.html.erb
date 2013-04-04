@@ -1,11 +1,19 @@
-<div class="content-resume">
-<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>
-	<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
-<div>
-	<%= applicant_fields.check_box :personal_data %>
-	<%= label :personal_data, "Защита персональных данных" %>
+<div class="cap">
+	<img src="/assets/save.png" class="icon-save"><a href="#">Сохранить</a>
+	<img src="/assets/delete.png" class="icon-vdelete"><a href="#">Удалить</a>
+	<img src="/assets/cancel.png" class="icon-cancel"><a href="#">Отменить</a>
 </div>
-<%= applicant_fields.submit "Сохранить", :class => "save_edit_button" %>
-<% end %>
+<div class="boxed">
+	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>				
+		<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
+		<div>
+			<%= applicant_fields.check_box :personal_data %>
+			<%= label :personal_data, "Защита персональных данных" %>
+		</div>
+		<div id="button-bottom">
+			<input type="submit" class="input-sub btn btn-danger" value="Отменить">
+			<%= applicant_fields.submit "Сохранить", :class => "input-sub btn btn-warning" %>
+		</div>
+	<% end %>
 	<div class="clear"></div>
 </div>

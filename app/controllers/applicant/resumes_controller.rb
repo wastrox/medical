@@ -18,12 +18,11 @@ class Applicant::ResumesController < ApplicationController
     
     # --- *** ---
     @resume.build_profile
-    @resume.experiences.build
-    @resume.educations.build
+    #@resume.experiences.build
+    #@resume.educations.build
   end
 
   def create
-    
     # FIXME: DRY, повторяется в методе new
 
     if @applicant.profile?

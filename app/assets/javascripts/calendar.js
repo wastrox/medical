@@ -2,7 +2,7 @@
     $( ".datepicker" ).datepicker({
       changeMonth: true,
       changeYear: true,
-      dateFormat: "dd/mm/yy",
+      dateFormat: "dd.mm.yy",
 	  dayNamesMin: [ "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" ],
 	  monthNamesShort: [ "Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Aug", "Sep", "Okt", "Nov", "Dec" ],
 	  showButtonPanel: false,

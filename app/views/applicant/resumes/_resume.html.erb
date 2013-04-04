@@ -1,4 +1,4 @@
-  <script>
+  <!--<script>
 	// FIXME: Объединить скрипт в файл standart_form.js
 	// Скрипт для изменения внешнего вида блока который будет удален(remove_nested_form)
 	$("a.remove_nested_fields").hover(
@@ -9,7 +9,8 @@
 	        $(this).parent().parent().parent().css("border", "none");
 	    }
 	  );
-  </script>
+  </script>-->
+
   <% if @resume.errors.any? %>
     <div class="error_messages">
       <ul>
@@ -19,13 +20,17 @@
       </ul>
     </div>
   <% end %>
-<h5>Профиль</h5>
-<div class="person-profile">
+
+<h2>Профиль</h2>
+<div class="profile">
     <%= applicant_fields.fields_for :profile do |profile_fields|%>
 			<%= render :partial => 'applicant/resumes/profile_fields', :locals => {:profile => profile_fields.object, :f => profile_fields} %>
 		<% end %>
 </div>
-<h5>Резюме</h5>
+<span class="line-bottom"></span>
+
+<div class="resume">
+	<h2>Резюме</h2>
 	<div class='item'>
 		<%= applicant_fields.label 'Желаемая должность'%>
 		<div class='field'>
@@ -41,29 +46,40 @@
 	<div class='item'>
 		<%= applicant_fields.label 'Желаемая зарплата'%>
 		<div class='field'>
-			<%= applicant_fields.text_field :salary, :value => "#{@resume.salary}", :class => "salary" %>
-			<i class="currency">грн</i>
+			<%= applicant_fields.text_field :salary, :value => "#{@resume.salary}", :id => "salary" %>
+			<span class="currency">грн.</span>
 		</div>
 	</div>
-<div id="person-resume">
-	
-	<h5 id="experiences">Опыт Работы</h5>				
-        <%= applicant_fields.fields_for :experiences do |experience_fields| %>
-          <%= render :partial => "applicant/resumes/experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
-        <%end %>
-		<%= applicant_fields.link_to_add "Добавить место работы", :experiences, :class => "add_fields_for" %>
+	<span class="line-bottom"></span>
+
+	<h2>Опыт Работы</h2>				
+
+    <%= applicant_fields.fields_for :experiences do |experience_fields| %>
+    	<%= render :partial => "applicant/resumes/experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
+    <%end %>
+
+	<%= applicant_fields.link_to_add "Добавить место работы", :experiences, :class => "yellow-link" %>
+
+	<div class="clearfix"></div>
+	<span class="line-bottom"></span>
 		
-	<h5 id="educations">Образование</h5>
-      <%= applicant_fields.fields_for :educations do |education_fields| %>
-        <%= render :partial => "applicant/resumes/education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
-      <% end %>
-      <%= applicant_fields.link_to_add "Добавить место учебы", :educations, :class => "add_fields_for" %>
+	<h2>Образование</h2>
+
+    <%= applicant_fields.fields_for :educations do |education_fields| %>
+    	<%= render :partial => "applicant/resumes/education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
+    <% end %>
+
+    <%= applicant_fields.link_to_add "Добавить место учебы", :educations, :class => "yellow-link" %>
+	
+	<div class="clearfix"></div>
+	<span class="line-bottom"></span>
   
-    <h5>Дополнительно</h5>
+    <h2>Дополнительно</h2>
 		<div class='item'>
 			<%= applicant_fields.label "Еще знаю и умею" %>
 			<div class='field'>
 				<%= applicant_fields.text_area :additional_info, :value => "#{@resume.additional_info}" %>
 			</div>
 		</div>
+	<span class="line-bottom"></span>
 </div>
