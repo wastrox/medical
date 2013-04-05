@@ -1,21 +1,3 @@
-<script>
-// FIXME: change this for something appropriate
-	$(".current_workplace:checkbox").click(function(){
-	    var check = $(this).attr('checked');
-	    var parent_date = $(this).parent().parent().find(".month_till, .year_till");
-	    if (check == "checked") {
-	        $(parent_date).css('display', 'none');
-			$(this).parent().addClass(".span_current_workplace_active"); //css("margin-top", "8px");
-	    }
-	    else{
-	        $(parent_date).css('display', 'inline');
-	    }
-	 });
-</script>
-<script src="/assets/selectbox.js" type="text/javascript"> 
-	//Скрипт для select 
-	//FIXME: не солилдно здесь оставлять этот скрипт так
-</script>
 
 <div class="line_top"></div>
 <div class='item'>
@@ -40,11 +22,15 @@
 <div class='item'>
      <%= f.label "Период работы"%>
 	 <div class='field'>
-		 <%= f.select(:month_from, ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"], {:include_blank => true }, {:class => "month_from styled"}) %> <%= f.text_field :year_from, :default_value => "год", :class => "year_from" %> &ndash;
-		<%= f.select(:month_till, ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"], {:include_blank => true }, {:class => "month_till styled"}) %> <%= f.text_field :year_till, :default_value => "год", :class => "year_till" %>
+	 	<div class="experience-date date-from">
+			<%= f.select(:month_from, month_helper, {:include_blank => "Месяц" }, {:class => "month_from styled"}) %> <%= f.select(:year_from, year_list_helper, {:include_blank => "Год"}, {:class => "year_from year styled"}) %>
+		</div>
+		<div class="experience-date date-till">
+			<%= f.select(:month_till, month_helper, {:include_blank => "Месяц" }, {:class => "month_till styled"}) %> <%= f.select(:year_till, year_list_helper, {:include_blank => "Год"}, {:class => "year_till year styled"}) %>
+		</div>
 	 	<span class="span_current_workplace">
-		<%= f.check_box(:current_workplace, {:class => "current_workplace"}, "true", "false")%>
-		<%= f.label :current_workplace, "Сейчас работаю здесь"%>
+			<%= f.check_box(:current_workplace, {:class => "current_workplace"}, "true", "false")%>
+			<%= f.label :current_workplace, "Сейчас работаю здесь"%>
 		</span>
 	 </div>	
 </div>

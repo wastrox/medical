@@ -1,4 +1,7 @@
+div.item > div.field > div.experience-date > span.selectbox > span.select, 
+div.item > div.field > div.dateTillEducation > span.selectbox > span.select, 
 div.item > div.field > span.selectbox > span.select {
+
   border: 1px solid #CCCCCC;
   background:url(/assets/select.png) no-repeat 90% 50% #fff;
   border-radius: 6px;
@@ -11,6 +14,19 @@ div.item > div.field > span.selectbox > span.select {
   padding-left: 6px;
   width: 100px;
 }
+
+div.item > div.field > div.experience-date > span.selectbox, 
+div.item > div.field > div.dateTillEducation > span.selectbox { 
+  margin: 0 15px 15px 0;
+}
+
+div.item > div.field > div.experience-date > span.selectbox > ul.dropdown, 
+div.item > div.field > div.dateTillEducation > span.selectbox > ul.dropdown {
+    border-radius: 6px;
+    top: 38px;
+    width: 105px;
+} 
+
 
 .selectbox {
 	vertical-align: middle;

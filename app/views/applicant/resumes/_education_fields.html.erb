@@ -40,7 +40,9 @@ $(".student_now:checkbox").click(function(){
 	<div class='item'>	
    		<%= f.label "Год окончания:" %>	
 		<div class='field'>		
-			<%= f.text_field :year_till, :class=> "only_year recent_till_education year_till", :id => "education-year-till" %>
+			<%# f.text_field :year_till, :class=> "only_year recent_till_education year_till", :id => "education-year-till" %>
+
+			<div class="dateTillEducation"><%= f.select(:year_till, year_list_helper, {:include_blank => "Год"}, {:class => "styled" }) %></div>
 			<div class='student'>
 				<%= f.check_box(:student, {:class => "student_now"}, "true", "false") %>
 				<%= f.label :student, "Еще учусь" %>

@@ -490,7 +490,7 @@ form label {
 
 .field textarea {
 	height: 150px;
-	width: 351px;
+	width: 359px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
@@ -712,5 +712,13 @@ input#salary + span {
 
 input#education-year-till {
 	width: 80px;
+}
+
+div.fields > div.item > div.field > input.year {
+	width: 70px;
+}
+
+#salary {
+	margin-right: 15px;
 }
 /*----------------------------------------------------------------------------*/
