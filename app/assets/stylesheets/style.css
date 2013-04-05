@@ -721,4 +721,15 @@ div.fields > div.item > div.field > input.year {
 #salary {
 	margin-right: 15px;
 }
+
+.fields {
+	position: static;
+	display: block;
+	width: 100%;
+}
+.fields .item {
+	position: static !important;
+	display: block;
+	width: 100% !important;
+}
 /*----------------------------------------------------------------------------*/

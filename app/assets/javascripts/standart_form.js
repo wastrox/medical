@@ -1,5 +1,7 @@
 // => FIXME: Объединить в отом файле все скрипты корорые были написаны для standart_form
 $(document).on('nested:fieldAdded', function(event){
+		$("#experience + .fields > a.red-link, #education + .fields > a.red-link").remove();
+
 		var field = event.field; 
 		var dateTillExperience = field.find('.date-till');
 		var checkboxExperience = field.find('.current_workplace');
@@ -27,6 +29,7 @@ $(document).on('nested:fieldAdded', function(event){
 		});
 });	
 
-$(document).on('nested:fieldRemoved', function(event){
-	
-});
+//$(document).on('mouseover', '.remove_nested_fields', function(event){
+	//var field = $(this).closest('.fields');
+	//$(field).animate({ opacity: "1", height: 'toggle' }, 1000);
+//});

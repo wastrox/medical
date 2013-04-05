@@ -57,7 +57,7 @@
 	</div>
 	<span class="line-bottom"></span>
 
-	<h2>Опыт Работы</h2>				
+	<h2 id="experience">Опыт Работы</h2>				
 
     <%= applicant_fields.fields_for :experiences do |experience_fields| %>
     	<%= render :partial => "applicant/resumes/experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
@@ -68,7 +68,7 @@
 	<div class="clearfix"></div>
 	<span class="line-bottom"></span>
 		
-	<h2>Образование</h2>
+	<h2 id="education">Образование</h2>
 
     <%= applicant_fields.fields_for :educations do |education_fields| %>
     	<%= render :partial => "applicant/resumes/education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
