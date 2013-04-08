@@ -1,85 +1,106 @@
-<style>
-	.nav { margin-bottom: 0px; } /* Строка навигации Редактировать Удалить Сделать не активным ,,,  */
-	.nav-pills li a {
-		background-color: #EEEEEE; 
-		margin-right: 10px;
-		} /* Строка навигации Редактировать Удалить Сделать не активным ,,, */
-	a.none:hover {
-		color: #767676;
-	}
-</style>
+<div class="cap">
+	<img src="/assets/save.png" class="icon-save"><a href="#">Сохранить</a>
+	<img src="/assets/delete.png" class="icon-vdelete"><a href="#">Удалить</a>
+	<img src="/assets/cancel.png" class="icon-cancel"><a href="#">Отменить</a>
+</div>
+<div class="boxed" id="cabinet">
+	<!--<div class="photo"><%# image_tag @profile.photo.url(:show), :class => "photo-applicant" %></div>
+	<div class="name-applicant"><h2><%# @fullName %></h2></div>-->
 
-					<!--<h2><a class="service" href="my_green.html">Мой Netbee</a> / <a class="service" href="my_resumes_full_green.html">Мои резюме</a> / <span class="current">Бизнес-аналитик</span></h2>--> <!-- Хлебные крошки оставленные, удачно подобраны цвета  -->
-			
-	<ul class="nav nav-pills">
-    	<li class=""><%= link_to("Редактировать", edit_applicant_resume_path(@resume.id)) %></li>
-    	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме?') %></li>
-    	<li><a href="#" class='none'>Сделать не активным</a></li>
-		<li><a href="#" class='none'>Экспортировать в PDF</a></li>
-  </ul>
-
-                <div class="middle-left">
-                    <table cellpadding="0" cellspacing="0" class="paper">
-                        <tr><td style="width: 20px; border: 0;" rowspan="30"></td><th colspan="2"><h2><%= @fullName %></h2></th><td style="width: 20px; border: 0;" rowspan="30">
-                        <tr><td nowrap="nowrap"><h4>Желаемая должность:</h4></td><td><p><%= @resume.position %></p></td></tr>
-						<tr><td nowrap="nowrap"><h4>Желаемая зарплата:</h4></td><td><p><%= @resume.salary %></p></td></tr>
-                        <tr><td nowrap="nowrap"><h4>Регион:</h4></td><td><p><%= @resume.city %></p></td></tr>
-                        <tr><td nowrap="nowrap"><h4>Электронная почта:</h4></td><td><p><a href="#"><%= @applicant.email %></a></p></td></tr>
-                        <tr><td nowrap="nowrap"><h4>Телефон:</h4></td><td><p><%= @resume.profile.phone %></p></td></tr>
-					<% if @resume.experiences.nil?%>
-							<tr><th colspan="2">Нет опыта работы</th></tr>
-					<% else %>
-                        	<tr><th colspan="2"><h3>Опыт работы</h3></th></tr> 
-						<% @resume.experiences.each do |experience| %>
-							<tr>
-								<td><h4><%= experience.position %></h4></td>
-								<td><p><%= "#{experience.company }, #{experience.month_from} #{experience.year_from}" %> – 
-									<% if experience.current_workplace %> 
-										настоящее время 
-									<% else %> 
-										<%= "#{experience.month_till}  #{experience.year_till}" %> 
-									<% end %></p><p><%= experience.achievements %></p>
-								</td>
-							</tr>
-						<% end %>
-					<% end %>
-					
+	<table cellpadding="0" cellspacing="0" class="photo-name-applicant">
+		<tr>
+			<td><%= image_tag @profile.photo.url(:show), :class => "photo-applicant" %></td>
+			<td><h2><%= @fullName %></td>
+		</tr>
+	</table>
+    <table class="paper" border="0" cellpadding="10">
+                        <tr>
+                        	<td>Желаемая должность</td>
+	                        <td><%= @resume.position %></td>
+                        </tr>
+						<tr>
+							<td>Желаемая зарплата</td>
+							<td><%= @resume.salary %></td>
+						</tr>
+                        <tr>
+                        	<td>Регион</td>
+                        	<td><%= @resume.city %></td>
+                        </tr>
+                        <tr>
+                        	<td>Электронная почта</td>
+                        	<td><%= @applicant.email %></td>
+                        </tr>
+                        <tr>
+                        	<td>Телефон</td>
+                        	<td><%= @resume.profile.phone %></td>
+                        </tr>
+                        <tr>
+                        	<th colspan="2" class="line-bottom"></th>
+                        </tr>
+                        <tr>
+							<% if @resume.experiences.nil? %>
+								<td><h3>Опыт работы</h3></td>
+								<td>Нет опыта работы</td>
+						</tr>
+							<% else %>
+	                        	<td><h3>Опыт работы</h3></td>
+	                        	<td></td>
+       					</tr>
+								<% @resume.experiences.each do |experience| %>
+								<tr>
+									<td><%= experience.position %></td>
+									<td><%= "#{experience.company }, #{experience.month_from} #{experience.year_from}" %> – 
+										<% if experience.current_workplace %> 
+											настоящее время 
+										<% else %> 
+											<%= "#{experience.month_till}  #{experience.year_till}" %> 
+										<% end %><%= experience.achievements %>
+									</td>
+								</tr>
+								<tr class="clear-border"><td></td><td></td></tr>
+								<% end %>
+							<% end %>
+						<tr>
+                        	<th colspan="2" class="line-bottom"></th>
+                        </tr>
 					<% unless @resume.educations.nil?%>
-						<tr><th colspan="2"><h3>Образование</h3></th></tr>
-						<% @resume.educations.each do |education| %>
+						<tr>
+							<td><h3>Образование<h3></td>
+							<td><td>
+						</tr>
+							<% @resume.educations.each do |education| %>			
 							<tr>
-								<td colspan="2" style="border: 0;">
-									<strong><%= "#{education.college}" "," %></strong> <%= "#{education.diploma}" "-" %> 
-									<% if education.student %> 
-										еще учусь. 
-									<% else %> 
-										<%= "год окончания" "#{education.year_till}"%>
-									<% end %>
-									
-									<% unless education.faculty.empty? %> 
-										<%= "Факультет " "#{education.faculty}" %>
-									<% end %> 
-									
-									<% unless education.profession.empty? %>
-										<%= "по специальности " "#{education.profession}" %>
-									<% end %>
-								</td>
-							</tr>
-							<!--<tr>
-								 <td colspan="2" style="border: 0;">
+							<td><%= "#{education.college}" %></td>
+							<td style="border: 0;">
+								<%= "#{education.diploma}" "-" %> 
 
-								</td>
-							</tr> -->
-						<% end %>
+								<% if education.student %> 
+									еще учусь. 
+								<% else %> 
+									<%= "год окончания" "#{education.year_till}"%>
+								<% end %>
+								
+								<% unless education.faculty.empty? %> 
+									<%= "Факультет " "#{education.faculty}" %>
+								<% end %> 
+								<% unless education.profession.empty? %>
+									<%= "по специальности " "#{education.profession}" %>
+								<% end %>
+							</td>
+							</tr>
+						<tr class="clear-border"><td></td><td></td></tr>
+
+							<% end %>
 					<% end %>
-					<% if @resume.additional_info.nil?%>
-						<tr><th colspan="2"><h3>Дополнительная информация</h3></th></tr>
-                        <tr><td><%= @resume.additional_info %></td></tr>
+					<tr>
+                      	<th colspan="2" class="line-bottom"></th>
+                    </tr>
+					<% unless @resume.additional_info.nil?%>
+						<tr>
+							<td><h3>Дополнительная</h3></td>
+                        	<td><%= @resume.additional_info %></td>
+                        </tr>
                         <tr><td colspan="2" style="border: 0; padding-bottom: 30px;"></td></tr>
 					<% end %>
-                    </table>
-                </div>
-	
-				
-
-
+				</table>    
+</div>

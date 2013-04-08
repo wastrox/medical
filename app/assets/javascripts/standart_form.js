@@ -29,7 +29,6 @@ $(document).on('nested:fieldAdded', function(event){
 		});
 });	
 
-//$(document).on('mouseover', '.remove_nested_fields', function(event){
-	//var field = $(this).closest('.fields');
-	//$(field).animate({ opacity: "1", height: 'toggle' }, 1000);
-//});
+$(document).ready(function(){
+
+});

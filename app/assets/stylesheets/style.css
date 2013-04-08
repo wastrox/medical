@@ -83,13 +83,13 @@ input {
 	line-height: 25px;
 	vertical-align: middle;
 }
-.login a, .signup, .my-profile a {
+.login a, .signup, .my-profile a , .about{
 	font-size: 13px;
 	font-weight: bold;
 	color: #4d4d4d;
 	text-decoration: none;
 }
-.signup {
+.signup, .about {
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -528,7 +528,7 @@ form label {
 
 #frame {
 	/*width: 691px;*/
-	width: 720px;
+	width: 730px;
 	height: auto;
 	float: left;
 	background-color: #FFFFFF;
@@ -644,7 +644,7 @@ form #button-bottom input[type="submit"]:first-child {
 }
 
 #account-nav .boxed-nav ul span.line-bottom {
-	margin: 10px -36px 14px -29px !important;
+	margin: 10px -36px 14px -35px !important;
 }
 
 a.yellow-link {
@@ -732,4 +732,65 @@ div.fields > div.item > div.field > input.year {
 	display: block;
 	width: 100% !important;
 }
+
+.student_now, .current_workplace, #resume_personal_data {
+	margin-top: -5px;
+}
+/*----------------------------------------------------------------------------*/
+
+/*------------------------------- resume/show --------------------------------*/
+#cabinet {
+	padding: 15px 26px 0px 36px;
+}
+
+table.photo-name-applicant {
+	margin-bottom: 15px;
+}
+
+table.photo-name-applicant tr td {
+	padding-right: 15px;
+}
+
+img.photo-applicant {
+	border-radius: 6px;
+}
+
+table.paper {
+	width: 100%;
+}
+
+table.paper tr {
+}
+
+table.paper tr td {
+	vertical-align: top;
+	height: 30px;
+}
+
+table.paper tr td:first-child {
+	width: 215px;
+	padding-right: 15px;
+	color: #767676;
+    font-size: 14px;
+}
+
+table.paper tr td:nth-child(2) {
+	color: #767676;
+    font: 14px/21px Helvetica,Arial,Tahoma,Verdana,sans-serif;
+	width: 423px;
+}
+
+table.paper tr th.line-bottom {
+	display: table-cell;
+	padding-bottom: 35px;
+}
+
+tr.clear-border td {
+	height: 10px !important; 
+}
+
+.not-padding {
+	padding-top: 0px !important;
+}
+	
 /*----------------------------------------------------------------------------*/
