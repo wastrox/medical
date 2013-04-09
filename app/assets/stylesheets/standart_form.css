@@ -102,18 +102,6 @@ input.salary {
     /*color: #3CA200;*/
 		margin-top: 10px;
  }
-
- div.line_top {
-    background: url("/assets/line.png") no-repeat scroll left center transparent;
-    height: 30px;
-    margin-bottom: 4px;
- }
-
- div.line_buttom {
-    background: url("/assets/line.png") no-repeat scroll left center transparent;
-    height: 40px;
-    position: relative;
- }
  
 span.remove_field {
     background: none repeat scroll 0 0 #FFFFFF;

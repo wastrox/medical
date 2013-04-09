@@ -1,4 +1,3 @@
-<h5>Общая информация</h5>
 <div class='item'>
 	<%= employer_fields.label :name, "Название компании" %>
 	<div class='field'>
@@ -24,9 +23,10 @@
 	</div>
 </div>
 <div class='item' style="margin-bottom: 0px;">
-   <%= employer_fields.label 'Логотип' %>
-   <div class='field'>
-     <%= image_tag @company.logo.url(:small) %>
- 	   <%= employer_fields.file_field :logo %>
-  </div>
+    <%= employer_fields.label 'Логотип компании' %>
+	<div class='field'>
+        <%= image_tag @company.logo.url(:small), :alt => "", :id => "image-path-photo" %>
+        <a class="upload-photo">Загрузить логотип</a>
+    	<%= employer_fields.file_field :logo, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
+	</div>
 </div>

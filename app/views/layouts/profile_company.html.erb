@@ -2,45 +2,52 @@
 <html>
 <head>
   <title>Medical</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "jquery-ui/jquery-ui-1.9.2.custom", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "selectbox-for-nestedform", "standart_form" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render :partial => 'layouts/navbar'%>
-
 <div class="notice"><p><%= flash[:notice] %></p></div>
 
-	<div class="wrapper">
-		<section>
-			<div class="content clearfix">
-				<div class="middle clearfix">
-					<div id="content-left">
-						<%= yield %>
-					</div>
-					<div class="middle-nav"><!-- Начало левой панели навигации моего кабинета  -->                     
-						<%= render :partial => 'layouts/right-nav'%>
-					</div> <!-- Коненц левой панели навигации -->
-				</div>
-			 </div>
+<div id="wrapper">
+	<header id="header">
+		<img alt="" class="logo" src="http://netbee.net.ua/assets/img/logo.gif">
+		<div id="menu">
+			<div class="my-profile"><a href="#">Мой профиль</a></div> <div class="separator"></div> <a class="about">О компании</a> <div class="separator"></div> <a class="signup" href="#">Выйти</a>
+		</div>
+	</header><!-- #header-->
+	<div id="content">
+		<div id="frame">
+			<%= yield %>
+		</div><!-- #frame -->
+
+		<div id="account-nav">
+			<div class="cap">
+				<a href="#">inreworking@gmail.com</a>
 			</div>
-		</section>
-	</div>
-	<footer>
-	    <div class="footer">
-	        <div>
-	            <p>&copy; 2005 <a href="#">Staff Centre Group Of Companies</a></p>
-	        </div>
-	        <div>
-	            <p>25 135 вакансий</p>
-	        </div>
-	        <div>
-	            <p>10 009 резюме</p>
-	        </div>
-	        <div>
-	            <p><a href="#">Guess Who designed it</a></p>
-	        </div>
-	    </div>
-	</footer>
+			<div class="boxed-nav">
+				<ul>
+					<li><a href="#">Профиль</a></li>
+					<span class="line-bottom"></span>
+					<li><a href="#">Вакансии</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div><!-- #content-->
+</div><!-- #wrapper -->
+
+<footer id="footer">
+	<div class="social-networks">
+		<h3>Мы в социальных сетях</h3>
+		<div class="icon">
+			<img alt="facebook" class="facebook" src="img/icon-facebook.png">
+			<img alt="twitter" class="twitter" src="img/icon-twitter.png">
+			<img alt="vk" class="vk" src="img/icon-vk.png">
+		</div>
+		<p>Design by Olga Jour, 2013</p>
+	</div>	
+</footer><!-- #footer -->
 </body>
 </html>

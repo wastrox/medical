@@ -168,7 +168,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .input-sub {
 	height: 35px;
 	/*width: 98px;*/
-	margin: 32px 0 0 19px;
+	/*margin: 32px 0 0 19px;*/
 	padding: 2px 12px 4px 12px;
 	/*-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
@@ -490,14 +490,14 @@ form label {
 
 .field textarea {
 	height: 150px;
-	width: 359px;
+	width: 345px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 	border: 1px solid #cccccc;
 	color: #767676;
 	font-size: 14px;
-	7px: padding;
+	padding: 7px;
 }
 
 #content .item {
@@ -566,7 +566,8 @@ form label {
 }
 
 .boxed {
-	padding: 24px 36px;
+	/*padding: 24px 36px;*/
+	padding: 0px 36px;
 }
 
 .boxed form a {
@@ -602,12 +603,7 @@ form label {
 form #button-bottom {
 	display: block;
 	float: right;
-	margin-right: 65px;
 	margin-bottom: 18px;
-}
-
-form #button-bottom input[type="submit"]:first-child {
-	margin-right: 10px !important;
 }
 
 .line-bottom {
@@ -688,6 +684,7 @@ input[type="tel"] {
 }
 
 a.upload-photo {
+	margin-top: 5px;
 	display: inline-block;
 	color: #e69800;
 	border-bottom: 1px dashed #e69800;
@@ -793,4 +790,11 @@ tr.clear-border td {
 	padding-top: 0px !important;
 }
 	
+/*----------------------------------------------------------------------------*/
+
+/*---------------------- employer/profile_companies/new ----------------------*/
+
+.remove-link-contact-company {
+	margin: 15px 0 5px !important;
+}
 /*----------------------------------------------------------------------------*/
