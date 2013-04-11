@@ -29,7 +29,7 @@ Medical::Application.routes.draw do
 	end
 
 	namespace :employer, :as => 'employer' do
-		resources :profile_companies, :only => [:edit, :update, :new, :create]
+		resources :profile_companies, :only => [:edit, :update, :new, :create, :show]
 		resources :vacancies
 		match 'vacancies/create_draft' => 'vacancies#create_draft'
 	end

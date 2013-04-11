@@ -2,8 +2,8 @@
 class Employer::ProfileCompaniesController < ApplicationController
  layout "profile_company"	
  before_filter :init_company, :only => [:new, :create]
- before_filter :find_company, :only => [:edit, :update]
- before_filter :find_employer, :only => [:create]
+ before_filter :find_company, :only => [:edit, :update, :show]
+ before_filter :find_employer, :only => [:create, :show]
  before_filter :require_account_type_employer, :check_account_type
 
 	def new
@@ -15,7 +15,7 @@ class Employer::ProfileCompaniesController < ApplicationController
 	  respond_to do |format|
       if @company.save
          @company.request # FIXME: заменить на фильтр 
-         format.html { redirect_to proc { edit_employer_profile_company_url(@company)}, notes: "Компания зарегестрирована"}
+         format.html { redirect_to proc { employer_profile_company_path(@company)}, notes: "Компания зарегестрирована"}
          format.json { render :json => @company, :status => :created, :location => @company }
       else
          format.html { render :action => "new" }
@@ -23,6 +23,10 @@ class Employer::ProfileCompaniesController < ApplicationController
       end
     end
 	end
+
+  def show
+    @contacts = @company.company_contacts
+  end
 	
 	def edit
 	end
@@ -38,7 +42,7 @@ class Employer::ProfileCompaniesController < ApplicationController
         vacancies = @company.vacancies.where("state = ?", "wait_company")
         vacancies.each {|v| v.request}
         # ---------------------------------------------------------------
-				format.html { render :action => "edit", notes: "Edit save" }
+				format.html { render :action => "show", notes: "Edit save" }
         format.json { render :json => @company, :status => :created, :location => @company }
       else
         format.html { render :action => "edit", notes: "Error" }

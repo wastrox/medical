@@ -1,0 +1,35 @@
+<div class="cap">
+	<img src="/assets/save.png" class="icon-save"><a href="#">Сохранить</a>
+	<img src="/assets/delete.png" class="icon-vdelete"><a href="#">Удалить</a>
+	<img src="/assets/cancel.png" class="icon-cancel"><a href="#">Отменить</a>
+</div>
+<div class="boxed" id="cabinet">
+
+	<table cellpadding="0" cellspacing="0" class="photo-name-applicant">
+		<tr>
+			<td><%= image_tag @company.logo.url(:small), :class => "photo-applicant" %></td>
+			<td><h2><%= @company.name %></h2></td>
+		</tr>
+	</table>
+    <table class="paper company" border="0" cellpadding="10">
+                        <tr>
+                        	<td>Сфера деятельности</td>
+	                        <td><%= @company.scope %></td>
+                        </tr>
+						<tr>
+							<td>Описание</td>
+							<td><%= @company.description %></td>
+						</tr>
+                        <tr>
+                        	<td>Сайт компании</td>
+                        	<td><%= @company.site %></td>
+                        </tr>
+                        <!--<tr>
+                        	<td>Контактная информация</td>
+                        	<td> <%# @contacts.each do |contact| %>
+                        			<div><%#= "#{contact.name} - #{contact.phone}" %></v>
+                        		 <%# end %>
+                        	</td>
+                        </tr>-->
+				</table>    
+</div>
