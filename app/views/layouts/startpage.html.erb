@@ -8,22 +8,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="notice"><p><%= flash[:notice] %></p></div>
+<!--<div class="notice"><p><%# flash[:notice] %></p></div>-->
 <div id="wrapper">
 		<header id="header">
 		<img alt="" class="logo" src="http://netbee.net.ua/assets/img/logo.gif">
 		<div id="menu">
+			<div class="my-profile">
 				<% if current_user && current_user.employer? %>
 					<%= render :partial => 'layouts/employer_link_navbar'%>
+					<div class="separator"></div>
 				<% elsif current_user && current_user.applicant? %>
 					<%= render :partial => 'layouts/applicant_link_navbar'%>
+					<div class="separator"></div>
 				<% elsif current_user && current_user.account_type.nil? && current_user.active? %>
 					<%= link_to "Выбрать тип профиля", confirmation_account_type_url %>
+					<div class="separator"></div>
 				<% elsif current_user && current_user.active? == false %>
 					<%# FIXME: подлючить ссылку "Ваш профиль не активирован" %>
 					<%= link_to "Ваш профиль не активирован", "#" %>
+					<div class="separator"></div>
 				<% end %>
-				<%= link_to_if(current_user, "Выход", logout_path) do
+			</div>
+				<%= link_to_if(current_user, "Выход", logout_path, :class => "signup") do
 						render :partial => 'layouts/other_link_navbar' 
 					end %>
 		</div>

@@ -24,6 +24,7 @@ Medical::Application.routes.draw do
 	resources :applicants
 	
   namespace :applicant, :as => 'applicant' do	
+    match "resumes/defer", to: "resumes#defer"
 		resources :resumes
 		resources :profiles, :only => [:edit, :update]
 	end

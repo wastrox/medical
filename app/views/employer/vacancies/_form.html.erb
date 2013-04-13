@@ -17,10 +17,10 @@
 	</div>
 </div>
 <div class='item'>
-	<%= f.label :salary, "Заработная плата" %>
+	<%= f.label :salary, "Зараплата" %>
 	<div class='field'>
-		<%= f.text_field :salary, :class => "salary" %>
-		<i class="currency">грн</i>
+		<%= f.text_field :salary, :id => "salary", :class => "salary" %>
+		<span class="currency">грн.</span>
 	</div>
 </div>
 <div class='item'>
@@ -32,9 +32,9 @@
 <div class='item'>
 	<%= f.label :timetable, "График работы" %>
 	<div class='field'>
-		<%= f.radio_button :timetable, "5/2", :class => "timetable" %> 5/2
-		<%= f.radio_button :timetable, "Посменно", :class => "timetable" %> Посменно
-		<%= f.radio_button :timetable, "Другой вариант", :id => "timetable_radio_button" %>Другой вариант
+		<%= f.radio_button :timetable, "5/2", :class => "timetable" %> <span>5/2</span>
+		<%= f.radio_button :timetable, "Посменно", :class => "timetable" %> <span>Посменно</span>
+		<%= f.radio_button :timetable, "Другой вариант", :id => "timetable_radio_button", :class => "timetable" %> <span>Другой вариант</span>
 		<%= f.text_field :timetable_other, :id => "timetable_input" %> 
 	</div>
 </div>
@@ -44,10 +44,9 @@
 		<%= f.text_area :description %>
 	</div>
 </div>
-<div class='item'>
+<div class='item' id="company-contact">
 	<%= f.label :company_contact_id, "Контакты" %>
 	<div class='field'>
-		<%# f.collection_select(:company_contact_id, @contactsHash['fullName'], :id, :name) %>
-		<%= f.select("company_contact_id", CompanyContact.where("company_id = ?", current_user.company.id ).collect {|p| [ "#{p.name} - #{p.phone}", p.id ] }, { :include_blank => true }, {:class => "vacancy_company_select", :id => "e2_2"})%>
+		<%= f.select("company_contact_id", CompanyContact.where("company_id = ?", current_user.company.id ).collect {|p| [ "#{p.name}: #{p.phone}", p.id ] }, { :include_blank => true }, {:class => "styled"})%>
 	</div>
 </div>

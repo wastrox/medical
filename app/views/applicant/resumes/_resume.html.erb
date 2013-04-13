@@ -62,12 +62,11 @@
 	<div class="clearfix"></div>
 	<span class="line-bottom"></span>
   
-    <h2>Дополнительно</h2>
+    <h2 id="additionally">Дополнительно</h2>
 		<div class='item'>
 			<%= applicant_fields.label "Еще знаю и умею" %>
 			<div class='field'>
 				<%= applicant_fields.text_area :additional_info, :value => "#{@resume.additional_info}" %>
 			</div>
 		</div>
-	<span class="line-bottom"></span>
 </div>

@@ -8,10 +8,13 @@
 		<h2>Общая информация</h2>
   		<%= render :partial => 'profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
 		
-		<span class="line-bottom"></span>
+		<span class="line-bottom line-bottom-company"></span>
 	
 		<h2 id="contacts-company">Контактная информация</h2>
 		<%= render :partial => 'contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
+
+		<span class="line-bottom line-bottom-company"></span>
+
 		<div id="button-bottom">
 			<%= employer_fields.submit "Сохранить", :class => "input-sub btn btn-warning" %>
 		</div>

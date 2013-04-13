@@ -1,25 +1,37 @@
-<table class="table">
+<div class="cap">
+  <h2 id="about">Список вакансий</h2>
+</div>
+<div class="boxed">
+<table class="table list-vacancies">
   <tr>
-    <th>Название вакансии</th>
+    <th>Название</th>
     <th>Регион</th>
     <th>Статус</th>
     <th></th>
-    <th></th>
-	<th></th>
+    <!--<th></th>
+	  <th></th>-->
   </tr>
 
 <% @vacancies.each do |vacancy| %>
   <tr>
     <td><%= vacancy.name %></td>
-	<td><%= vacancy.city %></td>
+	  <td><%= vacancy.city %></td>
     <td><%= vacancy.human_state_name %></td>
-    <td><%= link_to 'Просмотр', employer_vacancy_url(vacancy.id) %></td>
-    <td><%= link_to 'Редактировать', edit_employer_vacancy_path(vacancy) %></td>
-    <td><%= link_to 'Удалить', ([:employer, vacancy]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Просмотр', employer_vacancy_url(vacancy.id), :class => "yellow-link" %></td>
+    <!--<td><%# link_to 'Редактировать', edit_employer_vacancy_path(vacancy) %></td>
+    <td><%# link_to 'Удалить', ([:employer, vacancy]), method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
   </tr>
 <% end %>
+  <tr>
+    <td colspan="4"></td>
+  </tr>
+  <tr>
+  <td colspan="4"><%= link_to 'Добавить вакансию', new_employer_vacancy_path, :class => "add_fields_for input-sub btn btn-warning" %></td>
+  </tr>
 </table>
 
 <br />
-
-<%= link_to 'Добавить вакансию', new_employer_vacancy_path, :class => "add_fields_for" %>
+  <div id="button-bottom">
+    <%# link_to 'Добавить вакансию', new_employer_vacancy_path, :class => "add_fields_for input-sub btn btn-warning" %>
+  </div>
+</div>

@@ -167,6 +167,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 #btn-search{
 	margin: 32px 0 0 19px;
+	width: 98px;
+}
+
+#btn-login {
+	width: 98px;
 }
 
 .input-sub {
@@ -196,9 +201,6 @@ input[type="submit"].input-sub {
 }
 .input-city {
 	width: 151px;
-}
-.input-sub {
-	width: 98px;
 }
 
 #btn-cancel {
@@ -552,6 +554,11 @@ form label {
     display: inline-block;
 }
 
+.cap h2#about {
+	margin-left: 13px;
+	color: #767676;
+}
+
 .cap {
 	background-color: #f5f3f1;
     border-radius: 14px 14px 0 0;
@@ -709,7 +716,7 @@ form img {
 	font-size: 14px;
 	color: #767676;
 	display: block;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 }
 
 input#salary {
@@ -747,6 +754,10 @@ div.fields > div.item > div.field > input.year {
 .student_now, .current_workplace, #resume_personal_data {
 	margin-top: -5px;
 }
+
+#additionally + .item {
+	margin-bottom: 15px;
+}
 /*----------------------------------------------------------------------------*/
 
 /*------------------------------- resume/show --------------------------------*/
@@ -754,8 +765,12 @@ div.fields > div.item > div.field > input.year {
 	padding: 15px 26px 0px 36px;
 }
 
+table.photo-name-applicant h2 {
+	color: #727272;
+}
+
 table.photo-name-applicant {
-	margin-bottom: 15px;
+	margin: 5px 0px 10px;
 }
 
 table.photo-name-applicant tr td {
@@ -810,5 +825,205 @@ tr.clear-border td {
 
 .remove-link-contact-company {
 	margin: 15px 0 5px !important;
+}
+
+.line-bottom-company {
+	margin: 20px 0;
+}
+
+#contacts-company {
+	margin-top: ;
+}
+
+.add_company_contacts .yellow-link {
+	margin: 5px 0px 15px;
+}
+
+table.company tr:last-child td {
+	padding: 10px 0 15px;
+}
+/*----------------------------------------------------------------------------*/
+
+/*---------------------------- create vacancy --------------------------------*/
+/*-- btn save-as --*/
+.save-as {
+  width: auto;
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  padding: 2px 12px 4px;
+  margin: 0 15px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  border: 1px solid #cccccc;
+  *border: 0;
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  *margin-left: .3em;
+  box-shadow: 0 -2px 0 0 rgba(179, 173, 162, 0.83) inset;
+  -webkit-box-shadow: 0 -2px 0 0 rgba(179, 173, 162, 0.83) inset;
+  -moz-box-shadow: 0 -2px 0 0 rgba(179, 173, 162, 0.83) inset;
+  /*-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);*/
+}
+.save-as:hover,
+.save-as:focus,
+.save-as:active,
+.save-as.active,
+.save-as.disabled,
+.save-as[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+.save-as:active,
+.save-as.active {
+  background-color: #cccccc \9;
+}
+.save-as:first-child {
+  *margin-left: 0;
+}
+.save-as:hover,
+.save-as:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+.save-as:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.save-as.active,
+.save-as:active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+}
+
+#timetable_input {
+	margin-top: 15px;
+	display: block;
+}
+
+input[type="radio"].timetable, input[type="checkbox"] {
+	margin-top: -5px;
+    box-shadow: 0 1px 2px -1px #767676;
+    -webkit-box-shadow: 0 1px 2px -1px #767676;
+    -moz-box-shadow: 0 1px 2px -1px #767676;
+    border: 1px solid #A97232;
+}
+
+input[type="radio"] + span {
+	color: #767676;
+    font-size: 14px;
+    margin-right: 15px;
+
+}
+
+#company-contact {
+	margin-bottom: 15px;
+}
+
+#company-contact .selectbox {
+	margin: 0px;
+}
+
+#company-contact .select {
+	background: url("/assets/select.png") no-repeat scroll 97% 50% #FFFFFF;
+	width: 353px;	
+}
+#company-contact .selectbox ul.dropdown {
+	top: 39px;
+	width: 357px;
+}
+
+
+#company-contact .selectbox .select .text {
+	color: #767676;
+}
+
+img.photo-employer {
+    border-radius: 6px 6px 6px 6px;
+}
+
+.photo-name-employer {
+	margin: 20px 0px 10px;
+
+}
+
+table.photo-name-employer tr td {
+    padding-right: 15px;
+}
+
+table.list-vacancies {
+	margin: 15px 0 5px;
+}
+
+table.list-vacancies th {
+	border-top: none;
+}
+
+table.list-vacancies th, table.list-vacancies td {
+ 	color: #7A7979;
+    font-size: 14px;
+}
+
+table.list-vacancies tr:first-child th:first-child {
+	width: 235px;
+}
+
+
+table.list-vacancies tr:last-child td {
+	border-top: none;
+}
+
+table.list-vacancies tr td .yellow-link {
+	margin: 0px;
+	text-decoration: none;
+}
+
+.add_fields_for {
+	text-decoration: none;
+	color: rgba(105, 85, 28, 0.69) !important;
+    text-shadow: 0 1px 1px #FFFFFF !important;
+    height: 25px;
+    padding: 6px 12px 2px;
+    display: inline-block !important;
+    float: right;
+}
+
+.add_fields_for:active {
+	padding: 8px 12px 0px !important;
 }
 /*----------------------------------------------------------------------------*/

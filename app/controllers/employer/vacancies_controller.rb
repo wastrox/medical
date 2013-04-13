@@ -8,6 +8,7 @@ class Employer::VacanciesController < ApplicationController
   before_filter :init_vacancy, :only => [:new, :create, :check_vacancy_valid_and_save_in_draft]
   before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy, :check_vacancy_valid_and_update_in_draft]
   before_filter :find_contacts, :only => [:new, :edit]
+
   
   def index
     @vacancies = @company.vacancies
@@ -29,13 +30,15 @@ class Employer::VacanciesController < ApplicationController
         end
       end
     else
-      if @vacancy.save(:validate => false)
-        @vacancy.drafting # FIXME: заменить на filter
-        format.html { redirect_to employer_vacancies_url, notes: "Вакансия сохранена как черновик"}
-        format.json { render :json => @vacancy, :status => :created, :location => @company }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @vacancy.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @vacancy.save(:validate => false)
+          @vacancy.drafting # FIXME: заменить на filter
+          format.html { redirect_to employer_vacancies_url, notes: "Вакансия сохранена как черновик"}
+          format.json { render :json => @vacancy, :status => :created, :location => @company }
+        else
+          format.html { render :action => "new" }
+          format.json { render :json => @vacancy.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

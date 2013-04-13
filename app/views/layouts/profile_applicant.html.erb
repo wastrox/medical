@@ -4,7 +4,7 @@
   <title>Medical</title>
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "jquery-ui/jquery-ui-1.9.2.custom", :media => "all" %>
-  <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "selectbox-for-nestedform", "standart_form" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "standart_form", "selectbox", "selectbox-for-nestedform" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -14,7 +14,14 @@
 	<header id="header">
 		<img alt="" class="logo" src="http://netbee.net.ua/assets/img/logo.gif">
 		<div id="menu">
-			<div class="my-profile"><a href="#">Мой профиль</a></div> <div class="separator"></div> <a class="about">О компании</a> <div class="separator"></div> <a class="signup" href="#">Выйти</a>
+			<div class="my-profile">
+				<%= link_to_if(current_user.resume.nil?, "Создать резюме", new_applicant_resume_path) do 
+					link_to "Мой профиль", edit_applicant_resume_path(current_user.resume.id)
+				end %>
+			</div> <div class="separator"></div> 
+			<a class="about">О компании</a> 
+			<div class="separator"></div> 
+			<%= link_to "Выйти", logout_url, :class => "signup" %>
 		</div>
 	</header><!-- #header-->
 	<div id="content">
@@ -28,9 +35,14 @@
 			</div>
 			<div class="boxed-nav">
 				<ul>
-					<li><a href="#">Профиль</a></li>
+					<li><%= link_to_if(current_user.profile.nil?, "Профиль", new_applicant_resume_path) do
+							link_to "Профиль", edit_applicant_profile_path(current_user.profile.id)
+						 end %> <%# Class Profile - нужен если резюме удалено, профильные данные исправляются в профайле %>
+					</li>
 					<span class="line-bottom"></span>
-					<li><a href="#">Резюме</a></li>
+					<li><%=	link_to_if(current_user.resume.nil?, "Резюме", new_applicant_resume_path) do
+							link_to "Резюме", applicant_resume_path(current_user.resume.id)
+						end %></li>
 				</ul>
 			</div>
 		</div>

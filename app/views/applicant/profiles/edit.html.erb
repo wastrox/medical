@@ -1,51 +1,51 @@
- <script>
-    $( ".datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      dateFormat: "dd/mm/yy",
-      shortYearCutoff: 50
-    }); 
-</script>
-
-<%= form_for([:applicant, @profile], :html => { :class => 'standart_form' }) do |f| %>
-	<div class='item'>
-		<%= f.label 'Фамилия' %>
-		<div class='field'>
-			<%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
+<div class="cap">
+	<img src="/assets/save.png" class="icon-save"><a href="#" class="save-link">Сохранить</a>
+	<!--<img src="/assets/delete.png" class="icon-vdelete"><a href="#">Удалить</a>-->
+	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", edit_applicant_profile_path(@profile) %>
+</div>
+<div class="boxed">
+	<%= form_for([:applicant, @profile], :html => { :class => 'standart_form' }) do |f| %>
+		<div class='item'>
+			<%= f.label 'Фамилия' %>
+			<div class='field'>
+				<%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
+			</div>
 		</div>
-	</div>
-	<div class='item'>
-		<%= f.label 'Имя' %>
-		<div class='field'>
-			<%= f.text_field :firstname, :value => "#{@profile.firstname}" %>
+		<div class='item'>
+			<%= f.label 'Имя' %>
+			<div class='field'>
+				<%= f.text_field :firstname, :value => "#{@profile.firstname}" %>
+			</div>
 		</div>
-	</div>
-	<div class='item'>
-		<%= f.label 'Отчество' %>
-		<div class='field'>
-			<%= f.text_field :surename, :value => "#{@profile.surename}"%>
+		<div class='item'>
+			<%= f.label 'Отчество' %>
+			<div class='field'>
+				<%= f.text_field :surename, :value => "#{@profile.surename}"%>
+			</div>
 		</div>
-	</div>
-	<div class='item'>
-		<%= f.label 'Дата рождения' %>
-		<div class='field'>
-			<%= f.text_field :date, :value => "#{@profile.date}", :class => "datepicker", :placeholder => " дд/мм/гггг" %>
+		<div class='item'>
+			<%= f.label 'Дата рождения' %>
+			<div class='field'>
+				<%= f.text_field :date, :value => "#{@profile.date}", :class => "datepicker", :placeholder => " дд/мм/гггг" %>
+			</div>
 		</div>
-	</div>
-	<div class='item' style="margin-bottom: 0px;">
-		<%= f.label 'Мобильный телефон' %>
-		<div class='field'>
-			<%= f.text_field :phone, :value => "#{@profile.phone}" %>
-		</div>
-	</div>
 		<div class='item' style="margin-bottom: 0px;">
-   		<%= f.label 'Фото' %>
-   			<div class='field'>
-      		<%= image_tag @profile.photo.url(:small) %>
-      		<%= f.file_field :photo %>
-    		</div>
-  	</div>
-	<div class="buttons">
-		<%= f.submit 'Сохранить', :class => "save_edit_button button_profile" %>
-	</div>
-<% end %>
+			<%= f.label 'Мобильный телефон' %>
+			<div class='field'>
+				<%= f.text_field :phone, :value => "#{@profile.phone}" %>
+			</div>
+		</div>
+		<div class='item' style="margin-bottom: 0px;">
+	      <%= f.label 'Фото' %>
+	        <div class='field'>
+	          <%= image_tag @profile.photo.url(:small), :alt => "", :id => "image-path-photo" %>
+	          <a class="upload-photo">Загрузить фото</a>
+	          <%= f.file_field :photo, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
+	        </div>
+    	</div>
+		<div id="button-bottom">
+			<%= link_to "Отменить", "/", :id => "btn-cancel", :class => "input-sub btn btn-danger" %>
+			<%= f.submit "Сохранить", :class => "input-sub btn btn-warning", :name => "save" %>
+		</div>
+	<% end %>
+</div>

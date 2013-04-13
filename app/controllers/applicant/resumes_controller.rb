@@ -4,7 +4,7 @@ class Applicant::ResumesController < ApplicationController
   before_filter :findApplicant, :only => [:new, :create, :show, :edit, :update]
   before_filter :resumeExists?, :only => [:new, :create] # resumeExists? проверка резюме у applicant, если есть -->> /applicant/resume/show
   before_filter :initResume, :only => [:new, :create]
-  before_filter :findResume, :only => [:show, :destroy, :edit, :update]
+  before_filter :findResume, :only => [:show, :destroy, :edit, :update, :defer]
   before_filter :findProfile, :only => [:show, :edit, :update] #присваиваем @profile найденный профиль пользователя ( def findApplicant --> @applicant ), чтобы заполнить поля value in partial _profile_fields.html
 
   def new
@@ -45,7 +45,7 @@ class Applicant::ResumesController < ApplicationController
     end
 
     respond_to do |format|
-      if @resume.save 
+      if @resume.save
          @resume.request
          format.html { redirect_to :controller => 'resumes', :action => 'show', :id => @resume.id }
          format.json { render :json => @resume, :status => :created, :location => @resume }
@@ -78,10 +78,14 @@ end
 
   def destroy
     if @resume.destroy
-      redirect_to "/"
+      redirect_to edit_applicant_profile_path(@resume.profile)
     end
   end
 
+  def defer
+    @resume.defer
+    redirect_to applicant_resume_path(@resume)
+  end
 
   protected
 

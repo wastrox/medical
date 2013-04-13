@@ -1,69 +1,16 @@
-<style>
-	#profes-resume{
-		margin: 15px 0 0 0;
-	}
-	fieldset {
-    	border: 1px dashed black;
-    	margin: 10px;
-    	padding: 20px;
-  	}
-	.hint, .hint-pc {
-		background-color: #F0F0F0;
-		border-bottom-left-radius: 3px;
-		border-bottom-right-radius: 3px;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		float: left;
-		display: block;
-		height: 20px;
-		font-size: 14px;
-		padding-bottom: 4px;
-		padding-left: 0px;
-		padding-right: 0px;
-		margin: 0 15px 0 0;
-		text-align: center;
-		width: 100px;
-	}
-	.nav { 
-		margin: 0 0 0 0;
-		 } /* Строка навигации Редактировать Удалить Сделать не активным ,,,  */
-	.nav-pills li a {
-		background-color: #EEEEEE; 
-		margin-right: 10px;
-		} /* Строка навигации Редактировать Удалить Сделать не активным ,,, */
-	.nav-pills li a.save_edit_resume{
-		background-color: #99D2DE;
-	    color: #FFFFFF;
-	}
-	.nav-pills li a.cancel_edit_resume {
-		background-color: #EEEEEE;
-	}
-	/*.nav-pills li a.save_edit_resume:hover;{
-		text-decoration: none;
-		color: #fff;
-	}*/
-</style>
-
-<div class="content-resume">
-	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>	
-<ul class="nav nav-pills">
-  	<li class="">
-<%= applicant_fields.submit "Сохранить", :class => "save_edit_button" %></li>
-  	<li><%= link_to("Отменить", applicant_resume_path(@resume.id), :confirm => 'Уверены? Отменить все изменения в резюме?', :class => 'cancel_edit_resume') %></li>
-	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %></li>
-</ul>
-<hr / class="nav-line-buttom">
-	<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
-
-<ul class="nav nav-pills">
-	<li><%= applicant_fields.submit "Сохранить", :class => "save_edit_button" %></li>
-  	<li><%= link_to("Отменить", applicant_resume_path(@resume.id), :confirm => 'A you sure?', :class => 'cancel_edit_resume') %></li>
-	<li><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %></li>
-</ul>
-<% end %>
+<div class="cap">
+	<img src="/assets/save.png" class="icon-save"><a href="#" class="save-link">Сохранить</a>
+	<img src="/assets/delete.png" class="icon-vdelete"><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %>
+	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", applicant_resume_path(@resume) %>
+</div>
+<div class="boxed">
+	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>				
+		<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
+		
+		<div id="button-bottom">
+			<%= link_to "Отменить", "/", :id => "btn-cancel", :class => "input-sub btn btn-danger" %>
+			<%= applicant_fields.submit "Сохранить", :class => "input-sub btn btn-warning", :name => "save" %>
+		</div>
+	<% end %>
 	<div class="clear"></div>
 </div>
-
-
-
-

@@ -45,7 +45,7 @@ class Resume < ActiveRecord::Base
       end
 
       event :defer do
-        transition [:published, :hot, :secret] => :deferred
+        transition [:published, :hot, :secret, :pending] => :deferred
       end
 
       event :edit do

@@ -1,10 +1,20 @@
-<div class="content-company">	
+<div class="cap">
+	<img src="/assets/save.png" class="icon-save"><a href="#" class="save-link">Сохранить</a>
+	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", employer_profile_company_path(@company) %>
+</div>
+<div class="boxed">
 	<%= nested_form_for(@company, :url => {:action=>"update", :controller=>"employer/profile_companies"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
   		<%= render :partial => 'employer/profile_companies/profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
+
+  			<span class="line-bottom line-bottom-company"></span>
 	
-			<h5>Контактная информация</h5>
+			<h2 id="contacts-company">Контактная информация</h2>
+			
 			<%= render :partial => 'employer/profile_companies/contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
-		
-	<%= employer_fields.submit "Сохранить", :class => "save_edit_button" %>
+		<div id="button-bottom">
+			<%= link_to "Отменить", "/", :id => "btn-cancel", :class => "input-sub btn btn-danger" %>
+			<%= employer_fields.submit "Сохранить", :class => "input-sub btn btn-warning" %>
+		</div>		
 <% end %>
-</div> <!-- .content-company -->
+<div class="clear"></div>
+</div>

@@ -13,7 +13,7 @@ $(document).on('nested:fieldAdded', function(event){
 	        	$(dateTillExperience).animate({ opacity: "0", height: 'toggle' }, 700);
 	    	}
 	    	else{
-	        	$(dateTillExperience).animate({ opacity: "1", height: 'toggle' }, 1000);
+	        	$(dateTillExperience).stop().animate({ opacity: "1", height: 'toggle' }, 1000);
 	    	}
 		});
 
@@ -22,7 +22,7 @@ $(document).on('nested:fieldAdded', function(event){
 
 		$(checkboxEducation).click(function() {
 			if (this.checked) {				
-	        	$(dateTillEducation).animate({ opacity: "0", height: 'toggle' }, 700)
+	        	$(dateTillEducation).animate({ opacity: "0", height: 'toggle' }, 700);
 	    	}
 	    	else{
 	        	//$(dateTillEducation).css('display', 'block');
@@ -30,6 +30,17 @@ $(document).on('nested:fieldAdded', function(event){
 	    	}
 		});
 });	
+
+$(document).on('nested:fieldRemoved', function(event){
+	var field = event.field; 
+	var itemContactCompany = field.find('.item');
+	var input = field.find('.item > .field > input');
+
+	$(".remove-link-contact-company").click( function() {
+		//itemContactCompany.remove();
+		input.remove();
+	});
+});
 
 $(document).ready(function(){
   	$("#phone").inputmask("mask", {"mask": "+(999) 999 99 99"});
@@ -50,4 +61,65 @@ $(document).ready(function(){
 	$("#contacts-company + .fields > a.red-link").remove();
 	$("#contacts-company + .fields").css("margin-bottom", "15px");
 
+	//Условие стиля для чекбокса "Защита персональных данных" на странице резюме
+	$("#personal-date .field_with_errors").css("display", "inline-block");
+
+
+	//Скрипт для страницы employer/vacancies/new for radiobutton
+	var timetable = $("#timetable_radio_button").is(":checked");
+
+	if (timetable == true){
+			$("#timetable_input").css("display", "block")
+		}
+	else {
+			$("#timetable_input").css("display", "none")
+		}
+
+		$(".timetable").click(function() {
+
+			var otherOver = $("#timetable_radio_button").is(":checked");
+
+			if (otherOver == true) {				
+	        	$("#timetable_input").stop().animate({ opacity: "1", height: 'toggle' }, 500);				
+	    	}
+	    	else{
+	        	$("#timetable_input").css("display", "none")
+	    	}
+		});
+
+	//Для ссылки "Сохранить" на панели навигации
+	$(".save-link").click( function() {
+    	 $(".btn-warning").click();
+	});
+
+	//Для "Сейчас работаю здесь" и "Еще учусь" на странице resumes/:id/edit, скрывает select с датами
+	$(function (checkbox){
+	    var check = $("input:checkbox:checked")
+	    var parent_date = $(check).parent().parent().find(".date-till, .dateTillEducation");
+	    $(parent_date).css("display", "none");
+	});
+
+	$(".current_workplace").on("click", function(event){
+	    var parent_date = $(this).parent().parent().find(".date-till");
+	    var check = $(this).prop("checked");
+	    
+	    if (check == true){
+	        $(parent_date).animate({ opacity: "0", height: 'toggle' }, 700);
+	    }
+	    else {
+	        $(parent_date).stop().animate({ opacity: "1", height: 'toggle' }, 1000);
+	    }
+	});
+
+	$(".student_now").on("click", function(event){
+	    var parent_date = $(this).parent().parent().find(".dateTillEducation");
+	    var check = $(this).prop("checked");
+	    
+	    if (check == true){
+	        $(parent_date).animate({ opacity: "0", height: 'toggle' }, 700);
+	    }
+	    else {
+	        $(parent_date).stop().animate({ opacity: "1", height: 'toggle' }, 1000);
+	    }
+	});
 });

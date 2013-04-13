@@ -1,18 +1,18 @@
 <div class="cap">
-	<img src="/assets/save.png" class="icon-save"><a href="#">Сохранить</a>
-	<img src="/assets/delete.png" class="icon-vdelete"><a href="#">Удалить</a>
-	<img src="/assets/cancel.png" class="icon-cancel"><a href="#">Отменить</a>
+	<img src="/assets/save.png" class="icon-save"><a href="#" class="save-link">Сохранить</a>
+	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", edit_applicant_profile_path(@profile) %>
 </div>
 <div class="boxed">
 	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>				
 		<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
-		<div>
+		<div id="personal-date">
 			<%= applicant_fields.check_box :personal_data %>
 			<%= label :personal_data, "Защита персональных данных" %>
 		</div>
 		<div id="button-bottom">
-			<input type="submit" id="btn-cancel" class="input-sub btn btn-danger" value="Отменить">
-			<%= applicant_fields.submit "Сохранить", :class => "input-sub btn btn-warning" %>
+			<%# applicant_fields.submit "Отменить", :id => "btn-cancel", :class => "input-sub btn btn-danger", :name => "cancel" %>
+			<%= link_to "Отменить", "/", :id => "btn-cancel", :class => "input-sub btn btn-danger" %>
+			<%= applicant_fields.submit "Сохранить", :class => "input-sub btn btn-warning", :name => "save" %>
 		</div>
 	<% end %>
 	<div class="clear"></div>

@@ -251,7 +251,10 @@ input[type="button"].btn-block {
   background-color: #f4c31c \9;
 }
 .btn-danger {
-    color: #ffffff;
+  width: 72px;
+  height: 27px;
+  padding: 5px 12px 0px;  
+  color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #da4f49;
   background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
@@ -280,6 +283,8 @@ input[type="button"].btn-block {
 }
 .btn-danger:active,
 .btn-danger.active {
+  padding: 7px 12px 0;
+  height: 25px;
   background-color: #942a25 \9;
 }
 
