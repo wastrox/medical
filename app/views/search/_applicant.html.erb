@@ -1,0 +1,17 @@
+<div id="search-result">
+			<h4 class="title-last-vacancies"><span class="icon-last-vacancies">СПИСОК ВАКАНСИЙ</span></h4>
+			<span class="label-tail-last-vacancies"></span>
+			<table class="search-result" width="100%">
+				<% @vacancies.each do |vacancy| %>	
+					<tr>
+						<td><%= image_tag vacancy.company.logo.url(:search), :class => "photo-employer" %></td>
+						<td><%= link_to vacancy.name, :controller => :search, :action => :vacancy, :id => vacancy.id %></td>
+						<td><%= vacancy.city %></td>
+	    				<td><%= vacancy.salary %> грн.</td>
+					</tr>
+				<% end %>
+			</table>
+			<div class="link-more"><b><a href="#">Показать еще</a></b></div>
+	    <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
+
+</div>

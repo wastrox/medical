@@ -9,9 +9,10 @@ Medical::Application.routes.draw do
   get 'signup', to: 'accounts#new', as: 'signup'
   get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
-	get "search/applicant", to: "search#applicant"
-	get "search/vacancy", to: "search#vacancy"
-	get "search/vacancy/:id", to: "search#show"
+  get "search", to: "search#index"
+	
+  match "search/vacancy/:id", to: "search#vacancy"
+  match "search/resume/:id", to: "search#resume"
 
 	match "confirmation" => "confirmation#index"
   match "confirmation/account_type" => "confirmation#account_type"	

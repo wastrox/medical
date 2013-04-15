@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   http_basic_authenticate_with :name => "netbee", :password => "netbee"
   protect_from_forgery
-	helper_method :current_user #Это хелпер, метод контроллера applicant, в нашем случае предназначен для использования методе current_user в любов контроллере и любой вьюхе
+	helper_method :current_user #Это хелпер, метод контроллера applicant, в нашем случае предназначен для использования методе current_user в любом контроллере и любой вьюхе
   before_filter :set_locale
   before_filter :require_login
   

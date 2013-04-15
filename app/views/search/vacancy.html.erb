@@ -1,52 +1,58 @@
-<script>
-//	FIXME: DELETE SCRIPT
-	
-	$(document).ready(function(){
-		$(".form-search, .search-applicant").css("display", "none");
-	});
-</script>
-<style>
-	.create-button a {
-			font-size: 1.55em;
-			float: left;
-			padding-right: 10px;
-	}
-	.create-resume{
-			padding: 30px;
-			background: none;
-			border: 1px solid #767676;
-			border-radius: 10px;	
-	}		
-</style>
-<%= form_tag search_vacancy_path, method: :get do %>
-						<div class="search"> 
-                <ul>
-                    <li class="active"><a href="#">Работу</a></li>
-                    <li><a href="#">Сотрудника</a></li>
-                </ul>
-                <div class="search-box clearfix">
-                    <%= text_field_tag :search, params[:search], :class => "input-text" %>
-                    <%= text_field_tag :city, params[:city], :class => "input-city" %>
-                    <%= submit_tag "Найти", name: nil, :class => "input-sub" %>
-                </div>
-            </div> 	
-<% end %>
+<div id="frame">
+      <div class="cap">
+            <h2 id="about"><%= "#{@vacancy.name} (#{@vacancy.experiences}, #{@vacancy.salary} грн.)" %></h2>
+      </div>
 
-<table class="table">
-  <tr>
-    <th>Название вакансии</th>
-    <th>З/П</th>
-    <th>Регион</th>
-  <th></th>
-  </tr>
-
-<% @vacancies.each do |vacancy| %>
-  <tr>
-    <td><%= vacancy.name %></td>
-    <td><%= vacancy.salary %></td>
-  <td><%= vacancy.city %></td>
-    <td><%= link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %></td>
-  </tr>
-<% end %>
-</table>
-
+      <div class="boxed">
+      	<table cellpadding="0" cellspacing="0" class="photo-name-employer">
+      		<tr>
+      			<td><%= image_tag @vacancy.company.logo.url(:small), :class => "photo-employer" %></td>
+      			<td><h2>&#171;<%= @vacancy.company.name %>&#187;</h2></td>
+      		</tr>
+      	</table>
+          <table class="paper company" border="0" cellpadding="10">
+                              <tr>
+                              	<td>Должность</td>
+      	                        <td><%= @vacancy.name %></td>
+                              </tr>
+      						<tr>
+      							<td>Зарплата</td>
+      							<td><%= @vacancy.salary %></td>
+      						</tr>
+                              <tr>
+                              	<td>Регион</td>
+                              	<td><%= @vacancy.city %></td>
+                              </tr>
+                              <tr>
+                              	<td>Опыт работы</td>
+                              	<td><%= @vacancy.experiences %></td>
+                              </tr>
+                              <tr>
+                              	<td>График работы</td>
+                              	<td><%= @vacancy.timetable %></td>
+                              </tr>
+                              <tr>
+                              	<td>Описание вакансии</td>
+                              	<td><%= @vacancy.description %></td>
+                              </tr>
+                              <tr>
+                              	<th colspan="2" class="line-bottom"></th>
+                              </tr>
+                              <tr>
+                              	<td>Контактная информация</td>
+                              	<td> <% @vacancy.company.company_contacts.each do |contact| %>
+                              			<div><%= "#{contact.name}: #{contact.phone}" %></v>
+                              		 <% end %>
+                              	</td>
+                              </tr>
+                              <tr>
+                                    <th colspan="2" class="line-bottom"></th>
+                              </tr>
+      				</table>    
+                              <div id="button-bottom">
+                                    <%= link_to "Откликнуться на вакансию", "/", :class => "input-sub btn btn-warning", :id => "btn-yellow-for-link" %>
+                                    <div class="clear"></div>
+                              </div>
+      </div> <!-- #boxed -->
+</div> <!-- #frame -->
+<div class="clear"></div>

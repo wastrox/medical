@@ -21,7 +21,7 @@
                         </tr>
 						<tr>
 							<td>Желаемая зарплата</td>
-							<td><%= @resume.salary %></td>
+							<td><%= @resume.salary %> грн.</td>
 						</tr>
                         <tr>
                         	<td>Регион</td>
@@ -50,12 +50,13 @@
 								<% @resume.experiences.each do |experience| %>
 								<tr>
 									<td><%= experience.position %></td>
-									<td><%= "#{experience.company }, #{experience.month_from} #{experience.year_from}" %> – 
+									<td>"<%= experience.company %>", <%= "#{experience.month_from} #{experience.year_from}" %> – 
 										<% if experience.current_workplace %> 
-											настоящее время 
+											настоящее время. 
 										<% else %> 
-											<%= "#{experience.month_till}  #{experience.year_till}" %> 
-										<% end %><%= experience.achievements %>
+											<%= "#{experience.month_till}  #{experience.year_till}." %>
+										<% end %>
+										<p><%= experience.achievements %></p>
 									</td>
 								</tr>
 								<tr class="clear-border"><td></td><td></td></tr>
@@ -73,20 +74,23 @@
 							<tr>
 							<td><%= "#{education.college}" %></td>
 							<td style="border: 0;">
-								<%= "#{education.diploma}" "-" %> 
+								<% unless education.profession.empty? %>
+									<%= "#{education.profession}" %>
+								<% end %>
+
+								<% unless education.faculty.empty? %> 
+									<p><%= "Факультет " "#{education.faculty}" %></p>
+								<% end %> 
+
+								<p><%= "#{education.diploma} -" %> 
 
 								<% if education.student %> 
 									еще учусь. 
 								<% else %> 
-									<%= "год окончания" "#{education.year_till}"%>
+									<%= "год окончания #{education.year_till}"%>
 								<% end %>
+								</p>
 								
-								<% unless education.faculty.empty? %> 
-									<%= "Факультет " "#{education.faculty}" %>
-								<% end %> 
-								<% unless education.profession.empty? %>
-									<%= "по специальности " "#{education.profession}" %>
-								<% end %>
 							</td>
 							</tr>
 						<tr class="clear-border"><td></td><td></td></tr>
@@ -101,7 +105,6 @@
 							<td><h3>Дополнительная</h3></td>
                         	<td><%= @resume.additional_info %></td>
                         </tr>
-                        <tr><td colspan="2" style="border: 0; padding-bottom: 30px;"></td></tr>
 					<% end %>
 				</table>    
 </div>

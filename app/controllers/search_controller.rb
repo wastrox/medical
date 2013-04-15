@@ -1,21 +1,23 @@
 # coding: utf-8
 class SearchController < ApplicationController
-	layout "startpage"
+	layout "search"
+	skip_before_filter :require_login, :only => [:index, :resume, :vacancy]
 	
+	def index
+		search_params = params[:search].to_s + " " + params[:city].to_s 
+		if params[:sample] == "1"
+			@vacancies = Vacancy.search(search_params)
+		else
+			@resumes = Resume.search(search_params)
+		end
+	end
 
-	def applicant 
+	def resume
+		@resume = Resume.find(params[:id])
+		@fullName = "#{@resume.profile.lastname} #{@resume.profile.firstname} #{@resume.profile.surename}"
 	end
 
 	def vacancy
-    search_params = params[:search].to_s + " " + params[:city].to_s 
-		@vacancies = Vacancy.search(search_params)
-	end
-
-	def show
-		if current_user.applicant?
-			@vacancy = Vacancy.find(params[:id])
-		else
-			@employer = Applicant.find(params[:id])
-		end
+		@vacancy = Vacancy.find(params[:id])
 	end
 end

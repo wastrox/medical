@@ -43,10 +43,13 @@ $(document).on('nested:fieldRemoved', function(event){
 });
 
 $(document).ready(function(){
-  	$("#phone").inputmask("mask", {"mask": "+(999) 999 99 99"});
+  	$("#phone").inputmask("mask", {"mask": "(099) 999 99 99"});
   	$("a.upload-photo").click(function(){
   		$("#file").click();
 	});
+
+		// Удаляет ссылки remove первых, обязательных, fields_for(Опыт работы, Образование)
+		$("#experience + .fields > a.red-link, #education + .fields > a.red-link").remove();
 
   	// Удаляет пустой тег img (когда нет логотипа компании или фотографии соискателя), пустой тег img ломает верстку
 	var img = $("#image-path-photo").attr("src");

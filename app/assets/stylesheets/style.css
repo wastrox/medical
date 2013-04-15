@@ -212,6 +212,21 @@ input[type="submit"].input-sub {
 
 #btn-cancel:active {box-shadow: inset 0 4px 9px rgba(0,0,0,.29), 0 5px 3px rgba(0,0,0,.05);}
 
+#btn-yellow-for-link {
+	height: 27px;
+	padding: 6px 12px 0px;
+	text-decoration: none;
+	color: rgba(105, 85, 28, 0.69);
+    text-shadow: 0 1px 1px #FFFFFF;
+    float: right;
+    margin-bottom: 25px;
+}
+
+#btn-yellow-for-link:active {
+	height: 25px;
+	padding: 8px 12px 0px;
+}
+
 .hot-vacancies {
 	position: relative;
 	margin-top: 30px;
@@ -645,6 +660,10 @@ form #button-bottom {
     float: right;
 }
 
+#image-path-photo {
+	border-radius: 6px;
+}
+
 #account-nav .boxed-nav {
 	padding: 14px 36px;;
 }
@@ -783,6 +802,7 @@ img.photo-applicant {
 
 table.paper {
 	width: 100%;
+	padding-bottom: 20px;
 }
 
 table.paper tr {
@@ -1025,5 +1045,61 @@ table.list-vacancies tr td .yellow-link {
 
 .add_fields_for:active {
 	padding: 8px 12px 0px !important;
+}
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------- Search ---------------------------------------*/
+#search-result {
+	position: relative;
+	margin-top: 30px;
+	width: auto;
+	height: auto;
+	border: 1px solid #dadbdb;
+	background-color: #ffffff;
+	border-radius: 14px;
+	box-shadow: inset 0 -3px 0 0 #dadbdb;
+}
+
+table.search-result {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table.search-result tbody tr td {
+	height: 40px;
+	vertical-align: middle;
+	font-size: 14px; 
+	color: #767676;
+	text-align: center; 
+	padding: 10px 20px 10px 25px;
+	line-height: 20px;
+	border-top: 1px solid #bfb7af;	
+   }
+   
+
+table.search-result tbody tr td:first-child {
+	width: 30px;
+}
+
+table.search-result tbody tr td:nth-child(2) {
+  width: 550px;
+  text-align: left; 
+}
+
+table.search-result tbody tr td a {
+	font-size: 14px; 
+	color: #767676;
+}
+   
+table.search-result tbody:first-child tr:first-child td {
+	border-top: 0;
+}
+
+table.search-result tbody:last-child tr:last-child td {
+	border-bottom: 1px solid #bfb7af;
+}
+
+table.search-result tbody tr td:nth-of-type(even) {
+	background: #f7f7f7;
 }
 /*----------------------------------------------------------------------------*/

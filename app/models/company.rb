@@ -1,6 +1,6 @@
 class Company < ActiveRecord::Base
   attr_accessible :logo, :description, :name, :scope, :site, :company_contacts_attributes
-	has_attached_file :logo, :styles => { :small => "80x109>" }
+	has_attached_file :logo, :styles => { :small => "80x109>", :search => "40x38" }
 
   belongs_to :employer
   has_many :vacancies, :dependent => :destroy
