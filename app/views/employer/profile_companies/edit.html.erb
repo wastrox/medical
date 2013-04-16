@@ -11,6 +11,9 @@
 			<h2 id="contacts-company">Контактная информация</h2>
 			
 			<%= render :partial => 'employer/profile_companies/contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
+			
+		<span class="line-bottom line-bottom-company"></span>
+
 		<div id="button-bottom">
 			<%= link_to "Отменить", "/", :id => "btn-cancel", :class => "input-sub btn btn-danger" %>
 			<%= employer_fields.submit "Сохранить", :class => "input-sub btn btn-warning" %>

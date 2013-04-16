@@ -905,7 +905,8 @@ tr.clear-border td {
 }
 
 .add_company_contacts .yellow-link {
-	margin: 5px 0px 15px;
+	/*margin: 5px 0px 15px;*/
+	margin:  5px 0px 0px
 }
 
 table.company tr:last-child td {

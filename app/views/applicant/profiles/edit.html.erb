@@ -43,6 +43,9 @@
 	          <%= f.file_field :photo, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
 	        </div>
     	</div>
+    	
+		<span class="line-bottom line-bottom-company"></span>
+
 		<div id="button-bottom">
 			<%= link_to "Отменить", "/", :id => "btn-cancel", :class => "input-sub btn btn-danger" %>
 			<%= f.submit "Сохранить", :class => "input-sub btn btn-warning", :name => "save" %>

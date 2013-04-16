@@ -6,6 +6,8 @@
 <div class="boxed">
 	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>				
 		<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
+
+		<span class="line-bottom line-bottom-company"></span>
 		
 		<div id="button-bottom">
 			<%= link_to "Отменить", "/", :id => "btn-cancel", :class => "input-sub btn btn-danger" %>
