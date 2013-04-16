@@ -32,7 +32,13 @@
                         </tr>
                         <tr>
                         	<td>График работы</td>
-                        	<td><%= @vacancy.timetable %></td>
+                        	<td>
+                                  <% if @vacancy.timetable == "Другой вариант" %>
+                                    <%= @vacancy.timetable_other %>
+                                  <% else %>
+                                    <%= @vacancy.timetable %>
+                                  <% end %>
+                              </td>
                         </tr>
                         <tr>
                         	<td>Описание вакансии</td>
