@@ -1,6 +1,21 @@
-<%= form_for([:employer, @vacancy], :html => {:class => "standart_form"}) do |f| %>
-	<%= render :partial => "form", :locals => { :f => f } %>
-	<%= f.submit "Сохранить", :class => "save_edit_button", :name => "save" %>
-	<%= f.submit "Сохранить как черновик", :name => "save_draft", :class => "save_edit_button" %>
-	<%= link_to 'Удалить', ([:employer, @vacancy]), method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+<div class="cap">
+	<img src="/assets/save.png" class="icon-save"><a href="#" class="save-link">Сохранить</a>
+	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", employer_vacancies_url %>
+	<img src="/assets/delete.png" class="icon-vdelete"><%= link_to 'Удалить', ([:employer, @vacancy]), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить вакансию' } %>
+	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Скрыть", :controller => "employer/vacancies", :action => :defer, :id => @vacancy.id %>
+</div>
+
+<div class="boxed">
+
+	<%= form_for([:employer, @vacancy], :html => {:class => "standart_form"}) do |f| %>
+		<h2>Редактирование вакансии</h2>
+		<%= render :partial => "form",	 :locals => { :f => f } %>
+
+		<span class="line-bottom line-bottom-company"></span>
+
+		<div id="button-bottom">
+			<%= f.submit "Сохранить как черновик", :name => "save_draft", :class => "input-sub btn save-as" %>
+			<%= f.submit "Опубликовать", :class => "input-sub btn btn-warning", :name => "save" %>
+		</div>
+	<% end %>
+</div>

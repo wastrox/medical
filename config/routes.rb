@@ -34,6 +34,7 @@ Medical::Application.routes.draw do
 		resources :profile_companies, :only => [:index, :edit, :update, :new, :create, :show]
 		resources :vacancies
 		match 'vacancies/create_draft' => 'vacancies#create_draft'
+    match 'vacancies/defer/:id' => 'vacancies#defer'
 	end
 	
 	match "/admin" => redirect("/admin/companies")

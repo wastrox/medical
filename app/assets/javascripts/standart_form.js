@@ -125,4 +125,24 @@ $(document).ready(function(){
 	        $(parent_date).stop().animate({ opacity: "1", height: 'toggle' }, 1000);
 	    }
 	});
+
+	//Для фотографии соискателя и работодателя
+	$('form input[type=file]').change(function() {
+	    var v = $("#file").val();
+	    if (v != '' ) {
+	        $(".photo-msg").remove();
+	        $(".upload-photo").before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
+	        $(".upload-photo").text("Изменить фото");
+	    }
+	    else {
+	    	$(".photo-msg").remove();
+	        $(".upload-photo").before('<p class="photo-msg">Фото не выбрано</p>');
+	    }
+	});
+
+	//Изменяет текст ссылки "Загрузить фото" на "Изменить фото"
+	var image = $('#image-path-photo').attr("src");
+    if (image != '/photos/small/missing.png' ) {
+        $(".upload-photo").text("Изменить фото");
+    }
 });

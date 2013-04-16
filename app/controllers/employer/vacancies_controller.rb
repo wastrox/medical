@@ -6,7 +6,7 @@ class Employer::VacanciesController < ApplicationController
   before_filter :find_employer, :only => [:find_company, :index, :new, :create]
   before_filter :find_company, :only => [:index, :new, :create]
   before_filter :init_vacancy, :only => [:new, :create, :check_vacancy_valid_and_save_in_draft]
-  before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy, :check_vacancy_valid_and_update_in_draft]
+  before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy, :check_vacancy_valid_and_update_in_draft, :defer]
   before_filter :find_contacts, :only => [:new, :edit]
 
   
@@ -82,6 +82,11 @@ class Employer::VacanciesController < ApplicationController
     else
       flash[:notes] = "Error" 
     end
+    redirect_to employer_vacancies_url
+  end
+
+  def defer
+    @vacancy.defer
     redirect_to employer_vacancies_url
   end
   

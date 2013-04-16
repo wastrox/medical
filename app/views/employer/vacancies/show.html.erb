@@ -1,7 +1,7 @@
 <div class="cap">
-	<img src="/assets/save.png" class="icon-save"><a href="#">Сохранить</a>
-	<img src="/assets/delete.png" class="icon-vdelete"><a href="#">Удалить</a>
-	<img src="/assets/cancel.png" class="icon-cancel"><a href="#">Отменить</a>
+	<img src="/assets/red-pencil.png" class="icon-red-pencil"><%= link_to "Редактировать", edit_employer_vacancy_path(@vacancy) %>
+	<img src="/assets/delete.png" class="icon-delete"><%= link_to("Удалить", employer_vacancy_path(@vacancy), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить вакасию') %>
+	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Скрыть", :controller => "employer/vacancies", :action => :defer, :id => @vacancy.id %>
 </div>
 
 <div class="boxed">

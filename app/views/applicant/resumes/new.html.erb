@@ -1,6 +1,6 @@
 <div class="cap">
 	<img src="/assets/save.png" class="icon-save"><a href="#" class="save-link">Сохранить</a>
-	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", edit_applicant_profile_path(@profile) %>
+	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", root_path %>
 </div>
 <div class="boxed">
 	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>				
