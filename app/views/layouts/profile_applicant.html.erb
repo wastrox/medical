@@ -30,7 +30,9 @@
 
 		<div id="account-nav">
 			<div class="cap">
-				<a href="#"><%= current_user.email %></a>
+				<%= link_to_if(current_user.profile.nil?, current_user.email, new_applicant_resume_path) do
+							link_to current_user.email, edit_applicant_profile_path(current_user.profile.id)
+						 end %> 
 			</div>
 			<div class="boxed-nav">
 				<ul>
