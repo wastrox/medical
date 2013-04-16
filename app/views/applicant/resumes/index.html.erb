@@ -1,0 +1,20 @@
+<div class="cap">
+  <h2 id="about">Резюме</h2>
+</div>
+<div class="boxed">
+<table class="table list-resume">
+  <tr>
+    <th>Имя</th>
+    <th>Статус</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= link_to @fullName, applicant_resume_path(@resume) %></td>
+    <td><%= @resume.human_state_name %></td>
+    <td><%= link_to 'Редактировать', edit_applicant_resume_path(@resume), :class => "yellow-link" %></td>
+  </tr>
+  <tr>
+    <td colspan="3"></td>
+  </tr>
+</table>
+</div>

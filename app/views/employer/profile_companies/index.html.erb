@@ -1,0 +1,22 @@
+<div class="cap">
+  <h2 id="about">Компания</h2>
+</div>
+<div class="boxed">
+<table id="list-company" class="table list-vacancies">
+  <tr>
+    <th>Название</th>
+    <th>Статус</th>
+    <th></th>
+    <!--<th></th>
+	  <th></th>-->
+  </tr>
+  <tr>
+    <td><%= link_to @company.name, employer_profile_company_path(@company) %></td>
+    <td><%= @company.human_state_name %></td>
+    <td><%= link_to 'Редактировать', edit_employer_profile_company_url(@company), :class => "yellow-link" %></td>
+  </tr>
+  <tr>
+    <td colspan="4"></td>
+  </tr>
+</table>
+</div>
