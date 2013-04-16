@@ -1,4 +1,6 @@
 Medical::Application.routes.draw do
+  get "about", to: "about#index"
+
   get "vacancies/index"
   
 	root :to => 'startpage#index'

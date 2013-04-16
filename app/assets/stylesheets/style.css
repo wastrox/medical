@@ -36,6 +36,10 @@ input {
 	vertical-align: middle;
 }
 
+h3 {
+	color: #767676
+}
+
 .clearfix:before, .clearfix:after {
 	content: " ";
 	display: table;
@@ -1180,5 +1184,27 @@ table.search-result tbody tr td:nth-of-type(even) {
 
 .alert-success {
 	font-size: 14px;
+}
+/*----------------------------------------------------------------------------*/
+
+/*-------------------------------- /about ------------------------------------*/
+#heart {
+	margin: 25px 25px 35px;
+	width: 100%;
+	height: 100%;
+	vertical-align: top;
+	padding-left: 50px;
+}
+div#heart h1 {
+	font-size: 45px;
+	vertical-align: top;
+	margin-top: 107px;
+	margin-right: 15px;
+	color: #767676;
+	display: inline-block;
+}
+
+div.cap h3 {
+	margin-left: 6px;
 }
 /*----------------------------------------------------------------------------*/
