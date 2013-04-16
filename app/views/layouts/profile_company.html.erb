@@ -21,8 +21,6 @@
 			</div>
 			<div class="separator"></div>
 			<%= link_to "Выйти", logout_url, :class => "signup" %>
-			<div class="separator"></div>
-			<a class="about">Netbee</a>
 		</div>
 	</header><!-- #header-->
 	<div id="content">
@@ -32,7 +30,7 @@
 
 		<div id="account-nav">
 			<div class="cap">
-				<a href="#">inreworking@gmail.com</a>
+				<a href="#"><%= current_user.email %></a>
 			</div>
 			<div class="boxed-nav">
 				<ul>
