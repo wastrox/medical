@@ -1,38 +1,31 @@
-<style>
-	/*a#signup {margin: 12px 0 0 218px; float: left; }*/
-	h1.signup {width: 89px, float:left; margin: 12px 0 0 236px;}
-</style>
-
-<script>
-  $(document).ready(function(){
-    $("a.btn").removeClass("btn");
-	$("h1.signup").css("display", "inline-block");
-	$("a#signup").css("display", "none");
-  });
-</script>
-<div class="modal" style="position: absolute; margin-top: 0px;" >
-  <div class="modal-body">
-<%= form_for @account do |f| %>
-  <% if @account.errors.any? %>
-    <div class="error_messages">
-      <ul>
-        <% for message in @account.errors.full_messages %>
-          <li><%= message %></li>
+        <div class="link-navigate">
+            <h2 class="title">Регистрация</h2>
+            <%= link_to "Вход", login_url %>
+        </div>
+        <div id="content">
+        <%= form_for @account do |f| %>
+          <% if @account.errors.any? %>
+            <div class="error_messages">
+              <ul>
+                <% for message in @account.errors.full_messages %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="item">
+            <div class="field">
+              <%= f.label :email %>
+              <%= f.text_field :email %>
+            </div>
+          </div>
+          <div class="item">
+            <div class="field">
+              <%= f.label :password, "Пароль" %>
+              <%= f.password_field :password %>
+            </div>
+          </div>
+          <br/>
+          <%= f.submit "Зарегистрироваться", :class => "input-sub btn btn-warning" %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div class="actions"><%= f.submit "Создать", :class => "save_edit_button" %></div>
-<% end %>
-  </div>
-</div>
-</div>
-
+        </div><!-- #content-->

@@ -1,5 +1,6 @@
 class ConfirmationController < ApplicationController
-  layout "choice_worker_or_employer"
+  layout "small_window"
+  
   skip_before_filter :require_login, :only => [:index]
 	before_filter :find_account, :only => [:applicant, :employer]	
   

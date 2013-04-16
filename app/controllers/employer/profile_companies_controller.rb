@@ -3,8 +3,12 @@ class Employer::ProfileCompaniesController < ApplicationController
  layout "profile_company"	
  before_filter :init_company, :only => [:new, :create]
  before_filter :find_company, :only => [:edit, :update, :show]
- before_filter :find_employer, :only => [:create, :show]
+ before_filter :find_employer, :only => [:index, :create, :show]
  before_filter :require_account_type_employer, :check_account_type
+
+  def index
+    @company = @employer.company
+  end
 
 	def new
 	  @company.company_contacts.build

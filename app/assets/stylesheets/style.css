@@ -15,7 +15,7 @@ body {
 	background: none repeat scroll 0 0 #f4f7f7;
 }
 a {
-	color: blue;
+	color: #767676;
 	outline: none;
 	text-decoration: underline;
 }
@@ -570,7 +570,8 @@ form label {
 }
 
 .cap h2#about {
-	margin-left: 13px;
+	/*margin-left: 13px;*/
+	margin-left: 10px;
 	color: #767676;
 }
 
@@ -779,6 +780,39 @@ div.fields > div.item > div.field > input.year {
 }
 /*----------------------------------------------------------------------------*/
 
+/*-------------------------------- resume/index ------------------------------*/
+table.list-resume {
+	width: 100%;
+	margin: 5px 0 0px;
+}
+
+table.list-resume th {
+	border-bottom: 1px solid #DDDDDD;
+	border-top: none;
+}
+
+table.list-resume th, table.list-resume td {
+	padding: 10px 0px 5px;
+ 	color: #7A7979;
+    font-size: 14px;
+    text-align: left;
+}
+
+table.list-resume tr:first-child th:first-child {
+	width: 235px;
+}
+
+
+table.list-resume tr:last-child td {
+	border-top: none;
+}
+
+table.list-resume tr td .yellow-link {
+	margin: 0px;
+	text-decoration: none;
+}
+/*----------------------------------------------------------------------------*/
+
 /*------------------------------- resume/show --------------------------------*/
 #cabinet {
 	padding: 15px 26px 0px 36px;
@@ -839,6 +873,11 @@ tr.clear-border td {
 	padding-top: 0px !important;
 }
 	
+/*----------------------------------------------------------------------------*/
+/*---------------------- employer/profile_companies/index ----------------------*/
+#list-company {
+	margin-bottom: 37px;
+}
 /*----------------------------------------------------------------------------*/
 
 /*---------------------- employer/profile_companies/new ----------------------*/
@@ -1101,5 +1140,35 @@ table.search-result tbody:last-child tr:last-child td {
 
 table.search-result tbody tr td:nth-of-type(even) {
 	background: #f7f7f7;
+}
+/*----------------------------------------------------------------------------*/
+
+/*----------------------------- /confirmation --------------------------------*/
+
+.choice-link {
+	height: 50px;
+	font-size: 22px;
+	vertical-align: middle;
+	text-align: center;
+	margin-top: 50px;
+
+}
+
+.choice-link a {
+	vertical-align: middle;
+	text-decoration: none;
+	border-bottom: 1px dashed #7a7979;
+}
+
+.choice-link a:hover {
+	border-bottom: none;
+}
+
+.choice-link a:first-child {
+	margin-right: 15px;
+}
+
+.alert-success {
+	font-size: 14px;
 }
 /*----------------------------------------------------------------------------*/

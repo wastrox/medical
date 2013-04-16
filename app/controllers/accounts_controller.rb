@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  layout "small_window"
 	before_filter :find_account, :only => [:activate]
 	skip_before_filter :require_login, :only => [:new, :create, :activate]
 	

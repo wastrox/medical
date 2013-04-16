@@ -12,11 +12,11 @@
 
 <div id="wrapper">
 	<header id="header">
-		<a href="/"><img alt="" class="logo" src="http://netbee.net.ua/assets/img/logo.gif"></a>
+		<a href="/"><img alt="" class="logo" src="/assets/logo-netbee.png"></a>
 		<div id="menu">
 			<div class="my-profile">
 				<%= link_to_if(current_user.company.nil?, "Профиль компании", new_employer_profile_company_path) do 
-					link_to "Профиль компании", edit_employer_profile_company_path(current_user.company.id)
+					link_to "Профиль компании", employer_profile_companies_url
 				end %>
 			</div>
 			<div class="separator"></div>
@@ -37,7 +37,7 @@
 			<div class="boxed-nav">
 				<ul>
 					<li><%= link_to_if(current_user.company.nil?, "Компания", new_employer_profile_company_path) do
-						link_to "Профиль", employer_profile_company_path(current_user.company)
+						link_to "Профиль", employer_profile_companies_url
 						end %>
 					</li>
 					<span class="line-bottom"></span>

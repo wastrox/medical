@@ -1,11 +1,16 @@
 class Applicant::ResumesController < ApplicationController
  layout "profile_applicant"
   before_filter :require_account_type_applicant, :check_account_type
-  before_filter :findApplicant, :only => [:new, :create, :show, :edit, :update]
+  before_filter :findApplicant, :only => [:index, :new, :create, :show, :edit, :update]
   before_filter :resumeExists?, :only => [:new, :create] # resumeExists? проверка резюме у applicant, если есть -->> /applicant/resume/show
   before_filter :initResume, :only => [:new, :create]
   before_filter :findResume, :only => [:show, :destroy, :edit, :update, :defer]
   before_filter :findProfile, :only => [:show, :edit, :update] #присваиваем @profile найденный профиль пользователя ( def findApplicant --> @applicant ), чтобы заполнить поля value in partial _profile_fields.html
+
+  def index
+    @resume = @applicant.resume
+    @fullName = "#{@resume.profile.lastname} #{@resume.profile.firstname} #{@resume.profile.surename}"
+  end
 
   def new
     # FIXME: условие для корректного отображения input value => @profile.name. Повторяется в методе create.
