@@ -1,16 +1,17 @@
-<h5>Работодатель</h5>
+<h2>Работодатель</h2>
+
 <div class='item'>
 	<%= label_tag "Статус" %>
 	<div class='field'>
 		<i><%= @company.human_state_name%></i>
 	</div>
 </div>
-<div class='item'>
-	<%= label_tag "Email" %>
+<!--<div class='item'>
+	<%# label_tag "Email" %>
 	<div class='field'>
-		<%= @company.employer.email%>
+		<%# @company.employer.email%>
 	</div>
-</div>
+</div>-->
 <div class='item'>
 	<%= label_tag "Кол-во посещений" %>
 	<div class='field'>

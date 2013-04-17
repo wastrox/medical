@@ -1,45 +1,28 @@
-<style>
-	#profes-resume{
-		margin: 15px 0 0 0;
-	}
-	fieldset {
-    	border: 1px dashed black;
-    	margin: 10px;
-    	padding: 20px;
-  	}
-	.hint, .hint-pc {
-		background-color: #F0F0F0;
-		border-bottom-left-radius: 3px;
-		border-bottom-right-radius: 3px;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		float: left;
-		display: block;
-		height: 20px;
-		font-size: 14px;
-		padding-bottom: 4px;
-		padding-left: 0px;
-		padding-right: 0px;
-		margin: 0 15px 0 0;
-		text-align: center;
-		width: 100px;
-	}
+<div id="frame" class="frame-admin">
+	
+	<div class="boxed">
+		<%= nested_form_for([:admin, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>	
 
-</style>
+			<%= render :partial => 'applicant_state' %>
 
-<div class="content-resume">
-	<%= nested_form_for([:admin, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>	
-<!--<hr / class="nav-line-buttom">-->
-	<%= render :partial => 'applicant_state' %>
-	<%= render :partial => 'applicant/resumes/resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
-	<h5>Сообщение от модератора</h5>
-	<%= text_area_tag 'body_letter', nil, :class => "body_letter" %>
-	<ul class="nav nav-pills">
-		<li><%= applicant_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
-		<li><%= applicant_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @resume.published? %></li>
-		<li><%= applicant_fields.submit "Отклонить", :class => "save_edit_button", :name => "reject",  :confirm => 'Вы, уверены, хотите отменить резюме?' unless @resume.rejected? %></li>
-		<li><%= applicant_fields.submit "Удалить", :class => "save_edit_button", :name => "destroy",  :confirm => 'Вы, уверены, что хотите удалить резюме?' %></li>
-	</ul>
-	<% end %>
-	<div class="clear"></div>
-</div>
+			<span class="line-bottom line-bottom-company"></span>
+
+			<%= render :partial => 'applicant/resumes/resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
+			
+			<span class="line-bottom line-bottom-company"></span>
+
+			<h2>Сообщение от модератора</h2>
+			<%= text_area_tag 'body_letter', nil, :class => "body_letter" %>
+
+			<span class="line-bottom line-bottom-company"></span>
+
+			<div id="button-bottom">
+				<%= applicant_fields.submit "Опубликовать", :class => "input-sub btn btn-warning", :name => "published" unless @resume.published? %>
+				<%= applicant_fields.submit "Обновить", :class => "input-sub btn save-as", :name => "update" %>
+				<%= applicant_fields.submit "Удалить", :class => "input-sub btn save-as", :name => "destroy",  :confirm => 'Вы, уверены, что хотите удалить резюме?' %>
+				<%= applicant_fields.submit "Отклонить", :id => "btn-cancel", :class => "input-sub btn btn-danger", :name => "reject",  :confirm => 'Вы, уверены, хотите отменить резюме?' unless @resume.rejected? %>
+			</div>	
+		<% end %>
+		<div class="clear"></div>
+	</div> <!-- boxed -->
+</div> <!-- #frame -->

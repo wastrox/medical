@@ -1,17 +1,41 @@
-<%= render :partial => "admin/companies/navbar_company"%>
-<div class="content-company">	
-	<%= nested_form_for(@company, :url => {:action=>"update", :controller=>"admin/companies/profile"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
-		<%= render :partial => 'employer_state' %>
-  		<%= render :partial => 'employer/profile_companies/profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
-	
-		<h5>Контактная информация</h5>
-		<%= render :partial => 'employer/profile_companies/contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
-		<h5>Сообщение от модератора</h5>
-		<%= text_area_tag 'body_letter', nil, :class => "body_letter" %>
-		<ul class="nav nav-pills">
-			<li><%= employer_fields.submit "Обновить", :class => "save_edit_button", :name => "update" %></li>
-			<li><%= employer_fields.submit "Опубликовать", :class => "save_edit_button", :name => "published" unless @company.published? %></li>
-			<li><%= employer_fields.submit "Отклонить", :class => "save_edit_button", :name => "reject",  :confirm => 'Вы, уверены, хотите отменить компанию?' unless @company.rejected? %></li>
-			<li><%= employer_fields.submit "Удалить", :class => "save_edit_button", :name => "destroy",  :confirm => 'Вы, уверены, что хотите удалить компанию?' %></li>
-	<% end %>
+<div id="frame" class="frame-admin">
+
+<div class="cap">
+	&ldquo;<%= @company.name %>&rdquo;, кол-во вакансий компаний - <%= @company.vacancies.count %>
 </div>
+	<div class="boxed">
+		<%= nested_form_for(@company, :url => {:action=>"update", :controller=>"admin/companies/profile"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
+			<%= render :partial => 'employer_state' %>
+
+			<span class="line-bottom line-bottom-company"></span>
+
+	  		<%= render :partial => 'employer/profile_companies/profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
+		
+			<span class="line-bottom line-bottom-company"></span>
+				
+			<h2 id="contacts-company">Контактная информация</h2>
+
+			<%= render :partial => 'employer/profile_companies/contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
+			
+			<span class="line-bottom line-bottom-company"></span>
+
+			<h2>Сообщение от модератора</h2>
+			<div class="clear"></div>
+
+			<%= text_area_tag 'body_letter', nil, :class => "body_letter" %>
+
+			<span class="line-bottom line-bottom-company"></span>
+
+				<div id="button-bottom">
+					<%= employer_fields.submit "Опубликовать", :class => "input-sub btn btn-warning", :name => "published" unless @company.published? %>
+					<%= employer_fields.submit "Обновить", :class => "input-sub btn save-as", :name => "update" %>
+					<%= employer_fields.submit "Удалить", :class => "input-sub btn save-as", :name => "destroy",  :confirm => 'Вы, уверены, что хотите удалить компанию?' %>
+					<%= employer_fields.submit "Отклонить", :id => "btn-cancel", :class => "input-sub btn btn-danger" , :name => "reject",  :confirm => 'Вы, уверены, хотите отменить компанию?' unless @company.rejected? %>
+
+				</div>	
+
+		<% end %>
+		<div class="clear"></div>
+	</div>
+</div>
+<%= render :partial => "admin/companies/navbar_company"%>

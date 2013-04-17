@@ -1,3 +1,6 @@
+ul, ol {
+	margin: 0px !important;
+}
 .nav-tabs-admin {
 	margin-top: 25px;
 }
@@ -7,9 +10,80 @@
 }
 
 .company_name {
+	font-size: 14px;
 	border: 1px solid transparent;
 	line-height: 20px;
 	color: #767676;
 	margin-right: 2px;
 	padding: 8px 12px 8px 12px;
+}
+
+
+.frame-admin {
+margin-bottom: 40px;
+}
+
+.boxed-admin {
+	padding: 15px 36px;
+}
+
+ul.nav li a {
+	text-decoration: none;
+}
+
+input#btn-cancel {
+    box-shadow: 0 -2px 0 0 #883E31 inset;
+    color: rgba(19, 15, 4, 0.59);
+    width: auto;
+    height: 35px;
+    padding: 2px 12px 4px;
+    margin-right: 0px !important;
+    text-shadow: 0 1px 1px rgba(219, 214, 214, 0.59);
+}
+
+input[type="submit"] {
+	margin-right: 10px;
+}
+
+#body_letter {
+	color: #767676;
+	border: 1px solid #CCCCCC;
+	border-radius: 6px;
+    height: 143px;
+    width: 653px;
+}
+
+.field {
+	color: #767676;
+	font-size: 14px;
+}
+
+.cap {
+	padding: 14px 36px;
+	color: #767676;
+	font-size: 14px;
+	border-bottom: 1px dashed #7A7979;
+}
+
+ul.nav > li {
+    float: left;
+    margin-top: 11px;
+    list-style-type: none;
+}
+
+ul.nav > li.active a {
+	padding: 12px 15px;
+}
+
+table tr th {
+	color: #767676;
+}
+
+table tr td {
+	font-size: 14px;
+	color: #767676;
+}
+
+table {
+	margin: 15px 0;
 }

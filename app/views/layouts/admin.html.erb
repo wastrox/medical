@@ -2,27 +2,23 @@
 <html>
 <head>
   <title>Medical</title>
-  <%= stylesheet_link_tag    "admin", "bootstrap_style/bootstrap", "standart_form", "startpage/green", "startpage/main", "startpage/mystyle", "startpage/paper", "right-nav", :media => "all" %>
-  <%= javascript_include_tag "" %>
+  <%= stylesheet_link_tag  "style", "bootstrap_buttons", "selectbox", "jquery-ui/jquery-ui-1.9.2.custom", "bootstrap-table", "admin", "bootstrap-navs", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "selectbox-for-nestedform", "standart_form", "selectbox", "admin" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render :partial => 'layouts/navbar_admin'%>
-<div class="notice"><p><%= flash[:notice] %></p></div>
-<div class="wrapper">
-	<section>
-		<div class="content clearfix">
-			<div class="middle clearfix">
-				<div id="content-left">
-					<%= yield %>
-				</div>
-				<div class="middle-nav"><!-- Начало левой панели навигации моего кабинета FIXME: Переименовать middle-nav на right-nav -->                    
-					<%= render :partial => 'layouts/right-nav-admin'%>
-				</div> <!-- Коненц левой панели навигации -->
-			</div>
-		 </div>
+<div id="wrapper">
+	<header id="header-admin">
+		<%= render :partial => 'layouts/navbar_admin'%>
+	</header>
+	<div class="notice"><p><%= flash[:notice] %></p></div>
+		<div id="content">
+			<%= yield %>
 		</div>
-	</section>
+				<!--<div class="middle-nav"> Начало левой панели навигации моего кабинета FIXME: Переименовать middle-nav на right-nav                     
+					<%# render :partial => 'layouts/right-nav-admin'%>
+				</div> Коненц левой панели навигации -->
+		</div>		
 </div>
 </body>
 </html>

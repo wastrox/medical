@@ -1,10 +1,17 @@
-<%# FIXME: Code monkey => class="activate"%>
-<ul class="nav nav-tabs">
-	<li><p class="company_name"><%= @company.name %></p></li>
-	<li class=<%= active_tab(edit_admin_companies_profile_path(@company)) %>>
-		<%= link_to "Профиль компании", edit_admin_companies_profile_path(@company) %>
-	</li>
-	<li class=<%= 'active' unless current_page?(edit_admin_companies_profile_path(@company)) %>>
-		<%= link_to "Вакансии компании", :controller => :profile, :action => :vacancies, :id => @company %>
-	</li>
-</ul>
+<div id="account-nav">
+			<div class="cap">
+				<%= @company.employer.email %>
+			</div>
+			<div class="boxed-nav">
+				<ul>
+					<li>
+						<%= link_to "Профиль компании", edit_admin_companies_profile_path(@company) %>
+					</li>
+					<span class="line-bottom"></span>
+					<li>
+						<%= link_to "Вакансии компании", :controller => :profile, :action => :vacancies, :id => @company %>
+					</li>
+				</ul>
+			</div>
+</div>
+<div class="clear"></div>
