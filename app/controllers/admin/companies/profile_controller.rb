@@ -2,6 +2,9 @@
 class Admin::Companies::ProfileController < ApplicationController
   layout "admin"
   
+  skip_before_filter :require_login
+  #before_filter :authenticate_admin #HTTP authenticate for admin; this method in place application_controller
+
   before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :published, :send_letter_for_employer]
   after_filter  :send_letter_for_employer, :only => :update
   after_filter  :published, :only => :update

@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Admin::Companies::VacancyController < ApplicationController
   layout "admin"
+
+  skip_before_filter :require_login
   before_filter :find_vacancy, :only => [:edit, :update, :find_company, :reject, :destroy, :published]
   before_filter :find_company, :only => [:edit, :update, :send_letter_for_employer]
   after_filter  :send_letter_for_employer, :only => :update

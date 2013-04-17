@@ -1,5 +1,7 @@
 class Admin::CompaniesController < ApplicationController
   layout "admin"
+  
+  skip_before_filter :require_login
   before_filter :company_find, :only => [:edit, :update]
   
   def index

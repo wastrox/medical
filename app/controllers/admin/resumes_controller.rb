@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Admin::ResumesController < ApplicationController
   layout "admin"
+
+  skip_before_filter :require_login
   before_filter :findResume, :only => [:edit, :update, :destroy, :reject, :published, :send_letter_for_applicant]
   after_filter  :send_letter_for_applicant, :only => :update
   after_filter  :published, :only => :update
