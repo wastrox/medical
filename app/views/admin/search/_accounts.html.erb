@@ -29,7 +29,9 @@
 		    			<td><%= account.account_type %></td>
 		    			<td><%= if account.active? then "Активирован" else "Не активирован" end%></td>
 		    			<td><%= account.session_count %></td>
-		    			<td><%= account.session_last_time.localtime.strftime("%F %H:%M") if account.active? %></td>
+		    			<% unless account.session_last_time.nil? %>
+		    				<td><%= account.session_last_time.localtime.strftime("%F %H:%M") if account.active? %></td>
+		    			<% end %>
 					</tr>
 				<% end %>
 			</table>
