@@ -40,6 +40,10 @@ h3 {
 	color: #767676
 }
 
+a.disable-link {
+	cursor: default;
+}
+
 .clearfix:before, .clearfix:after {
 	content: " ";
 	display: table;
