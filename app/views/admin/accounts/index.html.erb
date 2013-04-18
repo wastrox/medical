@@ -23,8 +23,8 @@
 	<tr>
 		<th>#</th>
 		<th>Email</th>
-		<th>Активация</th>
 		<th>Тип аккаунта</th>
+		<th>Активация</th>
 		<th>Посещений</th>
 		<th>Последнее</th>
 	</tr>
@@ -47,8 +47,8 @@
 		<% end %>
 		
 		<%# link_to account.id, helper_link(account.id)%>
-		<td><%= if account.active? then "Активирован" else "Не активирован" end%></td>
 		<td><%= account.account_type %></td>
+		<td><%= if account.active? then "Активирован" else "Не активирован" end%></td>
 		<td><%= account.session_count %></td>
 		<td><%= account.session_last_time.localtime.strftime("%F %H:%M") if account.active? %></td>
 	</tr>
