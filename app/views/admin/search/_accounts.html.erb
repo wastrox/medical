@@ -19,7 +19,7 @@
 		    					end %>
 		    			<% elsif account.applicant? %>
 		    				<% resume = Resume.find_by_applicant_id(account.id)%>
-		    					<%= link_to_unless(resume.nil?, account.email, {:controller => "/admin/resume", :action => "edit", :id => resume} ) do 
+		    					<%= link_to_unless(resume.nil?, account.email, {:controller => "/admin/resumes", :action => "edit", :id => resume} ) do 
 		    						account.email
 		    						end %>
 		    			<% else %>
@@ -29,9 +29,11 @@
 		    			<td><%= account.account_type %></td>
 		    			<td><%= if account.active? then "Активирован" else "Не активирован" end%></td>
 		    			<td><%= account.session_count %></td>
-		    			<% unless account.session_last_time.nil? %>
-		    				<td><%= account.session_last_time.localtime.strftime("%F %H:%M") if account.active? %></td>
-		    			<% end %>
+		    			<td>
+		    				<% unless account.session_last_time.nil? %>
+		    					<%= account.session_last_time.localtime.strftime("%F %H:%M") if account.	active? %>
+		    				<% end %>
+		    			</td>
 					</tr>
 				<% end %>
 			</table>
