@@ -31,7 +31,7 @@
 	<% @accounts.each do |account| %>
 	<tr>
 		<td style="width:10px"><%= a += 1%></td>
-		<%# FIXME: refactoring this method in the helper method%>
+		<%# FIXME: refactoring this method in the helper method %>
 		<% if account.employer? %>
 			<% company = Company.find_by_employer_id(account.id)%>
 			<td><%= link_to_unless(company.nil?, account.email, {:controller => "/admin/companies/profile", :action => "edit", :id => company} ) do

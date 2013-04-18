@@ -11,8 +11,8 @@ Medical::Application.routes.draw do
   get 'signup', to: 'accounts#new', as: 'signup'
   get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
+  
   get "search", to: "search#index"
-	
   match "search/vacancy/:id", to: "search#vacancy"
   match "search/resume/:id", to: "search#resume"
 
@@ -43,9 +43,12 @@ Medical::Application.routes.draw do
 	
 	namespace :admin do
     get 'companies', to: 'companies#index'
+
+    get "search", to: "search#index"
     get 'search/companies' => 'search/companies#index'
     get 'search/vacancies' => 'search/vacancies#index'
     get 'search/resumes' => 'search/resumes#index'
+
     match 'resumes/published/(:id)' => 'resumes#published'
     match 'resumes/reject/(:id)' => 'resumes#reject'
     
