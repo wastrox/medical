@@ -41,9 +41,15 @@
 						end %>
 					</li>
 					<span class="line-bottom"></span>
-					<li><%= link_to_if current_user.company?, "Список вакансий", employer_vacancies_path %></li>
+					<li><%= link_to_if(current_user.company?, "Список вакансий", employer_vacancies_path) do 
+							link_to "Список вакансий", new_employer_profile_company_path, :title => "Сначала создайте профиль компании" 
+						end %>
+					</li>
 					<span class="line-bottom"></span>
-					<li><%= link_to_if current_user.company?, "Добавить вакансию", new_employer_vacancy_path %></li>
+					<li><%= link_to_if(current_user.company?, "Добавить вакансию", new_employer_vacancy_path) do
+							link_to "Добавить вакансию", new_employer_profile_company_path, :title => "Сначала создайте профиль компании"
+						end %>
+					</li>
 				</ul>
 			</div>
 		</div>
