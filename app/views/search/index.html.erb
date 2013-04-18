@@ -4,9 +4,9 @@
                     <%= text_field_tag :search, params[:search], :class => "input-text", :placeholder => "Укажите специальность" %>
                     <%= text_field_tag :city, params[:city], :class => "input-city", :placeholder => "Город" %>
                     <% if current_user && current_user.employer? %>
-                    	<%= select_tag(:sample, options_for_select([['Сотрудника', 2], ['Работу', 1]], params[:sample]), :class => "styled") %>
+                    	<%= select_tag(:sample, options_for_select([['Резюме', 2], ['Вакансии', 1]], params[:sample]), :class => "styled") %>
                     <% else %>
-                    	<%= select_tag(:sample, options_for_select([['Работу', 1], ['Сотрудника', 2]], params[:sample]), :class => "styled") %>                    	
+                    	<%= select_tag(:sample, options_for_select([['Вакансии', 1], ['Резюме', 2]], params[:sample]), :class => "styled") %>                    	
                     <% end %>
                     <%= submit_tag "Найти", name: nil, :class => "input-sub btn btn-warning", :id => "btn-search" %>
                 </div>
