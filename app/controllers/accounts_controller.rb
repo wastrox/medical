@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
   layout "small_window"
 	before_filter :find_account, :only => [:activate]
+  after_filter :update_time_account_activity, :only => [:activate]
 	skip_before_filter :require_login, :only => [:new, :create, :activate]
 	
   def new
@@ -30,5 +31,12 @@ class AccountsController < ApplicationController
 
 	def find_account
     @account = Account.find_by_token(params[:token])
+  end
+
+  def update_time_account_activity
+    if current_user
+      @account.add_new_session_count 
+      @account.update_attribute(:session_last_time, Time.new) 
+    end
   end
 end
