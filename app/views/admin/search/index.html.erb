@@ -1,10 +1,10 @@
 <%= form_tag admin_search_path, method: :get do %>
-<div class="search"> 
+<div id="search-admin" class="search"> 
                 <div class="search-box clearfix">
                     <%= text_field_tag :search, params[:search], :class => "input-text", :placeholder => "Укажите специальность" %>
                     <%= text_field_tag :city, params[:city], :class => "input-city", :placeholder => "Город" %>
                     	<%= select_tag(:sample, options_for_select([['Email', 4], ['Вакансии', 1], ['Резюме', 2], ['Компании', 3]], params[:sample]), :class => "styled") %>                    	
-                    <%= submit_tag "Найти", name: nil, :class => "input-sub btn btn-warning", :id => "btn-search" %>
+                    <%= submit_tag "Найти", name: nil, :class => "input-sub btn save-as", :id => "btn-search" %>
                 </div>
             </div> 	
 <% end %>

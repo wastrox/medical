@@ -100,3 +100,43 @@ table#admin-search-result-account tr td {
 	background: none;
 	text-align: center;
 }
+
+#admin-search-result-account tr th {
+	height: 20px;
+	padding-bottom: 15px;
+}
+
+#search-admin {
+	border: 1px solid #DADBDB;
+	box-shadow: none;
+	background-color: #F9F9F9;
+	border-radius: 6px 6px 0px 0px;
+	padding-bottom: 30px;
+}
+
+.search-box input {
+	background-color: #F9F9F9;
+	border: 1px solid #DADBDB;
+	box-shadow: none;
+}
+
+#search-admin .search-box .selectbox .select {
+	border: 1px solid #DADBDB !important;
+}
+
+ #search-admin .search-box .selectbox .select .text {
+ 	color: #767676;
+ }
+
+ #search-admin .search-box .selectbox ul.dropdown {
+ 	top: 40px !important;
+ }
+
+ #search-admin .search-box .input-text, #search-admin .search-box .input-city {
+ 	color: #767676;
+ }
+
+#search-result {
+	margin-top: -20px;
+	border-radius: 0px 0px 6px 6px;
+}
