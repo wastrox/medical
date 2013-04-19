@@ -1,15 +1,12 @@
-<script>
-
-</script>
 <div class='item'>
-	<%= f.label "Компания"%>
+	<%= f.label :company, "Компания"%>
 	<div class='field'>
 	  	<%= f.text_field :company, :value => f.object.company, :class=>"recent_company validate", :default_value => "Компания" %>
 	</div>
 	<!--<a href="#" style="margin: 0 0 0 10px;">Скрыть</a>-->
 </div>	
 <div class='item'>
-	<%= f.label "Занимаемая должность"%>
+	<%= f.label :position, "Занимаемая должность"%>
 	<div class='field'>	  
 		<%= f.text_field :position, :value => f.object.position, :class=>"recent_position validate big ", :default_value => "Какую должность Вы занимали" %>
 	</div>
@@ -21,7 +18,7 @@
 	</div>
 </div>	
 <div class='item'>
-     <%= f.label "Период работы"%>
+     <%= f.label "Период работы", :class => "period_of_work" %>
 	 <div class='field'>
 	 	<div class="experience-date date-from">
 			<%= f.select(:month_from, month_helper, {:include_blank => "Месяц" }, {:class => "month_from styled"}) %> <%= f.select(:year_from, year_list_helper, {:include_blank => "Год"}, {:class => "year_from year styled"}) %>

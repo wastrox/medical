@@ -3,7 +3,7 @@ class Resume < ActiveRecord::Base
   attr_accessible :applicant, :position, :salary, :city, :additional_info, :profile_attributes, :experiences_attributes, :educations_attributes, :personal_data
   
   validate :applicant, :uniqueness => true
-  #validates_presence_of :position, :salary, :city
+  validates_presence_of :position, :salary, :city
   validates_acceptance_of :personal_data, :on => :create #, :allow_nil => :false
 	
   belongs_to :applicant

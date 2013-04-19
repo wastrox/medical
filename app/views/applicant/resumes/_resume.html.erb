@@ -1,13 +1,14 @@
 
-  <% if @resume.errors.any? %>
+  <!--Сообщение о валидации данных 
+  <%# if @resume.errors.any? %>
     <div class="error_messages">
       <ul>
-        <% for message in @resume.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
+        <%# for message in @resume.errors.full_messages %>
+          <li><%#= message %></li>
+        <%# end %>
       </ul>
     </div>
-  <% end %>
+  <%# end %>-->
 
 <h2>Профиль</h2>
 <div class="profile">
@@ -20,19 +21,19 @@
 <div class="resume">
 	<h2>Резюме</h2>
 	<div class='item'>
-		<%= applicant_fields.label 'Желаемая должность'%>
+		<%= applicant_fields.label :position, 'Желаемая должность'%>
 		<div class='field'>
 			<%= applicant_fields.text_field :position, :value => "#{@resume.position}" %>
 		</div>
 	</div>
 	<div class='item'>
-		<%= applicant_fields.label 'Желаемый город' %>
+		<%= applicant_fields.label :city, 'Желаемый город' %>
 		<div class='field'>
 			<%= applicant_fields.text_field :city, :value => "#{@resume.city}" %>
 		</div>
 	</div>
 	<div class='item'>
-		<%= applicant_fields.label 'Желаемая зарплата'%>
+		<%= applicant_fields.label :salary, 'Желаемая зарплата'%>
 		<div class='field'>
 			<%= applicant_fields.text_field :salary, :value => "#{@resume.salary}", :id => "salary" %>
 			<span class="currency">грн.</span>
