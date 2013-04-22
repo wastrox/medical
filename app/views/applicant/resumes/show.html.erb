@@ -7,7 +7,7 @@
 <div class="boxed" id="cabinet">
 	<!--<div class="photo"><%# image_tag @profile.photo.url(:show), :class => "photo-applicant" %></div>
 	<div class="name-applicant"><h2><%# @fullName %></h2></div>-->
-
+	
 	<table cellpadding="0" cellspacing="0" class="photo-name-applicant">
 		<tr>
 			<td><%= image_tag @profile.photo.url(:show), :class => "photo-applicant" %></td>
@@ -39,14 +39,14 @@
                         	<th colspan="2" class="line-bottom"></th>
                         </tr>
                         <tr>
-							<% if @resume.experiences.nil? %>
+							<% if @resume.experiences.empty? %>
 								<td><h3>Опыт работы</h3></td>
 								<td>Нет опыта работы</td>
 						</tr>
 							<% else %>
 	                        	<td><h3>Опыт работы</h3></td>
 	                        	<td></td>
-       					</tr>
+       					</tr>	
 								<% @resume.experiences.each do |experience| %>
 								<tr>
 									<td><%= experience.position %></td>
@@ -62,10 +62,11 @@
 								<tr class="clear-border"><td></td><td></td></tr>
 								<% end %>
 							<% end %>
+
+						<% unless @resume.educations.empty? %>
 						<tr>
                         	<th colspan="2" class="line-bottom"></th>
                         </tr>
-					<% unless @resume.educations.nil?%>
 						<tr>
 							<td><h3>Образование<h3></td>
 							<td><td>
@@ -97,10 +98,11 @@
 
 							<% end %>
 					<% end %>
+
+					<% if @resume.additional_info != "" %>
 					<tr>
                       	<th colspan="2" class="line-bottom"></th>
                     </tr>
-					<% unless @resume.additional_info.nil?%>
 						<tr>
 							<td><h3>Дополнительная</h3></td>
                         	<td><%= @resume.additional_info %></td>

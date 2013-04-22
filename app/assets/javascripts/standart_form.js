@@ -2,7 +2,7 @@
 $(document).on('nested:fieldAdded', function(event){
 
 		// Удаляет ссылки remove первых, обязательных, fields_for(Опыт работы, Образование)
-		$("#experience + .fields > a.red-link, #education + .fields > a.red-link").remove();
+		//$("#experience + .fields > a.red-link, #education + .fields > a.red-link").remove();
 		
 		//Окрашивает lable "Период работы" если данные не валидны
 		$(".experience-date > .field_with_errors").parent().parent().parent().find(".period_of_work").css("color", "#FF7C86");
@@ -52,7 +52,7 @@ $(document).ready(function(){
 	});
 
 		// Удаляет ссылки remove первых, обязательных, fields_for(Опыт работы, Образование)
-		$("#experience + .fields > a.red-link, #education + .fields > a.red-link").remove();
+		//$("#experience + .fields > a.red-link, #education + .fields > a.red-link").remove();
 
   	// Удаляет пустой тег img (когда нет логотипа компании или фотографии соискателя), пустой тег img ломает верстку
 	var img = $("#image-path-photo").attr("src");
@@ -64,8 +64,8 @@ $(document).ready(function(){
 	}
 
 	// Удаляет ссылки remove первых, обязательных, fields_for(Контактная информация компании)
-	$("#contacts-company + .fields > a.red-link").remove();
-	$("#contacts-company + .fields").css("margin-bottom", "15px");
+	//$("#contacts-company + .fields > a.red-link").remove();
+	//$("#contacts-company + .fields").css("margin-bottom", "15px");
 
 	//Условие стиля для чекбокса "Защита персональных данных" на странице резюме
 	$("#personal-date .field_with_errors").css("display", "inline-block");
