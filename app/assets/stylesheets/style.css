@@ -126,6 +126,9 @@ a.disable-link {
 -----------------------------------------------------------------------------*/
 #content {
 	margin-top: 15px;
+}
+
+.start_page {
 	min-width: 986px !important;
 }
 .search {
