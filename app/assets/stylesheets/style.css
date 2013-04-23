@@ -126,6 +126,7 @@ a.disable-link {
 -----------------------------------------------------------------------------*/
 #content {
 	margin-top: 15px;
+	min-width: 986px !important;
 }
 .search {
 	height: 99px;
@@ -464,7 +465,7 @@ table.companies-logo tbody tr td {
 	text-align:  center;
 }
 .icon {
-	width: 159px;
+	width: 160px;
 	margin: 0 auto;
 	padding-top: 19px;
 }
