@@ -159,4 +159,10 @@ $(document).ready(function(){
 	$(".experience-date > .field_with_errors").parent().parent().parent().find(".period_of_work").css("color", "#FF7C86");
 	//Окрашивает label "Персональные данные" если не валидно
 	$("#personal-date > .field_with_errors").parent().find("label").css("color", "#FF7C86");
+
+	//Убирает логотип и аватар если они пусты
+	var img = $("img.photo-applicant");
+	if (img.attr("alt") == "Missing") {
+    	img.parent().remove();
+	}
 });
