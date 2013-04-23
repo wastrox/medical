@@ -6,7 +6,7 @@
   <body>
     <p>Здравствуйте.</p>
     <p>Ваша учетная запись была создана. Перейдите по указанной ниже ссылке, чтобы подтвердить свой адрес электронной почты.</p>
-    <%= link_to "Подтвердить адрес электронной почты", :host => "medical.netbee.ua", activate_account_url(:token => @account_token) %>
+    <%= link_to "Подтвердить адрес электронной почты", :host => "medical.netbee.ua", :controller => "accounts", :action => "activate", :token => @account_token %>
 
     <p>Спасибо за создание учетной записи на сайте medical.netbee.ua</p>
     <p>С уважением, команда Netbee.</p>
