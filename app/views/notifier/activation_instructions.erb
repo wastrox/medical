@@ -4,12 +4,12 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Welcome</h1>
-    <p>
-        HELLO ! ! !
-		<%= @account_activation_url %>
-    </p>
-    <p>Have a great day!</p>
+    <p>Здравствуйте.</p>
+    <p>Ваша учетная запись была создана. Перейдите по указанной ниже ссылке, чтобы подтвердить свой адрес электронной почты.</p>
+    <%= link_to "Подтвердить адрес электронной почты", :host => "medical.netbee.ua", :controller => "accounts", :action => "activate", :id => @account_token %>
+
+    <p>Спасибо за создание учетной записи на сайте medical.netbee.ua</p>
+    <p>С уважением, команда Netbee.</p>
   </body>
 </html>
 
