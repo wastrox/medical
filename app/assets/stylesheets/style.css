@@ -612,7 +612,7 @@ form label {
     display: inline-block;
 }
 
-.cap h2#about {
+h2 {
 	/*margin-left: 13px;*/
 	margin-left: 10px;
 	color: #767676;
