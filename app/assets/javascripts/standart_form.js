@@ -64,8 +64,8 @@ $(document).ready(function(){
 	}
 
 	// Удаляет ссылки remove первых, обязательных, fields_for(Контактная информация компании)
-	//$("#contacts-company + .fields > a.red-link").remove();
-	//$("#contacts-company + .fields").css("margin-bottom", "15px");
+	$("#contacts-company + .fields > a.red-link").remove();
+	$("#contacts-company + .fields").css("margin-bottom", "15px");
 
 	//Условие стиля для чекбокса "Защита персональных данных" на странице резюме
 	$("#personal-date .field_with_errors").css("display", "inline-block");

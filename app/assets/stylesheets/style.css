@@ -704,6 +704,18 @@ form #button-bottom {
     float: right;
 }
 
+#account-contacts {
+	width: 231px;
+	margin-top: 15px;
+	height: auto;
+	background-color: #FFFFFF;
+    border: 1px solid #DADBDB;
+    border-radius: 14px 14px 14px 14px;
+    box-shadow: 0 -3px 0 0 #DADBDB inset;
+    display: inline-block;
+    float: right;
+}
+
 #image-path-photo {
 	border-radius: 6px;
 }
@@ -712,22 +724,22 @@ form #button-bottom {
 	margin-top: 5px; 
 }
 
-#account-nav .boxed-nav {
+.boxed-nav {
 	padding: 14px 36px;;
 }
 
-#account-nav .boxed-nav ul li {
+.boxed-nav ul li {
 	list-style-type: none;
 	list-style-position: outside;
 }
 
-#account-nav .boxed-nav ul li a {
+.boxed-nav ul li a, .boxed-nav ul li {
 	font-size: 14px;
 	color: #7a7979;
 	text-decoration: none;	
 }
 
-#account-nav .boxed-nav ul span.line-bottom {
+.boxed-nav ul span.line-bottom {
 	margin: 10px -36px 14px -35px !important;
 }
 
