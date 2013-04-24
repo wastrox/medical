@@ -1,7 +1,7 @@
 <table class="vacancies" width="100%">
 				<% @vacancies.each do |vacancy|%>
 					<tr>
-						<td class="vacancy-name"><b><%= vacancy.name.split[0].delete "," %>...</b></td>
+						<td class="vacancy-name"><b><%= link_to "#{vacancy.name.split[0].delete ","}", employer_vacancy_path(vacancy) %>...</b></td>
 						<td><%= vacancy.city %></td>
 						<td><%= vacancy.salary %> грн</td>
 					</tr>

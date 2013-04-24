@@ -3,9 +3,6 @@ class StartpageController < ApplicationController
  skip_before_filter :require_login, :only => [:index]
 
 	def index
-		#search_params = params[:search].to_s + " " + params[:city].to_s 
-		#@vacancies = Vacancy.search(search_params)
-
 		@vacancies = Vacancy.where(:state => "published").order("created_at desc").limit(9)
 	end
 end
