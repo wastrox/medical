@@ -32,7 +32,7 @@
       <%= f.label 'Фото' %>
         <div class='field'>
           <%= image_tag @profile.photo.url(:small), :alt => "", :id => "image-path-photo" %>
-          <a class="upload-photo">Загрузить фото</a>
+          <a id="upload-photo-applicant" class="upload-photo">Загрузить фото</a>
           <%= f.file_field :photo, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
         </div>
     </div>

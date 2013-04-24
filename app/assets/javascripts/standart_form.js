@@ -134,19 +134,24 @@ $(document).ready(function(){
 	    var v = $("#file").val();
 	    if (v != '' ) {
 	        $(".photo-msg").remove();
-	        $(".upload-photo").before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
-	        $(".upload-photo").text("Изменить фото");
-	    }
+	        $("#upload-photo-applicant").before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
+			$("#upload-photo-applicant").text("Изменить фото");	
+	        $("#upload-logo-company").before('<p class="photo-msg"> Логотип будет загружен после сохранения</p>');    
+    		$("#upload-logo-company").text("Изменить логотип")
+		}
 	    else {
 	    	$(".photo-msg").remove();
 	        $(".upload-photo").before('<p class="photo-msg">Фото не выбрано</p>');
 	    }
 	});
 
-	//Изменяет текст ссылки "Загрузить фото" на "Изменить фото"
+	//Изменяет текст ссылки "Загрузить фото" на "Изменить фото", и для Профиля компании также.
 	var image = $('#image-path-photo').attr("src");
     if (image != '/photos/small/missing.png' ) {
-        $(".upload-photo").text("Изменить фото");
+        $("#upload-photo-applicant").text("Изменить фото");
+    }
+    if (image != '/logos/small/missing.png') {
+    	$("#upload-logo-company").text("Изменить логотип");
     }
 
     //Заменяет value чекбокса "Другой вариант"

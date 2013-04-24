@@ -26,7 +26,7 @@
     <%= employer_fields.label 'Логотип компании' %>
 	<div class='field'>
         <%= image_tag @company.logo.url(:small), :alt => "", :id => "image-path-photo" %>
-        <a class="upload-photo">Загрузить логотип</a>
+        <a id="upload-logo-company" class="upload-photo">Загрузить логотип</a>
     	<%= employer_fields.file_field :logo, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
 	</div>
 </div>
