@@ -1,7 +1,7 @@
 <table class="vacancies" width="100%">
 				<% @vacancies.each do |vacancy|%>
 					<tr>
-						<td class="vacancy-name"><b><%= vacancy.name[0.14] %>...</b></td>
+						<td class="vacancy-name"><b><%= vacancy.name[0,14] %>...</b></td>
 						<td><%= vacancy.city %></td>
 						<td><%= vacancy.salary %> грн</td>
 					</tr>
