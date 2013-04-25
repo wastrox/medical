@@ -1,0 +1,24 @@
+<div id="frame-other">
+      <div class="cap">
+            <h2 id="">Список вакансий</h2>
+      </div>
+
+      <div class="boxed">
+          <table class="table list-vacancies-search">
+            <% unless @vacancies.empty? %>
+              <% @vacancies.each do |vacancy| %>
+                <tr>
+                  <td><%= link_to vacancy.name, :controller => :search, :action => :vacancy, :id => vacancy.id %></td>
+              	  <td><%= vacancy.city %></td>
+                  <td><%= vacancy.salary %> грн.</td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td colspan="3">У этой компании нет вакансий.</td>
+              </tr>
+            <% end %>
+          </table>
+      </div> <!-- .boxed -->
+</div> <!-- #frame -->
+

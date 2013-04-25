@@ -15,6 +15,7 @@ Medical::Application.routes.draw do
   get "search", to: "search#index"
   match "search/vacancy/:id", to: "search#vacancy"
   match "search/resume/:id", to: "search#resume"
+  match "search/company/:id", to: "search#company"
 
 	match "confirmation" => "confirmation#index"
   match "confirmation/account_type" => "confirmation#account_type"	

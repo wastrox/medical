@@ -1,0 +1,59 @@
+<div id="frame">
+      <div class="cap">
+            <h2 id="about">Компания</h2>
+      </div>
+
+      <div class="boxed">
+      	<table cellpadding="0" cellspacing="0" class="photo-name-employer">
+      		<tr>
+      			<td><%= image_tag @company.logo.url(:small), :class => "photo-employer" %></td>
+      			<td><h2>&#171;<%= @company.name %>&#187;</h2></td>
+      		</tr>
+      	</table>
+              <table class="paper company" border="0" cellpadding="10">
+                                  <tr>
+                                    <td>Сфера деятельности</td>
+                                    <td><%= @company.scope %></td>
+                                  </tr>
+                                          <tr>
+                                                <td>Описание</td>
+                                                <td><%= @company.description %></td>
+                                          </tr>
+                                  <% unless @company.site.empty? %>
+                                        <tr>
+                                          <td>Сайт компании</td>
+                                          <td><%= @company.site %></td>
+                                        </tr>
+                                  <% end %>
+                                  <tr>
+                                    <th colspan="2" class="line-bottom"></th>
+                                  </tr>
+                                  <tr>
+                                    <td>Контактная информация</td>
+                                    <td> <% @company.company_contacts.each do |contact| %>
+                                                <div><%= "#{contact.name}: #{contact.phone}" %></div>
+                                           <% end %>
+                                    </td>
+                                  </tr>
+                              </table>
+      </div> <!-- .boxed -->
+</div> <!-- #frame -->
+<div id="account-contacts">
+  <div class="cap">
+    <h3>Свяжитесь с нами</h3>
+  </div>
+  <div class="boxed-nav">
+    <ul>
+      <li>medical@netbee.ua</li>
+      <span class="line-bottom"></span>
+      <li>(048) 784-14-75</li>
+      <span class="line-bottom"></span>
+      <li>(095) 286-42-32</li>
+      <span class="line-bottom"></span>
+      <li>(095) 286-42-33</li>
+    </ul>
+  </div>
+</div>
+
+<%= render :partial => "list-vacancies" %>
+<div class="clear"></div>

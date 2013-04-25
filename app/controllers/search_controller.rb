@@ -20,4 +20,9 @@ class SearchController < ApplicationController
 	def vacancy
 		@vacancy = Vacancy.find(params[:id])
 	end
+
+	def company
+		@company = Company.find(params[:id])
+		@vacancies = @company.vacancies.where(:state => ["published", "hot"])
+	end
 end

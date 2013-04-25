@@ -7,7 +7,7 @@
       	<table cellpadding="0" cellspacing="0" class="photo-name-employer">
       		<tr>
       			<td><%= image_tag @vacancy.company.logo.url(:small), :class => "photo-employer" %></td>
-      			<td><h2>&#171;<%= @vacancy.company.name %>&#187;</h2></td>
+      			<td><h2>&#171;<%= link_to @vacancy.company.name, :controller => "search", :action => "company", :id => @vacancy.company.id %>&#187;</h2></td>
       		</tr>
       	</table>
           <table class="paper company" border="0" cellpadding="10">
@@ -55,4 +55,21 @@
                               </div>
       </div> <!-- #boxed -->
 </div> <!-- #frame -->
+            <div id="account-contacts">
+                  <div class="cap">
+                        <h3>Свяжитесь с нами</h3>
+                  </div>
+                  <div class="boxed-nav">
+                        <ul>
+                              <li>medical@netbee.ua</li>
+                              <span class="line-bottom"></span>
+                              <li>(048) 784-14-75</li>
+                              <span class="line-bottom"></span>
+                              <li>(095) 286-42-32</li>
+                              <span class="line-bottom"></span>
+                              <li>(095) 286-42-33</li>
+                        </ul>
+                  </div>
+            </div>
+            
 <div class="clear"></div>
