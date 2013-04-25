@@ -6,6 +6,7 @@ class Vacancy < ActiveRecord::Base
 
 	define_index do
 		indexes name 
+    indexes created_at, sortable: true
 		indexes city
 		set_property :delta => :delayed
 		where " vacancies.state IN ('published', 'hot')" # Индексирует только опубликованные и горячие вакансии

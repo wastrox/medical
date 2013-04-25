@@ -19,6 +19,7 @@ class Resume < ActiveRecord::Base
   define_index do
   	indexes position 
   	indexes city
+    indexes created_at, sortable: true
   	set_property :delta => :delayed
   	where " resumes.state IN ('published', 'hot')" # Индексирует только опубликованные и горячие резюме
   end

@@ -6,9 +6,9 @@ class SearchController < ApplicationController
 	def index
 		search_params = params[:search].to_s + " " + params[:city].to_s 
 		if params[:sample] == "1"
-			@vacancies = Vacancy.search(search_params)
+			@vacancies = Vacancy.search(search_params, :order => 'created_at desc')
 		else
-			@resumes = Resume.search(search_params)
+			@resumes = Resume.search(search_params, :order => 'created_at DESC')
 		end
 	end
 
