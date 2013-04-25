@@ -1141,6 +1141,11 @@ table.list-vacancies th {
 	border-top: none;
 }
 
+table.list-vacancies tr td {
+	vertical-align: middle;
+	height: 31px;
+}
+
 table.list-vacancies th, table.list-vacancies td {
  	color: #7A7979;
     font-size: 14px;
@@ -1151,7 +1156,12 @@ table.list-vacancies tr:first-child th:first-child {
 }
 
 
-table.list-vacancies-search tr:last-child td {
+table.list-vacancies tr td .yellow-link {
+	margin: 0px;
+	text-decoration: none;
+}
+
+/*table.list-vacancies-search tr:last-child td {
 	border-top: none;
 }
 
@@ -1163,6 +1173,10 @@ table.list-vacancies-search tr td .yellow-link {
 table.list-vacancies-search {
 	margin: 15px 0 15px;
 	width: 100%;
+}
+
+table.list-vacancies-search tr {
+    border-top: 1px solid #BFB7AF;
 }
 
 table.list-vacancies-search td {
@@ -1181,7 +1195,7 @@ table.list-vacancies-search tr:first-child td:first-child {
 table.list-vacancies-search tr:last-child td {
 	border-top: none;
 }
-
+*/
 .add_fields_for {
 	text-decoration: none;
 	color: rgba(105, 85, 28, 0.69) !important;
@@ -1197,6 +1211,42 @@ table.list-vacancies-search tr:last-child td {
 }
 /*----------------------------------------------------------------------------*/
 
+/*---------------------------- search/company/:id-----------------------------*/
+table.vacancy-company-list {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table.vacancy-company-list tbody tr td {
+	height: 40px;
+	vertical-align: middle;
+	font-size: 14px; 
+	color: #767676;
+	text-align: center; 
+	padding: 10px 0;
+	line-height: 20px;
+	border-top: 1px solid #bfb7af;	
+   }
+
+table.vacancy-company-list tbody tr td:nth-child(1) {
+  width: 420px;
+  text-align: left; 
+}
+
+table.vacancy-company-list tbody tr td a {
+	font-size: 14px; 
+	color: #767676;
+}
+   
+table.vacancy-company-list tbody:first-child tr:first-child td {
+	border-top: 0;
+}
+
+table.vacancy-company-list tbody:last-child tr:last-child td {
+	border-bottom: 1px solid #bfb7af;
+}
+
+/*----------------------------------------------------------------------------*/
 /*----------------------------- Search ---------------------------------------*/
 #search-result {
 	position: relative;
