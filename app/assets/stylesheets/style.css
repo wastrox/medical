@@ -431,7 +431,7 @@ table.vacancies tbody tr td:nth-of-type(even) {
 	padding: 5px 12px 0 0;	
    }*/
 
-#content img {
+.logoBlock img {
     background-attachment: scroll;
     background-clip: border-box;
     background-color: #FFFFFF;
@@ -450,11 +450,11 @@ table.vacancies tbody tr td:nth-of-type(even) {
     padding-left: 30px;
     padding-top: 10px;
 }
-#content ul {
+.logoBlock ul {
     padding-left: 20px;
     padding-top: 20px;
 }
-#content li {
+.logoBlock li {
     list-style-image: none;
     list-style-position: outside;
     list-style-type: none;
@@ -893,7 +893,7 @@ div.fields > div.item > div.field > input.year {
 /*-------------------------------- resume/index ------------------------------*/
 table.list-resume {
 	width: 100%;
-	margin: 5px 0 0px;
+	margin: 5px 0 19px;
 	height: 88px;
 
 }

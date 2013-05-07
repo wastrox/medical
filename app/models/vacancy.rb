@@ -1,7 +1,9 @@
 class Vacancy < ActiveRecord::Base
+  attr_accessible :category, :city, :description, :experiences, :name, :salary, :timetable, :timetable_other, :company_contact_id
+
   belongs_to :company
   belongs_to :company_contact
-  attr_accessible :category, :city, :description, :experiences, :name, :salary, :timetable, :timetable_other, :company_contact_id
+
   validates_presence_of :category, :city, :description, :experiences, :name, :salary, :timetable, :company_contact_id
 
 	define_index do
@@ -44,6 +46,5 @@ class Vacancy < ActiveRecord::Base
     event :approve_wait do
       transition :pending => :wait_company
     end
-  end
-  
+  end  
 end
