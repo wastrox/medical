@@ -986,6 +986,36 @@ tr.clear-border td {
 }
 	
 /*----------------------------------------------------------------------------*/
+
+/*--------------------------applicant/my_vacancies/index----------------------*/
+table.my-vacancies {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table.my-vacancies tbody tr td {
+	height: 40px;
+	vertical-align: middle;
+	font-size: 14px; 
+	color: #767676;
+	text-align: left; 
+	padding: 10px 20px 10px 38px;
+	line-height: 20px;
+	border-top: 1px solid #bfb7af;	
+}
+   
+table.my-vacancies tr:last-child td {
+    border-bottom: 1px solid #BFB7AF;
+}
+table.my-vacancies tr:first-child td {
+    border-top: 0 none;
+}
+table.my-vacancies tbody tr td:first-child {
+    width: 330px;
+}
+
+/*----------------------------------------------------------------------------*/
+
 /*---------------------- employer/profile_companies/index ----------------------*/
 #list-company {
 	margin-bottom: 35px;

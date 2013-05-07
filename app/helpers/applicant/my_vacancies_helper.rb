@@ -1,0 +1,2 @@
+module Applicant::MyVacanciesHelper
+end

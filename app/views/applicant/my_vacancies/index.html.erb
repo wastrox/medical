@@ -1,0 +1,27 @@
+<script>$("#frame").css("margin-bottom", "50px");</script>
+
+<div class="cap">
+  <h2 id="about">Мои вакансии</h2>
+</div>
+<div>
+      <table class="my-vacancies" width="100%">
+        <% @vacancies.each do |vacancy| %>  
+          <tr>
+            
+            <% if Vacancy.find(vacancy.id).nil? %>
+              <td><%= vacancy.name %></td>
+            <% elsif vacancy.deferred? %>
+              <td><%= vacancy.name %></td>
+            <% else %>
+              <td><%= link_to vacancy.name, :controller => "/search", :action => :vacancy, :id => vacancy.id %></td>
+            <% end %>
+
+            <td><%= vacancy.city %></td>
+              <td><%= vacancy.vacancy_responds.find_by_vacancy_id(vacancy.id).respond_date.strftime("%m/%d/%Y") %></td>
+          </tr>
+        <% end %>
+      </table>
+      <div class="link-more"><b><a href="#">Показать еще</a></b></div>
+      <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
+
+</div>

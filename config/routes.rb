@@ -28,7 +28,10 @@ Medical::Application.routes.draw do
 	resources :applicants
 	
   namespace :applicant, :as => 'applicant' do	
+    get "my_vacancies/index"
     match "resumes/defer", to: "resumes#defer"
+    match "resumes/add_vacancy_responded", to: "resumes#add_vacancy_responded"
+    
 		resources :resumes
 		resources :profiles, :only => [:edit, :update]
 	end

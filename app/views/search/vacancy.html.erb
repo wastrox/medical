@@ -1,6 +1,14 @@
 <div id="frame">
       <div class="cap">
-            <h2 id="about"><%= "#{@vacancy.name} (#{@vacancy.experiences}, #{@vacancy.salary} грн.)" %></h2>
+            <% if current_user %>
+                  <% if @vacancy.applicants.where(:id => current_user.id).empty? %>
+                        <h2 id="about"><%= "#{@vacancy.name} (#{@vacancy.experiences}, #{@vacancy.salary} грн.)" %></h2>
+                  <% else %>
+                        <h2 id="about">Вы откликнулись на эту вакансию</h2>
+                  <% end %>
+            <% else %>
+                  <h2 id="about"><%= "#{@vacancy.name} (#{@vacancy.experiences}, #{@vacancy.salary} грн.)" %></h2>
+            <% end %>
       </div>
 
       <div class="boxed">
@@ -39,20 +47,28 @@
                               	<th colspan="2" class="line-bottom"></th>
                               </tr>
                               <tr>
-                              	<td>Контактная информация</td>
-                              	<td> <% @vacancy.company.company_contacts.each do |contact| %>
-                              			<div><%= "#{contact.name}: #{contact.phone}" %></v>
-                              		 <% end %>
-                              	</td>
+                                    <% if current_user %>
+                                    	<td>Контактная информация</td>
+                                    	<td> <% @vacancy.company.company_contacts.each do |contact| %>
+                                    			<div><%= "#{contact.name}: #{contact.phone}" %></v>
+                                    		 <% end %>
+                                    	</td>
+                                    <% else %>
+                                          <td colspan="2">Чтобы откликнуться на эту вакансию <%= link_to "Войдите", login_url %> или <%= link_to "Зарегистрируйтесь", signup_url %> и создайте резюме.</td>
+                                    <% end %>
                               </tr>
                               <tr>
                                     <th colspan="2" class="line-bottom"></th>
                               </tr>
       				</table>    
-                              <div id="button-bottom">
-                                    <%= link_to "Откликнуться на вакансию", "/", :class => "input-sub btn btn-warning", :id => "btn-yellow-for-link" %>
-                                    <div class="clear"></div>
-                              </div>
+                              <% if current_user && current_user.resume != nil %>
+                                    <% if @vacancy.applicants.where(:id => current_user.id).empty?%>
+                                    <div id="button-bottom">
+                                          <%= link_to "Откликнуться на вакансию", applicant_resumes_add_vacancy_responded_path(:vacancy => @vacancy.id), :class => "input-sub btn btn-warning", :id => "btn-yellow-for-link" %>
+                                          <div class="clear"></div>
+                                    </div>
+                                    <% end %>
+                              <% end %>
       </div> <!-- #boxed -->
 </div> <!-- #frame -->
             <div id="account-contacts">

@@ -3,6 +3,8 @@ class Vacancy < ActiveRecord::Base
 
   belongs_to :company
   belongs_to :company_contact
+  has_many :vacancy_responds
+  has_many :applicants, :through => :vacancy_responds
 
   validates_presence_of :category, :city, :description, :experiences, :name, :salary, :timetable, :company_contact_id
 
