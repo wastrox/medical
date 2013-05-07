@@ -125,7 +125,7 @@ a.disable-link {
 /* Middle
 -----------------------------------------------------------------------------*/
 #content {
-	margin-top: 15px;
+	margin: 15px 0px;
 }
 
 .start_page {
@@ -426,10 +426,39 @@ table.vacancies tbody tr td:nth-of-type(even) {
 	color: #767676;
 }
 
-table.companies-logo tbody tr td {
+/*table.companies-logo tbody tr td {
 	text-align: center; 
 	padding: 5px 12px 0 0;	
-   }
+   }*/
+
+#content img {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #FFFFFF;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    float: left;
+    height: 90px;
+    margin-bottom: 0.8em;
+    margin-left: 0;
+    margin-right: 1em;
+    margin-top: 0;
+    width: 160px;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+#content ul {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+#content li {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
    
 .hot-content {
 	height: 107px;
@@ -1134,7 +1163,7 @@ table.photo-name-employer tr td {
 }
 
 table.list-vacancies {
-	margin: 15px 0 5px;
+	margin: 19px 0 5px;
 }
 
 table.list-vacancies th {
