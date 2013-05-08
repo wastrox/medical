@@ -23,5 +23,5 @@
 
         <% end %>
       </table>
-      <div class="link-more"><b><%= link_to "Поиск вакансий", :contaroller => "/search", :action => "vacancy" %></b></div>
+      <div class="link-more"><b><%= link_to "Поиск вакансий", { :controller => "search", :action => "index", :method => "get", :sample => "1" } %></b></div>
 </div>

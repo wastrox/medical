@@ -45,6 +45,10 @@ class Account < ActiveRecord::Base
 	  Notifier.letter_from_moderator(self, text).deliver
 	end
 
+  def send_vacancy_respond(subject, applicant)
+    Notifier.vacancy_respond(self, subject, applicant).deliver
+  end
+
   def type?
 		account_type
 	end

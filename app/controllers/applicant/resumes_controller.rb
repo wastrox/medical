@@ -93,9 +93,23 @@ end
   end
 
   def add_vacancy_responded 
-    vacancy_respond = VacancyRespond.new(:applicant_id => @applicant.id, :vacancy_id => params[:vacancy_id], :respond_date => Time.now, :vacancy_name => params[:vacancy_name])
-    vacancy_respond.save
-    redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id]
+    vacancy_respond = VacancyRespond.new(:applicant_id => @applicant.id, :vacancy_id => params[:vacancy_id], :respond_date => Time.now, :vacancy_name => params[:vacancy_name])    
+
+    respond_to do |format|
+      if vacancy_respond.save
+
+        vacancy = Vacancy.find(vacancy_respond.vacancy_id)
+        company = vacancy.company
+        employer = company.employer
+
+        employer.send_vacancy_respond(vacancy, @applicant)
+
+        format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id] }
+      else
+        format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id] }
+      end
+    end
+
   end
 
   protected
