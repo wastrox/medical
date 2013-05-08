@@ -4,9 +4,12 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <p>Здравствуйте.</p>
-    <p>Вы получили отклик на вакансию <%= link_to @vacancy.name, :host => "medical.netbee.ua", :controller => "/search", :action => "vacancy", :id => @vacancy.id %> от <%= link_to @fullNameApplicant, :host => "medical.netbee.ua", :controller => "/search", :action => "resume", :id => @applicant.resume.id %>. Для просмотра резюме пройдите по ссылке.
-</p>
+    <p>Здравствуйте, компания "<%= @vacancy.company.name %>".</p>
+    <p>Вы получили отклик на вакансию <%= link_to @vacancy.name, :host => "medical.netbee.ua", :controller => "/search", :action => "vacancy", :id => @vacancy.id %> от <%= link_to @fullNameApplicant, :host => "medical.netbee.ua", :controller => "/search", :action => "resume", :id => @applicant.resume.id %>. 
+    </p>
+    <p>Для просмотра резюме пройдите по ссылке.</p>
+    <p><%= url_for(:host => "medical.netbee.ua", :controller => "/search", :action => "resume", :id => @applicant.resume.id) %></p>
+    <br/>
     <p>С уважением, команда Netbee.</p>
   </body>
 </html>
