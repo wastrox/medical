@@ -6,22 +6,22 @@
 <div>
       <table class="my-vacancies" width="100%">
         <% @vacancies.each do |vacancy| %>  
-          <tr>
-            
-            <% if Vacancy.find(vacancy.id).nil? %>
-              <td><%= vacancy.name %></td>
-            <% elsif vacancy.deferred? %>
-              <td><%= vacancy.name %></td>
-            <% else %>
-              <td><%= link_to vacancy.name, :controller => "/search", :action => :vacancy, :id => vacancy.id %></td>
-            <% end %>
 
-            <td><%= vacancy.city %></td>
-              <td><%= vacancy.vacancy_responds.find_by_vacancy_id(vacancy.id).respond_date.strftime("%m/%d/%Y") %></td>
+          <tr>
+            <% if Vacancy.where(:id => vacancy.vacancy_id).empty? %>
+              <td><%= vacancy.vacancy_name %></td>
+              <td>Вакансия закрыта</td>
+            <% elsif @applicant.vacancies.find(vacancy.vacancy_id).deferred? %>
+              <td><%= vacancy.vacancy_name %></td>
+              <td>Вакансия закрыта</td>
+            <% else %>
+              <td><%= link_to vacancy.vacancy_name, :controller => "/search", :action => :vacancy, :id => vacancy.vacancy_id %></td>
+              <td><%= @applicant.vacancies.find(vacancy.vacancy_id).city %></td>
+            <% end %>
+              <td><%= vacancy.respond_date.strftime("%m/%d/%Y") %></td>
           </tr>
+
         <% end %>
       </table>
-      <div class="link-more"><b><a href="#">Показать еще</a></b></div>
-      <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
-
+      <div class="link-more"><b><%= link_to "Поиск вакансий", :contaroller => "/search", :action => "vacancy" %></b></div>
 </div>

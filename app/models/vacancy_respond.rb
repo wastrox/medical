@@ -1,5 +1,5 @@
 class VacancyRespond < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :applicant_id, :vacancy_id, :respond_date, :vacancy_name
 
   belongs_to :vacancy
   belongs_to :applicant

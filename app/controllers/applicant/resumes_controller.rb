@@ -93,12 +93,9 @@ end
   end
 
   def add_vacancy_responded 
-    vacancy_respond = VacancyRespond.new
-    vacancy_respond.applicant_id = @applicant.id
-    vacancy_respond.vacancy_id = params[:vacancy]
-    vacancy_respond.respond_date = Time.now
+    vacancy_respond = VacancyRespond.new(:applicant_id => @applicant.id, :vacancy_id => params[:vacancy_id], :respond_date => Time.now, :vacancy_name => params[:vacancy_name])
     vacancy_respond.save
-    redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy]
+    redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id]
   end
 
   protected

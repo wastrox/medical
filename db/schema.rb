@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130507105912) do
+ActiveRecord::Schema.define(:version => 20130508083343) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20130507105912) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.date     "respond_date"
+    t.string   "vacancy_name"
   end
 
   add_index "vacancy_responds", ["applicant_id"], :name => "index_vacancy_responds_on_applicant_id"
