@@ -44,47 +44,10 @@
 		<div class="companies">
 			<h4 class="title-companies"><span class="icon-companies">КОМПАНИИ</span></h4>
 			<span class="label-tail-companies"></span>
-			<!--<table class="companies-logo" width="100%">
-				<tr>
-					<td><img src="/assets/logo-company-1/logo-company-1.png"></td>
-					<td><img src="/assets/logo-company-1/logo-company-2.png"></td>
-				</tr>
-				<tr>
-					<td><img src="/assets/logo-company-1/logo-company-3.png"></td>
-					<td><img src="/assets/logo-company-1/logo-company-4.png"></td>
-				</tr>
-				<tr>
-					<td><img src="/assets/logo-company-1/logo-company-5.png"></td>
-					<td><img src="/assets/logo-company-1/logo-company-6.png"></td>
-				</tr>
-				<tr>
-					<td><img src="/assets/logo-company-1/logo-company-7.png"></td>
-					<td><img src="/assets/logo-company-1/logo-company-8.png"></td>
-				</tr>
-				<tr>
-					<td><img src="/assets/logo-company-1/logo-company-9.png"></td>
-					<td><img src="/assets/logo-company-1/logo-company-10.png"></td>
-				</tr>
-			</table>-->
 			<ul class="logoBlock">
-			            <li><img src="/assets/logo-company-1/logo-company-1.png"></li>
-			            <li><img src="/assets/logo-company-1/logo-company-2.png"></li>
-
-
-			            <li><img src="/assets/logo-company-1/logo-company-3.png"></li>
-			            <li><img src="/assets/logo-company-1/logo-company-4.png"></li>
-
-
-			            <li><img src="/assets/logo-company-1/logo-company-5.png"></li>
-			            <li><img src="/assets/logo-company-1/logo-company-6.png"></li>
-
-
-			            <li><img src="/assets/logo-company-1/logo-company-7.png"></li>
-			            <li><img src="/assets/logo-company-1/logo-company-8.png"></li>
-
-
-			            <li><img src="/assets/logo-company-1/logo-company-9.png"></li>
-			            <li><img src="/assets/logo-company-1/logo-company-10.png"></li>
+			<% @companies.each do |company|%>
+			            <li><%= image_tag company.logo.url(:vip) %></li>
+			<% end %>
 			</ul>
 		</div>
 		<div class="clear"></div>

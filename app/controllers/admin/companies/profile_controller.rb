@@ -5,10 +5,11 @@ class Admin::Companies::ProfileController < ApplicationController
   skip_before_filter :require_login
   #before_filter :authenticate_admin #HTTP authenticate for admin; this method in place application_controller
 
-  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :published, :send_letter_for_employer]
+  before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :published, :send_letter_for_employer, :vip]
   after_filter  :send_letter_for_employer, :only => :update
   after_filter  :published, :only => :update
   after_filter  :reject, :only => :update
+  after_filter  :vip, :only => :update
   before_filter :destroy, :only => :update
   
   def vacancies
@@ -36,6 +37,10 @@ class Admin::Companies::ProfileController < ApplicationController
     end
   end
   
+  def vip
+    params[:vip] && @company.approve_vip   
+  end
+
   def reject
     if params[:reject] && @company.approve_rejected
        vacancies = @company.vacancies.where("state = ?", "pending")

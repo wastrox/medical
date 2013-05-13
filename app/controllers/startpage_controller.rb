@@ -4,5 +4,6 @@ class StartpageController < ApplicationController
 
 	def index
 		@vacancies = Vacancy.where(:state => "published").order("created_at desc").limit(9)
+		@companies = Company.where(:state => "vip").order("created_at desc").limit(10)
 	end
 end

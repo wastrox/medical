@@ -1,4 +1,6 @@
 Medical::Application.routes.draw do
+  get "personal_data/index"
+
   get "about", to: "about#index"
 
   get "vacancies/index"
@@ -30,6 +32,7 @@ Medical::Application.routes.draw do
   namespace :applicant, :as => 'applicant' do	
     get "my_vacancies/index"
     match "resumes/defer", to: "resumes#defer"
+    match "resumes/destroy_vacancy_respond/:id" => "resumes#destroy_vacancy_respond" 
     match "resumes/add_vacancy_responded", to: "resumes#add_vacancy_responded"
     
 		resources :resumes

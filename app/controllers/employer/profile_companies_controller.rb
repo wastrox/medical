@@ -61,7 +61,7 @@ class Employer::ProfileCompaniesController < ApplicationController
     respond_to do |format| 
       if resume_respond.save
         resume = Resume.find(resume_respond.resume_id)
-        flash[:notice] = "Резюме #{resume.position} добавлена в Избранные резюме."
+        flash[:notice] = "Резюме #{resume.position} добавлено в Избранные резюме."
         format.html { redirect_to :controller => '/search', :action => 'resume', :id => resume_respond.resume_id   }
       else
         format.html { redirect_to :controller => '/search', :action => 'resume', :id => params[:resume_id] }

@@ -111,7 +111,13 @@ end
         format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id] }
       end
     end
+  end
 
+  def destroy_vacancy_respond
+    vacancy_respond = VacancyRespond.find(params[:id])
+    if vacancy_respond.destroy
+      redirect_to applicant_my_vacancies_index_url
+    end
   end
 
   protected

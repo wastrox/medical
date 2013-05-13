@@ -1,3 +1,8 @@
+<style>
+	.btn-warning {
+		margin-left: 120px;
+	}
+</style>
 <div id="frame" class="frame-admin">
 
 <div class="cap">
@@ -27,6 +32,7 @@
 			<span class="line-bottom line-bottom-company"></span>
 
 				<div id="button-bottom">
+					<%= employer_fields.submit "Сделать Vip", :id => "btn-success", :class => "input-sub btn btn-success", :name => "vip" unless @company.vip? %>
 					<%= employer_fields.submit "Опубликовать", :class => "input-sub btn btn-warning", :name => "published" unless @company.published? %>
 					<%= employer_fields.submit "Обновить", :class => "input-sub btn save-as", :name => "update" %>
 					<%= employer_fields.submit "Удалить", :class => "input-sub btn save-as", :name => "destroy",  :confirm => 'Вы, уверены, что хотите удалить компанию?' %>
