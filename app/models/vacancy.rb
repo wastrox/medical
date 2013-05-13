@@ -3,6 +3,7 @@ class Vacancy < ActiveRecord::Base
 
   belongs_to :company
   belongs_to :company_contact
+
   has_many :vacancy_responds
   has_many :applicants, :through => :vacancy_responds
 

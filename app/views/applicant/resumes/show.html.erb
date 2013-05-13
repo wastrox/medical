@@ -1,3 +1,11 @@
+<script>	
+	//Убирает логотип и аватар если они пусты
+	var img = $("img.photo-applicant");
+	if (img.attr("alt") == "Missing") {
+    	img.parent().remove();
+	}
+</script>
+
 <div class="cap">
 	<img src="/assets/red-pencil.png" class="icon-red-pencil"><%= link_to "Редактировать", edit_applicant_resume_path(@resume) %>
 	<img src="/assets/delete.png" class="icon-delete"><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %>

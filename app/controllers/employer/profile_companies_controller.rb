@@ -3,7 +3,7 @@ class Employer::ProfileCompaniesController < ApplicationController
  layout "profile_company"	
  before_filter :init_company, :only => [:new, :create]
  before_filter :find_company, :only => [:edit, :update, :show]
- before_filter :find_employer, :only => [:index, :create, :show]
+ before_filter :find_employer, :only => [:index, :create, :show, :add_resume_responded]
  before_filter :require_account_type_employer, :check_account_type
 
   def index
@@ -51,6 +51,20 @@ class Employer::ProfileCompaniesController < ApplicationController
       else
         format.html { render :action => "edit", notes: "Error" }
         format.json { render :json => @company.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def add_resume_responded 
+    resume_respond = ResumeRespond.new(:employer_id => @employer.id, :resume_id => params[:resume_id], :respond_date => Time.now)    
+
+    respond_to do |format| 
+      if resume_respond.save
+        resume = Resume.find(resume_respond.resume_id)
+        flash[:notice] = "Резюме #{resume.position} добавлена в Избранные резюме."
+        format.html { redirect_to :controller => '/search', :action => 'resume', :id => resume_respond.resume_id   }
+      else
+        format.html { redirect_to :controller => '/search', :action => 'resume', :id => params[:resume_id] }
       end
     end
   end

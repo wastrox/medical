@@ -2,7 +2,7 @@
       <div class="cap">
             <% if current_user %>
                   <% if @vacancy.applicants.where(:id => current_user.id).empty? %>
-                        <h2 id="about"><%= "#{@vacancy.name} (#{@vacancy.experiences}, #{@vacancy.salary} грн.)" %></h2>
+                        <h2 id="about"><%= "#{@vacancy.name} (#{@vacancy.salary} грн.)" %></h2>
                   <% else %>
                         <h2 id="about">Вы откликнулись на эту вакансию,<%= link_to "Мои вакансии", applicant_my_vacancies_index_url %></h2>
                   <% end %>
@@ -12,6 +12,13 @@
       </div>
 
       <div class="boxed">
+            <% if flash[:notice] %>
+                  <br>
+                  <div class="alert alert-block alert-success">
+                        <p id="notice" ><%= flash[:notice] %></p>
+                  </div>
+            <% end %>
+
       	<table cellpadding="0" cellspacing="0" class="photo-name-employer">
       		<tr>
       			<td class="logo-profile"><%= image_tag @vacancy.company.logo.url(:small), :class => "photo-employer" %></td>
@@ -61,8 +68,8 @@
                                     <th colspan="2" class="line-bottom"></th>
                               </tr>
       				</table>    
-                              <% if current_user && current_user.resume != nil %>
-                                    <% if @vacancy.applicants.where(:id => current_user.id).empty?%>
+                              <% if current_user && current_user.applicant? && current_user.resume != nil %>
+                                    <% if @vacancy.applicants.where(:id => current_user.id).empty? %>
                                     <div id="button-bottom">
                                           <%= link_to "Откликнуться на вакансию", applicant_resumes_add_vacancy_responded_path(:vacancy_id => @vacancy.id, :vacancy_name => @vacancy.name), :class => "input-sub btn btn-warning", :id => "btn-yellow-for-link" %>
                                           <div class="clear"></div>
@@ -87,5 +94,4 @@
                         </ul>
                   </div>
             </div>
-            
 <div class="clear"></div>

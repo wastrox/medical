@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508083343) do
+ActiveRecord::Schema.define(:version => 20130513074722) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -119,6 +119,17 @@ ActiveRecord::Schema.define(:version => 20130508083343) do
   end
 
   add_index "profiles", ["resume_id"], :name => "index_profiles_on_resume_id"
+
+  create_table "resume_responds", :force => true do |t|
+    t.integer  "resume_id"
+    t.integer  "employer_id"
+    t.date     "respond_date"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "resume_responds", ["employer_id"], :name => "index_resume_responds_on_employer_id"
+  add_index "resume_responds", ["resume_id"], :name => "index_resume_responds_on_resume_id"
 
   create_table "resumes", :force => true do |t|
     t.integer  "applicant_id"

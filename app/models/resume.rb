@@ -15,6 +15,10 @@ class Resume < ActiveRecord::Base
     
   has_many :educations, :dependent => :destroy
     accepts_nested_attributes_for :educations, :allow_destroy => true
+
+  has_many :resume_responds, :dependent => :destroy
+  has_many :employers, :through => :resume_responds
+
     
   define_index do
   	indexes position 

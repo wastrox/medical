@@ -1,0 +1,20 @@
+<script>$("#frame").css("margin-bottom", "150px");</script>
+
+<div class="cap">
+  <h2 id="about">Избранные резюме</h2>
+</div>
+<div>
+      <table class="my-resumes" width="100%">
+        <% @resumes.each do |resume| %>  
+          <tr>
+          	<% resume_profile = @employer.resumes.find(resume.resume_id).profile %>
+            <% if @employer.resumes.find(resume.resume_id).deferred? != true %>
+              <td><%= link_to "#{resume_profile.lastname} #{resume_profile.firstname} #{resume_profile.surename}", :controller => "/search", :action => :resume, :id => resume.resume_id %></td>
+              <td><%= @employer.resumes.find(resume.resume_id).position %></td>
+              <td><%= @employer.resumes.find(resume.resume_id).city %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+      <div class="link-more"><b><%= link_to "Поиск резюме", { :controller => "/search", :action => "index", :method => "get", :sample => "2" } %></b></div>
+</div>

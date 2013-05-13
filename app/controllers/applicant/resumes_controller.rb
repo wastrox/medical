@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Applicant::ResumesController < ApplicationController
  layout "profile_applicant"
   before_filter :require_account_type_applicant, :check_account_type
@@ -96,14 +97,15 @@ end
     vacancy_respond = VacancyRespond.new(:applicant_id => @applicant.id, :vacancy_id => params[:vacancy_id], :respond_date => Time.now, :vacancy_name => params[:vacancy_name])    
 
     respond_to do |format|
+      
       if vacancy_respond.save
-
         vacancy = Vacancy.find(vacancy_respond.vacancy_id)
         company = vacancy.company
         employer = company.employer
 
         employer.send_vacancy_respond(vacancy, @applicant)
 
+        flash[:notice] = "Работодателю было выслано ваше резюме. Вакансия #{vacancy.name} добавлена в Мои ваканси."
         format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id] }
       else
         format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id] }

@@ -37,10 +37,13 @@ Medical::Application.routes.draw do
 	end
 
 	namespace :employer, :as => 'employer' do
-		resources :profile_companies, :only => [:index, :edit, :update, :new, :create, :show]
-		resources :vacancies
+    get "my_resumes/index"
+    match "profile_companies/add_resume_responded", to: "profile_companies#add_resume_responded"
 		match 'vacancies/create_draft' => 'vacancies#create_draft'
     match 'vacancies/defer/:id' => 'vacancies#defer'
+
+    resources :profile_companies #, :only => [:index, :edit, :update, :new, :create, :show]
+    resources :vacancies
 	end
 	
 	match "/admin" => redirect("/admin/companies")

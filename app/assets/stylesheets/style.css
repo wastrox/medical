@@ -1016,6 +1016,36 @@ table.my-vacancies tbody tr td:first-child {
 
 /*----------------------------------------------------------------------------*/
 
+/*--------------------------employer/my_resumes/index----------------------*/
+table.my-resumes {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table.my-resumes tbody tr td {
+	height: 40px;
+	vertical-align: middle;
+	font-size: 14px; 
+	color: #767676;
+	text-align: left; 
+	padding: 10px 20px 10px 38px;
+	line-height: 20px;
+	border-top: 1px solid #bfb7af;	
+}
+   
+table.my-resumes tr:last-child td {
+    border-bottom: 1px solid #BFB7AF;
+}
+table.my-resumes tr:first-child td {
+    border-top: 0 none;
+}
+table.my-resumes tbody tr td:first-child {
+    width: 230px;
+}
+
+/*----------------------------------------------------------------------------*/
+
+
 /*---------------------- employer/profile_companies/index ----------------------*/
 #list-company {
 	margin-bottom: 35px;
