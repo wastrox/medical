@@ -46,7 +46,10 @@
 			<span class="label-tail-companies"></span>
 			<ul class="logoBlock">
 			<% @companies.each do |company|%>
-			            <li><%= image_tag company.logo.url(:vip) %></li>
+			            <li><%= link_to(:controller => "/search", :action => "company", :id => company.id) do %>
+			            		<%= image_tag company.logo.url(:vip) %>
+			            	<% end %>
+			            </li>
 			<% end %>
 			</ul>
 		</div>
