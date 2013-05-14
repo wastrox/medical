@@ -3,9 +3,10 @@
       //Если кнопки нет, скрипт удаляет разделитель между кнопкой
       // "Откликнуться на вакансию" и Контактная информация вакансии
       $(document).ready(function(){
-            var bottom = $("#button-bottom").index();
-            if (bottom == "-1") {
-                $(".paper tr:last-child").remove();
+            var button = $("#button-bottom").index();
+            if (button == "-1") {
+                  $("tr:last-child th.line-bottom").remove();
+                  $(".paper").css("margin-bottom", "15px"); 
             }
       });
 </script>

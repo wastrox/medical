@@ -1,31 +1,53 @@
+<!-- if необходимо использовать для того, чтобы, при ошибке валидации, данные профиля не пропадали из полей форм, при первом создании резюме -->
+
 <div class='item'>
 	<%= f.label :lastname, 'Фамилия' %>
 	<div class='field'>
-		<%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
+		<% if @profile.lastname.nil? %>
+			<%= f.text_field :lastname %>
+		<% else %>
+			<%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
+		<% end %>
 	</div>
 </div>
 <div class='item'>
 	<%= f.label :firstname, 'Имя' %>
 	<div class='field'>
-		<%= f.text_field :firstname, :value => "#{@profile.firstname}" %>
+		<% if @profile.firstname.nil? %>
+			<%= f.text_field :firstname %>
+		<% else %>
+			<%= f.text_field :firstname, :value => "#{@profile.firstname}" %>
+		<% end %>
 	</div>
 </div>
 <div class='item'>
 	<%= f.label :surename, 'Отчество' %>
 	<div class='field'>
-		<%= f.text_field :surename, :value => "#{@profile.surename}"%>
+		<% if @profile.surename.nil? %>
+			<%= f.text_field :surename %>
+		<% else %>
+			<%= f.text_field :surename, :value => "#{@profile.surename}"%>
+		<% end %>
 	</div>
 </div>
 <div class='item'>
 	<%= f.label :date, 'Дата рождения' %>
 	<div class='field'>
-		<%= f.text_field :date, :value => "#{@profile.date}", :class => "datepicker", :placeholder => " дд.мм.гггг", :readonly => "readonly" %>
+		<% if @profile.date.nil? %>
+			<%= f.text_field :date, :class => "datepicker", :placeholder => " дд.мм.гггг", :readonly => "readonly" %>
+		<% else %>
+			<%= f.text_field :date, :value => "#{@profile.date}", :class => "datepicker", :placeholder => " дд.мм.гггг", :readonly => "readonly" %>
+		<% end %>
 	</div>
 </div>
 <div class='item'>
 	<%= f.label :phone, 'Мобильный телефон' %>
 	<div class='field'>
-		<%= f.text_field :phone, :value => "#{@profile.phone}", :type => "tel", :id => "phone", :placeholder => "+(0xx) xxx xx xx", :min => "10" %>
+		<% if @profile.phone.nil? %>
+			<%= f.text_field :phone, :type => "tel", :id => "phone", :placeholder => "+(0xx) xxx xx xx", :min => "10" %>
+		<% else %>
+			<%= f.text_field :phone, :value => "#{@profile.phone}", :type => "tel", :id => "phone", :placeholder => "+(0xx) xxx xx xx", :min => "10" %>
+		<% end %>
 	</div>
 </div>
     <div class='item' style="margin-bottom: 0px;">

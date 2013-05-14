@@ -52,12 +52,13 @@ class Applicant::ResumesController < ApplicationController
 
     respond_to do |format|
       if @resume.save
-         @resume.request
-         format.html { redirect_to :controller => 'resumes', :action => 'show', :id => @resume.id }
-         format.json { render :json => @resume, :status => :created, :location => @resume }
+        @resume.request
+        format.html { redirect_to :controller => 'resumes', :action => 'show', :id => @resume.id }
+        format.json { render :json => @resume, :status => :created, :location => @resume }
       else
-         format.html { render :action => "new" }
-         format.json { render :json => @resume.errors, :status => :unprocessable_entity }
+        flash[:notice] = "Все поля отмеченные красным цветом - обязательны для заполнения"
+        format.html { render :action => "new" }
+        format.json { render :json => @resume.errors, :status => :unprocessable_entity }
       end
     end
 end

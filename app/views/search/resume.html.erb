@@ -1,3 +1,13 @@
+<script>
+$(document).ready(function(){
+	var button = $("#button-bottom").index();
+	if (button == "-1") {
+		$("tr:last-child th.line-bottom").remove();
+		$(".paper").css("margin-bottom", "15px");	
+	}
+});
+</script>
+
 <div id="frame">
 	<div class="cap">
 

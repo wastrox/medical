@@ -24,6 +24,10 @@ a:hover {
 	text-decoration: none;
 	border-bottom: none;
 }
+
+.navbar-inner a {
+	border-bottom: none;
+}
 p {
 	/*font-family: "Open Sans"*/
 	/*margin: 0 0 12px;*/

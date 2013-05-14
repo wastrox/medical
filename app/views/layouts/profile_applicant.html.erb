@@ -3,13 +3,11 @@
 <head>
   <title>Medical</title>
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "jquery-ui/jquery-ui-1.9.2.custom", :media => "all" %>
-  <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "standart_form", "selectbox", "selectbox-for-nestedform" %>
+  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "jquery-ui/jquery-ui-1.9.2.custom", "bootstrap-alerts", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "standart_form", "selectbox", "selectbox-for-nestedform", "bootstrap-alerts" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="notice"><p><%= flash[:notice] %></p></div>
-
 <div id="wrapper">
 	<header id="header">
 		<a href="/"><img alt="" class="logo" src="/assets/logo-netbee.png"></a>
