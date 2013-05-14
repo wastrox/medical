@@ -17,10 +17,12 @@ body {
 a {
 	color: #767676;
 	outline: none;
-	text-decoration: underline;
+	text-decoration: none;
+	border-bottom: 1px dashed #7A7979;
 }
 a:hover {
 	text-decoration: none;
+	border-bottom: none;
 }
 p {
 	/*font-family: "Open Sans"*/
@@ -98,6 +100,7 @@ a.disable-link {
 	font-weight: bold;
 	color: #4d4d4d;
 	text-decoration: none;
+	border-bottom: none;
 }
 .signup, .about {
 	display: inline-block;
@@ -389,6 +392,10 @@ table.vacancies {
 	border-spacing: 0;
 }
 
+table.vacancies tbody tr td:first-child {
+	width: 145px;
+}
+
 table.vacancies tbody tr td {
 	font-size: 14px; 
 	color: #767676;
@@ -468,16 +475,19 @@ table.vacancies tbody tr td:nth-of-type(even) {
 .hot-content {
 	height: 107px;
 	width: 210px;
-	margin-left: 28px;
+	margin-left: 35px;
 	margin-top: 0px;
 	float: left;
 }
 .hot-content p {
+	font-size: 14px;
 	color: #767676;
+	margin-bottom: 10px;
 }
 .hot-content a {
 	font-size: 14px;
-	color: #e03007;
+	color: #BD451C;
+	border-bottom: 1px dashed #BD451C;
 }
 .hot-content h3 {
 	margin: 12px 0;
@@ -560,8 +570,9 @@ div.link-navigate {
 .link-navigate a {
 	color: #ffcb08;
 	text-decoration: none;
-	padding: 23px 28px 0 0;
+	margin: 23px 28px 0 0;
 	float: right;
+	border-bottom: 1px dashed #ffcb08;
 }
 
 .enter-with {
@@ -793,6 +804,7 @@ form #button-bottom {
 	font-size: 14px;
 	color: #7a7979;
 	text-decoration: none;	
+	border-bottom: none;
 }
 
 .boxed-nav ul span.line-bottom {
