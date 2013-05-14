@@ -1,3 +1,14 @@
+<script>
+      //FIXME: убрать скрипт из файла
+      //Если кнопки нет, скрипт удаляет разделитель между кнопкой
+      // "Откликнуться на вакансию" и Контактная информация вакансии
+      $(document).ready(function(){
+            var bottom = $("#button-bottom").index();
+            if (bottom == "-1") {
+                $(".paper tr:last-child").remove();
+            }
+      });
+</script>
 <div id="frame">
       <div class="cap">
             <% if current_user %>

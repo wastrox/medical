@@ -5,4 +5,5 @@ $(document).ready(function(){
     	$(".logo-profile, .photo-profile").remove();
 	}
 	$("img").attr("alt", "Логотип");
+
 });

@@ -973,15 +973,17 @@ img.photo-applicant {
 
 table.paper {
 	width: 100%;
-	padding-bottom: 20px;
+	/*padding-bottom: 20px;*/
+	padding-bottom: 5px;
 }
 
 table.paper tr {
 }
 
 table.paper tr td {
+	padding-bottom: 5px;
 	vertical-align: top;
-	height: 30px;
+	/*height: 30px;*/
 }
 
 table.paper tr td:first-child {

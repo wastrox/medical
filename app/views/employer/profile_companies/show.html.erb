@@ -22,19 +22,12 @@
                         	<td>Сайт компании</td>
                         	<td><%= @company.site %></td>
                         </tr>
-                        <!--<tr>
-                        	<td>Контактная информация</td>
-                        	<td> <%# @contacts.each do |contact| %>
-                        			<div><%#= "#{contact.name} - #{contact.phone}" %></v>
-                        		 <%# end %>
-                        	</td>
-                        </tr>-->
                         <tr>
                         	<th colspan="2" class="line-bottom"></th>
                         </tr>
                         <tr>
-                        	<td>Контактная информация</td>
-                        	<td> <% @company.company_contacts.each do |contact| %>
+                        	<td style="height: 40px;">Контактная информация</td>
+                        	<td style="height: 40px;"> <% @company.company_contacts.each do |contact| %>
                         			<div><%= "#{contact.name}: #{contact.phone}" %></div>
                         		 <% end %>
                         	</td>
