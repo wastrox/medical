@@ -3,8 +3,8 @@
 <head>
   <title>Medical</title>
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "jquery-ui/jquery-ui-1.9.2.custom", "bootstrap-alerts", :media => "all" %>
-  <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "standart_form", "selectbox", "selectbox-for-nestedform", "bootstrap-alerts" %>
+  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "jquery-ui/jquery-ui-1.9.2.custom", "bootstrap-alerts", "bootstrap-btn-group", "bootstrap-dropdown", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "standart_form", "selectbox", "selectbox-for-nestedform", "bootstrap-alerts", "bootstrap-btn-group" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,7 +18,18 @@
 				end %>
 			</div> 
 			<div class="separator"></div> 
-			<%= link_to "Выйти", logout_url, :class => "signup" %> 
+			<%= link_to "Выход", logout_url, :class => "signup" %>
+
+			<div class="separator"></div>
+
+			<div class="btn-group">
+				<a class="btn dropdown-toggle signup" data-toggle="dropdown" href="#" id="btn-drop">Справка</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li><a tabindex="-1" href="#">Контакты</a></li>
+					<li><a tabindex="-1" href="#">Для пользователей</a></li>
+					<li><a tabindex="-1" href="#">О Netbee</a></li>
+				</ul>
+			</div> 
 		</div>
 	</header><!-- #header-->
 	<div id="content">

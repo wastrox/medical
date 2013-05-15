@@ -3,8 +3,8 @@
 <head>
   <title>Medical</title>
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "bootstrap-alerts", :media => "all" %>
-  <%= javascript_include_tag "jquery-1.9.1.min", "selectbox", "search", "bootstrap-alerts" %>
+  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "bootstrap-alerts", "bootstrap-btn-group", "bootstrap-dropdown", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "selectbox", "search", "bootstrap-alerts", "bootstrap-btn-group" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -32,6 +32,16 @@
 				<%= link_to_if(current_user, "Выход", logout_path, :class => "signup") do
 						render :partial => 'layouts/other_link_navbar' 
 					end %>
+				<div class="separator"></div>
+
+				<div class="btn-group">
+					<a class="btn dropdown-toggle signup" data-toggle="dropdown" href="#" id="btn-drop">Справка</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li><a tabindex="-1" href="#">Контакты</a></li>
+						<li><a tabindex="-1" href="#">Для пользователей</a></li>
+						<li><a tabindex="-1" href="#">О Netbee</a></li>
+					</ul>
+				</div> 
 				<!--<div class="separator"></div>-->
 				<%#= link_to "Netbee", about_url, :class => "signup" %>
 		</div>

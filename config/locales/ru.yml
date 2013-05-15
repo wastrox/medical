@@ -13,8 +13,9 @@ ru:
               deferred: "Скрыто"
       errors:
           messages:
-              blank: " - обязательно для заполнения"
+              blank: ""
               accepted: "- согласитесь с соглашением ХХХ"
+              invalid: "Не верный email"
       models:
           profile: "Профиль"
       attributes:

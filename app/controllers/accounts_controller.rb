@@ -1,3 +1,4 @@
+# coding: utf-8
 class AccountsController < ApplicationController
   layout "small_window"
 	before_filter :find_account, :only => [:activate]
@@ -14,6 +15,7 @@ class AccountsController < ApplicationController
 			@account.send_activation_instructions! 
       redirect_to :controller => 'confirmation', :action => 'index'
     else
+      flash[:notice] = "Ошибка регистрации!"
       render "new"
     end
   end
@@ -23,7 +25,7 @@ class AccountsController < ApplicationController
 			cookies.permanent[:salt] = @account.salt
 			redirect_to :controller => 'confirmation', :action => 'account_type'
 		else
-		  redirect_to :controller => 'confirmation', :action => 'index', notice: "Not activated, because, something went wrong ("
+		  redirect_to :controller => 'confirmation', :action => 'index', notice: "Аккаунт не активирован, что-то пошло не так ("
 		end
 	end
 

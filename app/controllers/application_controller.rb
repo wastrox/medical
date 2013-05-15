@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   	
   	def require_login
   	  unless logged_in?
-        flash[:error] = "You must be logged in to access this section"
+        flash[:error] = "Вы должны авторизироваться для доступа к этому разделу!"
         redirect_to new_session_url
       end
   	end
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     # => FIXME: блок ограничений, используется в контроллерах 'соискателей и работодателей', перебрать-переделать
     def check_account_type
       unless current_user.type?
-        redirect_to confirmation_account_type_url, notice: "You must choose account type!"
+        redirect_to confirmation_account_type_url, notice: "Вы должны выбрать тип учетной записи"
       end
     end
     
