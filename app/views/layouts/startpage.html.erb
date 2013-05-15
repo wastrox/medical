@@ -3,9 +3,47 @@
 <head>
   <title>Medical</title>
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", :media => "all" %>
-  <%= javascript_include_tag "jquery-1.9.1.min", "selectbox", "about" %>
+  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "bootstrap-btn-group", "bootstrap-dropdown", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "selectbox", "about", "bootstrap-btn-group" %>
   <%= csrf_meta_tags %>
+  <script>
+	$(function() {
+		$( "#menu" ).menu();
+	});
+  </script>
+  <style>
+  #btn-drop {
+  		border: none;
+  		display: inline-block;
+  		*display: inline;
+    	text-align: center;
+    	vertical-align: middle;
+    	cursor: pointer;
+    	font-size: 13px;
+	}
+	#btn-drop:hover, #btn-drop:focus {
+		background: none;
+		color: #4d4d4d;
+		text-decoration: none;
+	}
+
+	#btn-drop:active, #btn-drop.active {
+		background: none;
+		box-shadow: none;
+		padding: 0px;
+	}
+	.btn-group.open .btn.dropdown-toggle {
+		background: none;
+		box-shadow: none;
+	}
+	.dropdown-menu {
+		width: 170px;
+	}
+	.dropdown-menu > li > a {
+		border-bottom: none;
+	}
+
+  </style>
 </head>
 <body>
 <!--<div class="notice"><p><%# flash[:notice] %></p></div>-->
@@ -32,6 +70,17 @@
 				<%= link_to_if(current_user, "Выход", logout_path, :class => "signup") do
 						render :partial => 'layouts/other_link_navbar' 
 					end %>
+				
+				<div class="separator"></div>
+
+				<div class="btn-group">
+				<a class="btn dropdown-toggle signup" data-toggle="dropdown" href="#" id="btn-drop">Справка</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li><a tabindex="-1" href="#">Контакты</a></li>
+					<li><a tabindex="-1" href="#">Для пользователей</a></li>
+					<li><a tabindex="-1" href="#">О Netbee</a></li>
+				</ul>
+				</div>
 		</div>
 	</header><!-- #header-->
 	<div id="content" class="start_page">
