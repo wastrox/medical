@@ -106,7 +106,7 @@ end
 
         employer.send_vacancy_respond(vacancy, @applicant)
 
-        flash[:notice] = "Работодателю было выслано ваше резюме. Вакансия #{vacancy.name} добавлена в Мои ваканси."
+        flash[:notice] = "Работодателю было выслано ваше резюме. Вакансия #{vacancy.name} добавлена в Избранные ваканси."
         format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id] }
       else
         format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id] }

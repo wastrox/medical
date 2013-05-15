@@ -16,7 +16,7 @@
                   <% if @vacancy.applicants.where(:id => current_user.id).empty? %>
                         <h2 id="about"><%= "#{@vacancy.name} (#{@vacancy.salary} грн.)" %></h2>
                   <% else %>
-                        <h2 id="about">Вы откликнулись на эту вакансию,<%= link_to "Мои вакансии", applicant_my_vacancies_index_url %></h2>
+                        <h2 id="about">Вы откликнулись на эту вакансию,<%= link_to "Избранные вакансии", applicant_my_vacancies_index_url %></h2>
                   <% end %>
             <% else %>
                   <h2 id="about"><%= "#{@vacancy.name} (#{@vacancy.experiences}, #{@vacancy.salary} грн.)" %></h2>
