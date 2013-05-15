@@ -6,4 +6,11 @@ class Employer::MyResumesController < ApplicationController
   	@resumes = @employer.resume_responds
   end
 
+  def destroy_resume_respond
+  	resume_respond = ResumeRespond.find(params[:id])
+    if resume_respond.destroy
+      redirect_to employer_my_resumes_index_url
+    end
+  end
+
 end

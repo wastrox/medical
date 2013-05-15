@@ -41,6 +41,7 @@ Medical::Application.routes.draw do
 
 	namespace :employer, :as => 'employer' do
     get "my_resumes/index"
+    match "my_resumes/destroy_resume_respond/:id" => "my_resumes#destroy_resume_respond" 
     match "profile_companies/add_resume_responded", to: "profile_companies#add_resume_responded"
 		match 'vacancies/create_draft' => 'vacancies#create_draft'
     match 'vacancies/defer/:id' => 'vacancies#defer'

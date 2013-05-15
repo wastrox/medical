@@ -1023,6 +1023,7 @@ tr.clear-border td {
 	text-decoration: none !important;
 	/*background-image: url(/assets/delete.png);*/
 	padding-left: 5px;
+	border: none;
 }
 
 table.my-vacancies {
