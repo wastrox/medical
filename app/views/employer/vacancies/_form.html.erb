@@ -4,10 +4,10 @@
 		<%= f.text_field :name %>
 	</div>
 </div>
-<div class='item'>
+<div class='item', id='category'>
 	<%= f.label :category, "Категория" %>
 	<div class='field'>
-		<%= f.text_field :category %>
+		<%= collection_select(:vacancy, :category_id, Category.all, :id, :title, { :include_blank => true }, {:class => "styled"}) %>
 	</div>
 </div>
 <div class='item'>

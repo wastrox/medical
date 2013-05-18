@@ -170,4 +170,5 @@ $(document).ready(function(){
 	if (img.attr("alt") == "Missing") {
     	img.parent().remove();
 	}
+
 });

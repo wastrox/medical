@@ -7,7 +7,7 @@ development:
   adapter: mysql2
   username: root
   database: medical_development
-  password:
+  password: "192168"
   pool: 5
   timeout: 5000
   host: localhost

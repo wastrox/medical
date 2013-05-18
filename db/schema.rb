@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513074722) do
+ActiveRecord::Schema.define(:version => 20130517091424) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(:version => 20130513074722) do
     t.integer  "session_count",     :default => 0
     t.datetime "session_last_time"
     t.boolean  "delta",             :default => true,  :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "companies", :force => true do |t|
@@ -148,7 +154,6 @@ ActiveRecord::Schema.define(:version => 20130513074722) do
   create_table "vacancies", :force => true do |t|
     t.integer  "company_id"
     t.string   "name"
-    t.string   "category"
     t.string   "city"
     t.integer  "salary"
     t.string   "experiences"
@@ -160,6 +165,7 @@ ActiveRecord::Schema.define(:version => 20130513074722) do
     t.integer  "company_contact_id"
     t.boolean  "delta",              :default => true, :null => false
     t.string   "state"
+    t.integer  "category_id"
   end
 
   add_index "vacancies", ["company_id"], :name => "index_vacancies_on_company_id"

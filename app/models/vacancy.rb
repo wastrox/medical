@@ -1,13 +1,14 @@
 class Vacancy < ActiveRecord::Base
-  attr_accessible :category, :city, :description, :experiences, :name, :salary, :timetable, :timetable_other, :company_contact_id
+  attr_accessible :city, :description, :experiences, :name, :salary, :timetable, :timetable_other, :company_contact_id, :category_id
 
   belongs_to :company
   belongs_to :company_contact
+  belongs_to :category
 
   has_many :vacancy_responds
   has_many :applicants, :through => :vacancy_responds
 
-  validates_presence_of :category, :city, :description, :experiences, :name, :salary, :timetable, :company_contact_id
+  validates_presence_of :category_id, :city, :description, :experiences, :name, :salary, :timetable, :company_contact_id
 
 	define_index do
 		indexes name 

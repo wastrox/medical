@@ -6,6 +6,7 @@ class Company < ActiveRecord::Base
   validates_presence_of :description, :name, :scope
 
   belongs_to :employer
+
   has_many :vacancies, :dependent => :destroy  
   has_many :company_contacts, :dependent => :destroy 
     accepts_nested_attributes_for :company_contacts, :allow_destroy => true

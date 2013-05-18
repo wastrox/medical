@@ -1274,8 +1274,18 @@ input[type="radio"] + span {
 
 #company-contact .select {
 	background: url("/assets/select.png") no-repeat scroll 97% 50% #FFFFFF;
-	width: 353px;	
+	width: 358px;	
+	padding-left: 0px;
 }
+
+#company-contact .select .text {
+	font: 14px/18px Helvetica,Arial,Tahoma,Verdana,sans-serif;
+}
+
+#company-contact .dropdown li {
+	font: 14px/18px Helvetica,Arial,Tahoma,Verdana,sans-serif;
+}
+
 #company-contact .selectbox ul.dropdown {
 	top: 39px;
 	width: 357px;
@@ -1374,6 +1384,25 @@ table.list-vacancies-search tr:last-child td {
 
 .add_fields_for:active {
 	padding: 8px 12px 0px !important;
+}
+
+#category .select {
+	width: 358px !important;
+	padding-left: 0px !important;
+	background: url("/assets/select.png") no-repeat scroll 97% 50% #FFFFFF;	
+}
+#category .select .text {
+	color: #767676;
+	font: 14px/18px Helvetica,Arial,Tahoma,Verdana,sans-serif;
+}
+
+#category .dropdown {
+	height: 155px !important;
+	width: 358px;
+}
+
+#category .dropdown li {
+	font: 14px/18px Helvetica,Arial,Tahoma,Verdana,sans-serif;
 }
 /*----------------------------------------------------------------------------*/
 
