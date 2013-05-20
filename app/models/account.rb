@@ -43,6 +43,10 @@ class Account < ActiveRecord::Base
 		Notifier.activation_instructions(self).deliver		
 	end
 
+  def send_password_recovery!
+    Notifier.send_password_recovery(self).deliver
+  end
+
   def send_vacancy_respond(subject, applicant)
     Notifier.vacancy_respond(self, subject, applicant).deliver
   end

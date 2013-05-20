@@ -14,6 +14,8 @@ Medical::Application.routes.draw do
   get 'signup', to: 'accounts#new', as: 'signup'
   get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
+  get "recover", to: "accounts#recover", as: "recover"
+  get "email_recovery", to: "accounts#email_recovery", as: "email_recovery"
   
   get "search", to: "search#index"
   match "search/vacancy/:id", to: "search#vacancy"
@@ -27,6 +29,10 @@ Medical::Application.routes.draw do
 	match 'confirmation/employer/(/:token)' => 'confirmation#employer'
 	
   resources :accounts
+
+  match "accounts/edit(/:token)" => 'accounts#edit'
+  match "accounts/update(/:token)" => 'accounts#update'
+
   resources :sessions
 	resources :applicants
 	

@@ -1,0 +1,16 @@
+        <div class="link-navigate">
+            <h2 class="title">Восстановление пароля</h2>
+            <%= link_to "Вход", login_url %>
+        </div>
+        <div id="content">
+        <%= form_tag('/email_recovery', {:method => :get}) do %>
+          <div class="item">
+            <div class="field">
+              <%= label_tag :email %>
+              <%= text_field_tag :email %>
+            </div>
+          </div>
+          <br/>
+          <%= submit_tag "Восстановить", :class => "input-sub btn btn-warning" %>
+        <% end %>
+        </div><!-- #content-->

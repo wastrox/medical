@@ -6,6 +6,11 @@ class Notifier < ActionMailer::Base
 		@account_token = account.token
     	mail(:to => account.email, :subject => "Добро пожаловать на medical.netbee.ua")
 	end
+
+	def send_password_recovery(account)
+		@account_token = account.token
+    	mail(:to => account.email, :subject => "Восстановление пароля для medical.netbee.ua")
+	end
 	
 	def letter_from_moderator(account, text)
 	  	@body_letter = text

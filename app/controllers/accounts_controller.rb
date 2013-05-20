@@ -1,9 +1,10 @@
 # coding: utf-8
 class AccountsController < ApplicationController
   layout "small_window"
-	before_filter :find_account, :only => [:activate]
+
+	before_filter :find_account, :only => [:activate, :edit, :update]
   after_filter :update_time_account_activity, :only => [:activate]
-	skip_before_filter :require_login, :only => [:new, :create, :activate]
+	skip_before_filter :require_login, :only => [:new, :create, :activate, :recover, :email_recovery, :edit, :update]
 	
   def new
     @account = Account.new
@@ -28,6 +29,28 @@ class AccountsController < ApplicationController
 		  redirect_to :controller => 'confirmation', :action => 'index', notice: "Аккаунт не активирован, что-то пошло не так ("
 		end
 	end
+
+  def recover
+    
+  end
+
+  def email_recovery
+    account = Account.find_by_email(params[:email])
+    account.send_password_recovery!
+    redirect_to :controller => 'confirmation', :action => 'index'
+  end
+
+  def edit
+  end
+
+  def update
+      if @account.update_attribute("password", params[:applicant][:password])
+        cookies.permanent[:salt] = @account.salt
+        redirect_to "/"
+      else
+        redirect_to "/"
+      end
+  end
 
   private
 
