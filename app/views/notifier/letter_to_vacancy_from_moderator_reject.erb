@@ -8,12 +8,12 @@
     <p>К сожалению, Ваша вакансия <%= @vacancy.name %> не прошла проверку модератором и не может быть опубликована на сайте www.medical.netbee.ua.</p>
     
     <% unless @body_letter.empty? %>
+      <br/>
       <p>Комментарий модератора:</p>
       <p><%= @body_letter %></p>
     <% end %>
     
     <br/>
-
     <p>Вы можете связаться с модератором:</p>
     <p>support@medical.netbee.ua</p>
     <p>(048) 784-14-75</p>
