@@ -49,6 +49,8 @@ class AccountsController < ApplicationController
   end
 
   def update
+    #FIXME: => весь этот метод в мусорную корзину!
+    if params[:applicant]
       if @account.update_attributes(:password => params[:applicant][:password])
         cookies.permanent[:salt] = @account.salt
         redirect_to "/"
@@ -56,6 +58,24 @@ class AccountsController < ApplicationController
         flash[:notice] = "Ошибка восстановления, проверте email и пароль, эти поля должны быть заполнены!"
         render "edit"
       end
+    elsif params[:employer]
+      if @account.update_attributes(:password => params[:employer][:password])
+        cookies.permanent[:salt] = @account.salt
+        redirect_to "/"
+      else
+        flash[:notice] = "Ошибка восстановления, проверте email и пароль, эти поля должны быть заполнены!"
+        render "edit"
+      end
+    else 
+      if @account.update_attributes(:password => params[:account][:password])
+        cookies.permanent[:salt] = @account.salt
+        redirect_to "/"
+      else
+        flash[:notice] = "Ошибка восстановления, проверте email и пароль, эти поля должны быть заполнены!"
+        render "edit"
+      end
+    end
+
   end
 
   private
