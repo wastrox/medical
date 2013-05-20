@@ -4,6 +4,16 @@
         </div>
         <div id="content">
         <%= form_for(@account, :url => {:action=>"update", :controller=>"accounts", :token => @account.token}) do |f| %>
+          <% if @account.errors.any? || flash[:notice] %>
+            <div class="error_messages">
+                <div class="alert alert-block alert-success">
+                      <p id="notice" ><%= flash[:notice] %></p>
+                      <% for message in @account.errors[:email] %>
+                        <p id="notice" ><%= message %></p>
+                      <% end %>
+                </div>
+            </div>
+          <% end %>
           <div class="item">
             <div class="field">
               <%= f.label :email %>

@@ -36,19 +36,25 @@ class AccountsController < ApplicationController
 
   def email_recovery
     account = Account.find_by_email(params[:email])
-    account.send_password_recovery!
-    redirect_to :controller => 'confirmation', :action => 'index'
+    if account.nil?
+      flash[:notice] = "Ошибка, проверте поле email!"
+      render "recover"
+    else
+      account.send_password_recovery!
+      redirect_to :controller => 'confirmation', :action => 'index'
+    end
   end
 
   def edit
   end
 
   def update
-      if @account.update_attribute("password", params[:applicant][:password])
+      if @account.update_attributes(:password => params[:applicant][:password])
         cookies.permanent[:salt] = @account.salt
         redirect_to "/"
       else
-        redirect_to "/"
+        flash[:notice] = "Ошибка восстановления, проверте email и пароль, эти поля должны быть заполнены!"
+        render "edit"
       end
   end
 

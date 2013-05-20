@@ -4,6 +4,13 @@
         </div>
         <div id="content">
         <%= form_tag('/email_recovery', {:method => :get}) do %>
+          <% if flash[:notice] %>
+            <div class="error_messages">
+                <div class="alert alert-block alert-success">
+                      <p id="notice" ><%= flash[:notice] %></p>
+                </div>
+            </div>
+          <% end %>
           <div class="item">
             <div class="field">
               <%= label_tag :email %>
