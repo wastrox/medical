@@ -6,7 +6,6 @@ class Admin::Companies::ProfileController < ApplicationController
   #before_filter :authenticate_admin #HTTP authenticate for admin; this method in place application_controller
 
   before_filter :company_find, :only => [:edit, :update, :destroy, :vacancies, :reject, :find_vacancies_wait_company, :published, :send_letter_for_employer, :vip]
-  after_filter  :send_letter_for_employer, :only => :update
   after_filter  :published, :only => :update
   after_filter  :reject, :only => :update
   after_filter  :vip, :only => :update
@@ -34,6 +33,7 @@ class Admin::Companies::ProfileController < ApplicationController
   def published
     if params[:published] && @company.approve_published
        find_vacancies_wait_company 
+       Notifier.letter_to_company_from_moderator_published(@company.employer).deliver
     end
   end
   
@@ -45,6 +45,7 @@ class Admin::Companies::ProfileController < ApplicationController
     if params[:reject] && @company.approve_rejected
        vacancies = @company.vacancies.where("state = ?", "pending")
        vacancies.each {|v| v.approve_wait}
+       Notifier.letter_to_company_from_moderator_reject(@company.employer, params[:body_letter]).deliver
     end
   end
   
@@ -59,12 +60,6 @@ class Admin::Companies::ProfileController < ApplicationController
   
   def company_find
     @company = Company.find(params[:id])
-  end
-  
-  def send_letter_for_employer
-    unless params[:body_letter].empty? 
-        @company.employer.send_letter_from_moderator(params[:body_letter])
-    end
   end
 
   def find_vacancies_wait_company

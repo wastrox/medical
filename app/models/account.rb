@@ -42,10 +42,6 @@ class Account < ActiveRecord::Base
 	def send_activation_instructions!
 		Notifier.activation_instructions(self).deliver		
 	end
-	
-	def send_letter_from_moderator(text)
-	  Notifier.letter_from_moderator(self, text).deliver
-	end
 
   def send_vacancy_respond(subject, applicant)
     Notifier.vacancy_respond(self, subject, applicant).deliver

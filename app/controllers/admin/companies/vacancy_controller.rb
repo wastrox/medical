@@ -5,7 +5,6 @@ class Admin::Companies::VacancyController < ApplicationController
   skip_before_filter :require_login
   before_filter :find_vacancy, :only => [:edit, :update, :find_company, :reject, :destroy, :published]
   before_filter :find_company, :only => [:edit, :update, :send_letter_for_employer]
-  after_filter  :send_letter_for_employer, :only => :update
   after_filter  :published, :only => :update
   after_filter  :reject, :only => :update
   before_filter :destroy, :only => :update  
@@ -28,12 +27,14 @@ class Admin::Companies::VacancyController < ApplicationController
   def published
     if params[:published]
        @vacancy.approve_published
+       Notifier.letter_to_vacancy_from_moderator_published(@company.employer, @vacancy).deliver
     end
   end
   
   def reject
     if params[:reject]
        @vacancy.approve_rejected
+       Notifier.letter_to_vacancy_from_moderator_reject(@company.employer, @vacancy, params[:body_letter]).deliver
     end
   end
   
@@ -52,11 +53,5 @@ class Admin::Companies::VacancyController < ApplicationController
   
   def find_vacancy
     @vacancy = Vacancy.find(params[:id])
-  end
-  
-  def send_letter_for_employer
-    unless params[:body_letter].empty? 
-        @company.employer.send_letter_from_moderator(params[:body_letter])
-    end
   end
 end

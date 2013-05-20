@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>Здравствуйте, <%= @fullNameApplicant %>.</p>
+    <p>К сожалению, Ваше резюме <%= @account.resume.position %> не прошло проверку модератором и не может быть опубликовано на сайте www.medical.netbee.ua.</p>
+    
+    <% unless @body_letter.empty? %>
+      <br/>
+      <p>Комментарий модератора:</p>
+      <p><%= @body_letter %></p>
+    <% end %>
+
+    <br/>
+    <p>Вы можете связаться с модератором:</p>
+    <p>support@medical.netbee.ua</p>
+    <p>(048) 784-14-75</p>
+    <p>(095) 286-42-32</p>
+    <p>(095) 286-42-33</p>
+    <p><%#= url_for(:host => "medical.netbee.ua", :controller => "/search", :action => "resume", :id => @applicant.resume.id) %></p>
+    <br/>
+    <p>Спасибо за использование нашего ресурса.</p>
+    <p>С уважением, команда Netbee.</p>
+  </body>
+</html>

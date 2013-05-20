@@ -4,7 +4,6 @@ class Admin::ResumesController < ApplicationController
 
   skip_before_filter :require_login
   before_filter :findResume, :only => [:edit, :update, :destroy, :reject, :published, :send_letter_for_applicant]
-  after_filter  :send_letter_for_applicant, :only => :update
   after_filter  :published, :only => :update
   after_filter  :reject, :only => :update
   before_filter :destroy, :only => :update
@@ -37,12 +36,14 @@ class Admin::ResumesController < ApplicationController
   def published
     if params[:published]
        @resume.approve_published
+       Notifier.letter_to_resume_from_moderator_published(@resume.applicant).deliver
     end
   end
   
   def reject
     if params[:reject] 
       @resume.approve_rejected
+      Notifier.letter_to_resume_from_moderator_reject(@resume.applicant, params[:body_letter]).deliver
     end
   end
   
