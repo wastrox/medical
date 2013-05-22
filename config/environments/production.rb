@@ -75,7 +75,7 @@ Medical::Application.configure do
    :enable_starttls_auto => true,
    :domain => "netbee.ua",
    :user_name => "medical@netbee.ua",
-   :password => "BOSSmedical54321"
+   :password => "MEDICALnetbee22052013"
 }
 
 end
