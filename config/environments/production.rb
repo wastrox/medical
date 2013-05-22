@@ -65,7 +65,7 @@ Medical::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  config.action_mailer.default_url_options = { :host => "netbee.net.ua" }
+  config.action_mailer.default_url_options = { :host => "medical.netbee.ua" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
    :enable_starttls_auto => true,
@@ -74,8 +74,8 @@ Medical::Application.configure do
    :authentication => :plain,
    :enable_starttls_auto => true,
    :domain => "netbee.ua",
-   :user_name => "nicholauskas@gmail.com",
-   :password => "netbee-24"
+   :user_name => "medical@netbee.ua",
+   :password => "BOSSmedical54321"
 }
 
 end
