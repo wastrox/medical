@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
   attr_accessible :logo, :description, :name, :scope, :site, :company_contacts_attributes
 
-	has_attached_file :logo, :styles => { :small => "80x109>", :search => "40x38", :vip => "160x90>" }
+	has_attached_file :logo, :styles => { :small => "80x109>", :search => "40x38", :vip => "160x90>" }, :default_url => "/images/normal/missing.png"
 
   validates_presence_of :description, :name, :scope
 
