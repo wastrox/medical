@@ -15,7 +15,9 @@ Medical::Application.routes.draw do
   get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
   get "recover", to: "accounts#recover", as: "recover"
+  get "reactive", to: "accounts#reactive", as: "reactive"
   get "email_recovery", to: "accounts#email_recovery", as: "email_recovery"
+  get "active_recovery", to: "accounts#active_recovery", as: "active_recovery"
   
   get "search", to: "search#index"
   match "search/vacancy/:id", to: "search#vacancy"

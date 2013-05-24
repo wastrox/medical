@@ -1,0 +1,23 @@
+        <div class="link-navigate">
+            <h2 class="title">Восстановление активации</h2>
+            <%= link_to "Вход", login_url %>
+        </div>
+        <div id="content">
+        <%= form_tag('/active_recovery', {:method => :get}) do %>
+          <% if flash[:notice] %>
+            <div class="error_messages">
+                <div class="alert alert-block alert-success">
+                      <p id="notice" ><%= flash[:notice] %></p>
+                </div>
+            </div>
+          <% end %>
+          <div class="item">
+            <div class="field">
+              <%= label_tag :email %>
+              <%= text_field_tag :email %>
+            </div>
+          </div>
+          <br/>
+          <%= submit_tag "Отправить", :class => "input-sub btn btn-warning" %>
+        <% end %>
+        </div><!-- #content-->

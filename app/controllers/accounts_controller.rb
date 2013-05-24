@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
 
 	before_filter :find_account, :only => [:activate, :edit, :update]
   after_filter :update_time_account_activity, :only => [:activate]
-	skip_before_filter :require_login, :only => [:new, :create, :activate, :recover, :email_recovery, :edit, :update]
+	skip_before_filter :require_login, :only => [:new, :create, :activate, :recover, :email_recovery, :edit, :update, :reactive, :active_recovery]
 	
   def new
     @account = Account.new
@@ -31,7 +31,23 @@ class AccountsController < ApplicationController
 	end
 
   def recover
-    
+  end
+
+  def reactive
+  end
+
+  def active_recovery
+    account = Account.find_by_email(params[:email])
+    if account.nil?
+      flash[:notice] = "Ошибка, проверте поле email!"
+      render "reactive"
+    elsif account.active? == false
+      account.send_activate_recovery!
+      redirect_to :controller => 'confirmation', :action => 'index'
+    else
+      flash[:notice] = "Ошибка, Ваш профиль уже активирован."
+      render "reactive"
+    end
   end
 
   def email_recovery
