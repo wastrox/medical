@@ -51,7 +51,6 @@ class Admin::Companies::ProfileController < ApplicationController
   
   def destroy
     if params[:destroy] && @company.destroy
-       send_letter_for_employer
        redirect_to admin_companies_url
     end
   end

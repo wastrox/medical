@@ -40,7 +40,6 @@ class Admin::Companies::VacancyController < ApplicationController
   
   def destroy
     if params[:destroy] && @vacancy.destroy
-      send_letter_for_employer
       redirect_to admin_vacancies_path
     end
   end

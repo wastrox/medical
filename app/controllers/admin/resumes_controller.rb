@@ -49,7 +49,6 @@ class Admin::ResumesController < ApplicationController
   
   def destroy
     if params[:destroy] && @resume.destroy
-      send_letter_for_applicant
       redirect_to admin_resumes_path
     end
   end
