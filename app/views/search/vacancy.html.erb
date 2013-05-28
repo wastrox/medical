@@ -72,6 +72,11 @@
                                     			<div><%= "#{contact.name}: #{contact.phone}" %></v>
                                     		 <% end %>
                                     	</td>
+                                          <tr>
+                                                <td></td>
+                                                <td style="height: 40px;"><%= @vacancy.company.employer.email %>
+
+                                          </tr>
                                     <% else %>
                                           <td colspan="2">Чтобы откликнуться на эту вакансию <%= link_to "Войдите", login_url %> или <%= link_to "Зарегистрируйтесь", signup_url %> и создайте резюме.</td>
                                     <% end %>
