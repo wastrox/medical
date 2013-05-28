@@ -283,6 +283,7 @@ input[type="submit"].input-sub {
 	background-color: #ffffff;
 	border-radius: 14px;
 	box-shadow: inset 0 -3px 0 0 #dadbdb;
+	display: none;
 }
 .title-hot {
 	display: block;
@@ -1529,24 +1530,21 @@ table.search-result tbody tr td:nth-of-type(3) {
 /*----------------------------------------------------------------------------*/
 
 /*-------------------------------- /about ------------------------------------*/
-#heart {
-	margin: 25px 25px 35px;
-	width: 100%;
-	height: 100%;
-	vertical-align: top;
-	padding-left: 50px;
-}
-div#heart h1 {
-	font-size: 45px;
-	vertical-align: top;
-	margin-top: 107px;
-	margin-right: 15px;
-	color: #767676;
-	display: inline-block;
+div.about-page {
+	margin: 15px 0px 35px;
 }
 
-div.cap h3 {
-	margin-left: 6px;
+div.about-page ul {
+	padding-left: 25px;
+	margin-bottom: 15px;
+}
+
+div.about-page ul li {
+	font-size: 14px;
+	color: #767676;
+}
+div.about-page p {
+	margin: 15px 0;
 }
 /*----------------------------------------------------------------------------*/
 
