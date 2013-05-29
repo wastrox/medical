@@ -529,6 +529,10 @@ table.vacancies tbody tr td:nth-of-type(even) {
 	margin-top: 19px;
 }
 
+#footer .icon a {
+	border-bottom: none;
+}
+
 /*-------------------------- page login and signup ---------------------------*/
 
 #small-block > span.logo {
