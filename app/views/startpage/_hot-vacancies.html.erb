@@ -1,0 +1,11 @@
+<% @vacancies_hot.each do |vacancy|%>
+	<div class="hot-content">
+			<h3><%= "#{vacancy.name.split[0..1].join(" ")}" %></h3>
+
+			<div class="hot-description">
+				<p><%= "#{vacancy.hot_vacancy.description}" unless vacancy.hot_vacancy.nil? %></p>
+			</div>
+
+			<p><%= link_to "Подробнее", :controller => "search", :action => "vacancy", :id => vacancy.id %></p>
+	</div>
+<% end %>

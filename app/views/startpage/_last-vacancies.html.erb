@@ -1,7 +1,7 @@
 <table class="vacancies" width="100%">
 				<% @vacancies.each do |vacancy|%>
 					<tr>
-						<td class="vacancy-name"><b><%= link_to "#{vacancy.name.split[0].delete ","}...", :controller => "search", :action => "vacancy", :id => vacancy.id %></b></td>
+						<td class="vacancy-name"><b><%= link_to "#{vacancy.name.split[0].delete ","}...", :controller => "search", :action => "vacancy", :id => vacancy.id, :title => "#{vacancy.name}" %></b></td>
 						<td><%= vacancy.city[0,14] %></td>
 						<td><%= vacancy.salary %> грн</td>
 					</tr>

@@ -1,12 +1,51 @@
 <!-- FIXME: В submit 'Опубликовать' используется слишком много проверок, одна в хелпере - результат записывается в класс submit, а вторая в конце. Все это нужно проверить и переписать -->
 
+<script>
+$(document).on('nested:fieldAdded', function(event){
+	$(".add-hot-vacancy").css("display", "none");
+	$("#btn-success").removeAttr("disabled");
+})
+
+$(document).on('nested:fieldRemoved', function(event){
+	$(".add-hot-vacancy").css("display", "block");
+	$("#btn-success").attr("disabled", "disabled");
+});
+
+$(document).ready(function(){
+	var remove_link = $("a.remove-hot-vacancy").index();
+	if (remove_link!= "-1") {
+		$(".add-hot-vacancy").css("display", "none");
+	}
+});
+</script>
+
+<style>
+.description-hot-vacancy {
+	width: 490px;
+	height: 45px;
+	font-size: 14px;
+	color: #767676;
+	padding: 5px;
+}
+.add-hot-vacancy {
+	margin: 15px 0px 0px !important;
+}
+
+.fields h2 {
+	margin-top: 20px;
+}
+.btn-warning {
+	margin-left: 143px;
+}
+</style>
+
 <div id="frame" class="frame-admin">
 	<div class="cap">
 		&ldquo;<%= @company.name %>&rdquo;, кол-во вакансий - <%= @company.vacancies.count %>
 	</div>
 <%# @message %>
 	<div class="boxed">
-		<%= form_for([:admin, :companies, @vacancy], :html => {:class => "standart_form"}) do |f| %>
+		<%= nested_form_for([:admin, :companies, @vacancy], :html => {:class => "standart_form"}) do |f| %>
 			<div class='item'>
 				<%= label_tag "Статус вакансии" %>
 				<div class='field'>
@@ -29,9 +68,21 @@
 			<h2>Сообщение от модератора</h2>
 			<%= text_area_tag 'body_letter', nil, :class => "body_letter" %>
 
+					<%= f.fields_for :hot_vacancy do |hot_vacancy_fields| %>
+						<h2>Описание горячей вакансии на главной странице</h2>
+						<%= hot_vacancy_fields.text_area :description, :class => "description-hot-vacancy", :default_value => "", :maxlength => "76" %>
+
+						<%= hot_vacancy_fields.hidden_field :_destroy %><%= hot_vacancy_fields.link_to_remove "Удалить описание", :class => "red-link remove-hot-vacancy" %>
+					<% end %>
+
+					<%= f.link_to_add "Добавить описание горячей вакансии", :hot_vacancy, :class => "yellow-link add-hot-vacancy" %>
+			
+			<div class="clearfix"></div>
+
 			<span class="line-bottom line-bottom-company"></span>
 
 			<div id="button-bottom">
+				<%= f.submit "Горячая", :id => "btn-success", :class => "input-sub btn btn-success", :disabled => :disabled, :name => "hot" unless @vacancy.hot? %>
 				<%= f.submit "Опубликовать", :class => helpers_class(@company), :name => "published" unless @vacancy.published? %>
 				<%= f.submit "Обновить", :class => "input-sub btn save-as", :name => "update" %>
 

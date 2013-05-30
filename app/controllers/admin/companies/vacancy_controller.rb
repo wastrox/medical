@@ -8,6 +8,7 @@ class Admin::Companies::VacancyController < ApplicationController
   before_filter :find_vacancy, :only => [:edit, :update, :find_company, :reject, :destroy, :published]
   before_filter :find_company, :only => [:edit, :update, :send_letter_for_employer]
   after_filter  :published, :only => :update
+  after_filter  :hot, :only => :update
   after_filter  :reject, :only => :update
   before_filter :destroy, :only => :update  
   
@@ -29,7 +30,16 @@ class Admin::Companies::VacancyController < ApplicationController
   def published
     if params[:published]
        @vacancy.approve_published
+       if @vacancy.hot_vacancy.nil? == false
+          @vacancy.hot_vacancy.delete
+       end
        Notifier.letter_to_vacancy_from_moderator_published(@company.employer, @vacancy).deliver
+    end
+  end
+
+  def hot
+    if params[:hot]
+      @vacancy.approve_hot
     end
   end
   
