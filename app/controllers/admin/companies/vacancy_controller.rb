@@ -30,9 +30,11 @@ class Admin::Companies::VacancyController < ApplicationController
   def published
     if params[:published]
        @vacancy.approve_published
+
        if @vacancy.hot_vacancy.nil? == false
           @vacancy.hot_vacancy.delete
        end
+       
        Notifier.letter_to_vacancy_from_moderator_published(@company.employer, @vacancy).deliver
     end
   end
