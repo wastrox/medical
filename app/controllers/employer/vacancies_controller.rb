@@ -12,9 +12,11 @@ class Employer::VacanciesController < ApplicationController
   
   def index
     @vacancies = @company.vacancies
+    @title = "Список вакансий компании #{@company.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
   
   def new
+    @title = "Создание вакансии: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
   
   def create 
@@ -44,9 +46,11 @@ class Employer::VacanciesController < ApplicationController
   end
   
   def show
+    @title = "Вакансия #{@vacancy.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
   
   def edit
+    @title = "Редактирование вакансии #{@vacancy.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
   
   def update 

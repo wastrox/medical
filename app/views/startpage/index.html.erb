@@ -28,7 +28,7 @@
 			<ul class="logoBlock">
 			<% @companies.each do |company|%>
 			            <li><%= link_to({:controller => "/search", :action => "company", :id => company.id}, :title => "Компания #{company.name}") do %>
-			            		<%= image_tag company.logo.url(:vip) %>
+			            		<%= image_tag company.logo.url(:vip), :title => "Компания #{company.name}. Работа в медицине medical.netbee.ua", :alt => "#{company.name}", :width => "160px", :height => "90px" %>
 			            	<% end %>
 			            </li>
 			<% end %>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Medical</title>
+  <title><%= @title || "Сайт трудоустройства medical.netbee.ua"%></title>
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <meta name="robots" content="noindex, follow" >
@@ -39,7 +39,7 @@
 <body>
 <div id="wrapper">
   <div id="small-block">
-    <span class="logo"><a href="/"><img alt="" src="/assets/logo-netbee.png"></a></span>
+    <span class="logo"><a href="/"><img src="/assets/logo-netbee.png" alt="Логотип medical.netbee.ua" title="Логотип. Работа в медицине medical.netbee.ua"></a></span>
     <div id="layout">
 			     <%= yield %>
 	  	<div class="enter-with">

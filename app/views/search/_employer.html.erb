@@ -4,7 +4,7 @@
 			<table class="search-result" width="100%">
 				<% @resumes.each do |resume| %>	
 					<tr>
-						<td><%= image_tag resume.profile.photo.url(:search), :class => "photo-applicant" %></td>
+						<td><%= image_tag resume.profile.photo.url(:search), :class => "photo-applicant", :title => "Резюме #{resume.position}. Работа в медицине medical.netbee.ua" %></td>
 						<td><%= link_to resume.position, :controller => :search, :action => :resume, :id => resume.id %></td>
 		  				<td><%= resume.city %></td>
 		    			<td><%= resume.salary %> грн.</td>

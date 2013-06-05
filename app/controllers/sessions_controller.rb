@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 	after_filter :update_time_account_activity, :only => [:create]
 
   def new
+    @title = "Вход на сайт трудоустройства medical.netbee.ua"
   end
 
   def create

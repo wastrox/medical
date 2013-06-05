@@ -11,6 +11,7 @@ class Applicant::ResumesController < ApplicationController
   def index
     @resume = @applicant.resume
     @fullName = "#{@resume.profile.lastname} #{@resume.profile.firstname} #{@resume.profile.surename}"
+    @title = "Резюме #{@resume.position}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
 
   def new
@@ -65,9 +66,11 @@ end
 
   def show
     @fullName = "#{@profile.lastname} #{@profile.firstname} #{@profile.surename}"
+    @title = "Резюме #{@resume.position}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
 
   def edit
+    @title = "Редактировать резюме #{@resume.position}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
  
   def update

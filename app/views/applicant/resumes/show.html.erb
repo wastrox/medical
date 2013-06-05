@@ -18,7 +18,7 @@
 	
 	<table cellpadding="0" cellspacing="0" class="photo-name-applicant">
 		<tr>
-			<td><%= image_tag @profile.photo.url(:show), :class => "photo-applicant" %></td>
+			<td><%= image_tag @profile.photo.url(:show), :class => "photo-applicant", :title => "#{@resume.position}. Работа в медицине medical.netbee.ua" %></td>
 			<td><h2><%= @fullName %></td>
 		</tr>
 	</table>

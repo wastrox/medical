@@ -8,6 +8,7 @@ class AccountsController < ApplicationController
 	
   def new
     @account = Account.new
+    @title = "Регистрация на сайт трудоустройства medical.netbee.ua"
   end
 
   def create

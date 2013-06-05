@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Работа в медицине: вакансии и резюме в сфере фармацевтики и здравоохранении Украины: medical.netbee.ua</title>
+  <title><%= @title || "Работа в медицине: вакансии и резюме в сфере фармацевтики и здравоохранении Украины: medical.netbee.ua" %></title>
+  <meta name="description" content="Работа в медицинской сфере: самый большой выбор актуальных вакансий и резюме. Сайт трудоустройства
+medical.netbee.ua."> 
+  <meta name="Keywords" content="работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee">
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "bootstrap-btn-group", "bootstrap-dropdown", :media => "all" %>
   <%= javascript_include_tag "jquery-1.9.1.min", "selectbox", "about", "bootstrap-btn-group" %>
@@ -25,7 +28,7 @@
 <!--<div class="notice"><p><%# flash[:notice] %></p></div>-->
 <div id="wrapper">
 		<header id="header">
-		<a href="/"><img alt="" class="logo" src="/assets/logo-netbee.png"></a>
+		<a href="/"><img class="logo" src="/assets/logo-netbee.png" alt="Логотип medical.netbee.ua" title="Логотип. Работа в медицине medical.netbee.ua"></a>
 		<div id="menu">
 			<div class="my-profile">
 				<% if current_user && current_user.employer? %>

@@ -1,3 +1,4 @@
+#encoding: utf-8  
 class Applicant::ProfilesController < ApplicationController
  layout "profile_applicant"
  before_filter :require_account_type_applicant, :check_account_type
@@ -5,6 +6,7 @@ class Applicant::ProfilesController < ApplicationController
   def edit
     @applicant = Applicant.find_by_salt(cookies[:salt])
     @profile = @applicant.profile
+    @title = "Профиль #{@profile.lastname} #{@profile.firstname} #{@profile.surename}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
   
   def update

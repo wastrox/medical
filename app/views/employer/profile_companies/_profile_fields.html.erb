@@ -25,7 +25,7 @@
 <div class='item' style="margin-bottom: 0px;">
     <%= employer_fields.label 'Логотип компании' %>
 	<div class='field'>
-        <%= image_tag @company.logo.url(:small), :alt => "", :id => "image-path-photo" %>
+        <%= image_tag @company.logo.url(:small), :alt => "", :id => "image-path-photo", :title => "Компания #{@company.name}. Работа в медицине medical.netbee.ua" %>
         <a id="upload-logo-company" class="upload-photo">Загрузить логотип</a>
     	<%= employer_fields.file_field :logo, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
 	</div>

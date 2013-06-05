@@ -8,6 +8,7 @@ class Employer::ProfileCompaniesController < ApplicationController
 
   def index
     @company = @employer.company
+    @title = "Компания #{@company.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
 
 	def new
@@ -30,9 +31,11 @@ class Employer::ProfileCompaniesController < ApplicationController
 
   def show
     @contacts = @company.company_contacts
+    @title = "Компания #{@company.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
 	
 	def edit
+    @title = "Компания #{@company.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 	end
 	
   def update

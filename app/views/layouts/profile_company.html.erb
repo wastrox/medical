@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Medical</title>
+  <title><%= @title || "Работа в медицине: вакансии и резюме в сфере фармацевтики и здравоохранении Украины: medical.netbee.ua" %></title>
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "jquery-ui/jquery-ui-1.9.2.custom", "bootstrap-table", "bootstrap-btn-group", "bootstrap-dropdown", :media => "all" %>
   <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "selectbox-for-nestedform", "standart_form", "selectbox", "bootstrap-btn-group" %>
@@ -21,7 +21,7 @@
 
 <div id="wrapper">
 	<header id="header">
-		<a href="/"><img alt="" class="logo" src="/assets/logo-netbee.png"></a>
+		<a href="/"><img class="logo" src="/assets/logo-netbee.png" alt="Логотип medical.netbee.ua" title="Логотип. Работа в медицине medical.netbee.ua"></a>
 		<div id="menu">
 			<div class="my-profile">
 				<%= link_to_if(current_user.company.nil?, "Профиль компании", new_employer_profile_company_path) do 

@@ -5,7 +5,7 @@
 
 	<table cellpadding="0" cellspacing="0" class="photo-name-applicant">
 		<tr>
-			<td><%= image_tag @company.logo.url(:small), :class => "photo-applicant" %></td>
+			<td><%= image_tag @company.logo.url(:small), :class => "photo-applicant", :title => "Компания #{@company.name}. Работа в медицине medical.netbee.ua" %></td>
 			<td><h2>&#171;<%= @company.name %>&#187;</h2></td>
 		</tr>
 	</table>
