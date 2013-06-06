@@ -31,7 +31,7 @@ class SearchController < ApplicationController
 		@vacancy = Vacancy.find(params[:id])
 		@title = "Вакансия #{@vacancy.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Просмотр вакансии #{@vacancy.name} компании #{@vacancy.company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
-		@keywords = "#{@vacancy.name}, #{vacancy.company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+		@keywords = "#{@vacancy.name}, #{@vacancy.company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 	end
 
 	def company
