@@ -24,12 +24,14 @@ class SearchController < ApplicationController
 		@fullName = "#{@resume.profile.lastname} #{@resume.profile.firstname} #{@resume.profile.surename}"
 		@title = "Резюме #{@resume.position}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Просмотр резюме #{@resume.position}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
+		@keywords = "#{@resume.position}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 	end
 
 	def vacancy
 		@vacancy = Vacancy.find(params[:id])
 		@title = "Вакансия #{@vacancy.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Просмотр вакансии #{@vacancy.name} компании #{@vacancy.company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
+		@keywords = "#{@vacancy.name}, #{vacancy.company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 	end
 
 	def company
@@ -37,5 +39,6 @@ class SearchController < ApplicationController
 		@vacancies = @company.vacancies.where(:state => ["published", "hot"])
 		@title = "Компания #{@company.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Просмотр компании #{@company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
+		@keywords = "#{@company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 	end
 end
