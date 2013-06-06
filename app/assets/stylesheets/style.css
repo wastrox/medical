@@ -527,13 +527,10 @@ table.vacancies tbody tr td:nth-of-type(even) {
 	width: 160px;
 	margin: 0 auto;
 	padding-top: 19px;
+	margin-bottom: 19px;
 }
 .icon .facebook, .icon .twitter {
 	margin-right: 15px;
-}
-
-.social-networks p {
-	margin-top: 19px;
 }
 
 #footer .icon a {
@@ -687,10 +684,11 @@ form label {
     margin-bottom: 20px;
 }
 
-.cap h2#about {
+.cap h1#about {
 	/*margin-left: 13px;*/
 	margin-left: 7px;
 	color: #767676;
+	font-size: 18px;
 }
 
 .cap h2 {
@@ -727,6 +725,7 @@ h2 {
 	margin-left: 36px;
 	margin-bottom: 2px;
 }
+.cap p { font-weight: bold; }
 
 .boxed {
 	/*padding: 24px 36px;*/

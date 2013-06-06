@@ -13,9 +13,9 @@ $(document).ready(function(){
 
 		<% if current_user %>
 		      <% if @resume.employers.where(:id => current_user.id).empty? %>
-					<h2 id="about"><%= @resume.position %></h2>
+					<h1 id="about"><%= @resume.position %></h1>
 		      <% else %>
-		            <h2 id="about">Это резюме добавлено в<%= link_to "Избранные резюме", employer_my_resumes_index_url %></h2>
+		            <h1 id="about">Это резюме добавлено в<%= link_to "Избранные резюме", employer_my_resumes_index_url %></h1>
 		      <% end %>
 		<% else %>
 			<h2 id="about"><%= @resume.position %></h2>
@@ -146,7 +146,7 @@ $(document).ready(function(){
 </div> <!-- #frame -->
 <div id="account-contacts">
                   <div class="cap">
-                        <h3>Свяжитесь с нами</h3>
+                        <p>Свяжитесь с нами</p>
                   </div>
                   <div class="boxed-nav">
                         <ul>
