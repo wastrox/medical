@@ -12,7 +12,7 @@ class Employer::VacanciesController < ApplicationController
   
   def index
     @vacancies = @company.vacancies
-    @title = "Список вакансий компании #{@company.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
+    @title = "Список вакансий: работа в медицине. Сайт трудоустройства medical.netbee.ua"
   end
   
   def new
