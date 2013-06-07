@@ -1,0 +1,30 @@
+<style>
+  .about-page ul li { margin-top: 10px; }
+</style>
+<div id="content">
+	<div id="frame">
+		<div class="cap">
+			<h1 id="about">Контактная информация</h1>
+		</div>
+		<div class="boxed">
+			<div class="about-page">
+				<ul>
+					<li>medical@netbee.ua</li>
+					<li>(048) 784-14-75</li>
+					<li>(095) 286-42-32</li>
+					<li>(095) 286-42-33</li>
+				</ul>
+			</div>
+		</div>
+	</div><!-- #frame -->
+
+	<div id="account-nav">
+		<div class="cap">
+			<p>Последние вакансии</p>
+		</div>
+		<div class="boxed-nav">
+			<%= render :partial => "layouts/three_last_vacancies" %>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div><!-- #content-->

@@ -1,4 +1,6 @@
 Medical::Application.routes.draw do
+  get "contacts/index"
+
   get "personal_data/index"
 
   get "about", to: "about#index"
