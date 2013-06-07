@@ -12,13 +12,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if @account && @account.authenticate(params[:password])
-			cookies.permanent[:salt] = @account.salt
-			flash[:notice] = "Добро пожаловать на medical.netbee.ua"
-      redirect_to root_url 
-    else
-      flash[:notice] = "Ошибка авторизации, проверте email или пароль!"
-      render "new"
+    respond_to do |format|
+      if @account && @account.authenticate(params[:password])
+  			cookies.permanent[:salt] = @account.salt
+  			flash[:notice] = "Добро пожаловать на medical.netbee.ua"
+        format.html { redirect_to root_url }
+      else
+        flash[:notice] = "Ошибка авторизации, проверте email или пароль!"
+        format.html { render "new" }
+      end
     end
   end
 
