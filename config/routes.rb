@@ -35,7 +35,7 @@ Medical::Application.routes.draw do
   match "accounts/edit(/:token)" => 'accounts#edit'
   match "accounts/update(/:token)" => 'accounts#update'
 
-  resources :sessions
+  resources :sessions, :only => [:new, :create, :destroy]
 	resources :applicants
 	
   namespace :applicant, :as => 'applicant' do	
