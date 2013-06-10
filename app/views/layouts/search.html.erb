@@ -5,6 +5,7 @@
   <meta name="description" content=<%= @description || "Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua." %>> 
   <meta name="keywords" content=<%= @keywords || "поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee" %>>
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <%= favicon_link_tag '/favicon.ico' %>
   <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "bootstrap-alerts", "bootstrap-btn-group", "bootstrap-dropdown", :media => "all" %>
   <%= javascript_include_tag "jquery-1.9.1.min", "selectbox", "search", "bootstrap-alerts", "bootstrap-btn-group" %>
   <%= csrf_meta_tags %>
