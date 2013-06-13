@@ -9,7 +9,7 @@
           <tr>
           	<% resume_profile = @employer.resumes.find(resume.resume_id).profile %>
             <% if @employer.resumes.find(resume.resume_id).deferred? != true %>
-              <td><%= link_to "#{resume_profile.lastname} #{resume_profile.firstname} #{resume_profile.surename}", :controller => "/search", :action => :resume, :id => resume.resume_id %></td>
+              <td><%= link_to "#{resume_profile.lastname} #{resume_profile.firstname} #{resume_profile.surename}", :controller => "/search", :action => :resume, :id => resume.resume.to_param %></td>
               <td><%= @employer.resumes.find(resume.resume_id).position %></td>
               <td><%= @employer.resumes.find(resume.resume_id).city %> <%= link_to({:controller => "employer/my_resumes", :action => "destroy_resume_respond", :id => resume.id}, :class => "delte-vacancy-respond") do %>
                   <img src="/assets/delete.png" class="delte-vacancy-respond">

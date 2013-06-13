@@ -67,4 +67,9 @@ class Resume < ActiveRecord::Base
         transition [:published, :hot, :rejected, :deferred, :secret] => :pending
       end
     end
+
+    def to_param
+      resume_position = Russian.translit(position)
+      "#{id}-#{resume_position.parameterize}"
+    end
 end

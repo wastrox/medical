@@ -48,4 +48,9 @@ class Company < ActiveRecord::Base
   		set_property :delta => :delayed
   		#where " companies.state IN ('published', 'vip')" # Индексирует только опубликованные и горячие компании
   	end
+
+    def to_param
+      company_name = Russian.translit(name)
+      "#{id}-#{company_name.parameterize}"
+    end
 end

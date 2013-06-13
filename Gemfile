@@ -16,6 +16,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'russian', '~> 0.6.0'
 gem "select2-rails"
 gem "nested_form"
 gem 'jquery-rails'

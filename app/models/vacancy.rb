@@ -63,9 +63,10 @@ class Vacancy < ActiveRecord::Base
     event :approve_wait do
       transition :pending => :wait_company
     end
-
-    
   end  
 
-
+  def to_param
+    vacancy_name = Russian.translit(name)
+    "#{id}-#{vacancy_name.parameterize}"
+  end
 end

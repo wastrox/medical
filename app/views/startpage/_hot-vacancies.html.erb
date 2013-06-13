@@ -6,6 +6,6 @@
 				<p><%= "#{vacancy.hot_vacancy.description}" unless vacancy.hot_vacancy.nil? %></p>
 			</div>
 
-			<p><%= link_to "Подробнее", :controller => "search", :action => "vacancy", :id => vacancy.id %></p>
+			<p><%= link_to "Подробнее", :controller => "search", :action => "vacancy", :id => vacancy.to_param %></p>
 	</div>
 <% end %>

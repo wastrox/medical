@@ -15,7 +15,7 @@
               <td><%= vacancy.vacancy_name %></td>
               <td>Вакансия закрыта</td>
             <% else %>
-              <td><%= link_to vacancy.vacancy_name, :controller => "/search", :action => :vacancy, :id => vacancy.vacancy_id %></td>
+              <td><%= link_to vacancy.vacancy_name, :controller => "/search", :action => :vacancy, :id => vacancy.to_param %></td>
               <td><%= @applicant.vacancies.find(vacancy.vacancy_id).city %></td>
             <% end %>
               <td><%= vacancy.respond_date.strftime("%m/%d/%Y") %> <%= link_to({:controller => "applicant/resumes", :action => "destroy_vacancy_respond", :id => vacancy.id}, :class => "delte-vacancy-respond") do %>

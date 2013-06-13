@@ -5,7 +5,7 @@
 				<% @vacancies.each do |vacancy| %>	
 					<tr>
 						<td><%= image_tag vacancy.company.logo.url(:search), :class => "photo-employer", :title => "Компания #{vacancy.company.name}. Работа в медицине medical.netbee.ua" %></td>
-						<td><%= link_to vacancy.name, :controller => :search, :action => :vacancy, :id => vacancy.id %></td>
+						<td><%= link_to vacancy.name, :controller => :search, :action => :vacancy, :id => vacancy.to_param %></td>
 						<td><%= vacancy.city %></td>
 	    				<td><%= vacancy.salary %> грн.</td>
 					</tr>

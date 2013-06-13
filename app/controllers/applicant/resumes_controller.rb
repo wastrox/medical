@@ -101,7 +101,6 @@ end
     vacancy_respond = VacancyRespond.new(:applicant_id => @applicant.id, :vacancy_id => params[:vacancy_id], :respond_date => Time.now, :vacancy_name => params[:vacancy_name])    
 
     respond_to do |format|
-      
       if vacancy_respond.save
         vacancy = Vacancy.find(vacancy_respond.vacancy_id)
         company = vacancy.company
@@ -110,9 +109,9 @@ end
         employer.send_vacancy_respond(vacancy, @applicant)
 
         flash[:notice] = "Работодателю было выслано ваше резюме. Вакансия #{vacancy.name} добавлена в Избранные ваканси."
-        format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id] }
+        format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => vacancy.to_param }
       else
-        format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => params[:vacancy_id] }
+        format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => vacancy.to_param }
       end
     end
   end
