@@ -15,6 +15,7 @@ $(document).ready(function(){
 	var remove_link = $("a.remove-hot-vacancy").index();
 	if (remove_link!= "-1") {
 		$(".add-hot-vacancy").css("display", "none");
+		$("#btn-success").removeAttr("disabled");
 	}
 });
 </script>
@@ -35,7 +36,7 @@ $(document).ready(function(){
 	margin-top: 20px;
 }
 .btn-warning {
-	margin-left: 143px;
+	margin-left: 123px;
 }
 </style>
 
