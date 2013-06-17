@@ -41,7 +41,7 @@
 	</div>
 	<span class="line-bottom"></span>
 
-	<h2 id="experience">Опыт Работы</h2>				
+	<h2 id="experience">Опыт работы</h2>				
 
     <%= applicant_fields.fields_for :experiences do |experience_fields| %>
     	<%= render :partial => "applicant/resumes/experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
