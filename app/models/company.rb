@@ -5,7 +5,7 @@ class Company < ActiveRecord::Base
 
   validates_presence_of :description, :name, :scope
 
-  belongs_to :employer
+  belongs_to :employer, :dependent => :destroy 
 
   has_many :vacancies, :dependent => :destroy  
   has_many :company_contacts, :dependent => :destroy 

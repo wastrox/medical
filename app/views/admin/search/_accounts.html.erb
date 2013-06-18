@@ -31,8 +31,11 @@
 		    			<td><%= account.session_count %></td>
 		    			<td>
 		    				<% unless account.session_last_time.nil? %>
-		    					<%= account.session_last_time.localtime.strftime("%F %H:%M") if account.	active? %>
+		    					<%= account.session_last_time.localtime.strftime("%F %H:%M") if account.active? %>
 		    				<% end %>
+		    				<%= link_to({:controller => "/admin/search", :action => "destroy_account_respond", :id => account.id}, :class => "delte-vacancy-respond", :confirm => "Вы уверены, что хотите удалить аккаутн #{account.email}") do %>
+                  				<img src="/assets/delete.png" class="delte-vacancy-respond">
+                  			<% end %>
 		    			</td>
 					</tr>
 				<% end %>

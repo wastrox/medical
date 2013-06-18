@@ -18,5 +18,19 @@ skip_before_filter :require_login
 			@accounts = Account.search(params[:search])
 		end
 	end
+
+	def destroy_account_respond
+		account = Account.find(params[:id])
+		if account.employer?
+		   resume_respond = ResumeRespond.find_by_employer_id(account.id).destroy unless resume_respond.nil?
+		   account.company.destroy unless account.company.nil? && account.destroy
+		elsif account.applicant?
+			vacancy_respond = VacancyRespond.find_by_applicant_id(account.id).destroy unless vacancy_respond.nil?
+			account.resume.destroy unless account.resume.nil? && account.destroy
+		else
+			account.destroy
+		end
+        redirect_to admin_search_url
+	end
 	
 end

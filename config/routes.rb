@@ -70,6 +70,7 @@ Medical::Application.routes.draw do
     
     match 'resumes/published/(:id)' => 'resumes#published'
     match 'resumes/reject/(:id)' => 'resumes#reject'
+    match 'search/destroy_account_respond/:id' => "search#destroy_account_respond"
     
     namespace :companies do
       resources :profile
