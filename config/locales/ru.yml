@@ -8,14 +8,14 @@ ru:
               published: "Публикуется"
               hot: "Опубликована как горячая"
               vip: "Опубликована как vip"
-              secret: "Конфидициально"
+              secret: "Конфиденциально"
               rejected: "Отклонена модератором"
               deferred: "Скрыто"
       errors:
           messages:
               blank: ""
               accepted: "- согласитесь с соглашением ХХХ"
-              invalid: "Не верный email"
+              invalid: "Неверный email"
       models:
           profile: "Профиль"
       attributes:
@@ -38,7 +38,7 @@ ru:
               month_till: "Месяц окончания работы"
               year_till: "Год окончания работы"
           educations:
-              college: "Название вуза"
+              college: "Название ВУЗа"
               profession: "Специальность"
               faculty: "Факультет"
               diploma: "Диплом/степень"
