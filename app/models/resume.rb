@@ -72,4 +72,5 @@ class Resume < ActiveRecord::Base
       resume_position = Russian.translit(position)
       "#{id}-#{resume_position.parameterize}"
     end
+
 end

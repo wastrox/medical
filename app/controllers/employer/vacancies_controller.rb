@@ -23,7 +23,11 @@ class Employer::VacanciesController < ApplicationController
     if params[:save]
 	    respond_to do |format|  
         if @vacancy.save
+
           @vacancy.request # FIXME: заменить на filter
+          Notifier.letter_to_admin("Создана новая вакансия #{@vacancy.name}, ожидает проверки модератором", "Проверьте вакансию в админке.").deliver
+
+
           format.html { redirect_to employer_vacancies_url, notes: "Вакансия создана"}
           format.json { render :json => @vacancy, :status => :created, :location => @company }
         else
@@ -57,7 +61,10 @@ class Employer::VacanciesController < ApplicationController
     if params[:save]
       respond_to do |format|
         if @vacancy.update_attributes(params[:vacancy])
+
           @vacancy.edit #FIXME: заменить на filter
+          Notifier.letter_to_admin("Вакансия #{@vacancy.name} редактировалась, ожидает проверки модератором", "Проверьте вакансию в админке.").deliver
+
   			  format.html { redirect_to employer_vacancies_url, notes: "Edit save" }
           format.json { render :json => @vacancy }
         else

@@ -60,11 +60,15 @@ class Notifier < ActionMailer::Base
 	end
 
 	def vacancy_respond(account, subject, applicant)
-
 		@applicant = applicant
         @fullNameApplicant = "#{applicant.profile.lastname} #{applicant.profile.firstname} #{applicant.profile.surename}"
 		@vacancy = subject
 
 	  	mail(:to => account.email, :subject => "Отклик на вакансию #{subject.name}")
+	end
+
+	def letter_to_admin(subject, body_letter)
+		@body_letter = body_letter
+		mail(:to => ["personal@netbee.ua", "t@netbee.ua"], :subject => subject)
 	end
 end

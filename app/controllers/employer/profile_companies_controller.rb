@@ -19,7 +19,10 @@ class Employer::ProfileCompaniesController < ApplicationController
  	  @company.employer = @employer
 	  respond_to do |format|
       if @company.save
+
          @company.request # FIXME: заменить на фильтр 
+         Notifier.letter_to_admin("Создана новая компания #{@company.name}, ожидает проверки модератором", "Проверьте компанию в админке.").deliver
+
          format.html { redirect_to proc { employer_profile_company_path(@company)}, notes: "Компания зарегестрирована"}
          format.json { render :json => @company, :status => :created, :location => @company }
       else
@@ -41,7 +44,10 @@ class Employer::ProfileCompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update_attributes(params[:company])
+
         @company.edit # FIXME: заменить на фильтр
+        Notifier.letter_to_admin("Компания #{@company.name} редактировалась, ожидает проверки модератором", "Проверьте компанию в админке.").deliver
+
         # ---------------------------------------------------------------
         # FIXME: заменить фильторм
         # когда компания была отменена модератором, все вакансии, ожидавшие изменения в профиле компании
