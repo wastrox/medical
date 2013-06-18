@@ -55,7 +55,7 @@ class Applicant::ResumesController < ApplicationController
       if @resume.save
 
         @resume.request
-        Notifier.letter_to_admin("Новое резюме #{@resume.position} на модерации", "Проверьте резюме в админке.").deliver
+        Notifier.letter_to_admin("Новое РЕЗЮМЕ #{@resume.position} на модерации", "Проверьте резюме в админке.").deliver
 
         format.html { redirect_to :controller => 'resumes', :action => 'show', :id => @resume.id }
         format.json { render :json => @resume, :status => :created, :location => @resume }
@@ -81,7 +81,7 @@ end
       if @resume.update_attributes(params[:resume])
 
         @resume.edit
-        Notifier.letter_to_admin("Резюме #{@resume.position} редактировалось и ожидает модерации", "Проверьте резюме в админке.").deliver
+        Notifier.letter_to_admin("РЕЗЮМЕ #{@resume.position} редактировалось и ожидает модерации", "Проверьте резюме в админке.").deliver
 
         format.html { redirect_to :controller => "resumes", :action => "show" }
         format.json { render :json => @resume, :status => :created, :location => @resume }
