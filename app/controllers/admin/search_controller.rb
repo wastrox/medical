@@ -15,7 +15,7 @@ skip_before_filter :require_login
 		elsif params[:sample] == "3"
 			@companies = Company.search(search_params)
 		else
-			@accounts = Account.search(params[:search])
+			@accounts = Account.search(params[:search], :per_page => 2000)
 		end
 	end
 
