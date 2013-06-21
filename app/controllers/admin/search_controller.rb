@@ -9,13 +9,17 @@ skip_before_filter :require_login
 		search_params = params[:search].to_s + " " + params[:city].to_s 
 
 		if params[:sample] == "1"
-			@vacancies = Vacancy.search(search_params)
+			@vacancies = Vacancy.search(search_params, :order => 'created_at DESC')
 		elsif params[:sample] =="2"
-			@resumes = Resume.search(search_params)
+			@resumes = Resume.search(search_params, :order => 'created_at DESC')
 		elsif params[:sample] == "3"
-			@companies = Company.search(search_params)
+			@companies = Company.search(search_params, :order => 'created_at DESC')
 		else
-			@accounts = Account.search(params[:search], :per_page => 2000)
+			@accounts = Account.search(params[:search], :order => 'created_at DESC').page(params[:page]).per(15)
+			respond_to do |format|
+			  format.html  #index.html.erb
+			  format.json { render json: @accounts }
+			end
 		end
 	end
 

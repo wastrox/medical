@@ -1,4 +1,11 @@
 ru:
+  views:
+      pagination:
+          previous: "&lt;&lt; Предыдущая"
+          next: "Следующая &gt;&gt;"
+          truncate: "..."
+          last: ""
+          first: ""
   activerecord:
       state_machines:
           states:

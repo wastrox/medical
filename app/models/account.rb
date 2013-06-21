@@ -14,6 +14,7 @@ class Account < ActiveRecord::Base
   
   define_index do
 		indexes email 
+    indexes created_at, sortable: true
 		set_property :delta => :delayed
 	end
 		
