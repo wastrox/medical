@@ -21,7 +21,7 @@ ru:
       errors:
           messages:
               blank: ""
-              accepted: "- согласитесь с соглашением ХХХ"
+              accepted: ""
               invalid: "Неверный email"
       models:
           profile: "Профиль"

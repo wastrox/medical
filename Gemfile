@@ -32,3 +32,4 @@ gem 'delayed_job_active_record' #, :git => 'git@github.com:scosman/delayed_job_a
 gem 'state_machine'
 gem 'ruby-graphviz', :require => 'graphviz' # Optional: only required for graphing
 gem 'kaminari'
+gem 'newrelic_rpm'

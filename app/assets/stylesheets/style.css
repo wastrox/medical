@@ -501,6 +501,11 @@ table.vacancies tbody tr td:nth-of-type(even) {
 	color: #BD451C;
 	border-bottom: 1px dashed #BD451C;
 }
+
+.hot-content a:hover {
+	border-bottom: none;
+}
+
 .hot-content h3 {
 	margin: 12px 0;
 	color: #bd451c;
