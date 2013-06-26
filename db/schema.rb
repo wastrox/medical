@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530104947) do
+ActiveRecord::Schema.define(:version => 20130626105043) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(:version => 20130530104947) do
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.string   "site"
-    t.string   "scope"
     t.text     "description"
     t.integer  "employer_id"
     t.datetime "created_at",                          :null => false
@@ -48,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130530104947) do
     t.datetime "logo_updated_at"
     t.string   "state"
     t.boolean  "delta",             :default => true, :null => false
+    t.integer  "scope_id"
   end
 
   add_index "companies", ["employer_id"], :name => "index_companies_on_employer_id"
@@ -159,6 +159,12 @@ ActiveRecord::Schema.define(:version => 20130530104947) do
   end
 
   add_index "resumes", ["applicant_id"], :name => "index_resumes_on_applicant_id"
+
+  create_table "scopes", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "vacancies", :force => true do |t|
     t.integer  "company_id"

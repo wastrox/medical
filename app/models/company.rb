@@ -1,11 +1,12 @@
 class Company < ActiveRecord::Base
-  attr_accessible :logo, :description, :name, :scope, :site, :company_contacts_attributes
+  attr_accessible :logo, :description, :name, :scope, :site, :company_contacts_attributes, :scope_id
 
 	has_attached_file :logo, :styles => { :small => "80x109>", :search => "40x38", :vip => "160x90>" }, :default_url => "/images/normal/missing.png"
 
   validates_presence_of :description, :name, :scope
 
   belongs_to :employer, :dependent => :destroy 
+  belongs_to :scope
 
   has_many :vacancies, :dependent => :destroy  
   has_many :company_contacts, :dependent => :destroy 

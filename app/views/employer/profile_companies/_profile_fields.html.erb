@@ -4,10 +4,10 @@
 		<%= employer_fields.text_field :name %>
 	</div>
 </div>
-<div class='item'>
+<div class='item' id="category">
 	<%= employer_fields.label :scope, "Сфера деятельности" %>
 	<div class='field'>
-		<%= employer_fields.text_field :scope %>
+		<%= collection_select(:company, :scope_id, Scope.all, :id, :title, { :include_blank => true }, {:class => "styled"}) %>
 	</div>
 </div>
 <div class='item'>
