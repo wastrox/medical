@@ -45,6 +45,7 @@ class Company < ActiveRecord::Base
     
     define_index do
   		indexes name 
+      indexes created_at, sortable: true
   		set_property :delta => :delayed
   		#where " companies.state IN ('published', 'vip')" # Индексирует только опубликованные и горячие компании
   	end
