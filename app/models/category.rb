@@ -1,5 +1,7 @@
 class Category < ActiveRecord::Base
-  attr_accessible :title
+  attr_accessible :name
+  
+  has_many :vacancies
+  belongs_to :scope
 
-  has_one :vacancies
 end

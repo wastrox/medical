@@ -4,10 +4,11 @@ class Employer::VacanciesController < ApplicationController
   layout "profile_company"	
   before_filter :require_account_type_employer, :check_account_type
   before_filter :find_employer, :only => [:find_company, :index, :new, :create]
-  before_filter :find_company, :only => [:index, :new, :create]
+  before_filter :find_company, :only => [:index, :new, :create, :find_category_list]
   before_filter :init_vacancy, :only => [:new, :create, :check_vacancy_valid_and_save_in_draft]
-  before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy, :check_vacancy_valid_and_update_in_draft, :defer]
+  before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy, :check_vacancy_valid_and_update_in_draft, :defer, :find_category_list]
   before_filter :find_contacts, :only => [:new, :edit]
+  before_filter :find_category_list, :only => [:new, :edit]
 
   
   def index
@@ -122,5 +123,9 @@ class Employer::VacanciesController < ApplicationController
   
   def find_contacts
     @contacts = CompanyContact.where("company_id = ?", current_user.company.id )
+  end
+
+  def find_category_list
+    @category = Category.where(:scope_id => [@vacancy.company.scope.id, 12])
   end
 end

@@ -4,6 +4,7 @@ class Vacancy < ActiveRecord::Base
   belongs_to :company
   belongs_to :company_contact
   belongs_to :category
+  belongs_to :scope
 
   has_many :vacancy_responds
   has_many :applicants, :through => :vacancy_responds

@@ -5,9 +5,12 @@
 	</div>
 </div>
 <div class='item', id='category'>
-	<%= f.label :category, "Категория" %>
+	<%= f.label :category_id, "Категория" %>
 	<div class='field'>
-		<%= collection_select(:vacancy, :category_id, Category.all, :id, :title, { :include_blank => true }, {:class => "styled"}) %>
+		<%= collection_select(:vacancy, :category_id, @category, :id, :name, { :include_blank => true }, {:class => "styled"}) %>
+
+		<%# grouped_collection_select(:vacancy, :category_id, Scope.all, :categories, :title, :id, :name, { :include_blank => true }, {:class => "styled"}) %> <%# HOTE: grouped_collection_select Коллекция Категорий проффесий по Сфере деятельности компании %>
+		
 	</div>
 </div>
 <div class='item'>

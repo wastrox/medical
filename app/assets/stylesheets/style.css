@@ -1353,41 +1353,6 @@ table.list-vacancies tr td .yellow-link {
 	text-decoration: none;
 }
 
-/*table.list-vacancies-search tr:last-child td {
-	border-top: none;
-}
-
-table.list-vacancies-search tr td .yellow-link {
-	margin: 0px;
-	text-decoration: none;
-}
-
-table.list-vacancies-search {
-	margin: 15px 0 15px;
-	width: 100%;
-}
-
-table.list-vacancies-search tr {
-    border-top: 1px solid #BFB7AF;
-}
-
-table.list-vacancies-search td {
- 	color: #7A7979;
-    font-size: 14px;
-    width: 170px;
-    text-align: center;
-}
-
-table.list-vacancies-search tr:first-child td:first-child {
-	text-align: left !important;
-	width: 603px !important;
-}
-
-
-table.list-vacancies-search tr:last-child td {
-	border-top: none;
-}
-*/
 .add_fields_for {
 	text-decoration: none;
 	color: rgba(105, 85, 28, 0.69) !important;
@@ -1413,12 +1378,21 @@ table.list-vacancies-search tr:last-child td {
 }
 
 #category .dropdown {
-	height: 155px !important;
+	height: auto !important;
+    max-height: 418px;
 	width: 358px;
 }
 
 #category .dropdown li {
 	font: 14px/18px Helvetica,Arial,Tahoma,Verdana,sans-serif;
+}
+
+#category .dropdown li:last-child {
+	padding-bottom: 10px;
+}
+
+#category span.selectbox {
+	margin-bottom: 0px;
 }
 /*----------------------------------------------------------------------------*/
 
