@@ -1128,6 +1128,10 @@ table.my-resumes tbody tr td:first-child {
 table.company tr:last-child td {
 	padding: 10px 0 15px;
 }
+
+.ui-datepicker-prev, .ui-datepicker-next {
+	border-bottom: 1px solid #7A7979;
+}
 /*----------------------------------------------------------------------------*/
 
 /*---------------------------- create vacancy --------------------------------*/
