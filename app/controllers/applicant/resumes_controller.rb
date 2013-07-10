@@ -23,10 +23,9 @@ class Applicant::ResumesController < ApplicationController
       @profile = Profile.new
     end
     
-    # --- *** ---
     @resume.build_profile
-    #@resume.experiences.build
-    #@resume.educations.build
+    
+    @city = Array.new(City.all.collect {|c| c.name })
   end
 
   def create
