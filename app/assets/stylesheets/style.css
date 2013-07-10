@@ -933,6 +933,36 @@ div.fields > div.item > div.field > input.year {
 #additionally + .item {
 	margin-bottom: 15px;
 }
+
+.ui-autocomplete {
+	list-style-type: none;
+	width: 351px;
+	background: white !important;
+	max-height: 240px;
+	overflow: auto;
+    overflow-x: hidden;
+}
+
+.ui-autocomplete li {
+	padding: 5px 11px 0;
+}
+
+.ui-autocomplete li a {
+	border: none;
+	background: none;
+	color: #747474;
+	font-size: 12px;
+	cursor: pointer;
+	font: 12px/18px Helvetica,Arial,Tahoma,Verdana,sans-serif;
+}
+
+.ui-autocomplete li a:hover, .ui-autocomplete li a.ui-state-focus {
+	color: #747474;
+	background: none;
+	font-weight: normal;
+	border: none;
+	cursor: pointer;
+}
 /*----------------------------------------------------------------------------*/
 
 /*-------------------------------- resume/index ------------------------------*/

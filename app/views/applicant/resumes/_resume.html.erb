@@ -10,6 +10,38 @@
     </div>
   <%# end %>-->
 
+   <script>
+	  $(function() {
+		  var availableTags = [
+		  "ActionScript",
+		  "AppleScript",
+		  "Asp",
+		  "BASIC",
+		  "C",
+		  "C++",
+		  "Clojure",
+		  "COBOL",
+		  "ColdFusion",
+		  "Erlang",
+		  "Fortran",
+		  "Groovy",
+		  "Haskell",
+		  "Java",
+		  "JavaScript",
+		  "Lisp",
+		  "Perl",
+		  "PHP",
+		  "Python",
+		  "Ruby",
+		  "Scala",
+		  "Scheme"
+		  ];
+		  $( "#tags" ).autocomplete({
+		  	source: availableTags
+		  });
+	  });
+  </script>
+
 <h2>Профиль</h2>
 <div class="profile">
     <%= applicant_fields.fields_for :profile do |profile_fields|%>
@@ -29,7 +61,7 @@
 	<div class='item'>
 		<%= applicant_fields.label :city, 'Желаемый город' %>
 		<div class='field'>
-			<%= applicant_fields.text_field :city, :value => "#{@resume.city}" %>
+			<%= applicant_fields.text_field :city, :value => "#{@resume.city}", :id => "tags" %>
 		</div>
 	</div>
 	<div class='item'>
