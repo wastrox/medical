@@ -16,7 +16,6 @@ class Applicant::ResumesController < ApplicationController
 
   def new
     # FIXME: условие для корректного отображения input value => @profile.name. Повторяется в методе create.
-    
     if @applicant.profile?
       @profile = @applicant.profile
     else
@@ -24,8 +23,6 @@ class Applicant::ResumesController < ApplicationController
     end
     
     @resume.build_profile
-    
-    @city = Array.new(City.all.collect {|c| c.name })
   end
 
   def create
