@@ -33,3 +33,4 @@ gem 'state_machine'
 gem 'ruby-graphviz', :require => 'graphviz' # Optional: only required for graphing
 gem 'kaminari'
 gem 'newrelic_rpm'
+gem 'whenever', :require => false
