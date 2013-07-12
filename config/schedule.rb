@@ -18,6 +18,11 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every :day, :at => '12:20am' do
+
+every :day, :at => '02:20am' do
   rake "sitemap:generate"
+end
+
+every :day, :at => '02:35am' do
+  rake "ts:rebuild"
 end

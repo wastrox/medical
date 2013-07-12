@@ -1,4 +1,4 @@
-Sitemap::Generator.instance.load :host => "mywebsite.com" do
+Sitemap::Generator.instance.load :host => "medical.netbee.ua" do
 
   # Sample path:
   #   path :faq
@@ -24,6 +24,10 @@ Sitemap::Generator.instance.load :host => "mywebsite.com" do
   #             :params => { :subdomain => proc { |activity| activity.location } }
   
   path :root, :priority => 1
+  literal "/contacts/index"
+  literal "/personal_data/index"
+  literal "/about"
+  
   
   Resume.search.each do |resume|
     literal "/search/resume/#{resume.to_param}"
