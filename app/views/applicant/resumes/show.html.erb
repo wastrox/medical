@@ -10,7 +10,7 @@
 	<img src="/assets/red-pencil.png" class="icon-red-pencil"><%= link_to "Редактировать", edit_applicant_resume_path(@resume) %>
 	<img src="/assets/delete.png" class="icon-delete"><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %>
 	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to("Сделать неактивным", :controller => "resumes", :action => "defer", :id => @resume.id) %>
-	<img src="/assets/export-pdf.png" class="icon-cancel"><a href="#">Экспортировать в PDF</a>
+	<img src="/assets/export-pdf.png" class="icon-cancel"><%= link_to "Экспортировать в PDF", applicant_resume_path(@resume, :format => 'pdf') %>
 </div>
 <div class="boxed" id="cabinet">
 	<!--<div class="photo"><%# image_tag @profile.photo.url(:show), :class => "photo-applicant" %></div>

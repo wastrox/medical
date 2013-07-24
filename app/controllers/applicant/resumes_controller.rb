@@ -66,6 +66,17 @@ end
   def show
     @fullName = "#{@profile.lastname} #{@profile.firstname} #{@profile.surename}"
     @title = "Резюме #{@resume.position}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
+
+    respond_to do |format|
+      format.html
+      format.pdf {
+        html = render_to_string(:layout => "pdf.html.erb" , :action => "show.html.erb", :formats => [:html], :handler => [:erb])
+        kit = PDFKit.new(html)
+        kit.stylesheets << "/home/nick/workroom/medical/app/assets/stylesheets/pdf.css"
+        send_data(kit.to_pdf, :filename => "#{@title}.pdf", :type => 'pdf')
+        return # to avoid double render call
+      }
+    end
   end
 
   def edit

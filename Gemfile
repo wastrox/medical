@@ -34,3 +34,8 @@ gem 'ruby-graphviz', :require => 'graphviz' # Optional: only required for graphi
 gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'whenever', :require => false
+gem "pdfkit"
+
+group :development do
+  gem "wkhtmltopdf-binary", "~> 0.9.5.3"
+end
