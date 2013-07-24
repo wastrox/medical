@@ -1010,7 +1010,7 @@ table.photo-name-applicant h2 {
 }
 
 table.photo-name-applicant {
-	margin: 5px 0px 10px;
+	margin: 5px 0px 15px;
 }
 
 table.photo-name-applicant tr td {
@@ -1024,6 +1024,7 @@ img.photo-applicant {
 table.paper {
 	width: 100%;
 	/*padding-bottom: 20px;*/
+	margin-left: -2px;
 	padding-bottom: 5px;
 }
 
@@ -1037,7 +1038,7 @@ table.paper tr td {
 }
 
 table.paper tr td:first-child {
-	width: 215px;
+	width: 233px;
 	padding-right: 15px;
 	color: #767676;
     font-size: 14px;

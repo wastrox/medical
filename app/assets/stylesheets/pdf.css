@@ -1,0 +1,21 @@
+/*-------------------------------- .pdf ------------------------------------*/
+
+	a {
+		display: none;
+	}
+
+	#wrapper {
+		width: auto;
+		margin: 0;
+		padding: 0;
+		border: none;
+	}
+	.cap {
+		display: none;
+	}
+
+	.photo-applicant {
+		display: none;
+	}
+
+/*--------------------------------------------------------------------------*/
