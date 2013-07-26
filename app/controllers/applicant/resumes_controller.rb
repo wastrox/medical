@@ -160,7 +160,7 @@ end
   def pdf_usage
     html = render_to_string(:layout => "pdf.html.erb" , :action => "show.html.erb", :formats => [:html], :handler => [:erb])
     kit = PDFKit.new(html)
-    kit.stylesheets << "/home/nick/workroom/medical/app/assets/stylesheets/pdf.css"
+    kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/pdf.css"
     nameApplicant = Russian.translit("#{@profile.lastname}_#{@profile.firstname}_#{@resume.position}")
     send_data(kit.to_pdf, :filename => nameApplicant, :type => 'pdf')
     return # to avoid double render call

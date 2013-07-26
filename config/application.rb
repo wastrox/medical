@@ -6,7 +6,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
-require 'pdfkit'
+#require 'pdfkit'
 # require "rails/test_unit/railtie"
 
 if defined?(Bundler)
@@ -67,6 +67,6 @@ module Medical
     config.assets.version = '1.0'
 
     # options will be passed to PDFKit.new
-    # config.middleware.use PDFKit::Middleware, :print_media_type => true
+    #config.middleware.use PDFKit::Middleware, :print_media_type => true
   end
 end
