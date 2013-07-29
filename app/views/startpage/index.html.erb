@@ -8,7 +8,7 @@
                     <% else %>
                     	<%= select_tag(:sample, options_for_select([['Вакансии', 1], ['Резюме', 2]], params[:sample]), :class => "styled") %>                    	
                     <% end %>
-                    <%= submit_tag "Найти", name: nil, :class => "input-sub btn btn-warning", :id => "btn-search" %>
+                    <%= submit_tag "Найти", name: nil, :class => "input-sub btn btn-warning", :id => "btn-search", :onclick => "_gaq.push(['_trackEvent','search','send'])" %>
                 </div>
  	</div> 	
 <% end %>

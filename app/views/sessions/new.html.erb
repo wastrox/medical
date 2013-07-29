@@ -1,6 +1,7 @@
 <div class="link-navigate">
     <h2 class="title">Вход</h2>
-    <%= link_to "Зарегистрироваться", signup_path %>
+    <%= link_to "Зарегистрироваться", signup_path, :onclick => "_gaq.push(['_trackEvent','reginlogin','send'])"
+ %>
 </div>
 <div id="content">
   <% if flash[:notice] %>
@@ -27,7 +28,7 @@
         <label for="remember_me">Запомнить меня</label>
       </div>
     </div>-->
-    <%= submit_tag "Войти", :class => "input-sub btn btn-warning", :id => "btn-login" %>
+    <%= submit_tag "Войти", :class => "input-sub btn btn-warning", :id => "btn-login", :onclick => "_gaq.push(['_trackEvent','login','send'])" %>
   <% end %>
   <div class="link-help">
     <%= link_to "Я забыл пароль", recover_url %>
