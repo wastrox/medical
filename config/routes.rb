@@ -20,9 +20,13 @@ Medical::Application.routes.draw do
   get "reactive", to: "accounts#reactive", as: "reactive"
   get "email_recovery", to: "accounts#email_recovery", as: "email_recovery"
   get "active_recovery", to: "accounts#active_recovery", as: "active_recovery"
-  
-  get "search", to: "search#index"
-  match "search/vacancy/:id", to: "search#vacancy"
+
+  match "/search", to: "search#index"
+
+  match "vacancy/*scope/*category/:id", to: "search#vacancy"
+  match "vacancy/*scope/*category/", to: "search#category"
+  match "vacancy/*scope", to: "search#scope"
+
   match "search/resume/:id", to: "search#resume"
   match "search/company/:id", to: "search#company"
 

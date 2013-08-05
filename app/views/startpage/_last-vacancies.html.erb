@@ -1,10 +1,10 @@
 <table class="vacancies" width="100%">
 				<% @vacancies.each do |vacancy|%>
 					<tr>
-						<td class="vacancy-name"><b><%= link_to "#{vacancy.name.split[0].delete ","}...", {:controller => "search", :action => "vacancy", :id => vacancy.to_param}, :title => "#{vacancy.name}" %></b></td>
+						<td class="vacancy-name"><b><%= link_to "#{vacancy.name.split[0].delete ","}...", {:controller => "search", :action => "vacancy", :scope => Russian.translit(vacancy.category.scope.title).downcase, :category => Russian.translit(vacancy.category.name).downcase, :id => vacancy.to_param} %></b></td>
 						<td><%= vacancy.city[0,14] %></td>
 						<td><%= vacancy.salary %> грн</td>
 					</tr>
 				<% end %>
 			</table>
-			<div class="link-more"><b><%= link_to "Показать еще", { :controller => "search", :action => "index", :method => "get", :sample => "1" }, :onclick =>"_gaq.push(['_trackEvent','more','send'])" %></b></div>
+			<div class="link-more"><b><%= link_to "Показать еще", { :controller => "search", :action => "index", :sample => "1" }, :onclick =>"_gaq.push(['_trackEvent','more','send'])" %></b></div>

@@ -8,9 +8,9 @@ class SearchController < ApplicationController
 	def index
 		search_params = params[:search].to_s + " " + params[:city].to_s 
 		if params[:sample] == "1"
-			@vacancies = Vacancy.search(search_params, :order => 'created_at desc')
 			@title = "Поиск вакансий: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 			@description = "Поиск вакансий  #{search_params}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
+			@vacancies = Vacancy.search(params[:search], :order => 'created_at desc')
 		else
 			@resumes = Resume.search(search_params, :order => 'created_at DESC')
 			@title = "Поиск резюме: работа в медицине. Сайт трудоустройства medical.netbee.ua"
@@ -40,5 +40,33 @@ class SearchController < ApplicationController
 		@title = "Компания #{@company.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Просмотр компании #{@company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
 		@keywords = "#{@company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+	end
+
+	def scope
+		scope_array = Array.new
+		Scope.all.each do |s|
+			scope_array << [Russian.translit(s.title).downcase, s.id]
+		end
+		scope_hash = Hash[*scope_array.flatten] 		
+		scope_id = scope_hash[params[:scope]]
+
+		@scope = params[:scope]
+
+		categories = Category.where(:scope_id => scope_id)
+		@vacancies = Vacancy.where(:category_id => categories )
+	end
+
+	def category
+		category_array = Array.new
+		Category.all.each do |c|
+			category_array << [Russian.translit(c.name).downcase, c.id]
+		end
+		category_hash = Hash[*category_array.flatten] 
+		category_id = category_hash[params[:category]]
+
+		@scope = params[:scope]
+		@category = params[:category]
+
+		@vacancies = Vacancy.where(:category_id => category_id )
 	end
 end

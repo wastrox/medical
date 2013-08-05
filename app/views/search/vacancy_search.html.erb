@@ -13,8 +13,4 @@
             </div> 	
 <% end %>
 
-<% unless @vacancies.nil? %>
-	<%= render :partial => "applicant" %>
-<% else %>
-	<%= render :partial => "employer" %>
-<% end %>
+<%= render :partial => "applicant" %>

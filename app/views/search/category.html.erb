@@ -5,7 +5,7 @@
 				<% @vacancies.each do |vacancy| %>	
 					<tr>
 						<td><%= image_tag vacancy.company.logo.url(:search), :class => "photo-employer", :title => "Компания #{vacancy.company.name}. Работа в медицине medical.netbee.ua" %></td>
-						<td><%= link_to vacancy.name, {:controller => "search", :action => "vacancy", :scope => Russian.translit(vacancy.category.scope.title).downcase, :category => Russian.translit(vacancy.category.name).downcase, :id => vacancy.to_param} %></td>
+						<td><%= link_to vacancy.name, {:controller => "search", :action => "vacancy", :scope => @scope, :category => @category, :id => vacancy.to_param} %></td>
 						<td><%= vacancy.city %></td>
 	    				<td><%= vacancy.salary %> грн.</td>
 					</tr>

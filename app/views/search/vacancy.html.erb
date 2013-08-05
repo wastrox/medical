@@ -42,6 +42,10 @@
                               	<td>Должность</td>
       	                        <td><%= @vacancy.name %></td>
                               </tr>
+                              <tr>
+                                    <td>Категория</td>
+                                    <td><%= link_to @vacancy.category.name, {:controller => :search, :action => :category, :scope => Russian.translit(@vacancy.category.scope.title).downcase, :category => Russian.translit(@vacancy.category.name).downcase} %></td>
+                              </tr>
       						<tr>
       							<td>Зарплата</td>
       							<td><%= @vacancy.salary %> грн.</td>
