@@ -34,11 +34,18 @@ Sitemap::Generator.instance.load :host => "medical.netbee.ua" do
   end
 
   Vacancy.search.each do |vacancy|
-    literal "/search/vacancy/#{vacancy.to_param}"
+    literal "/vacancy/#{vacancy.category.scope.title.parameterize}/#{vacancy.category.name.parameterize}/#{vacancy.to_param}"
   end
 
   Company.search.each do |company|
     literal "/search/company/#{company.to_param}"
   end
 
+  Scope.all.each do |scope|
+    literal "/vacancy/#{scope.parameterize}"
+  end
+
+  Category.all.each do |category|
+    literal "/vacancy/#{scope.parameterize}/#{category.scope.parameterize}"
+  end
 end

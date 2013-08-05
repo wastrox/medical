@@ -53,7 +53,7 @@ class SearchController < ApplicationController
 		@scope = params[:scope]
 
 		categories = Category.where(:scope_id => scope_id)
-		@vacancies = Vacancy.where(:category_id => categories )
+		@vacancies = Vacancy.where(:category_id => categories, :state => ["published", "hot"]).order("created_at desc")
 	end
 
 	def category
@@ -67,6 +67,6 @@ class SearchController < ApplicationController
 		@scope = params[:scope]
 		@category = params[:category]
 
-		@vacancies = Vacancy.where(:category_id => category_id )
+		@vacancies = Vacancy.where(:category_id => category_id, :state => ["published", "hot"]).order("created_at desc")
 	end
 end
