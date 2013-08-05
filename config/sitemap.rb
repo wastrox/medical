@@ -34,7 +34,7 @@ Sitemap::Generator.instance.load :host => "medical.netbee.ua" do
   end
 
   Vacancy.search.each do |vacancy|
-    literal "/vacancy/#{Russian.translit(vacancy.category.scope.title).downcase}/#{Russian.translit(vacancy.category.name).downcase}/#{vacancy.to_param}"
+    literal "/vacancy/#{Russian.translit(vacancy.category.scope.title).parameterize}/#{Russian.translit(vacancy.category.name).parameterize}/#{vacancy.to_param}"
   end
 
   Company.search.each do |company|
@@ -42,10 +42,10 @@ Sitemap::Generator.instance.load :host => "medical.netbee.ua" do
   end
 
   Scope.all.each do |scope|
-    literal "/vacancy/#{Russian.translit(scope.title).downcase}"
+    literal "/vacancy/#{Russian.translit(scope.title).parameterize}"
   end
 
   Category.all.each do |category|
-    literal "/vacancy/#{Russian.translit(category.scope.title).downcase}/#{Russian.translit(category.name).downcase}"
+    literal "/vacancy/#{Russian.translit(category.scope.title).parameterize}/#{Russian.translit(category.name).parameterize}"
   end
 end
