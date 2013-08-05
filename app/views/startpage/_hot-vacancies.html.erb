@@ -6,7 +6,7 @@
 				<p><%= "#{vacancy.hot_vacancy.description}" unless vacancy.hot_vacancy.nil? %></p>
 			</div>
 
-            <p><%= link_to "Подробнее", {:controller => "search", :action => "vacancy", :scope => Russian.translit(vacancy.category.scope.title).downcase, :category => Russian.translit(vacancy.category.name).downcase, :id => vacancy.to_param} %></p>
+            <p><%= link_to "Подробнее", {:controller => "search", :action => "vacancy", :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></p>
 
 	</div>
 <% end %>

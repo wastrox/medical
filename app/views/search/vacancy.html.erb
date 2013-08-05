@@ -44,7 +44,7 @@
                               </tr>
                               <tr>
                                     <td>Категория</td>
-                                    <td><%= link_to @vacancy.category.name, {:controller => :search, :action => :category, :scope => Russian.translit(@vacancy.category.scope.title).downcase, :category => Russian.translit(@vacancy.category.name).downcase} %></td>
+                                    <td><%= link_to @vacancy.category.name, {:controller => :search, :action => :category, :scope => Russian.translit(@vacancy.category.scope.title).parameterize, :category => Russian.translit(@vacancy.category.name).parameterize} %></td>
                               </tr>
       						<tr>
       							<td>Зарплата</td>

@@ -45,7 +45,7 @@ class SearchController < ApplicationController
 	def scope
 		scope_array = Array.new
 		Scope.all.each do |s|
-			scope_array << [Russian.translit(s.title).downcase, s.id]
+			scope_array << [Russian.translit(s.title).parameterize, s.id]
 		end
 		scope_hash = Hash[*scope_array.flatten] 		
 		scope_id = scope_hash[params[:scope]]
@@ -59,7 +59,7 @@ class SearchController < ApplicationController
 	def category
 		category_array = Array.new
 		Category.all.each do |c|
-			category_array << [Russian.translit(c.name).downcase, c.id]
+			category_array << [Russian.translit(c.name).parameterize, c.id]
 		end
 		category_hash = Hash[*category_array.flatten] 
 		category_id = category_hash[params[:category]]
