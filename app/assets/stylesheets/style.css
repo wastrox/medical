@@ -1631,3 +1631,13 @@ div.personal_date ul li {
 	list-style-type: none;
 	margin-bottom: 10px;
 }
+
+
+div.link-scope {
+	margin-top: 25px;
+	text-align: center;
+}
+
+.link-scope span:last-child {
+	display: none;
+}
