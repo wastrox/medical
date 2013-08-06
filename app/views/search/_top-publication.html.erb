@@ -1,0 +1,29 @@
+<% if request.original_url.include? "/resume" %>
+	<div id="account-nav" class="top-publication">
+		<div class="cap">
+			<p>Популярные резюме</p>
+		</div>
+		<div class="boxed-nav">
+			<ul>
+				<% @top_resumes.each do |resume| %>
+					<li><%= link_to resume.position, {:controller => :search, :action => :resume, :id => resume.to_param} %></li>
+					<span class="line-bottom"></span>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+<% elsif request.original_url.include? "/vacancy" %>
+	<div id="account-nav" class="top-publication">
+		<div class="cap">
+			<p>Популярные вакансии</p>
+		</div>
+		<div class="boxed-nav">
+			<ul>
+				<% @top_vacancies.each do |vacancy| %>
+					<li><%= link_to vacancy.name, {:controller => :search, :action => :vacancy, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></li>
+					<span class="line-bottom"></span>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+<% end %>

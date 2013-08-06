@@ -21,6 +21,8 @@ class SearchController < ApplicationController
 
 	def resume
 		@resume = Resume.find(params[:id])
+		@top_resumes = Resume.where(:state => ["published", "hot"]).order("created_at desc").limit(3)
+
 		@fullName = "#{@resume.profile.lastname} #{@resume.profile.firstname} #{@resume.profile.surename}"
 		@title = "Резюме #{@resume.position}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Просмотр резюме #{@resume.position}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
@@ -29,6 +31,8 @@ class SearchController < ApplicationController
 
 	def vacancy
 		@vacancy = Vacancy.find(params[:id])
+		@top_vacancies = Vacancy.where(:state => ["published", "hot"]).order("created_at desc").limit(3)
+
 		@title = "Вакансия #{@vacancy.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Просмотр вакансии #{@vacancy.name} компании #{@vacancy.company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
 		@keywords = "#{@vacancy.name}, #{@vacancy.company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
