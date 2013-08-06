@@ -13,7 +13,7 @@
               <table class="paper company" border="0" cellpadding="10">
                                   <tr>
                                     <td>Сфера деятельности</td>
-                                    <td><%= @company.scope.title %></td>
+                                    <td><%= link_to @company.scope.title, :controller => :search, :action => :scope, :scope => Russian.translit(@company.scope.title).parameterize %></td>
                                   </tr>
                                           <tr>
                                                 <td>Описание</td>
