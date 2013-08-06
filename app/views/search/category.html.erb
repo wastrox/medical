@@ -13,5 +13,11 @@
 			</table>
 			<div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div>
 	    <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
+</div>
 
+<div class="link-scope">
+	<% Scope.all.each do |scope| %>
+		<% s = Russian.translit(scope.title).parameterize %>
+		<%= link_to "#{scope.title}", {:controller => :search, :action => "scope", :scope => s} %> <span>|</span>
+	<% end %> 
 </div>
