@@ -19,7 +19,7 @@
                         <h1 id="about">Вы откликнулись на эту вакансию,<%= link_to "Избранные вакансии", applicant_my_vacancies_index_url %></h1>
                   <% end %>
             <% else %>
-                  <h2 id="about"><%= "#{@vacancy.name} (#{@vacancy.experiences}, #{@vacancy.salary} грн.)" %></h2>
+                  <h1 id="about"><%= "#{@vacancy.name} (#{@vacancy.experiences}, #{@vacancy.salary} грн.)" %></h1>
             <% end %>
       </div>
 
