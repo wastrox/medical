@@ -36,6 +36,6 @@ gem 'newrelic_rpm'
 gem 'whenever', :require => false
 gem "pdfkit"
 
-group :development do
-  gem "wkhtmltopdf-binary", "~> 0.9.5.3"
-end
+#group :development do
+#  gem "wkhtmltopdf-binary", "~> 0.9.5.3"
+#end

@@ -3,3 +3,4 @@ development:
 production:
   morphology: stem_enru
   bin_path: /usr/local/bin/
+  max_matches: 10000
