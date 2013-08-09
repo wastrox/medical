@@ -1,0 +1,68 @@
+<style>
+  #new_task_link {
+    display: block;
+    margin-bottom: 25px;
+  }
+
+  #left_task {
+    float: left;
+    width: 610px;
+    display: inline-block;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: 1px solid #D4D4D4;
+  }
+
+  #left_task h3, #right_task h3 {
+    margin-bottom: 15px;
+  }
+
+  #right_task {
+    width: 330px;
+    display: inline-block;
+  }
+
+  #right_task label {
+    text-decoration: line-through;
+  }
+
+  form {
+    margin-bottom: 15px;
+  }
+
+  .remove_link {
+    width: 25px;
+    background: url(/assets/delete.png) no-repeat;
+  }
+
+  .edit_task a {
+    float: right;
+  }
+</style>
+
+<script>
+  var height_left_task = $('#left_task').height();
+  var height_right_task = $('#right_task').height();
+
+  if (height_left_task < height_right_task) {
+      $('#left_task').height(height_right_task);
+  }
+
+  else {
+      $('#left_task').height(height_left_task);
+  }
+</script>
+
+<div id="new_task_link">
+<%= link_to 'Новая задача', new_admin_task_path, id: "new_link", remote: true %>
+</div>
+
+<div id="left_task">
+  <h3>Задачи</h3>
+  <div class="tasks" id="incomplete_tasks"><%= render @incomplete_tasks %></div>
+</div>
+
+<div id="right_task">
+<h3>Выполненные</h3>
+<div class="tasks" id="complete_tasks"><%= render @complete_tasks %></div>
+</div>

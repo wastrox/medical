@@ -85,5 +85,6 @@ Medical::Application.routes.draw do
     end
     resources :vacancies
     resources :resumes
+    resources :tasks
 	end
 end

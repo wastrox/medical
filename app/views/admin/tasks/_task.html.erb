@@ -1,0 +1,11 @@
+<%= form_for ([:admin, task]), remote: true do |f| %>
+	<%= f.check_box :complete %>
+	<%= f.submit "Update" %>
+	<%= f.label :complete, task.description %>
+	<%# link_to(" ", [:admin, task], method: :delete, remote: true, :class => "remove_link") %>
+
+			    				<%= link_to ([:admin, task]), method: :delete, remote: true, :class => "delte-vacancy-respond" do %>
+	                  				<img src="/assets/delete.png" class="delte-vacancy-respond">
+	                  			<% end %>
+
+<% end %>

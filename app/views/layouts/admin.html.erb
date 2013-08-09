@@ -5,7 +5,9 @@
   <meta name="robots" content="noindex, follow">
   <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag  "style", "bootstrap_buttons", "selectbox", "jquery-ui/jquery-ui-1.9.2.custom", "bootstrap-table", "admin", "bootstrap-navs", :media => "all" %>
-  <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "selectbox-for-nestedform", "standart_form", "selectbox", "admin" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "application", "calendar", "jquery-ui/jquery-ui-1.9.1.custom.min.js", "jquery.inputmask", "selectbox-for-nestedform", "standart_form", "selectbox", "admin", "application", "tasks" %>
+  <%# javascript_include_tag "application" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -17,10 +19,7 @@
 		<div id="content">
 			<%= yield %>
 		</div>
-				<!--<div class="middle-nav"> Начало левой панели навигации моего кабинета FIXME: Переименовать middle-nav на right-nav                     
-					<%# render :partial => 'layouts/right-nav-admin'%>
-				</div> Коненц левой панели навигации -->
-		</div>		
+	</div>		
 </div>
 </body>
 </html>
