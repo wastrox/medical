@@ -29,7 +29,7 @@
 	<div class='item'>
 		<%= applicant_fields.label :city, 'Желаемый город' %>
 		<div class='field'>
-			<%= applicant_fields.text_field :city, :value => "#{@resume.city}", :id => "tags" %>
+			<%= collection_select(:resume, :city, City.all, :name, :name, {:include_blank => "Выберите город из списка"},  {:id => "combobox"}) %>
 		</div>
 	</div>
 	<div class='item'>

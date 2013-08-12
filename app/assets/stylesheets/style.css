@@ -967,6 +967,40 @@ div.fields > div.item > div.field > input.year {
 	border: none;
 	cursor: pointer;
 }
+
+ span.ui-helper-hidden-accessible {
+ 	display: none !important;
+ }
+
+ a.ui-button {
+ 	display: none !important;
+ }
+
+ input.ui-state-default, input.ui-widget-content input.ui-state-default, input.ui-widget-header input.ui-state-default {
+ 	border: 1px solid #CCCCCC;
+   border-radius: 6px 6px 6px 6px;
+   color: #767676;
+   font-size: 14px;
+   height: 35px;
+   padding-left: 7px;
+   width: 351px;
+   font-weight: normal;
+   background: none;
+   font: 14px/18px Helvetica,Arial,Tahoma,Verdana,sans-serif;
+ }
+
+ div.ui-tooltip {
+ 	background-color: #FFFFFF;
+ 	border: 1px solid #DADBDB;
+ 	border-radius: 14px 14px 14px 14px;
+ 	box-shadow: 0 -3px 0 0 #DADBDB inset;
+ 	height: 35px;
+ 	width: 360px;
+ 	text-align: center;
+	padding-top: 15px;
+	color: #767676;
+   font: 14px/18px Helvetica,Arial,Tahoma,Verdana,sans-serif;
+ }
 /*----------------------------------------------------------------------------*/
 
 /*-------------------------------- resume/index ------------------------------*/

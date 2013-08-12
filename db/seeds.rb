@@ -32,3 +32,15 @@ if Category.all.empty?
 else 
 	puts "Category not nil!"
 end
+
+if City.all.empty?
+	puts "Importing city name..."
+	CSV.foreach(Rails.root.join("city.csv"), headers: true) do |row|
+	  City.create! do |city|
+	  	city.id = row[0]
+	    city.name = row[1]
+	  end
+	end
+else 
+	puts "City not nil!"
+end
