@@ -989,7 +989,7 @@ div.fields > div.item > div.field > input.year {
    font: 14px/18px Helvetica,Arial,Tahoma,Verdana,sans-serif;
  }
 
- div.ui-tooltip {
+ div.ui-tooltip, div.ui-widget div.ui-corner-all div.ui-widget-content div.ui-state-highlight {
  	background-color: #FFFFFF;
  	border: 1px solid #DADBDB;
  	border-radius: 14px 14px 14px 14px;

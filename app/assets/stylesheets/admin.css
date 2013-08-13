@@ -141,6 +141,11 @@ table#admin-search-result-account tr td {
 	border-radius: 0px 0px 6px 6px;
 }
 
+
+ div.ui-tooltip, div.ui-widget div.ui-corner-all div.ui-widget-content div.ui-state-highlight {
+	display: none !important;
+}
+
 /*-------------------------------- pagination ------------------------------------*/
 span.prev {
 	padding-right: 15px;

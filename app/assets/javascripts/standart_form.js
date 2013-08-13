@@ -271,7 +271,7 @@ $(document).ready(function(){
 		// Remove invalid value
 		this.input
 		.val( "" )
-		.attr( "title", value + " нет такого города в списке!" )
+		.attr( "title", value + " такого города нет в списке!" )
 		.tooltip( "open" );
 		this.element.val( "" );
 		this._delay(function() {
