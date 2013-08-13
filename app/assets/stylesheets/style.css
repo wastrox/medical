@@ -697,7 +697,7 @@ form label {
 }
 
 .cap h2 {
-	margin-left: 7px;
+	margin-left: 4px;
 }
 
 h2 {
@@ -1687,3 +1687,29 @@ div.link-scope {
 .link-scope span:last-child {
 	display: none;
 }
+
+/*-----------------------------------Профессии-----------------------------------*/
+
+.frame-category-profesional {
+	 width: 100% !important;
+	 margin-top: 25px;
+	 margin-bottom: 0 !important;
+}
+
+ul#triple{
+  width:auto;
+  margin-bottom:20px;
+  overflow:hidden;
+  margin: 15px 0 25px;
+  text-align: left;
+}
+ul#triple li{
+  padding-bottom: 7px;
+  line-height:1.5em;
+  float:left;
+  display:inline;
+}
+
+#triple li  { width:33.333%; } <span class="code-comment">/* 3 col */</span>
+
+/*----------------------------------------------------------------------------*/

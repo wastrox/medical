@@ -56,8 +56,8 @@ class SearchController < ApplicationController
 
 		@scope = params[:scope]
 
-		categories = Category.where(:scope_id => scope_id)
-		@vacancies = Vacancy.where(:category_id => categories, :state => ["published", "hot"]).order("created_at desc")
+		@categories = Category.where(:scope_id => scope_id)
+		@vacancies = Vacancy.where(:category_id => @categories, :state => ["published", "hot"]).order("created_at desc")
 
 		@title = "Вакансии, сфера деятельности #{Scope.find(scope_id).title}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Список вакансий медицинских компаний в сфере деятельности #{Scope.find(scope_id).title}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
