@@ -340,6 +340,7 @@ input[type="submit"].input-sub {
 	color: rgba(133, 100, 29, 0.94); /* Альтернативный цвет */
 	text-shadow: rgba(255, 255, 255, 0.67) 0 1px 0px; 
 	top: -1px;
+	font-size: 12px;
 }
 .icon-last-vacancies {
 	background: url("/assets/icon-last-vacancies.png") no-repeat scroll left 3px transparent;
