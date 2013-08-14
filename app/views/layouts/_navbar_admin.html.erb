@@ -9,7 +9,7 @@
 			<%= link_to vacancy_name_helper, admin_vacancies_url %>
 		</li>
 		<li class=<%= active_tab(admin_resumes_url) %>>
-			<%= link_to "Резюме(#{Resume.where(:state => "pending").count})", admin_resumes_url %>
+			<%= link_to resume_name_helper, admin_resumes_url %>
 		</li>
 		<li class=<%= active_tab(admin_search_url) %>>
 			<%= link_to "Поиск", admin_search_url %>
