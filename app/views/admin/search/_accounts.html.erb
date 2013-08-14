@@ -10,7 +10,7 @@
 					<th>Последнее</th>
 				</tr>
 				<% @accounts.each do |account| %>	
-					<tr>
+					<tr id=<%="account_#{account.id}"%>>
 						<td>
 		    			<% if account.employer? %>
 		    				<% company = Company.find_by_employer_id(account.id)%>
@@ -33,7 +33,7 @@
 		    				<% unless account.session_last_time.nil? %>
 		    					<%= account.session_last_time.localtime.strftime("%F %H:%M") if account.active? %>
 		    				<% end %>
-		    				<%= link_to({:controller => "/admin/search", :action => "destroy_account_respond", :id => account.id}, :class => "delte-vacancy-respond", :confirm => "Вы уверены, что хотите удалить аккаунт #{account.email}") do %>
+		    				<%= link_to({:controller => "/admin/search", :action => "destroy_account_respond", :id => account.id}, :class => "delte-vacancy-respond", :confirm => "Вы уверены, что хотите удалить аккаунт #{account.email}", method: :delete, remote: true) do %>
                   				<img src="/assets/delete.png" class="delte-vacancy-respond">
                   			<% end %>
 		    			</td>
