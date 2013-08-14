@@ -18,4 +18,22 @@ module ApplicationHelper
   	end
   	return year_list.reverse!
   end
+
+  def company_name_helper
+    sum = Company.where(:state => "pending").count
+    sum == 0 ? name = "Компании" : name = "Компании(#{sum})"
+    return name
+  end
+
+  def vacancy_name_helper
+    sum = Vacancy.where(:state => "pending").count
+    sum == 0 ? name = "Вакансии" : name = "Вакансии(#{sum})"
+    return name
+  end
+
+  def resume_name_helper
+    sum = Resume.where(:state => "pending").count
+    sum == 0 ? name = "Резюме" : name = "Резюме(#{sum})"
+    return name
+  end
 end

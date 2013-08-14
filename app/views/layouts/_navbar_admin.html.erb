@@ -3,13 +3,13 @@
 <%= link_to "Medical", root_path, :class => "brand"%>
 <ul class="nav nav-tabs-admin">
 		<li class=<%= active_tab(admin_companies_url) %>>
-			<%= link_to "Компании", admin_companies_url %>
+			<%= link_to company_name_helper, admin_companies_url %>
 		</li>
 		<li class=<%= active_tab(admin_vacancies_url) %>>
-			<%= link_to "Вакансии", admin_vacancies_url %>
+			<%= link_to vacancy_name_helper, admin_vacancies_url %>
 		</li>
 		<li class=<%= active_tab(admin_resumes_url) %>>
-			<%= link_to "Резюме", admin_resumes_url %>
+			<%= link_to "Резюме(#{Resume.where(:state => "pending").count})", admin_resumes_url %>
 		</li>
 		<li class=<%= active_tab(admin_search_url) %>>
 			<%= link_to "Поиск", admin_search_url %>
