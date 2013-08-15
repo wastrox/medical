@@ -5,7 +5,7 @@
 				<% @companies.each do |company| %>	
 					<tr>
 						<td><%= image_tag company.logo.url(:search), :class => "photo-employer" %></td>
-						<td><%= link_to company.name, :controller => :search, :action => :company, :id => company.id %></td>
+						<td><%= link_to company.name, :controller => :search, :action => :company, :id => company.to_param %></td>
 		  				
 
 		  				<% s = Russian.translit(company_scope_helper(company)).parameterize %>
