@@ -3,7 +3,7 @@
 
 class SearchController < ApplicationController
 	layout "search"
-	skip_before_filter :require_login, :only => [:index, :resume, :vacancy, :company, :scope, :category]
+	skip_before_filter :require_login, :only => [:index, :resume, :vacancy, :company, :scope, :category, :all_company]
 	
 	def index
 		search_params = params[:search].to_s + " " + params[:city].to_s 

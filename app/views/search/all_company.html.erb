@@ -7,7 +7,6 @@
 						<td><%= image_tag company.logo.url(:search), :class => "photo-employer" %></td>
 						<td><%= link_to company.name, edit_admin_companies_profile_path(company.id) %></td>
 		  				<td><%= company.scope.title %></td>
-		    			<td><%= company.vacancies.count %></td>
 					</tr>
 				<% end %>
 			</table>
