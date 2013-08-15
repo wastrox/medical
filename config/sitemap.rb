@@ -27,6 +27,7 @@ Sitemap::Generator.instance.load :host => "medical.netbee.ua" do
   literal "/contacts/index"
   literal "/personal_data/index"
   literal "/about"
+  literal "/companies"
   
   
   Resume.search.each do |resume|
@@ -38,7 +39,7 @@ Sitemap::Generator.instance.load :host => "medical.netbee.ua" do
   end
 
   Company.search.each do |company|
-    literal "/search/company/#{company.to_param}"
+    literal "/company/#{company.to_param}"
   end
 
   Scope.all.each do |scope|
