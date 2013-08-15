@@ -42,4 +42,10 @@ module ApplicationHelper
     scope == "Другое" ? scope = "Другая сфера деятельности" : scope
     return scope
   end
+
+  def scope_translit_helper(company)
+    scope = company.scope.title
+    scope_translit = Russian.translit(scope).parameterize
+    return scope_translit
+  end
 end

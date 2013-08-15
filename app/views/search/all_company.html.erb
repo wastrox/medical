@@ -6,7 +6,10 @@
 					<tr>
 						<td><%= image_tag company.logo.url(:search), :class => "photo-employer" %></td>
 						<td><%= link_to company.name, :controller => :search, :action => :company, :id => company.id %></td>
-		  				<td><%= company_scope_helper(company) %></td>
+		  				
+
+		  				<% s = Russian.translit(company_scope_helper(company)).parameterize %>
+						<td><%= link_to company_scope_helper(company), {:controller => :search, :action => :scope, :scope => scope_translit_helper(company)} %></td>
 					</tr>
 				<% end %>
 			</table>

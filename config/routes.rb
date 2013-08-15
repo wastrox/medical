@@ -28,10 +28,10 @@ Medical::Application.routes.draw do
   match "vacancy/*scope", to: "search#scope"
 
   match "search/resume/:id", to: "search#resume"
-  match "search/company/:id", to: "search#company"
+  match "company/:id", to: "search#company"
 
   match "companies", to: "search#all_company"
-  match "company" => redirect("/search/companies")
+  match "search/company" => redirect("/search/companies")
 
 	match "confirmation" => "confirmation#index"
   match "confirmation/account_type" => "confirmation#account_type"	
