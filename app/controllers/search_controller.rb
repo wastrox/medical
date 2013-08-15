@@ -83,4 +83,8 @@ class SearchController < ApplicationController
 		@description = "Список вакансий в категории #{Category.find(category_id).name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
 		@keywords = "#{Category.find(category_id).name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 	end
+
+	def all_company
+		@companies = Company.where(:state => ["published", "vip"]).order("created_at desc")
+	end
 end
