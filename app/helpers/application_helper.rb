@@ -36,4 +36,10 @@ module ApplicationHelper
     sum == 0 ? name = "Резюме" : name = "Резюме(#{sum})"
     return name
   end
+
+  def company_scope_helper(company)
+    scope = company.scope.title
+    scope == "Другое" ? scope = "Другая сфера деятельности" : scope
+    return scope
+  end
 end

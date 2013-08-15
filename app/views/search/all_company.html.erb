@@ -5,8 +5,8 @@
 				<% @companies.each do |company| %>	
 					<tr>
 						<td><%= image_tag company.logo.url(:search), :class => "photo-employer" %></td>
-						<td><%= link_to company.name, edit_admin_companies_profile_path(company.id) %></td>
-		  				<td><%= company.scope.title %></td>
+						<td><%= link_to company.name, :controller => :search, :action => :company, :id => company.id %></td>
+		  				<td><%= company_scope_helper(company) %></td>
 					</tr>
 				<% end %>
 			</table>
