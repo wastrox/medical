@@ -4,6 +4,12 @@
 	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", edit_applicant_profile_path(@profile) %>
 </div>
 <div class="boxed">
+	<% if flash[:notice] %>
+	      <br>
+	      <div class="alert alert-block alert-success">
+	            <p id="notice"><%= flash[:notice] %></p>
+	      </div>
+	<% end %>
 	<%= form_for([:applicant, @profile], :html => { :class => 'standart_form' }) do |f| %>
 	<h2>Профиль</h2>
 		<div class='item'>

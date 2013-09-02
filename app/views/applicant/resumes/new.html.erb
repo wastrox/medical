@@ -6,7 +6,7 @@
 	<% if flash[:notice] %>
 	      <br>
 	      <div class="alert alert-block alert-success">
-	            <p id="notice" ><%= flash[:notice] %></p>
+	            <p id="notice"><%= flash[:notice] %></p>
 	      </div>
 	<% end %>
 	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>				
