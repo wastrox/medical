@@ -4,6 +4,12 @@
 	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", applicant_resume_path(@resume) %>
 </div>
 <div class="boxed">
+	<% if flash[:notice] %>
+	      <br>
+	      <div class="alert alert-block alert-success">
+	            <p id="notice"><%= flash[:notice] %></p>
+	      </div>
+	<% end %>
 	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>				
 		<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
 

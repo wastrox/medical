@@ -3,6 +3,13 @@
 	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", employer_profile_company_path(@company) %>
 </div>
 <div class="boxed">
+	<% if flash[:notice] %>
+	      <br>
+	      <div class="alert alert-block alert-success">
+	            <p id="notice"><%= flash[:notice] %></p>
+	      </div>
+	<% end %>
+	
 	<%= nested_form_for(@company, :url => {:action=>"update", :controller=>"employer/profile_companies"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
   		<%= render :partial => 'employer/profile_companies/profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
 
