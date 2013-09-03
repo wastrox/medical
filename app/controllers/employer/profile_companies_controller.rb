@@ -26,9 +26,8 @@ class Employer::ProfileCompaniesController < ApplicationController
          format.html { redirect_to proc { employer_profile_company_path(@company)}, notes: "Компания зарегестрирована"}
          format.json { render :json => @company, :status => :created, :location => @company }
       else
-        flash[:notice] = "Все поля отмеченные красным цветом - обязательны для заполнения"
-        format.html { render :action => "new" }
-        format.json { render :json => @company.errors, :status => :unprocessable_entity }
+         format.html { render :action => "new" }
+         format.json { render :json => @company.errors, :status => :unprocessable_entity }
       end
     end
 	end
@@ -59,8 +58,7 @@ class Employer::ProfileCompaniesController < ApplicationController
 				format.html { render :action => "show", notes: "Edit save" }
         format.json { render :json => @company, :status => :created, :location => @company }
       else
-        flash[:notice] = "Все поля отмеченные красным цветом - обязательны для заполнения"
-        format.html { render :action => "edit" }
+        format.html { render :action => "edit", notes: "Error" }
         format.json { render :json => @company.errors, :status => :unprocessable_entity }
       end
     end

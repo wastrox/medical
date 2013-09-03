@@ -6,12 +6,7 @@
 </div>
 
 <div class="boxed">
-	<% if flash[:notice] %>
-	      <br>
-	      <div class="alert alert-block alert-success">
-	            <p id="notice" ><%= flash[:notice] %></p>
-	      </div>
-	<% end %>
+
 	<%= form_for([:employer, @vacancy], :html => {:class => "standart_form"}) do |f| %>
 		<h2>Редактирование вакансии</h2>
 		<%= render :partial => "form",	 :locals => { :f => f } %>

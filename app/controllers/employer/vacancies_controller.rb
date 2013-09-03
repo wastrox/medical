@@ -8,7 +8,7 @@ class Employer::VacanciesController < ApplicationController
   before_filter :init_vacancy, :only => [:new, :create, :check_vacancy_valid_and_save_in_draft]
   before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy, :check_vacancy_valid_and_update_in_draft, :defer, :find_category_list]
   before_filter :find_contacts, :only => [:new, :edit]
-  before_filter :find_category_list, :only => [:new, :edit, :create, :update]
+  before_filter :find_category_list, :only => [:new, :edit]
 
   
   def index
@@ -69,12 +69,11 @@ class Employer::VacanciesController < ApplicationController
   			  format.html { redirect_to employer_vacancies_url, notes: "Edit save" }
           format.json { render :json => @vacancy }
         else
-          flash[:notice] = "Все поля отмеченные красным цветом - обязательны для заполнения"
-          format.html { render :action => "edit" }
+          format.html { render :action => "edit", notes: "Error" }
           format.json { render :json => @vacancy.errors, :status => :unprocessable_entity }
         end
       end
-    elsif params[:save_draft]
+    else
       respond_to do |format|
         @vacancy.attributes = params[:vacancy]
         if @vacancy.save(:validate => false)

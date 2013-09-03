@@ -16,8 +16,7 @@ class Applicant::ProfilesController < ApplicationController
 				format.html { redirect_to :controller => "applicant/profiles", :action => "edit" }
         format.json { render :json => @resume, :status => :created, :location => @resume }
       else
-        flash[:notice] = "Все поля отмеченные красным цветом - обязательны для заполнения"
-        format.html { render :action => "edit" }
+        format.html { render :action => "show" }
         format.json { render :json => @resume.errors, :status => :unprocessable_entity }
       end
     end
