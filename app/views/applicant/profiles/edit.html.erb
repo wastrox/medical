@@ -13,31 +13,31 @@
 	<%= form_for([:applicant, @profile], :html => { :class => 'standart_form' }) do |f| %>
 	<h2>Профиль</h2>
 		<div class='item'>
-			<%= f.label 'Фамилия' %>
+			<%= f.label :lastname, 'Фамилия' %>
 			<div class='field'>
 				<%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
 			</div>
 		</div>
 		<div class='item'>
-			<%= f.label 'Имя' %>
+			<%= f.label :firstname, 'Имя' %>
 			<div class='field'>
 				<%= f.text_field :firstname, :value => "#{@profile.firstname}" %>
 			</div>
 		</div>
 		<div class='item'>
-			<%= f.label 'Отчество' %>
+			<%= f.label :surename, 'Отчество' %>
 			<div class='field'>
 				<%= f.text_field :surename, :value => "#{@profile.surename}"%>
 			</div>
 		</div>
 		<div class='item'>
-			<%= f.label 'Дата рождения' %>
+			<%= f.label :date, 'Дата рождения' %>
 			<div class='field'>
 				<%= f.text_field :date, :value => "#{@profile.date}", :class => "datepicker", :placeholder => " дд/мм/гггг" %>
 			</div>
 		</div>
 		<div class='item' style="margin-bottom: 0px;">
-			<%= f.label 'Мобильный телефон' %>
+			<%= f.label :phone, 'Мобильный телефон' %>
 			<div class='field'>
 				<%= f.text_field :phone, :value => "#{@profile.phone}" %>
 			</div>

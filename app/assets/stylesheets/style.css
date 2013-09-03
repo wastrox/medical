@@ -1253,7 +1253,7 @@ table.company tr:last-child td {
 
   *zoom: 1;
   padding: 2px 12px 4px;
-  margin: 0 15px 0 0;
+  margin: 0 0 0 15px;
   font-size: 14px;
   line-height: 20px;
   text-align: center;

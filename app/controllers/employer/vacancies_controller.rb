@@ -7,7 +7,7 @@ class Employer::VacanciesController < ApplicationController
   before_filter :find_company, :only => [:index, :new, :create, :find_category_list]
   before_filter :init_vacancy, :only => [:new, :create, :check_vacancy_valid_and_save_in_draft]
   before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy, :check_vacancy_valid_and_update_in_draft, :defer, :find_category_list]
-  before_filter :find_contacts, :only => [:new, :edit]
+  before_filter :find_contacts, :only => [:new, :edit, :create, :update]
   before_filter :find_category_list, :only => [:new, :edit, :create, :update]
 
   
@@ -32,6 +32,7 @@ class Employer::VacanciesController < ApplicationController
           format.html { redirect_to employer_vacancies_url, notes: "Вакансия создана"}
           format.json { render :json => @vacancy, :status => :created, :location => @company }
         else
+          flash[:notice] = "Все поля отмеченные красным цветом - обязательны для заполнения"
           format.html { render :action => "new" }
           format.json { render :json => @vacancy.errors, :status => :unprocessable_entity }
         end
@@ -39,7 +40,7 @@ class Employer::VacanciesController < ApplicationController
     else
       respond_to do |format|
         if @vacancy.save(:validate => false)
-          @vacancy.drafting # FIXME: заменить на filter
+          @vacancy.drafting # FIXME: заменить на filter, повторение кода в action Update!
           format.html { redirect_to employer_vacancies_url, notes: "Вакансия сохранена как черновик"}
           format.json { render :json => @vacancy, :status => :created, :location => @company }
         else
@@ -74,7 +75,7 @@ class Employer::VacanciesController < ApplicationController
           format.json { render :json => @vacancy.errors, :status => :unprocessable_entity }
         end
       end
-    elsif params[:save_draft]
+    else
       respond_to do |format|
         @vacancy.attributes = params[:vacancy]
         if @vacancy.save(:validate => false)
