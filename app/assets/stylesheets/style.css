@@ -1836,4 +1836,16 @@ td ul {
 td ol {
 	margin-left: 35px;
 }
+
+ul.wysihtml5-toolbar a[data-wysihtml5-command="underline"] {
+    text-decoration: underline;
+}
+
+ul.wysihtml5-toolbar a[data-wysihtml5-command="italic"] {
+    font-style: italic;
+}
+
+.btn-group > .btn, .btn-group > .dropdown-menu, .btn-group > .popover {
+    font-size: 14px;
+}
 /*----------------------------------------------------------------------------*/
