@@ -127,7 +127,7 @@ $(document).ready(function(){
                     </tr>
 						<tr>
 							<td><h3>Дополнительно</h3></td>
-                        	<td><%= @resume.additional_info %></td>
+                        	<td><%= raw @resume.additional_info %></td>
                         </tr>
 					<% end %>
 					<tr>

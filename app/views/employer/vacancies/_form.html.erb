@@ -41,7 +41,7 @@
 <div class='item'>
 	<%= f.label :description, "Описание вакансии" %>
 	<div class='field'>
-		<%= f.text_area :description %>
+		<%= f.text_area :description, :id => "some-textarea", :class => 'wysihtml5' %>
 	</div>
 </div>
 <div class='item' id="company-contact">

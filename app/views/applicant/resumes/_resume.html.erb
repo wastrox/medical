@@ -67,7 +67,7 @@
 		<div class='item'>
 			<%= applicant_fields.label "Еще знаю и умею" %>
 			<div class='field'>
-				<%= applicant_fields.text_area :additional_info, :value => "#{@resume.additional_info}" %>
+				<%= applicant_fields.text_area :additional_info, :value => "#{@resume.additional_info}", :id => "some-textarea", :class => 'wysihtml5' %>
 			</div>
 		</div>
 </div>
