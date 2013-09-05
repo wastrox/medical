@@ -1714,3 +1714,126 @@ ul#triple li{
 #triple li  { width:33.333%; } <span class="code-comment">/* 3 col */</span>
 
 /*----------------------------------------------------------------------------*/
+
+/*------------------ Bootstrap wysihtml5-toolbar edit and show ---------------*/
+
+.wysihtml5-toolbar .btn-group {
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.wysihtml5-toolbar .btn-group > .btn:first-child {
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    margin-left: 0;
+}
+.wysihtml5-toolbar .btn-group > .btn:first-child {
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    margin-left: 0;
+}
+.wysihtml5-toolbar .btn-group > .btn, .btn-group > .dropdown-menu, .btn-group > .popover {
+    font-size: 14px;
+}
+.wysihtml5-toolbar .btn-group > .btn {
+    border-radius: 0 0 0 0;
+    position: relative;
+}
+.btn:first-child {
+}
+.wysihtml5-toolbar .btn-group > .btn, .btn-group > .dropdown-menu, .btn-group > .popover {
+    font-size: 14px;
+}
+.wysihtml5-toolbar .btn-group > .btn {
+    border-radius: 0 0 0 0;
+    position: relative;
+}
+.wysihtml5-toolbar .btn:first-child {
+}
+.wysihtml5-toolbar .boxed form a {
+    font-size: 14px;
+    text-decoration: none;
+}
+.wysihtml5-toolbar .btn {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #F5F5F5;
+    background-image: linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+    background-repeat: repeat-x;
+    border-color: #CCCCCC #CCCCCC #B3B3B3;
+    border-image: none;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
+    padding: 4px 12px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;
+}
+
+.wysihtml5-toolbar .btn:hover, .wysihtml5-toolbar .btn:focus {
+    background-position: 0 -15px;
+    color: #333333;
+    text-decoration: none;
+    transition: background-position 0.1s linear 0s;
+}
+.wysihtml5-toolbar .btn:first-child {
+}
+
+.wysihtml5-toolbar .btn-group > .btn:last-child, .wysihtml5-toolbar .btn-group > .dropdown-toggle {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.wysihtml5-toolbar .btn:hover, .wysihtml5-toolbar .btn:focus, .wysihtml5-toolbar .btn:active, .wysihtml5-toolbar .btn.active, .wysihtml5-toolbar .btn.disabled, .wysihtml5-toolbar .btn[disabled] {
+    background-color: #E6E6E6;
+    color: #333333;
+}
+.wysihtml5-toolbar a:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.wysihtml5-toolbar a:hover, .wysihtml5-toolbar a:focus {
+    color: #005580;
+    text-decoration: underline;
+}
+.wysihtml5-toolbar a:hover, .wysihtml5-toolbar a:active {
+    outline: 0 none;
+}
+
+.icon-th-list:before {content:"\f0cb" !important;}
+
+ul.wysihtml5-toolbar a.btn.wysihtml5-command-active {
+    background-color: #D9D9D9;
+    background-image: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    outline: 0 none;
+}
+
+.wysihtml5-toolbar li {
+	display: list-item;
+    float: left;
+    list-style: none outside none;
+    margin: 0 5px 10px 0;
+}
+
+td ul {
+	margin-left: 30px;
+}
+
+td ol {
+	margin-left: 35px;
+}
+/*----------------------------------------------------------------------------*/

@@ -39,3 +39,5 @@ gem "pdfkit"
 #group :development do
 #  gem "wkhtmltopdf-binary", "~> 0.9.5.3"
 #end
+
+gem 'bootstrap-wysihtml5-rails'
