@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   	def require_login
   	  unless logged_in?
         flash[:error] = "Вы должны авторизироваться для доступа к этому разделу!"
-        redirect_to new_session_url
+        redirect_to sessions_new_url
       end
   	end
   	
