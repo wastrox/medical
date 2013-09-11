@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p><%= @text %></p>
+    <p>Здравствуйте, компания "<%= @account.company.name %>".</p>
+    <p>Срок публикации Вашей вакансии "<%= @vacancy.name %>" был продлен до <%= @date %> на сайте www.medical.netbee.ua.</p>
+    <p><%= link_to "Список вакансий", :controller => "employer/vacancies", :action => "index", :only_path => false %>.</p>
+    <p>Если по каким-либо причинам ссылка "Список вакансий" не работает - перейдите по следующей: <%= url_for(:host => "medical.netbee.ua", :controller => "employer/vacancies", :action => "index") %>.</p>
+
+    <p>Вы можете связаться с модератором:</p>
+    <p>support@medical.netbee.ua</p>
+    <p>(048) 784-14-75</p>
+    <p>(095) 286-42-32</p>
+    <p>(095) 286-42-33</p>
+    <br/>
+    <p>Спасибо за использование нашего ресурса.</p>
+    <p>С уважением, команда Netbee.</p>
+  </body>
+</html>

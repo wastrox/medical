@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130903131545) do
+ActiveRecord::Schema.define(:version => 20130910081728) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -166,10 +166,10 @@ ActiveRecord::Schema.define(:version => 20130903131545) do
     t.datetime "updated_at",                        :null => false
     t.string   "position"
     t.integer  "salary"
-    t.string   "additional_info"
+    t.string   "city"
+    t.text     "additional_info"
     t.string   "state"
     t.boolean  "delta",           :default => true, :null => false
-    t.string   "city"
   end
 
   add_index "resumes", ["applicant_id"], :name => "index_resumes_on_applicant_id"
@@ -196,13 +196,14 @@ ActiveRecord::Schema.define(:version => 20130903131545) do
     t.string   "experiences"
     t.string   "timetable"
     t.text     "description"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
     t.string   "timetable_other"
     t.integer  "company_contact_id"
-    t.boolean  "delta",              :default => true, :null => false
+    t.boolean  "delta",              :default => true,                  :null => false
     t.string   "state"
     t.integer  "category_id"
+    t.datetime "publicated_at",      :default => '2013-09-10 08:18:58'
   end
 
   add_index "vacancies", ["company_id"], :name => "index_vacancies_on_company_id"

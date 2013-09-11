@@ -37,6 +37,8 @@ Medical::Application.configure do
   # Expands the lines which load the assets
 
   config.assets.debug = true
+  config.action_mailer.default_url_options = { :host =>
+  'medical.netbee.ua' }
   config.action_mailer.default_url_options = { :host => "medical.netbee.ua" }
   config.action_mailer.delivery_method = :smtp	
   config.action_mailer.smtp_settings = {
@@ -46,8 +48,8 @@ Medical::Application.configure do
    :authentication => :plain,
    :enable_starttls_auto => true,
    :domain => "netbee.ua",
-   :user_name => "",
-   :password => ""
+   :user_name => "nicholauskas@gmail.com",
+   :password => "netbee-24"
 }
 
 end

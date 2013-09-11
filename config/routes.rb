@@ -64,6 +64,7 @@ Medical::Application.routes.draw do
     match "profile_companies/add_resume_responded", to: "profile_companies#add_resume_responded"
 		match 'vacancies/create_draft' => 'vacancies#create_draft'
     match 'vacancies/defer/:id' => 'vacancies#defer'
+    match 'vacancies/update_publicated/:id' => 'vacancies#update_publicated'
 
     resources :profile_companies #, :only => [:index, :edit, :update, :new, :create, :show]
     resources :vacancies

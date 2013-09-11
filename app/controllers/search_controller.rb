@@ -10,7 +10,7 @@ class SearchController < ApplicationController
 		if params[:sample] == "1"
 			@title = "Поиск вакансий: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 			@description = "Поиск вакансий  #{search_params}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
-			@vacancies = Vacancy.search(params[:search], :order => 'created_at desc')
+			@vacancies = Vacancy.search(params[:search], :order => 'publicated_at desc')
 		else
 			@resumes = Resume.search(search_params, :order => 'created_at DESC')
 			@title = "Поиск резюме: работа в медицине. Сайт трудоустройства medical.netbee.ua"
@@ -31,7 +31,7 @@ class SearchController < ApplicationController
 
 	def vacancy
 		@vacancy = Vacancy.find(params[:id])
-		@top_vacancies = Vacancy.where(:state => ["published", "hot"]).order("created_at desc").limit(3)
+		@top_vacancies = Vacancy.where(:state => ["published", "hot"]).order("publicated_at desc").limit(3)
 
 		@title = "Вакансия #{@vacancy.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Просмотр вакансии #{@vacancy.name} компании #{@vacancy.company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
@@ -57,7 +57,7 @@ class SearchController < ApplicationController
 		@scope = params[:scope]
 
 		@categories = Category.where(:scope_id => scope_id)
-		@vacancies = Vacancy.where(:category_id => @categories, :state => ["published", "hot"]).order("created_at desc")
+		@vacancies = Vacancy.where(:category_id => @categories, :state => ["published", "hot"]).order("publicated_at desc")
 
 		@title = "Вакансии, сфера деятельности #{Scope.find(scope_id).title}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Список вакансий медицинских компаний в сфере деятельности #{Scope.find(scope_id).title}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
@@ -77,7 +77,7 @@ class SearchController < ApplicationController
 		@scope = params[:scope]
 		@category = params[:category]
 
-		@vacancies = Vacancy.where(:category_id => category_id, :state => ["published", "hot"]).order("created_at desc")
+		@vacancies = Vacancy.where(:category_id => category_id, :state => ["published", "hot"]).order("publicated_at desc")
 
 		@title = "Вакансии категории #{Category.find(category_id).name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Список вакансий в категории #{Category.find(category_id).name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."

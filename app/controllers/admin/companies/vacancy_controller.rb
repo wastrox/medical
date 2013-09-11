@@ -5,13 +5,14 @@ class Admin::Companies::VacancyController < ApplicationController
   http_basic_authenticate_with :name => "medicalboss", :password => "BOSSmedical54321"
 
   skip_before_filter :require_login
-  before_filter :find_vacancy, :only => [:edit, :update, :find_company, :reject, :destroy, :published, :find_category_list]
+  before_filter :find_vacancy, :only => [:edit, :update, :find_company, :reject, :destroy, :published, :find_category_list, :update_publicated]
   before_filter :find_company, :only => [:edit, :update, :send_letter_for_employer]
-  after_filter  :published, :only => :update
+  after_filter  :published, :only => [:update]
   after_filter  :hot, :only => :update
   after_filter  :reject, :only => :update
   before_filter :destroy, :only => :update
   before_filter :find_category_list, :only => [:edit]
+  after_filter :update_publicated, :only => [:published, :hot, :update]
   
   def edit
   end
@@ -71,5 +72,9 @@ class Admin::Companies::VacancyController < ApplicationController
 
   def find_category_list
     @category = Category.where(:scope_id => [@vacancy.company.scope.id, 12])
+  end
+
+  def update_publicated
+    @vacancy.update_attribute(:publicated_at, Time.now)
   end
 end

@@ -1,5 +1,5 @@
 class Vacancy < ActiveRecord::Base
-  attr_accessible :city, :description, :experiences, :name, :salary, :timetable, :timetable_other, :company_contact_id, :category_id, :hot_vacancy_attributes
+  attr_accessible :city, :description, :experiences, :name, :salary, :timetable, :timetable_other, :company_contact_id, :category_id, :hot_vacancy_attributes, :publicated_at
 
   belongs_to :company
   belongs_to :company_contact
@@ -16,7 +16,7 @@ class Vacancy < ActiveRecord::Base
 
 	define_index do
 		indexes name 
-    indexes created_at, sortable: true
+    indexes publicated_at, sortable: true
 		indexes city
 		where " vacancies.state IN ('published', 'hot')" # Индексирует только опубликованные и горячие вакансии
 		set_property :delta => :delayed

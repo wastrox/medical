@@ -13,11 +13,11 @@ ru:
               pending: "Ожидает проверки модератором"
               wait_company: "Профиль компании на редактировании"
               published: "Публикуется"
-              hot: "Опубликована как горячая"
-              vip: "Опубликована как vip"
+              hot: "Горячая"
+              vip: "VIP"
               secret: "Конфиденциально"
               rejected: "Отклонена модератором"
-              deferred: "Скрыто"
+              deferred: "Скрыта"
       errors:
           messages:
               blank: ""

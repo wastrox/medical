@@ -9,7 +9,7 @@ skip_before_filter :require_login
 		search_params = params[:search].to_s + " " + params[:city].to_s 
 
 		if params[:sample] == "1"
-			@vacancies = Vacancy.search(search_params, :order => 'created_at DESC')
+			@vacancies = Vacancy.search(search_params, :order => 'publicated_at DESC')
 		elsif params[:sample] =="2"
 			@resumes = Resume.search(search_params, :order => 'created_at DESC')
 		elsif params[:sample] == "3"

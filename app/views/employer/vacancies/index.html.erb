@@ -10,6 +10,7 @@
     <th>Название</th>
     <th>Регион</th>
     <th>Статус</th>
+    <th>Годна до</th>
     <th></th>
     <!--<th></th>-->
   </tr>
@@ -18,7 +19,9 @@
       <td><%= link_to vacancy.name, employer_vacancy_path(vacancy.id) %></td>
   	  <td><%= vacancy.city %></td>
       <td><%= vacancy.human_state_name %></td>
-      <td><%= link_to 'Редактировать', edit_employer_vacancy_path(vacancy.id), :class => "yellow-link" %></td>
+      <td><%= vacancy.publicated_at.next_month.strftime("%d.%m.%Y") %></td>
+      <td><%= link_to "Обновить", {:controller => "employer/vacancies", :action => :update_publicated, :id => vacancy.id}, :title => "Обновить дату публикации", :class => "yellow-link" %>
+      <%= link_to 'Редактировать', edit_employer_vacancy_path(vacancy.id), :class => "yellow-link" %></td>
       <!--<td><%# link_to 'Удалить', ([:employer, vacancy]), method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
     </tr>
   <% end %>
@@ -29,7 +32,7 @@
   <% end %>
 
   <tr>
-  <td colspan="4"><%= link_to 'Добавить вакансию', new_employer_vacancy_path, :class => "add_fields_for input-sub btn btn-warning" %></td>
+  <td colspan="5"><%= link_to 'Добавить вакансию', new_employer_vacancy_path, :class => "add_fields_for input-sub btn btn-warning" %></td>
   </tr>
 </table>
 

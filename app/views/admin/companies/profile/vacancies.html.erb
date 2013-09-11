@@ -19,8 +19,8 @@
 		    	<td style="width:10px"><%= a += 1%></td>
 				<td><%= link_to vacancy.name, edit_admin_companies_vacancy_path(vacancy) %></td>
 				<td><%= vacancy.human_state_name%></td>
-				<td><%= vacancy.created_at.to_formatted_s(:db)%></td>
-				<td><%= vacancy.created_at.next_month.to_formatted_s(:db)%></td>
+				<td><%= vacancy.publicated_at.strftime("%d.%m.%Y")%></td>
+				<td><%= vacancy.publicated_at.next_month.strftime("%d.%m.%Y")%></td>
 		  </tr>
 		<% end %>
 		</table>

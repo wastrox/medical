@@ -71,4 +71,25 @@ class Notifier < ActionMailer::Base
 		@body_letter = body_letter
 		mail(:to => ["personal@netbee.ua", "t@netbee.ua"], :subject => subject)
 	end
+
+	def letter_published_update_tomorrow(account, subject, vacancy, date)
+	  	@account = account
+	  	@vacancy = vacancy
+	  	@date = date.tomorrow.strftime("%d.%m.%Y")
+	  	mail(:to => account.email, :subject => "#{subject}")
+	end
+
+	def letter_published_update_today(account, subject, vacancy, date)
+	  	@account = account
+	  	@vacancy = vacancy
+	  	@date = date.strftime("%d.%m.%Y")
+	  	mail(:to => account.email, :subject => "#{subject}")
+	end
+
+	def letter_published_update(account, subject, vacancy, date)
+	  	@account = account
+	  	@vacancy = vacancy
+	  	@date = date.next_month.strftime("%d.%m.%Y")
+	  	mail(:to => account.email, :subject => "#{subject}")
+	end
 end

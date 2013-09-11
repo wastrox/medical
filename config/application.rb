@@ -68,5 +68,7 @@ module Medical
 
     # options will be passed to PDFKit.new
     #config.middleware.use PDFKit::Middleware, :print_media_type => true
+
+    config.action_mailer.default_url_options = { :host => "medical.netbee.ua" }
   end
 end

@@ -6,10 +6,9 @@ class Employer::VacanciesController < ApplicationController
   before_filter :find_employer, :only => [:find_company, :index, :new, :create]
   before_filter :find_company, :only => [:index, :new, :create, :find_category_list]
   before_filter :init_vacancy, :only => [:new, :create, :check_vacancy_valid_and_save_in_draft]
-  before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy, :check_vacancy_valid_and_update_in_draft, :defer, :find_category_list]
+  before_filter :find_vacancy, :only => [:show, :edit, :update, :destroy, :check_vacancy_valid_and_update_in_draft, :defer, :find_category_list, :update_publicated]
   before_filter :find_contacts, :only => [:new, :edit, :create, :update]
   before_filter :find_category_list, :only => [:new, :edit, :create, :update]
-
   
   def index
     @vacancies = @company.vacancies
@@ -27,7 +26,6 @@ class Employer::VacanciesController < ApplicationController
 
           @vacancy.request # FIXME: заменить на filter
           Notifier.letter_to_admin("Создана ВАКАНСИЯ #{@vacancy.name}, ожидает проверки модератором", "Проверьте вакансию в админке.").deliver
-
 
           format.html { redirect_to employer_vacancies_url, notes: "Вакансия создана"}
           format.json { render :json => @vacancy, :status => :created, :location => @company }
@@ -97,6 +95,16 @@ class Employer::VacanciesController < ApplicationController
       flash[:notes] = "Error" 
     end
     redirect_to employer_vacancies_url
+  end
+
+  def update_publicated
+    if @vacancy.update_attribute(:publicated_at, Time.now) && @vacancy.approve_published
+      account = @vacancy.company.employer
+      date = Time.now.utc
+      subject = "Вакансия #{@vacancy.name} была обновлена на сайте www.medical.netbee.ua"
+      Notifier.letter_published_update(account, subject, @vacancy, date).deliver
+      redirect_to employer_vacancies_url
+    end
   end
 
   def defer

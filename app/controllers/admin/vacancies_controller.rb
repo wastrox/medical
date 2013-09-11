@@ -5,7 +5,7 @@ class Admin::VacanciesController < ApplicationController
   
   skip_before_filter :require_login
   before_filter :find_vacancy, :only => [:edit, :update]
-  
+
   def index
     @vacancies = Vacancy.where(:state => ["pending", "wait_company"])
   end

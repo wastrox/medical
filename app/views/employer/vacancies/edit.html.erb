@@ -1,6 +1,5 @@
 <div class="cap">
 	<img src="/assets/save.png" class="icon-save"><a href="#" class="save-link">Сохранить</a>
-	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", employer_vacancies_url %>
 	<img src="/assets/delete.png" class="icon-vdelete"><%= link_to 'Удалить', ([:employer, @vacancy]), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить вакансию' } %>
 	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Скрыть", :controller => "employer/vacancies", :action => :defer, :id => @vacancy.id %>
 </div>
