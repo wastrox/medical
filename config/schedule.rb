@@ -27,6 +27,6 @@ every :day, :at => '02:35am' do
   rake "ts:rebuild"
 end
 
-every :day, :at => '08:00pm' do	
+every :day, :at => '08:00am' do	
     rake "publication:start"
 end
