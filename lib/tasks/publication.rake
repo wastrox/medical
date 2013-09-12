@@ -17,14 +17,13 @@ namespace :publication do
     	    [days, hrs, mins, sec] 
       	end
 
-      	now = Time.now.utc
+      	date = Time.now.utc
 
    	  	for vacancy in Vacancy.find(:all, :conditions => { :state => ["published", "hot"] })
    	  		p = vacancy.publicated_at.utc
-   	  		diff = now - p
+   	  		diff = date - p
    	  		unit = sec2dhms(diff)
    	  		account = vacancy.company.employer
-   	  		date = now
     	  		
    	  		if unit[0] == 29
    	  			subject = "У вакансии #{vacancy.name} оканчивается срок публикации на сайте www.medical.netbee.ua"
