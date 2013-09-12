@@ -15,6 +15,16 @@
 	    <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
 </div>
 
+<% unless @category_description.nil? %>
+	<div id="frame-seo" class="frame-category-profesional">
+	      <div class="boxed">
+	      	<%= raw @category_description %>
+	      </div> <!-- .boxed -->
+	</div> <!-- #frame-other -->
+<% end %>
+
+<div class="clearfix"></div>
+
 <div class="link-scope">
 	<% Scope.all.each do |scope| %>
 		<% s = Russian.translit(scope.title).parameterize %>

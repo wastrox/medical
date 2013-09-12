@@ -15,11 +15,13 @@
 	    <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
 </div>
 
-<div id="frame-seo" class="frame-category-profesional">
-      <div class="boxed">
-      	<%= raw @categories.first.scope.description %>
-      </div> <!-- .boxed -->
-</div> <!-- #frame-other -->
+<% unless @categories.first.scope.description.nil? %>
+	<div id="frame-seo" class="frame-category-profesional">
+	      <div class="boxed">
+	      	<%= raw @categories.first.scope.description %>
+	      </div> <!-- .boxed -->
+	</div> <!-- #frame-other -->
+<% end %>
 
 <div id="frame-other" class="frame-category-profesional">
       <div class="cap">
