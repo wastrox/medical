@@ -1,0 +1,37 @@
+<div id="frame" class="frame-admin">
+	<div class="cap">
+		<h3>Категория <%= "#{@category.name}, сфера деятельности #{@category.scope.title}" %></h3>
+	</div>
+	<div class="boxed">
+		<%= form_for([:admin, :seo, @category], :html => { :class => 'standart_form scope_form' }) do |f| %>		
+			<div class='item'>
+				<div class='field'>
+					<%= f.text_field :name %>
+				</div>
+			</div>
+			<div class='item'>
+				<div class='field'>
+					<%= f.text_area :description, :class => 'wysihtml5' %>
+				</div>
+			</div>
+			<span class="line-bottom line-bottom-company line-bottom-scope"></span>
+			<div id="button-bottom">
+				<%= f.submit "Сохранить", :class => "input-sub btn btn-warning" %>
+			</div>	
+		<% end %>
+	</div>
+</div>
+
+<div id="frame-other" class="">
+      <div class="cap">
+            <h3 id="">Категории</h3>
+      </div>
+      <div class="boxed">
+      		<ul id="triple">
+			<% @categories.each do |category| %>
+				<% c = Russian.translit(category.name).parameterize %>
+				<li><%= link_to "#{category.name}", edit_admin_seo_category_path(category) %></li>
+            <% end %>
+           	</ul>
+      </div> <!-- .boxed -->
+</div> <!-- #frame-other -->

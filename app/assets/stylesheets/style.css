@@ -677,7 +677,7 @@ form label {
     margin-bottom: 20px;
 }
 
-#frame-other {
+#frame-other, #frame-seo {
 	/*width: 691px;*/
 	width: 730px;
 	height: auto;
@@ -688,6 +688,10 @@ form label {
     box-shadow: 0 -3px 0 0 #DADBDB inset;
     display: inline-block;
     margin-bottom: 20px;
+}
+
+#frame-seo .boxed {
+	padding: 15px 36px 25px;
 }
 
 .cap h1#about {
@@ -1609,16 +1613,17 @@ div.about-page {
 	margin: 15px 0px 35px;
 }
 
-div.about-page ul {
+div.about-page ul, #frame-seo ul {
+
 	padding-left: 25px;
 	margin-bottom: 15px;
 }
 
-div.about-page ul li {
+div.about-page ul li, #frame-seo ul li {
 	font-size: 14px;
 	color: #767676;
 }
-div.about-page p {
+div.about-page p #frame-seo p {
 	margin: 15px 0;
 }
 /*----------------------------------------------------------------------------*/
@@ -1693,6 +1698,30 @@ div.link-scope {
 	display: none;
 }
 
+#frame-seo h1, #frame-seo h2, #frame-seo h3 {
+	color: #767676;
+	margin: 15px 0;
+}
+
+.scope_form h3 {
+	float: left;
+	width: 470px;
+	padding-bottom: 15px;
+}
+
+#frame-seo {
+	color: #767676; 
+	font-size: 14px;
+}
+
+.scope_form textarea.wysihtml5 {
+	height: 350px;
+	width: 645px;
+}
+.wysihtml5-toolbar {
+	width: 351px !important;
+}
+
 /*-----------------------------------Профессии-----------------------------------*/
 
 .frame-category-profesional {
@@ -1703,9 +1732,8 @@ div.link-scope {
 
 ul#triple{
   width:auto;
-  margin-bottom:20px;
   overflow:hidden;
-  margin: 15px 0 25px;
+  padding: 15px 0px;
   text-align: left;
 }
 ul#triple li{

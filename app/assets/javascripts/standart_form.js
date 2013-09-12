@@ -32,6 +32,30 @@ $(document).on('nested:fieldAdded', function(event){
 	        	$(dateTillEducation).stop().animate({ opacity: "1", height: 'toggle' }, 1000);
 	    	}
 		});
+
+		// Редактор для text_area в nested_form
+		
+		var wysihtml5 = field.find('.wysihtml5');
+
+		$(wysihtml5).each(function(i, elem) {
+		  $(elem).wysihtml5({
+		    "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
+		    "emphasis": true, //Italics, bold, etc. Default true
+		    "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+		    "html": true, //Button which allows you to edit the generated HTML. Default false
+		    "link": false, //Button to insert a link. Default true
+		    "image": false, //Button to insert an image. Default true,
+		    "color": false //Button to change color of font  
+		  });
+
+		  $('[data-wysihtml5-command="bold"]').html("Ж");
+		  $('[data-wysihtml5-command="italic"]').html("К");
+		  $('[data-wysihtml5-command="underline"]').html("П");
+		  $('[data-wysihtml5-command="insertUnorderedList"]').attr("title", "Список");
+		  $('[data-wysihtml5-command="insertOrderedList"]').attr("title", "Нумерованный список");
+		  $('[data-wysihtml5-command="Outdent"]').attr("title", "Обратный отступ");
+		  $('[data-wysihtml5-command="Indent"]').attr("title", "Абзац");
+		});
 });	
 
 $(document).on('nested:fieldRemoved', function(event){
@@ -303,7 +327,7 @@ $(document).ready(function(){
       "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
       "emphasis": true, //Italics, bold, etc. Default true
       "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
-      "html": false, //Button which allows you to edit the generated HTML. Default false
+      "html": true, //Button which allows you to edit the generated HTML. Default false
       "link": false, //Button to insert a link. Default true
       "image": false, //Button to insert an image. Default true,
       "color": false //Button to change color of font  
@@ -317,5 +341,5 @@ $(document).ready(function(){
     $('[data-wysihtml5-command="Outdent"]').attr("title", "Обратный отступ");
     $('[data-wysihtml5-command="Indent"]').attr("title", "Абзац");
   });
+});
 
-})

@@ -15,6 +15,12 @@
 	    <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
 </div>
 
+<div id="frame-seo" class="frame-category-profesional">
+      <div class="boxed">
+      	<%= raw @categories.first.scope.description %>
+      </div> <!-- .boxed -->
+</div> <!-- #frame-other -->
+
 <div id="frame-other" class="frame-category-profesional">
       <div class="cap">
             <h2 id=""><% if @scope == "drugoe"%> Другие специальности <% else %> <%= @categories.first.scope.title %> <% end %></h2>
@@ -27,12 +33,12 @@
             <% end %>
            	</ul>
       </div> <!-- .boxed -->
-</div> <!-- #frame -->
+</div> <!-- #frame-other -->
 
 <div class="clear"></div>
 
 <div class="link-scope">
-        <% Scope.all.each do |scope| %>
+        <% @scopes.each do |scope| %>
                 <% s = Russian.translit(scope.title).parameterize %>
                 <%= link_to "#{scope.title}", {:controller => :search, :action => "scope", :scope => s} %> <span>|</span>
         <% end %>

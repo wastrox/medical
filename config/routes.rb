@@ -1,4 +1,14 @@
 Medical::Application.routes.draw do
+  get "categories/new"
+
+  get "categories/edit"
+
+  get "scope/index"
+
+  get "scope/edit"
+
+  get "scope/new"
+
   get "contacts/index"
 
   get "personal_data/index"
@@ -87,6 +97,12 @@ Medical::Application.routes.draw do
       match 'profile/reject/(:id)' => 'profile#reject', :via => [:get]
       match 'profile/vacancies/reject/(:id)' => 'vacancy#reject'
     end
+
+    namespace :seo do
+      resources :scope
+      resources :categories
+    end
+
     resources :vacancies
     resources :resumes
     resources :tasks

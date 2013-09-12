@@ -52,6 +52,10 @@ input[type="submit"] {
 	margin-right: 10px;
 }
 
+.scope_form input[type="submit"] {
+	margin-right: 0px;
+}
+
 #body_letter {
 	color: #767676;
 	border: 1px solid #CCCCCC;

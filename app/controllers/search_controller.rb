@@ -48,7 +48,8 @@ class SearchController < ApplicationController
 
 	def scope
 		scope_array = Array.new
-		Scope.all.each do |s|
+		@scopes = Scope.find(:all)
+		@scopes.each do |s|
 			scope_array << [Russian.translit(s.title).parameterize, s.id]
 		end
 		scope_hash = Hash[*scope_array.flatten] 		

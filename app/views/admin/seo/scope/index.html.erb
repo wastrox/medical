@@ -1,0 +1,17 @@
+<% a = 0%>
+<h3>Сфера деятельности</h3>
+<br/>
+<table class="table">  
+	<tr>
+		<th></th>
+		<th>Название</th>
+		<th>Количество категорий</th>
+	</tr>
+	<% @scopes.each do |scope|%>
+	<tr>
+		<td style="width:10px"><%= a += 1%></td>
+		<td style="width:500px"><%= link_to scope.title, edit_admin_seo_scope_path(scope) %></td>
+		<td><%= link_to scope.categories.count, {:controller => "/admin/seo/categories", :action => :index, :scope => scope.id} %></td>
+	</tr>
+	<% end %>
+</table>
