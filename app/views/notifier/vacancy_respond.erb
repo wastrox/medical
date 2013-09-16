@@ -5,7 +5,7 @@
   </head>
   <body>
     <p>Здравствуйте, компания "<%= @vacancy.company.name %>".</p>
-    <p>Вы получили отклик на вакансию <%= link_to @vacancy.name, :host => "medical.netbee.ua", :controller => "/search", :action => "vacancy", :id => @vacancy.id %> от <%= link_to @fullNameApplicant, :host => "medical.netbee.ua", :controller => "/search", :action => "resume", :id => @applicant.resume.id %>. 
+    <p>Вы получили отклик на вакансию <%= link_to @vacancy.name, :controller => "/search", :action => "vacancy", :id => @vacancy.id, :only_path => false %> от <%= link_to @fullNameApplicant, :controller => "/search", :action => "resume", :id => @applicant.resume.id, :only_path => false %>. 
     </p>
     <p>Для просмотра резюме пройдите по ссылке.</p>
     <p><%= url_for(:host => "medical.netbee.ua", :controller => "/search", :action => "resume", :id => @applicant.resume.id) %></p>

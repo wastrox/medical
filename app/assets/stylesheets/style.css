@@ -1146,6 +1146,10 @@ table.my-vacancies tbody tr td:first-child {
     width: 330px;
 }
 
+.boxed .alert {
+	margin-top: 15px;
+}
+
 /*----------------------------------------------------------------------------*/
 
 /*--------------------------employer/my_resumes/index----------------------*/

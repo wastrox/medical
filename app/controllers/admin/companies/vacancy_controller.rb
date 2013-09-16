@@ -44,6 +44,11 @@ class Admin::Companies::VacancyController < ApplicationController
   def hot
     if params[:hot]
       @vacancy.approve_hot
+      loop do 
+        vacancies = Vacancy.where(state: "hot").order("publicated_at desc")
+        vacancies.last.approve_published
+        break if vacancies.count == 4
+      end
     end
   end
   

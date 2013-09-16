@@ -195,6 +195,9 @@ $(document).ready(function(){
     	img.parent().remove();
 	}
 
+	// Заполняется поле зарплата == 0
+	$("#salary").attr("value", 0);
+
 	//Автозаполнение для input Города в Резюме
 		(function( $ ) {
 			$.widget( "custom.combobox", {

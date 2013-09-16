@@ -98,13 +98,26 @@ class Employer::VacanciesController < ApplicationController
   end
 
   def update_publicated
-    if @vacancy.update_attribute(:publicated_at, Time.now) && @vacancy.approve_published
-      account = @vacancy.company.employer
-      date = Time.now.utc
-      subject = "Вакансия #{@vacancy.name} была обновлена на сайте www.medical.netbee.ua"
-      Notifier.letter_published_update(account, subject, @vacancy, date).deliver
-      redirect_to employer_vacancies_url
-    end
+      respond_to do |format|
+
+        case @vacancy.state
+          when "draft", "pending", "rejected", "wait_company"
+            flash[:notice] = "Ошибка, вакансия не обновлена!"
+          when "hot"
+            @vacancy.update_attribute(:publicated_at, Time.now) && @vacancy.approve_hot
+            flash[:notice] = "Дата публикации обновлена, вакансия публикуется как горячая."
+          when "published", "deferred"
+            @vacancy.update_attribute(:publicated_at, Time.now) && @vacancy.approve_published
+            flash[:notice] = "Дата публикации обновлена."
+        end    
+
+        account = @vacancy.company.employer
+        date = Time.now.utc
+        subject = "Вакансия #{@vacancy.name} была обновлена на сайте www.medical.netbee.ua"
+        Notifier.letter_published_update(account, subject, @vacancy, date).deliver
+
+        format.html {redirect_to employer_vacancies_url}
+      end 
   end
 
   def defer

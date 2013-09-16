@@ -5,12 +5,14 @@
 	<tr>
 		<th></th>
 		<th>Название</th>
+		<th>Описание</th>
 		<th>Сфера деятельности</th>
 	</tr>
 	<% @categories.each do |category|%>
 	<tr>
 		<td style="width:10px"><%= a += 1%></td>
 		<td style="width:500px"><%= link_to category.name, edit_admin_seo_category_path(category) %></td>
+		<td><%= category.description.to_s.empty? ? "-" : "+" %></td>
 		<td><%= link_to category.scope.title, edit_admin_seo_scope_path(category.scope) %></td>
 	</tr>
 	<% end %>

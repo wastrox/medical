@@ -4,6 +4,13 @@
   <h2 id="about">Список вакансий</h2>
 </div>
 <div class="boxed">
+
+  <% if flash[:notice] %>
+        <div class="alert alert-block alert-success">
+              <p id="notice" ><%= flash[:notice] %></p>
+        </div>
+  <% end %>
+
 <table class="table list-vacancies">
   <% unless @vacancies.empty? %>
   <tr>
@@ -20,7 +27,14 @@
   	  <td><%= vacancy.city %></td>
       <td><%= vacancy.human_state_name %></td>
       <td><%= vacancy.publicated_at.next_month.strftime("%d.%m.%Y") %></td>
-      <td><%= link_to "Обновить", {:controller => "employer/vacancies", :action => :update_publicated, :id => vacancy.id}, :title => "Обновить дату публикации", :class => "yellow-link" %>
+
+      <% case vacancy.state %>
+      <% when "deferred", "published", "hot" %>
+          <td><%= link_to "Обновить", {:controller => "employer/vacancies", :action => :update_publicated, :id => vacancy.id}, :title => "Обновить дату публикации", :class => "yellow-link" %>
+      <% else %>
+          <td>
+      <% end %>
+
       <%= link_to 'Редактировать', edit_employer_vacancy_path(vacancy.id), :class => "yellow-link" %></td>
       <!--<td><%# link_to 'Удалить', ([:employer, vacancy]), method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
     </tr>
