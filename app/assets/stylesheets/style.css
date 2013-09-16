@@ -435,9 +435,13 @@ table.vacancies tbody tr td:nth-of-type(even) {
 }
 
 .link-more {
-	margin: 21px;
+	margin: 9px;
 	text-align: center;
 	vertical-align: middle;
+}
+
+div.last-vacancies .link-more {
+	margin: 21px;
 }
 
 .link-more a {
