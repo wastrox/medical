@@ -39,7 +39,7 @@ class Admin::Companies::VacancyController < ApplicationController
        
        Notifier.letter_to_vacancy_from_moderator_published(@company.employer, @vacancy).deliver
     end
-  endХарактеристика роботи: робота з лікарями, фармацевтами та медичними сестрами
+  end
 
   def hot
     if params[:hot]
