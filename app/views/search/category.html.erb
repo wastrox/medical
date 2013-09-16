@@ -15,7 +15,7 @@
 	    <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
 </div>
 
-<% unless @category_description.nil? %>
+<% unless @category_description.empty? %>
 	<div id="frame-seo" class="frame-category-profesional">
 	      <div class="boxed">
 	      	<%= raw @category_description %>
