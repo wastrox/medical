@@ -39,14 +39,15 @@ class Admin::Companies::VacancyController < ApplicationController
        
        Notifier.letter_to_vacancy_from_moderator_published(@company.employer, @vacancy).deliver
     end
-  end
+  endХарактеристика роботи: робота з лікарями, фармацевтами та медичними сестрами
 
   def hot
     if params[:hot]
       @vacancy.approve_hot
       loop do 
         vacancies = Vacancy.where(state: "hot").order("publicated_at desc")
-        vacancies.last.approve_published
+        vacancy = vacancies.last
+        vacancy.approve_published && vacancy.update_attribute(:publicated_at, Time.now)
         break if vacancies.count == 4
       end
     end
