@@ -11,7 +11,6 @@
 					</tr>
 				<% end %>
 			</table>
-			<div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div>
-	    <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
-
+			<!-- <div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div> -->
+			<div class="link-more"><b><%= paginate @vacancies %></div>
 </div>

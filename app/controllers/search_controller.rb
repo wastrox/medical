@@ -10,9 +10,9 @@ class SearchController < ApplicationController
 		if params[:sample] == "1"
 			@title = "Поиск вакансий: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 			@description = "Поиск вакансий  #{search_params}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
-			@vacancies = Vacancy.search(params[:search], :order => 'publicated_at desc')
+			@vacancies = Vacancy.search(params[:search], :order => 'publicated_at desc').page(params[:page]).per(20)
 		else
-			@resumes = Resume.search(search_params, :order => 'created_at DESC')
+			@resumes = Resume.search(search_params, :order => 'created_at DESC').page(params[:page]).per(20)
 			@title = "Поиск резюме: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 			@description = "Поиск резюме #{search_params}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
 		end
