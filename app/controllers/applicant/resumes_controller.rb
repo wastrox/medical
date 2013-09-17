@@ -116,12 +116,15 @@ end
         company = vacancy.company
         employer = company.employer
 
+        scope = Russian.translit(vacancy.category.scope.title).parameterize
+        category = Russian.translit(vacancy.category.name).parameterize
+
         employer.send_vacancy_respond(vacancy, @applicant)
 
         flash[:notice] = "Работодателю было выслано ваше резюме. Вакансия #{vacancy.name} добавлена в Избранные ваканси."
-        format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => vacancy.to_param }
+        format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => vacancy.to_param, :scope => scope, :category => category }
       else
-        format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => vacancy.to_param }
+        format.html { redirect_to :controller => '/search', :action => 'vacancy', :id => vacancy.to_param, :scope => scope, :category => category }
       end
     end
   end

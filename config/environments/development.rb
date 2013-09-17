@@ -48,7 +48,7 @@ Medical::Application.configure do
    :authentication => :plain,
    :enable_starttls_auto => true,
    :domain => "netbee.ua",
-   :user_name => "",
+   :user_name => "nicholauskas@gmail.com",
    :password => ""
 }
 
