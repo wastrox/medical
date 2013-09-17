@@ -7,7 +7,7 @@ class StartpageController < ApplicationController
 		@vacancies = Vacancy.where(:state => "published").order("publicated_at desc").limit(9)
 
 
-		@companies = Company.where(:state => "vip").sort_by { rand }.slice(0..10)
+		@companies = Company.where(:state => "vip").sort_by { rand }.slice(0..9)
 		
 	end
 end
