@@ -8,18 +8,32 @@
                   $("tr:last-child th.line-bottom").remove();
                   $(".paper").css("margin-bottom", "15px"); 
             }
+
+            //Скрипт для переноса зарплаты на новую строку в заголовке .cap <h1>
+            var length_string = $(".cap h1").text().length;
+            function add_style_for_span() {
+                $(".cap h1 span").css("padding-right", "50px");
+            }
+            switch (length_string) {
+              case 70:
+                add_style_for_span()
+                break;
+              case 71:
+                add_style_for_span()
+                break;
+            }
       });
 </script>
 <div id="frame">
       <div class="cap">
             <% if current_user %>
                   <% if @vacancy.applicants.where(:id => current_user.id).empty? %>
-                        <h1 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, #{@vacancy.salary} грн.)" %></h1>
+                        <h1 id="about"><span><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, " %></span> <%= "#{@vacancy.salary} грн.)" %></h1>
                   <% else %>
                         <h1 id="about">Вы откликнулись на эту вакансию,<%= link_to "Избранные вакансии", applicant_my_vacancies_index_url %></h1>
                   <% end %>
             <% else %>
-                  <h1 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, #{@vacancy.salary} грн.)" %></h1>
+                  <h1 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, " %> <span><%= "#{@vacancy.salary} грн.)" %></span></h1>
             <% end %>
       </div>
 
