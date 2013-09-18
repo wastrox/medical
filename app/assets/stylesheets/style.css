@@ -1125,7 +1125,7 @@ table.my-vacancies {
 	border-spacing: 0;
 }
 
-table.my-vacancies + .link-more {
+table.my-resumes + .link-more, table.my-vacancies + .link-more {
 	margin: 20px;
 }
 

@@ -5,17 +5,21 @@
 </div>
 <div>
       <table class="my-resumes" width="100%">
-        <% @resumes.each do |resume| %>  
-          <tr>
-          	<% resume_profile = @employer.resumes.find(resume.resume_id).profile %>
-            <% if @employer.resumes.find(resume.resume_id).deferred? != true %>
-              <td><%= link_to "#{resume_profile.lastname} #{resume_profile.firstname} #{resume_profile.surename}", :controller => "/search", :action => :resume, :id => resume.resume.to_param %></td>
-              <td><%= @employer.resumes.find(resume.resume_id).position %></td>
-              <td><%= @employer.resumes.find(resume.resume_id).city %> <%= link_to({:controller => "employer/my_resumes", :action => "destroy_resume_respond", :id => resume.id}, :class => "delte-vacancy-respond") do %>
-                  <img src="/assets/delete.png" class="delte-vacancy-respond">
-                <% end %></td>
-            <% end %>
-          </tr>
+        <% unless @resumes.empty? %>
+          <% @resumes.each do |resume| %>  
+            <tr>
+            	<% resume_profile = @employer.resumes.find(resume.resume_id).profile %>
+              <% if @employer.resumes.find(resume.resume_id).deferred? != true %>
+                <td><%= link_to "#{resume_profile.lastname} #{resume_profile.firstname} #{resume_profile.surename}", :controller => "/search", :action => :resume, :id => resume.resume.to_param %></td>
+                <td><%= @employer.resumes.find(resume.resume_id).position %></td>
+                <td><%= @employer.resumes.find(resume.resume_id).city %> <%= link_to({:controller => "employer/my_resumes", :action => "destroy_resume_respond", :id => resume.id}, :class => "delte-vacancy-respond") do %>
+                    <img src="/assets/delete.png" class="delte-vacancy-respond">
+                  <% end %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr><td>Нет отобранных резюме.</td></tr>
         <% end %>
       </table>
       <div class="link-more"><b><%= link_to "Поиск резюме", { :controller => "/search", :action => "index", :method => "get", :sample => "2" } %></b></div>
