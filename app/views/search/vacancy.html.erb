@@ -14,13 +14,12 @@
             function add_style_for_span() {
                 $(".cap h1 span").css("padding-right", "50px");
             }
-            switch (length_string) {
-              case 70:
-                add_style_for_span()
-                break;
-              case 71:
-                add_style_for_span()
-                break;
+            var i = 70
+            while(i < 80) {
+                  if (length_string == i) {
+                        add_style_for_span()
+                  }
+                  i++
             }
       });
 </script>
