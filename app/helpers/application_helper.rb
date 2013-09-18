@@ -48,4 +48,8 @@ module ApplicationHelper
     scope_translit = Russian.translit(scope).parameterize
     return scope_translit
   end
+
+  def translate(date)
+    name = Russian.translit(date).parameterize
+  end
 end

@@ -1125,6 +1125,10 @@ table.my-vacancies {
 	border-spacing: 0;
 }
 
+table.my-vacancies + .link-more {
+	margin: 20px;
+}
+
 table.my-vacancies tbody tr td {
 	height: 40px;
 	vertical-align: middle;

@@ -5,8 +5,8 @@
 </div>
 <div>
       <table class="my-vacancies" width="100%">
+        <% unless @vacancies.empty? %>
         <% @vacancies.each do |vacancy| %>  
-
           <tr>
             <% if Vacancy.where(:id => vacancy.vacancy_id).empty? %>
               <td><%= vacancy.vacancy_name %></td>
@@ -15,7 +15,7 @@
               <td><%= vacancy.vacancy_name %></td>
               <td>Вакансия закрыта</td>
             <% else %>
-              <td><%= link_to vacancy.vacancy_name, :controller => "/search", :action => :vacancy, :id => vacancy.to_param %></td>
+              <td><%= link_to vacancy.vacancy_name, {:controller => "/search", :action => :vacancy, :scope => translate(category(vacancy).scope.title), :category => translate(category(vacancy).name), :id => vacancy.to_param} %></td>
               <td><%= @applicant.vacancies.find(vacancy.vacancy_id).city %></td>
             <% end %>
               <td><%= vacancy.respond_date.strftime("%m/%d/%Y") %> <%= link_to({:controller => "applicant/resumes", :action => "destroy_vacancy_respond", :id => vacancy.id}, :class => "delte-vacancy-respond") do %>
@@ -23,8 +23,10 @@
                 <% end %>
                </td>
           </tr>
-
         <% end %>
+        <% else %>
+        <tr><td>Нет отобранных вакансий.</td></tr>
+        <% end%>
       </table>
       <div class="link-more"><b><%= link_to "Поиск вакансий", { :controller => "/search", :action => "index", :method => "get", :sample => "1" } %></b></div>
 </div>
