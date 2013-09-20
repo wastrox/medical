@@ -13,7 +13,8 @@
 <div class='item'>
 	<%= f.label :city, "Регион" %>
 	<div class='field'>
-		<%= f.text_field :city %>
+		<%#= f.text_field :city, {:id => "combobox"} %>
+		<%= collection_select(:vacancy, :city, City.all, :name, :name, {:include_blank => "Выберите город из списка"}, {:id => "combobox"}) %>
 	</div>
 </div>
 <div class='item'>

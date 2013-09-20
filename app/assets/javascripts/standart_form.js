@@ -196,7 +196,7 @@ $(document).ready(function(){
 	}
 
 	// Заполняется поле зарплата == 0
-	$("#salary").attr("value", 0);
+	//salary - -- --- ---- $("#salary").attr("value", 0);
 
 	//Автозаполнение для input Города в Резюме
 		(function( $ ) {
