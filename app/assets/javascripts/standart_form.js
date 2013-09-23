@@ -303,7 +303,7 @@ $(document).ready(function(){
 		this.element.val( "" );
 		this._delay(function() {
 		this.input.tooltip( "close" ).attr( "title", "" );
-		}, 2500 );
+		}, 22500 );
 		this.input.data( "ui-autocomplete" ).term = "";
 		},
 		_destroy: function() {
