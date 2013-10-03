@@ -27,6 +27,11 @@ every :day, :at => '02:35am' do
   rake "ts:rebuild"
 end
 
+# Backup databases medical_production
+every :day, :at => '03:30am' do
+  command "backup perform -t medical_production --config-file=/var/www/medical/config/backup/config.rb"
+end
+
 every :day, :at => '08:00am' do	
     rake "publication:start"
 end
