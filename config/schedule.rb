@@ -28,8 +28,8 @@ every :day, :at => '02:35am' do
 end
 
 # Backup databases medical_production
-every :day, :at => '03:30am' do
-  command "backup perform -t medical_production --config-file=/var/www/medical/config/backup/config.rb"
+every :day, :at => '11:30am' do
+  command "cd /var/www/medical && backup perform -t medical_production --config-file=/var/www/medical/config/backup/config.rb"
 end
 
 every :day, :at => '08:00am' do	
