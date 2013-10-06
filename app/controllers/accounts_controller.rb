@@ -44,6 +44,7 @@ class AccountsController < ApplicationController
       render "reactive"
     elsif account.active? == false
       account.send_activate_recovery!
+      flash[:notice] = "Вам была отправлена ссылка активации профиля на #{account.email}. Перейдите по ссылке, указанной в этом письме."
       redirect_to :controller => 'confirmation', :action => 'index'
     else
       flash[:notice] = "Ошибка, Ваш профиль уже активирован."

@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     end
     
     # -----------------------------------------------------------------------------------------------
-    # => FIXME: блок ограничений, используется в контроллерах 'соискателей и работодателей', перебрать-переделать
+    # => FIXME: блок ограничений, используется в контроллерах 'соискателей и работодателей'
     def check_account_type
       unless current_user.type?
         redirect_to confirmation_account_type_url, notice: "Вы должны выбрать тип учетной записи"
