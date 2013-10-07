@@ -85,7 +85,8 @@ Medical::Application.routes.draw do
 	namespace :admin do
     get 'companies', to: 'companies#index'
     get "search", to: "search#index"
-    
+
+    match "search/choice_user_for_admin/:token", to: 'search#choice_user_for_admin'
     match 'resumes/published/(:id)' => 'resumes#published'
     match 'resumes/reject/(:id)' => 'resumes#reject'
     match 'search/destroy_account_respond/:id' => "search#destroy_account_respond"

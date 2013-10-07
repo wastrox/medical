@@ -4,6 +4,7 @@ layout "admin"
 http_basic_authenticate_with :name => "medicalboss", :password => "BOSSmedical54321"
 
 skip_before_filter :require_login
+before_filter :find_user_for_admin, :only => :choice_user_for_admin
 
 	def index
 		search_params = params[:search].to_s + " " + params[:city].to_s 
@@ -41,5 +42,17 @@ skip_before_filter :require_login
         	end
         end
 	end
-	
+
+	def choice_user_for_admin
+  		cookies.permanent[:salt] = @account.salt
+  		respond_to do |format|
+      		format.html { redirect_to root_url }
+      	end
+	end
+
+	protected
+
+	def find_user_for_admin
+		@account = Account.find_by_token(params[:token])
+	end
 end

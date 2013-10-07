@@ -36,6 +36,10 @@
 		    				<%= link_to({:controller => "/admin/search", :action => "destroy_account_respond", :id => account.id}, :class => "delte-vacancy-respond", :confirm => "Вы уверены, что хотите удалить аккаунт #{account.email}", method: :delete, remote: true) do %>
                   				<img src="/assets/delete.png" class="delte-vacancy-respond">
                   			<% end %>
+                  			<%= link_to({:controller => "/admin/search", :action => "choice_user_for_admin", :token => account.token}, :class => "delte-vacancy-respond", :confirm => "Вы хотите залогиниться как #{account.email}", :target => "_blank
+") do %>
+                  				<img src="/assets/my-profile.png" class=""></a>
+                  			<% end %>
 		    			</td>
 					</tr>
 				<% end %>
