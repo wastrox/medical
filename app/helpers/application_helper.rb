@@ -52,4 +52,11 @@ module ApplicationHelper
   def translate(date)
     name = Russian.translit(date).parameterize
   end
+
+  def helper_short_email_of(current_user)
+    s = current_user.email
+    reg = /.*(?=@)/
+    m = reg.match(s)
+    return m.to_s
+  end
 end

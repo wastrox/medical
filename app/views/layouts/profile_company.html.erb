@@ -58,8 +58,8 @@
 
 		<div id="account-nav">
 			<div class="cap">
-				<%= link_to_if(current_user.company.nil?, current_user.email, new_employer_profile_company_path) do
-						link_to current_user.email, employer_profile_companies_url
+				<%= link_to_if(current_user.company.nil?, helper_short_email_of(current_user), new_employer_profile_company_path) do
+						link_to helper_short_email_of(current_user), employer_profile_companies_url
 						end %>
 			</div>
 			<div class="boxed-nav">
