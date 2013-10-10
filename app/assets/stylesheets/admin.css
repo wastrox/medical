@@ -1,3 +1,19 @@
+#wrapper {
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: auto !important;
+    margin: 0 auto;
+    min-height: 100%;
+    padding-left: 40px;
+    padding-top: 1px;
+    width: 1020px;
+}
+
+#content {
+    margin: 15px 39px 15px 0;
+}
+
+#header-admin {padding-right: 38px;}
+
 ul, ol {
 	margin: 0px !important;
 }
