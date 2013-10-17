@@ -1,0 +1,28 @@
+	<div id="content">
+		<div id="frame">
+			<div class="cap">
+				<h1 id="about">Новости</h1>
+			</div>
+			<div class="boxed">
+					<div class="about-page">
+							<div class="default_article">
+								<div class="date_news"><%= @article.published_at.strftime("%m.%d.%Y") %></div>
+								<div class="article">
+									<h2 class="title_default_news"><%= @article.title %> </h2>
+									<div class="cover_article_show_pag"><%= image_tag @article.cover.url(:index), :class => "cover_news", :title => "Работа в медицине medical.netbee.ua" %></div>
+									<div class="text_article"><%= raw 	@article.body %></div>
+								</div>
+							</div>
+					</div>
+			</div>
+		</div><!-- #frame -->
+
+		<div class="boxed-socialnetwork">
+			<!-- VK Widget -->
+			<div id="vk_groups"></div>
+			<script type="text/javascript">
+				VK.Widgets.Group("vk_groups", {mode: 2, width: "231", height: "500"}, 55775726);
+			</script>
+		</div>
+		<div class="clear"></div>
+	</div><!-- #content-->

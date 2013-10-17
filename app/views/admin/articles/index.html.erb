@@ -1,0 +1,23 @@
+<% a = 0%>
+<%= link_to "Написать статью", new_admin_article_url %>
+
+<h3 class="article">Список статей</h3>
+
+<% unless @articles.empty? %>
+	<table class="table articles">  
+		<tr>
+			<th></th>
+			<th>Название</th>
+			<th>Статус</th>
+			<th></th>
+		</tr>
+		<% @articles.each do |article|%>
+		<tr id=<%="article_#{article.id}"%>>
+			<td style="width:10px"><%= a += 1%></td>
+			<td style="width:450px"><%= link_to article.title, edit_admin_article_path(article) %></td>
+			<td class="state"><%= article.human_state_name %></td>
+			<td><%= link_to "Редактировать", edit_admin_article_path(article) %> | <%= link_to "В архив", admin_articles_archive_path(article) %> | <%= link_to "Удалить", admin_article_path(article), :method => :delete, :confirm => "Удалить статью?"%></td>
+		</tr>
+		<% end %>
+	</table>
+<% end %>

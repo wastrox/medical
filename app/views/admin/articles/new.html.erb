@@ -1,0 +1,42 @@
+    <h3>Написать статью</h3>
+
+	<div class="boxed">
+		<%= form_for([:admin, @article], :html => { :class => 'standart_form news_form' }) do |f| %>
+			<div class='item' style="margin-bottom: 0px;">
+			    <div class='field'>
+			      <%= image_tag @article.cover.url(:index), :alt => "", :id => "image-path-photo" %>
+			      <a id="" class="upload-photo">Загрузить картинку</a>
+			      <%= f.file_field :cover, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
+			    </div>
+			</div>
+			<div class='item'>
+				<div class='field'>
+					<%= f.text_field :title %>
+				</div>
+			</div>
+			<div class='item'>
+				<div class='field'>
+					<%= f.text_area :body, :class => 'wysihtml5' %>
+				</div>
+			</div>
+			<div class='item'>
+				<div class='field'>
+					<%= check_box_tag('default_published', "true", @default_published_value, :class => "default_news") %>
+					<%= f.label :default_published, "Сделать новость главной" %>	
+				</div>
+			</div>
+			<div class='item'>
+				<%= f.label :description, 'Краткое описание', :class => 'description' %>
+				<div class='field'>
+					<%= f.text_area :description, :class => 'description' %>
+				</div>
+			</div>
+
+			<span class="line-bottom line-bottom-company line-bottom-scope"></span>
+			<div id="button-bottom">
+				<%= f.submit "Опубликовать", :class => "input-sub btn btn-warning" %>
+			</div>	
+			<div class="clear"></div>
+		<% end %>
+	</div>
+</div>

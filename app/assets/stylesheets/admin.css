@@ -181,3 +181,39 @@ span.next {
 	font-weight: bold;
 }
 /*-------------------------------------------------------------------------------*/
+
+.news_form textarea.wysihtml5 {
+	height: 550px;
+	width: 929px;
+}
+.news_form .wysihtml5-toolbar {
+	width: 351px !important;
+}
+
+.news_form label.description {
+	margin-bottom: 15px !important;
+}
+
+.news_form textarea.description {
+	width: 929px;
+	height: 92px;
+}
+
+h3.article { margin-top: 15px;}
+
+table.articles {
+	margin-top: 15px;
+}
+
+#article_title {
+	width: 929px;
+}
+
+.news_form {
+	width: 945px;
+}
+
+.news_form .btn-warning {
+	margin-right: 0px;
+	margin-bottom: 20px;
+}

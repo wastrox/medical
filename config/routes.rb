@@ -1,23 +1,18 @@
 Medical::Application.routes.draw do
-  get "categories/new"
-
-  get "categories/edit"
-
-  get "scope/index"
-
-  get "scope/edit"
-
-  get "scope/new"
-
-  get "contacts/index"
-
-  get "personal_data/index"
-
-  get "about", to: "about#index"
-
-  get "vacancies/index"
+  root :to => 'startpage#index'
   
-	root :to => 'startpage#index'
+  get "categories/new"
+  get "categories/edit"
+  get "scope/index"
+  get "scope/edit"
+  get "scope/new"
+  get "contacts/index"
+  get "personal_data/index"
+  get "about", to: "about#index"
+  get "vacancies/index"
+
+  resources "news", :only => [:index, :show]
+  
   get "vacancy/index"
   get "vacancy/edit"
   get "resumes/index"
@@ -107,5 +102,7 @@ Medical::Application.routes.draw do
     resources :vacancies
     resources :resumes
     resources :tasks
+    resources :articles
+    match 'articles/archive/:id' => "articles#archive", :as => "articles_archive"
 	end
 end

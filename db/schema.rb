@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130912080753) do
+ActiveRecord::Schema.define(:version => 20131014075113) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -26,6 +26,20 @@ ActiveRecord::Schema.define(:version => 20130912080753) do
     t.integer  "session_count",     :default => 0
     t.datetime "session_last_time"
     t.boolean  "delta",             :default => true,  :null => false
+  end
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.text     "body"
+    t.datetime "published_at"
+    t.string   "state"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "categories", :force => true do |t|
@@ -166,7 +180,7 @@ ActiveRecord::Schema.define(:version => 20130912080753) do
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.string   "position"
-    t.integer  "salary"
+    t.integer  "salary",          :default => 0
     t.string   "city"
     t.text     "additional_info"
     t.string   "state"
@@ -194,7 +208,7 @@ ActiveRecord::Schema.define(:version => 20130912080753) do
     t.integer  "company_id"
     t.string   "name"
     t.string   "city"
-    t.integer  "salary"
+    t.integer  "salary",             :default => 0
     t.string   "experiences"
     t.string   "timetable"
     t.text     "description"
@@ -205,7 +219,7 @@ ActiveRecord::Schema.define(:version => 20130912080753) do
     t.boolean  "delta",              :default => true,                  :null => false
     t.string   "state"
     t.integer  "category_id"
-    t.datetime "publicated_at",      :default => '2013-09-10 08:18:58'
+    t.datetime "publicated_at",      :default => '2013-09-11 10:38:24'
   end
 
   add_index "vacancies", ["company_id"], :name => "index_vacancies_on_company_id"

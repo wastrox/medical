@@ -1,0 +1,39 @@
+	<div id="content">
+		<div id="frame">
+			<div class="cap">
+				<h1 id="about">Новости</h1>
+			</div>
+			<div class="boxed">
+				<div class="default_news">
+					<div class="about-page">
+						<% @defaultArticles.each do |article| %>
+							<div class="default_article">
+								<%= link_to image_tag(article.cover.url(:index), :class => "cover_news", :title => "Работа в медицине medical.netbee.ua"), news_path(article), :class => "decoration_none" %>
+								<h2 class="title_default_news"><%= link_to article.title, news_path(article), :class => "decoration_none" %></h2>
+								<span><p><%= article.description %></p></span>
+								<%= link_to "подробней", news_path(article), :class => "yellow-link" %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+				<div class="all_news">
+					<div class="about-page">
+						<% @restArtcles.each do |article| %>
+							<ul class="all_news_list">
+								<li><%= link_to article.title, news_path(article) %> <span class="date_news"><%= article.published_at.strftime("%m.%d.%Y") %></span></li>
+							</ul>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div><!-- #frame -->
+
+		<div class="boxed-socialnetwork">
+			<!-- VK Widget -->
+			<div id="vk_groups"></div>
+			<script type="text/javascript">
+				VK.Widgets.Group("vk_groups", {mode: 2, width: "231", height: "500"}, 55775726);
+			</script>
+		</div>
+		<div class="clear"></div>
+	</div><!-- #content-->

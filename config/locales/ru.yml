@@ -18,6 +18,8 @@ ru:
               secret: "Конфиденциально"
               rejected: "Отклонена модератором"
               deferred: "Скрыта"
+              archive: "В архиве"
+              default: "Главная"
       errors:
           messages:
               blank: ""
