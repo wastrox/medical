@@ -28,13 +28,11 @@ $(document).on('nested:fieldAdded', function(event){
 	        	$(dateTillEducation).animate({ opacity: "0", height: 'toggle' }, 700);
 	    	}
 	    	else{
-	        	//$(dateTillEducation).css('display', 'block');
 	        	$(dateTillEducation).stop().animate({ opacity: "1", height: 'toggle' }, 1000);
 	    	}
 		});
 
 		// Редактор для text_area в nested_form
-		
 		var wysihtml5 = field.find('.wysihtml5');
 
 		$(wysihtml5).each(function(i, elem) {
@@ -56,6 +54,17 @@ $(document).on('nested:fieldAdded', function(event){
 		  $('[data-wysihtml5-command="Outdent"]').attr("title", "Обратный отступ");
 		  $('[data-wysihtml5-command="Indent"]').attr("title", "Абзац");
 		});
+
+		//Ссылка "Загрузить картинку", admin/seo/scope/:id/edit, для nested_form :categories формы scope
+		var uploadPhoto = field.find('a.upload-photo');
+		var inputTypeFile = field.find('input[type=file]');
+		$(uploadPhoto).click(function(){
+			$(inputTypeFile).click();
+		});
+		$(inputTypeFile).change(function() {
+				$(uploadPhoto).before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
+		   		$(uploadPhoto).text("Изменить картинку");	
+		});
 });	
 
 $(document).on('nested:fieldRemoved', function(event){
@@ -71,14 +80,13 @@ $(document).on('nested:fieldRemoved', function(event){
 
 $(document).ready(function(){
   	$("#phone").inputmask("mask", {"mask": "(099) 999 99 99"});
+
+  	// Для ссылки Загрузать картинку или Загрузить фото
   	$("a.upload-photo").click(function(){
   		$("#file").click();
 	});
 
-		// Удаляет ссылки remove первых, обязательных, fields_for(Опыт работы, Образование)
-		//$("#experience + .fields > a.red-link, #education + .fields > a.red-link").remove();
-
-  	// Удаляет пустой тег img (когда нет логотипа компании или фотографии соискателя), пустой тег img ломает верстку
+  	// Удаляет пустой тег img (когда нет логотипа компании, фотографии соискателя), пустой тег img ломает верстку
 	var img = $("#image-path-photo").attr("src");
 	if (img == "/photos/small/missing.png") {
 	    $("#image-path-photo").css("display", "none");
@@ -161,7 +169,9 @@ $(document).ready(function(){
 	        $("#upload-photo-applicant").before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
 			$("#upload-photo-applicant").text("Изменить фото");	
 	        $("#upload-logo-company").before('<p class="photo-msg"> Логотип будет загружен после сохранения</p>');    
-    		$("#upload-logo-company").text("Изменить логотип")
+    		$("#upload-logo-company").text("Изменить логотип");
+			$("#upload-cover").before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
+    		$("#upload-cover").text("Изменить картинку");	
 		}
 	    else {
 	    	$(".photo-msg").remove();

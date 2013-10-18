@@ -46,7 +46,7 @@
 	      <%= f.label 'Фото' %>
 	        <div class='field'>
 	          <%= image_tag @profile.photo.url(:small), :alt => "", :id => "image-path-photo", :title => "#{@profile.lastname} #{@profile.firstname} #{@profile.surename}. Работа в медицине medical.netbee.ua" %>
-	          <a class="upload-photo">Загрузить фото</a>
+	          <a id="upload-photo-applicant" class="upload-photo">Загрузить фото</a>
 	          <%= f.file_field :photo, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
 	        </div>
     	</div>

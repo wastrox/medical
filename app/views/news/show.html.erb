@@ -9,7 +9,9 @@
 								<div class="date_news"><%= @article.published_at.strftime("%m.%d.%Y") %></div>
 								<div class="article">
 									<h2 class="title_default_news"><%= @article.title %> </h2>
-									<div class="cover_article_show_pag"><%= image_tag @article.cover.url(:index), :class => "cover_news", :title => "Работа в медицине medical.netbee.ua" %></div>
+									<div class="cover_article_show_pag">
+										<%= image_tag @article.cover.url(:index), :class => "cover_news", :title => "Работа в медицине medical.netbee.ua" %>
+									</div>
 									<div class="text_article"><%= raw 	@article.body %></div>
 								</div>
 							</div>

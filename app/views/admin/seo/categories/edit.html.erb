@@ -14,6 +14,13 @@
 					<%= f.text_area :description, :class => 'wysihtml5' %>
 				</div>
 			</div>
+			<div class='item' style="margin-bottom: 0px;">
+			    <div class='field'>
+			      <%= image_tag @category.cover.url(:index), :alt => "", :id => "image-path-photo" %>
+			      <a id="upload-cover" class="upload-photo">Загрузить картинку</a>
+			      <%= f.file_field :cover, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
+			    </div>
+			</div>
 			<span class="line-bottom line-bottom-company line-bottom-scope"></span>
 			<div id="button-bottom">
 				<%= f.submit "Сохранить", :class => "input-sub btn btn-warning" %>

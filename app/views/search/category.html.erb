@@ -15,10 +15,13 @@
 	    <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
 </div>
 
-<% unless @category_description.empty? %>
+<% unless @category_by_view.description.empty? %>
 	<div id="frame-seo" class="frame-category-profesional">
 	      <div class="boxed">
-	      	<%= raw @category_description %>
+	      	<div class="cover_article_show_pag cover-seo">
+	      		<%= image_tag @category_by_view.cover.url(:index), :class => "cover_news", :title => "Работа в медицине medical.netbee.ua" %>
+	      	</div>
+	      	<%= raw @category_by_view.description %>
 	      </div> <!-- .boxed -->
 	</div> <!-- #frame-other -->
 <% end %>

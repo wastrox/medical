@@ -77,7 +77,7 @@ class SearchController < ApplicationController
 
 		@scope = params[:scope]
 		@category = params[:category]
-		@category_description = Category.find_by_id(category_id).description
+		@category_by_view= Category.find_by_id(category_id)
 
 		@vacancies = Vacancy.where(:category_id => category_id, :state => ["published", "hot"]).order("publicated_at desc")
 

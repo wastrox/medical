@@ -5,7 +5,7 @@
 			<div class='item' style="margin-bottom: 0px;">
 			    <div class='field'>
 			      <%= image_tag @article.cover.url(:index), :alt => "", :id => "image-path-photo" %>
-			      <a id="" class="upload-photo">Загрузить картинку</a>
+			      <a id="upload-cover" class="upload-photo">Загрузить картинку</a>
 			      <%= f.file_field :cover, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
 			    </div>
 			</div>

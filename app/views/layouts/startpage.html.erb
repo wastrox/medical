@@ -51,13 +51,12 @@
 					<div class="separator"></div>
 				<% end %>
 			</div>
-				<%= link_to_if(current_user, "Выход", logout_path, :class => "signup") do
-						render :partial => 'layouts/other_link_navbar' 
-					end %>
+			<%= link_to_if(current_user, "Выход", logout_path, :class => "signup") do
+				render :partial => 'layouts/other_link_navbar' 
+			end %>
 				
-				<div class="separator"></div>
-
-				<div class="btn-group">
+			<div class="separator"></div>
+			<div class="btn-group">
 				<a class="btn dropdown-toggle signup" data-toggle="dropdown" href="#" id="btn-drop">Справка</a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 					<li><%= link_to "Новости", news_index_url %><li>
@@ -65,7 +64,7 @@
 					<li><%= link_to "Для пользователей", personal_data_index_url %><li>
 					<li><%= link_to "О Netbee", about_url %><li>
 				</ul>
-				</div>
+			</div>
 		</div>
 	</header><!-- #header-->
 	<div id="content" class="start_page">

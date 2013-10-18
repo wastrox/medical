@@ -15,6 +15,13 @@
 					<%= f.text_area :description, :class => 'wysihtml5' %>
 				</div>
 			</div>
+			<div class='item' style="margin-bottom: 0px;">
+			    <div class='field'>
+			      <%= image_tag @scope.cover.url(:index), :alt => "", :id => "image-path-photo" %>
+			      <a id="upload-cover" class="upload-photo">Загрузить картинку</a>
+			      <%= f.file_field :cover, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
+			    </div>
+			</div>
 			<%= f.fields_for :categories do |category| %>
 				<div class='item'>
 					<div class='field'>
@@ -25,6 +32,13 @@
 					<div class='field'>
 						<%= category.text_area :description, :class => 'wysihtml5' %>
 					</div>
+				</div>
+				<div class='item' style="margin-bottom: 0px;">
+				    <div class='field'>
+				      <%#= image_tag category.cover.url(:index), :alt => "", :id => "image-path-photo" %>
+				      <a id="upload-cover" class="upload-photo">Загрузить картинку</a>
+				      <%= category.file_field :cover, :accept => "image/jpeg,image/png,image/gif", :id => "file", :hidden => "hidden" %>
+				    </div>
 				</div>
 				<%= category.hidden_field :_destroy %><%= category.link_to_remove "Удалить категорию", :class => "red-link remove-link-contact-company" %>
 				<div class="clearfix"></div>
@@ -40,7 +54,6 @@
 			<div id="button-bottom">
 				<%= f.submit "Сохранить", :class => "input-sub btn btn-warning" %>
 			</div>	
-
 		<% end %>
 	</div>
 </div>

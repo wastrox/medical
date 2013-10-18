@@ -6,4 +6,9 @@ $(document).ready(function(){
 	}
 	$("img").attr("alt", "Логотип");
 
+	// Удаляет контейнер с обложкой СЕО
+	var img = $(".cover_news").attr("src");
+	if (img == "/covers/index/missing.png") {
+	    $(".cover_article_show_pag").css("display", "none");
+	}
 });
