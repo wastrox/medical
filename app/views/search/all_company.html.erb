@@ -1,8 +1,20 @@
-<div id="search-result">
-			<h1 class="title-last-vacancies"><span class="icon-last-vacancies">СПИСОК КОМПАНИЙ</span></h1>
-			<span class="label-tail-last-vacancies"></span>
+<div id="search-result" class="page-in-new-label">
+			<div id="label" class="label-all-company">
+				<h1 class="title-last-vacancies title-search-result"><span class="icon-last-vacancies">СПИСОК КОМПАНИЙ</span></h1>
+				<span class="label-tail-last-vacancies"></span>
+			</div>
 			<table class="search-result" width="100%">
-				<% @companies.each do |company| %>	
+				<% @vip_companies.each do |company| %>
+					<tr class="vip_company">
+						<td><%= image_tag company.logo.url(:search), :class => "photo-employer" %></td>
+						<td><%= link_to company.name, :controller => :search, :action => :company, :id => company.to_param %></td>
+		  				
+
+		  				<% s = Russian.translit(company_scope_helper(company)).parameterize %>
+						<td><%= link_to company_scope_helper(company), {:controller => :search, :action => :scope, :scope => scope_translit_helper(company)} %></td>
+					</tr>
+				<% end %>
+				<% @published_companies.each do |company| %>
 					<tr>
 						<td><%= image_tag company.logo.url(:search), :class => "photo-employer" %></td>
 						<td><%= link_to company.name, :controller => :search, :action => :company, :id => company.to_param %></td>
@@ -13,6 +25,6 @@
 					</tr>
 				<% end %>
 			</table>
-			<div class="link-more"><b><%= paginate @companies %></div>
+			<div class="link-more"><b><%= paginate @published_companies %></div>
 </div>
 

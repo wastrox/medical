@@ -424,6 +424,7 @@ table.vacancies tbody tr td a {
    
 table.vacancies tbody:first-child tr:first-child td {
 	border-top: 0;
+	padding-top: 8px;
 }
 
 table.vacancies tbody:last-child tr:last-child td {
@@ -441,7 +442,10 @@ table.vacancies tbody tr td:nth-of-type(even) {
 }
 
 div.last-vacancies .link-more {
-	margin: 21px;
+	background-color: #F7F7F7;
+	height: 47px;
+	margin: 0px 157px 0px 183px;
+	padding-top: 26px;
 }
 
 .link-more a {
@@ -1556,7 +1560,7 @@ table.search-result tbody tr td {
 
 
 table.search-result tbody tr td:last-child {
-	width: 80px;
+	width: 100px;
 }
    
 
@@ -1565,7 +1569,7 @@ table.search-result tbody tr td:first-child {
 }
 
 table.search-result tbody tr td:nth-child(2) {
-  width: 530px;
+  width: 50	0px;
   text-align: left; 
 }
 
@@ -1988,3 +1992,51 @@ a.decoration_none {
 	float: right;
 }
 /*----------------------------------------------------------------------------*/
+
+.vip_company {
+	background-color: #fff7d9;
+}
+
+#search-result .label-all-company {
+	width: 775px;
+	background-color: #fff7d9;
+	top: 0px;
+}
+
+.page-in-new-label {
+	background-color: #F7F7F7 !important;
+}
+
+.label-search-result {
+	width: 644px;
+	float: left;
+}
+
+.label-gray {
+	background-color: #F7F7F7;
+	display: inline-block;
+	width: 190px;
+	height: 21px;
+	margin-bottom: -5px;
+}
+
+.label-last-vacancies {
+	width: 183px;
+	float: left;
+}
+
+.label-gray-last-vacancies {
+	background-color: #F7F7F7;
+	display: inline-block;
+	width: 141px;
+	height: 21px;
+	margin-bottom: -5px;
+}
+
+.search-result tr:first-child td {
+	padding-top: 5px !important;
+}
+
+.search-result tr td .photo-applicant {
+	margin-bottom: -4px;
+}

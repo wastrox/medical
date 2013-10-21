@@ -87,6 +87,7 @@ class SearchController < ApplicationController
 	end
 
 	def all_company
-		@companies = Company.where(:state => ["published", "vip"]).order("created_at desc").page(params[:page]).per(20)
+		@vip_companies = Company.where(:state => "vip").order("created_at desc")
+		@published_companies = Company.where(:state => "published").order("created_at desc").page(params[:page]).per(20)
 	end
 end
