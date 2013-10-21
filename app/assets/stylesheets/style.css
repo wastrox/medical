@@ -433,6 +433,7 @@ table.vacancies tbody:last-child tr:last-child td {
 
 table.vacancies tbody tr td:nth-of-type(even) {
 	background: #f7f7f7;
+	width: 103px;
 }
 
 .link-more {
@@ -1588,6 +1589,7 @@ table.search-result tbody:last-child tr:last-child td {
 
 table.search-result tbody tr td:nth-of-type(3) {
 	background: #f7f7f7;
+	width: 133px;
 }
 
 .top-publication {
@@ -1998,7 +2000,7 @@ a.decoration_none {
 }
 
 #search-result .label-all-company {
-	width: 775px;
+	width: 741px;
 	background-color: #fff7d9;
 	top: 0px;
 }
@@ -2008,14 +2010,14 @@ a.decoration_none {
 }
 
 .label-search-result {
-	width: 644px;
+	width: 656px;
 	float: left;
 }
 
 .label-gray {
 	background-color: #F7F7F7;
 	display: inline-block;
-	width: 190px;
+	width: 178px;
 	height: 21px;
 	margin-bottom: -5px;
 }
@@ -2039,4 +2041,8 @@ a.decoration_none {
 
 .search-result tr td .photo-applicant {
 	margin-bottom: -4px;
+}
+
+.all-companies tr td:nth-of-type(3) {
+	width: 193px !important;
 }

@@ -3,7 +3,7 @@
 				<h1 class="title-last-vacancies title-search-result"><span class="icon-last-vacancies">СПИСОК КОМПАНИЙ</span></h1>
 				<span class="label-tail-last-vacancies"></span>
 			</div>
-			<table class="search-result" width="100%">
+			<table class="search-result all-companies" width="100%">
 				<% @vip_companies.each do |company| %>
 					<tr class="vip_company">
 						<td><%= image_tag company.logo.url(:search), :class => "photo-employer" %></td>
