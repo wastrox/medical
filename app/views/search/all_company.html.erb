@@ -15,7 +15,7 @@
 					</tr>
 				<% end %>
 				<% @published_companies.each do |company| %>
-					<tr>
+					<tr class="published_companies">
 						<td><%= image_tag company.logo.url(:search), :class => "photo-employer" %></td>
 						<td><%= link_to company.name, :controller => :search, :action => :company, :id => company.to_param %></td>
 		  				

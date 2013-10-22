@@ -442,6 +442,10 @@ table.vacancies tbody tr td:nth-of-type(even) {
 	vertical-align: middle;
 }
 
+.companies .link-more {
+	margin-top: 3px;
+}
+
 div.last-vacancies .link-more {
 	background-color: #F7F7F7;
 	height: 47px;
@@ -2045,4 +2049,21 @@ a.decoration_none {
 
 .all-companies tr td:nth-of-type(3) {
 	width: 193px !important;
+}
+
+.published_companies td {
+	background-color: white;
+}
+
+.seo-banner {
+	width: 370px; 
+	float: left; 
+	padding-left: 40px; 
+	padding-top: 14px; 
+	text-align: justify
+}
+
+.seo-banner h1 {
+	font-size: 10px; 
+	color: #888;
 }
