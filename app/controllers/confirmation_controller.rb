@@ -7,11 +7,6 @@ class ConfirmationController < ApplicationController
   
   # => TODO: Возможно стоит объединить метод index and account_type, и добавить AJAX
   def index
-    if params[:choice] == "yes" # => если ссылка /confirmation/yes 
-      flash[:notice] = "Спасибо, в ближайшее время мы создадим для Вас бесплатный аккаунт и разместим Вашу информацию на нашем сайте."
-    elsif params[:choice] == "no" # => если ссылка /confirmation/no
-      flash[:notice] = "Очень жаль, надеемся, что наши услуги будут полезны Вам в будущем"
-    end
   end
 
   #	=> после уточнения аквиции в конроллере account -> action activate, нужно выбрать тип account -> Employer OR Applicant
