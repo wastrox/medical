@@ -2,7 +2,7 @@
 class ConfirmationController < ApplicationController
   layout "small_window"
   
-  skip_before_filter :require_login, :only => [:index]
+  skip_before_filter :require_login, :only => [:index, :yes, :no]
 	before_filter :find_account, :only => [:applicant, :employer]	
   
   # => TODO: Возможно стоит объединить метод index and account_type, и добавить AJAX
