@@ -17,7 +17,8 @@ Medical::Application.routes.draw do
   get "vacancy/edit"
   get "resumes/index"
   get "confirmation/index"
-  get "confirmation/:choice", to: "confirmation#index", as: "confirmation"
+  get "confirmation/yes", to: "confirmation#yes"
+  get "confirmation/no", to: "confirmation#no"
   
   get 'signup', to: 'accounts#new', as: 'signup'
   get "login", to: "sessions#new", as: "login"

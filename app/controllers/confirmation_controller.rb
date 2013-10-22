@@ -29,6 +29,14 @@ class ConfirmationController < ApplicationController
 		redirect_to new_applicant_resume_path if @account.type?
   end
 
+  def yes
+    @text = "Спасибо, в ближайшее время мы создадим для Вас бесплатный аккаунт и разместим Вашу информацию на нашем сайте."
+  end
+
+  def no
+    @text = "Очень жаль, надеемся, что наши услуги будут полезны Вам в будущем"
+  end
+
   protected
 
   def find_account
