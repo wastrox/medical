@@ -138,6 +138,18 @@ a.disable-link {
 	min-width: 986px !important;
 }
 
+td.vacancy-name p {
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+
+}
+
+td.vacancy-name p a {
+	font-weight: bolder;
+    white-space: nowrap;
+    border: none;
+}
+
 .hot-description {
 	height: 54px;
 	margin-bottom: 10px;
@@ -405,6 +417,7 @@ table.vacancies {
 
 table.vacancies tbody tr td:first-child {
 	width: 145px;
+	max-width: 145px !important;
 }
 
 table.vacancies tbody tr td {
@@ -434,6 +447,9 @@ table.vacancies tbody:last-child tr:last-child td {
 table.vacancies tbody tr td:nth-of-type(even) {
 	background: #f7f7f7;
 	width: 103px;
+	max-width: 103px !important;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .link-more {
@@ -448,7 +464,7 @@ table.vacancies tbody tr td:nth-of-type(even) {
 
 div.last-vacancies .link-more {
 	background-color: #F7F7F7;
-	height: 47px;
+	height: 52px;
 	margin: 0px 157px 0px 183px;
 	padding-top: 26px;
 }
@@ -1650,6 +1666,7 @@ span.next {
 .alert-success {
 	font-size: 14px;
 }
+
 /*----------------------------------------------------------------------------*/
 
 /*-------------------------------- /about ------------------------------------*/
