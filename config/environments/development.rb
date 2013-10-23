@@ -49,7 +49,7 @@ Medical::Application.configure do
    :enable_starttls_auto => true,
    :domain => "netbee.ua",
    :user_name => "nicholauskas@gmail.com",
-   :password => "netbee-24"
+   :password => ""
 }
 
 end

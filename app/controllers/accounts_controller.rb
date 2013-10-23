@@ -15,6 +15,7 @@ class AccountsController < ApplicationController
    @account = Account.new(params[:account])
     if @account.save
 			@account.send_activation_instructions! 
+      flash[:notice] = "Вам была отправлена ссылка активации профиля на #{@account.email}. Перейдите по ссылке, указанной в этом письме."
       redirect_to :controller => 'confirmation', :action => 'index'
     else
       flash[:notice] = "Ошибка регистрации!"
