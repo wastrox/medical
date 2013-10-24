@@ -32,6 +32,10 @@ every :day, :at => '03:00am' do
   command "cd /var/www/medical && backup perform -t medical_production --config-file=/var/www/medical/config/backup/config.rb"
 end
 
+every :day, :at => '03:10am' do
+  rake "genxml_vacancies:start"
+end
+
 every :day, :at => '08:00am' do	
-    rake "publication:start"
+  rake "publication:start"
 end

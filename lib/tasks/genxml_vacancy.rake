@@ -1,3 +1,4 @@
+#encoding: UTF-8
 require File.expand_path('../../../config/environment', __FILE__)
 
 namespace :genxml_vacancies do
