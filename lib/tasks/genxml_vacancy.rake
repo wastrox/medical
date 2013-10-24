@@ -17,7 +17,7 @@ namespace :genxml_vacancies do
 		        xml.link_   "http://medical.netbee.ua/vacancy/#{Russian.translit(vacancy.category.scope.title).parameterize}/#{Russian.translit(vacancy.category.name).parameterize}/#{vacancy.to_param}"
 		        xml.name_   vacancy.name
 		        xml.region_     vacancy.city
-		        xml.salary_     vacancy.salary
+		        xml.salary_     "#{vacancy.salary} грн"
 		        xml.company_     vacancy.company.name
 		        xml.companyinfo_     vacancy.company.description
 		        xml.description_     vacancy.description
