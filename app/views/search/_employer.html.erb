@@ -12,7 +12,7 @@
 						<td><%= image_tag resume.profile.photo.url(:search), :class => "photo-applicant", :title => "Резюме #{resume.position}. Работа в медицине medical.netbee.ua" %></td>
 						<td><%= link_to resume.position, :controller => :search, :action => :resume, :id => resume.to_param %></td>
 		  				<td><%= resume.city %></td>
-		    			<td><%= resume.salary %> грн.</td>
+		    			<td><%= salary_helper(resume) %></td>
 					</tr>
 				<% end %>
 			</table>

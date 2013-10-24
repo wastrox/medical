@@ -1,9 +1,9 @@
 <table class="vacancies" width="100%">
 				<% @vacancies.each do |vacancy|%>
 					<tr>
-						<td class="vacancy-name"><p><%= link_to "#{vacancy.name}", {:controller => "search", :action => "vacancy", :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></p></td>
+						<td class="vacancy-name"><p><%= link_to "#{vacancy.name}", {:controller => "search", :action => "vacancy", :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param}, :title => "#{vacancy.name}" %></p></td>
 						<td><%= vacancy.city[0,14] %></td>
-						<td><%= vacancy.salary %> грн</td>
+						<td><%= salary_helper(vacancy) %></td>
 					</tr>
 				<% end %>
 			</table>

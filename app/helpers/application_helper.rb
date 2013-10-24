@@ -59,4 +59,14 @@ module ApplicationHelper
     m = reg.match(s)
     return m.to_s
   end
+
+  def salary_helper(object) # Если зарплата указана как 0(ноль) => puts "Не указано"
+    salary_in = object.salary
+    if salary_in != 0 
+      salary_out = "#{salary_in} грн" 
+    else 
+      salary_out ="не указано" 
+    end
+    return salary_out
+  end
 end

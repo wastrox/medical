@@ -10,13 +10,13 @@
 
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <%= favicon_link_tag 'favicon.ico' %>
-  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "bootstrap-btn-group", "bootstrap-dropdown", :media => "all" %>
-  <%= javascript_include_tag "jquery-1.9.1.min", "selectbox", "about", "bootstrap-btn-group" %>
+  <%= stylesheet_link_tag "bootstrap-tooltip", "style", "bootstrap_buttons", "selectbox", "bootstrap-btn-group", "bootstrap-dropdown", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "selectbox", "about", "bootstrap-btn-group", "bootstrap-tooltip" %>
   <script type="text/javascript" src="//vk.com/js/api/openapi.js?101"></script>
   <%= csrf_meta_tags %>
   <script>
 	$(function() {
-		$( "#menu" ).menu();
+		$('.vacancy-name p a').tooltip({placement: 'left', delay: { hide: 200 }});
 	});
   </script>
   <!-- Google Tag Manager -->

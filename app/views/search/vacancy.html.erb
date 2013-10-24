@@ -8,31 +8,18 @@
                   $("tr:last-child th.line-bottom").remove();
                   $(".paper").css("margin-bottom", "15px"); 
             }
-
-            //Скрипт для переноса зарплаты на новую строку в заголовке .cap <h1>
-/*            var length_string = $(".cap h1").text().length;
-            function add_style_for_span() {
-                $(".cap h1 span").css("padding-right", "50px");
-            }
-            var i = 70
-            while(i < 80) {
-                  if (length_string == i) {
-                        add_style_for_span()
-                  }
-                  i++
-            }*/
       });
 </script>
 <div id="frame">
       <div class="cap">
             <% if current_user %>
                   <% if @vacancy.applicants.where(:id => current_user.id).empty? %>
-                        <h2 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, " %></h2> <h2 class="salary" style="white-space: nowrap;"><%= "#{@vacancy.salary} грн.)" %></h2>
+                        <h2 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, " %><span style="white-space: nowrap;"><%= salary_searh_helper(@vacancy) %></span></h2>
                   <% else %>
                         <h2 id="about">Вы откликнулись на эту вакансию,<%= link_to "Избранные вакансии", applicant_my_vacancies_index_url %></h2>
                   <% end %>
             <% else %>
-                  <h2 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, " %></h2> <h2 class="salary" style="white-space: nowrap;"><%= "#{@vacancy.salary} грн.)" %></h2>
+                  <h2 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, " %><span style="white-space: nowrap;"><%= salary_searh_helper(@vacancy) %></span></h2>
             <% end %>
       </div>
 
@@ -61,7 +48,7 @@
                               </tr>
       						<tr>
       							<td>Зарплата</td>
-      							<td><%= @vacancy.salary %> грн.</td>
+      							<td><%= salary_helper(@vacancy) %></td>
       						</tr>
                               <tr>
                               	<td>Регион</td>
