@@ -23,7 +23,7 @@ namespace :genxml_vacancies do
 		        xml.companyinfo_     vacancy.company.description
 		        xml.description_     vacancy.description
 		        xml.contacts_     "#{vacancy.company.company_contacts.first.name}: #{vacancy.company.company_contacts.first.phone}, email: #{vacancy.company.employer.email}"
-		        xml.expire_     vacancy.created_at.localtime.next_month.to_formatted_s(:db)
+		        xml.expire_     vacancy.publicated_at.next_month.strftime("%d.%m.%Y")
 		      }
 		    end
 		  }
