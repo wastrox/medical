@@ -9,6 +9,6 @@ class NewsController < ApplicationController
   end
 
   def show
-  	@article = Article.find_by_title(params[:id])
+  	@article = Article.find(params[:id])
   end
 end

@@ -80,7 +80,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def findArticle
-    @article ||= Article.find_by_title(params[:id])
+    @article ||= Article.find(params[:id])
   end
 
   def default_published_value

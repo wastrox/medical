@@ -3,7 +3,6 @@ class Article < ActiveRecord::Base
   has_attached_file :cover, :styles => { :index => "300x210>" }
 
   validates_presence_of :title, :body, :cover
-  validates_uniqueness_of :title
 
   before_create :publicated_at
 
@@ -36,7 +35,7 @@ class Article < ActiveRecord::Base
 
     def to_param
       article_title = Russian.translit(title)
-      article_title.parameterize
+      "#{id}-#{article_title.parameterize}"
     end
 
     protected
