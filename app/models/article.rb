@@ -3,9 +3,9 @@ class Article < ActiveRecord::Base
   has_attached_file :cover, :styles => { :index => "300x210>" }
 
   validates_presence_of :title, :body, :cover
+  validates_uniqueness_of :title
 
   before_create :publicated_at
-  after_destroy :appoint_DefaultArticle_if_no_such
 
   	state_machine :state, :initial => :published do
       before_transition [:default, :published] => :archive, :do => :will_not_be_published
@@ -34,6 +34,11 @@ class Article < ActiveRecord::Base
       end
     end
 
+    def to_param
+      article_title = Russian.translit(title)
+      article_title.parameterize
+    end
+
     protected
 
     def publicated_at
@@ -42,16 +47,5 @@ class Article < ActiveRecord::Base
 
     def will_not_be_published
       self.published_at = nil
-    end
-
-    def find_defaultArticle
-      Article.where(state: "default")
-    end
-
-    def appoint_DefaultArticle_if_no_such
-      articles = find_defaultArticle
-      if articles.empty?
-        Article.last.default
-      end
     end
 end

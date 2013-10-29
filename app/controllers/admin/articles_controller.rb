@@ -5,7 +5,7 @@ class Admin::ArticlesController < ApplicationController
   skip_before_filter :require_login
   before_filter :initArticle, :only => [:new, :create]
   before_filter :allNews, :only => :index
-  before_filter :findArticle, :only => [:edit, :update, :show, :review_index_page, :destroy, :default_published_value, :archive]
+  before_filter :findArticle, :only => [:edit, :update, :show, :review_index_page, :default_published_value, :archive]
   before_filter :default_published_value, :only => :edit
 
   def index
@@ -47,6 +47,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def destroy
+    @article = Article.find_by_id(params[:id])
     if @article.destroy
       respond_to do |format|
         format.html { redirect_to admin_articles_url }
@@ -79,7 +80,7 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def findArticle
-    @article ||= Article.find(params[:id])
+    @article ||= Article.find_by_title(params[:id])
   end
 
   def default_published_value

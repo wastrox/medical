@@ -1,7 +1,33 @@
+    <style>
+    	#error_explanation {
+    		padding: 10px;
+    		border: 1px solid rgba(255, 124, 134, 0.5);
+    		border-radius: 6px;
+    		margin: 10px 0;
+    		box-shadow: 0 6px 7px -3px rgba(159, 159, 159, 0.5);
+    	}
+
+    	#error_explanation ul li {
+    		list-style-type: none;
+    		padding: 5px 0 0 10px;
+    		color: #767676;
+    	}
+    </style>
+
     <h3>Написать статью</h3>
 
 	<div class="boxed">
 		<%= form_for([:admin, @article], :html => { :class => 'standart_form news_form' }) do |f| %>
+			<% if @article.errors.any? %>
+			  <div id="error_explanation">
+			    <h3>Статья не может быть сохранена, заполните поля:</h3>
+			    <ul>
+			    	<% @article.errors.full_messages.each do |msg| %>
+			    	  <li><%= "#{msg}" %></li>
+			    	<% end %>
+			    </ul>
+			  </div>
+			<% end %>
 			<div class='item' style="margin-bottom: 0px;">
 			    <div class='field'>
 			      <%= image_tag @article.cover.url(:index), :alt => "", :id => "image-path-photo" %>

@@ -6,7 +6,7 @@ class Admin::TasksController < ApplicationController
   
   def index
     @incomplete_tasks = Task.where(:complete => false)
-    @complete_tasks = Task.where(:complete => true)
+    @complete_tasks = Task.where(:complete => true).order("updated_at desc").limit(10)
 
     respond_to do |format|
       format.html # index.html.erb
