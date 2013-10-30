@@ -8,7 +8,6 @@ class Article < ActiveRecord::Base
 
   	state_machine :state, :initial => :published do
       before_transition [:default, :published] => :archive, :do => :will_not_be_published
-      after_transition [:default, :published] => :archive, :do => :appoint_DefaultArticle_if_no_such
       before_transition [:published, :archive] => :default, :do => :publicated_at
       before_transition [:default, :archive] => :published, :do => :publicated_at
 

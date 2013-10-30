@@ -2014,6 +2014,13 @@ a.decoration_none {
 	display: inline;
 	float: right;
 }
+
+.footer-frame {
+	background-color: #F5F3F1;
+	border-radius: 0 0 14px 14px;
+	padding: 19px 22px 18px 34px;
+	margin-bottom: 3px;
+}
 /*----------------------------------------------------------------------------*/
 
 .vip_company {
