@@ -58,7 +58,7 @@
 								<% @resume.experiences.each do |experience| %>
 								<tr>
 									<td><%= experience.position %></td>
-									<td>"<%= experience.company %>", <%= "#{experience.month_from} #{experience.year_from}" %> – 
+									<td><%= experience.company %>, <%= "#{experience.month_from} #{experience.year_from}" %> – 
 										<% if experience.current_workplace %> 
 											настоящее время. 
 										<% else %> 
