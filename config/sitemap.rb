@@ -30,15 +30,15 @@ Sitemap::Generator.instance.load :host => "medical.netbee.ua" do
   literal "/companies"
   
   
-  Resume.search.each do |resume|
+  Resume.where(:state => ["published", "hot"]).each do |resume|
     literal "/search/resume/#{resume.to_param}"
   end
 
-  Vacancy.search.each do |vacancy|
+  Vacancy.where(:state => ["published", "hot"]).each do |vacancy|
     literal "/vacancy/#{Russian.translit(vacancy.category.scope.title).parameterize}/#{Russian.translit(vacancy.category.name).parameterize}/#{vacancy.to_param}"
   end
 
-  Company.search.each do |company|
+  Company.where(:state => ["published", "vip"]).each do |company|
     literal "/company/#{company.to_param}"
   end
 
@@ -48,5 +48,9 @@ Sitemap::Generator.instance.load :host => "medical.netbee.ua" do
 
   Category.all.each do |category|
     literal "/vacancy/#{Russian.translit(category.scope.title).parameterize}/#{Russian.translit(category.name).parameterize}"
+  end
+
+  Article.where(:state => ["default", "published"]).each do |article|
+    literal "/news/#{article.to_param}"
   end
 end
