@@ -42,7 +42,7 @@ Medical::Application.routes.draw do
 
 	match "confirmation" => "confirmation#index"
   match "confirmation/account_type" => "confirmation#account_type"	
-	match 'activate(/:token)' => 'accounts#activate', :as => :activate_account
+	match 'activate/:token' => 'accounts#activate', :as => :activate_account
 	match 'confirmation/applicant/(/:token)' => 'confirmation#applicant'
 	match 'confirmation/employer/(/:token)' => 'confirmation#employer'
 	

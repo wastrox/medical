@@ -28,7 +28,8 @@ class AccountsController < ApplicationController
 			cookies.permanent[:salt] = @account.salt
 			redirect_to :controller => 'confirmation', :action => 'account_type'
 		else
-		  redirect_to :controller => 'confirmation', :action => 'index', notice: "Аккаунт не активирован, что-то пошло не так ("
+      flash[:notice] = "Аккаунт не активирован, что-то пошло не так ("
+		  redirect_to :controller => 'confirmation', :action => 'index' 
 		end
 	end
 
@@ -87,11 +88,13 @@ class AccountsController < ApplicationController
     end
   end
 
-  private
+  protected
 
-	def find_account
+  def find_account
     @account = Account.find_by_token(params[:token])
   end
+
+  private
 
   def update_time_account_activity
     if current_user

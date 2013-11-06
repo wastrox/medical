@@ -3,7 +3,7 @@ class Account < ActiveRecord::Base
 	set_inheritance_column :account_type
   attr_accessible :email, :password, :account_type
 
-  validates_presence_of [:email, :password]
+  validates_presence_of [:email, :password], :on => :create
   
   validates :email, :uniqueness => {:message => "Пользователь с таким email уже зарегистрирован."},
                     :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
