@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
 
 	before_filter :find_account, :only => [:activate, :edit, :update]
   after_filter :update_time_account_activity, :only => [:activate]
-	skip_before_filter :require_login, :only => [:new, :create, :activate, :recover, :email_recovery, :edit, :update, :reactive, :active_recovery]
+	skip_before_filter :require_login, :only => [:new, :create, :edit, :update, :activate, :recover, :email_recovery, :reactive, :active_recovery]
 	
   def new
     @account = Account.new
@@ -60,6 +60,7 @@ class AccountsController < ApplicationController
       render "recover"
     else
       account.send_password_recovery!
+      flash[:notice] = "Вам была отправлена ссылка подтверждения профиля на #{account.email}. Перейдите по ссылке, указанной в этом письме."
       redirect_to :controller => 'confirmation', :action => 'index'
     end
   end
@@ -68,33 +69,22 @@ class AccountsController < ApplicationController
   end
 
   def update
-    #FIXME: => весь этот метод в мусорную корзину!
-    if params[:applicant]
-      if @account.update_attributes(:password => params[:applicant][:password])
-        cookies.permanent[:salt] = @account.salt
-        redirect_to "/"
+    #восстановления пароля
+    unless current_user
+      if current_user == nil && update_password(@account)
+        flash[:notice] = "Пароль успешно восстановлен, авторизируйтесь."
+        redirect_to sessions_new_url
       else
-        flash[:notice] = "Ошибка восстановления, проверте email и пароль, эти поля должны быть заполнены!"
-        render "edit"
+        error("Ошибка восстановления!")
       end
-    elsif params[:employer]
-      if @account.update_attributes(:password => params[:employer][:password])
-        cookies.permanent[:salt] = @account.salt
-        redirect_to "/"
+    else
+      if current_user && @account.authenticate(params[:old_password])
+        update_password(@account)
+        new_sessions(@account)
       else
-        flash[:notice] = "Ошибка восстановления, проверте email и пароль, эти поля должны быть заполнены!"
-        render "edit"
-      end
-    else 
-      if @account.update_attributes(:password => params[:account][:password])
-        cookies.permanent[:salt] = @account.salt
-        redirect_to "/"
-      else
-        flash[:notice] = "Ошибка восстановления, проверте email и пароль, эти поля должны быть заполнены!"
-        render "edit"
+        error("Все поля должны быть заполнены верно.")
       end
     end
-
   end
 
   private
@@ -108,5 +98,25 @@ class AccountsController < ApplicationController
       @account.add_new_session_count 
       @account.update_attribute(:session_last_time, Time.new) 
     end
+  end
+
+  def new_sessions(account)
+      cookies.permanent[:salt] = account.salt
+      flash[:notice] = "Пароль успешно изменен."
+      redirect_to :controller => 'confirmation', :action => 'index'
+  end
+
+  def error(message)
+    flash[:notice] = message
+    render "edit"
+  end
+
+  def update_password(account)
+    case account.account_type
+      when "Applicant" then param = params[:applicant]
+      when "Employer" then param = params[:employer]
+      when nil then param = params[:account]
+    end
+    account.update_attributes(:password => param.fetch("password"))
   end
 end

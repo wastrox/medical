@@ -75,6 +75,8 @@
 						<span class="line-bottom"></span>
 						<li><%= link_to "Избранные вакансии", applicant_my_vacancies_index_url %></li>
 					<% end %>
+					<span class="line-bottom"></span>
+					<li><%= link_to "Смена пароля", change_password_path(current_user.token) %></li>
 				</ul>
 			</div>
 		</div>

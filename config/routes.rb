@@ -48,8 +48,8 @@ Medical::Application.routes.draw do
 	
   resources :accounts
 
-  match "accounts/edit(/:token)" => 'accounts#edit'
-  match "accounts/update(/:token)" => 'accounts#update'
+  match "accounts/edit/:token" => 'accounts#edit'
+  match "accounts/update/:token" => 'accounts#update', :as => "change_password"
 
   get "sessions/new/", to: "sessions#new"
   resources :sessions, :only => [:create]
