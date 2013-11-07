@@ -972,6 +972,15 @@ div.fields > div.item > div.field > input.year {
 	margin-bottom: 15px;
 }
 
+.ui-datepicker-trigger {
+	height: 25px;
+	width: 25px;
+	display: inline-block;
+	padding-left: 5px;
+	position: absolute;
+	top: 4px;
+}
+
 .ui-autocomplete {
 	list-style-type: none;
 	width: 351px;

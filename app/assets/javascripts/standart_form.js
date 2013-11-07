@@ -80,6 +80,7 @@ $(document).on('nested:fieldRemoved', function(event){
 
 $(document).ready(function(){
   	$("#phone").inputmask("mask", {"mask": "(099) 999 99 99"});
+  	$(".datepicker").inputmask("mask", {"mask": "99.99.9999"})
 
   	// Для ссылки Загрузать картинку или Загрузить фото
   	$("a.upload-photo").click(function(){
