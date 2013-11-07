@@ -33,13 +33,13 @@
 		<div class='item'>
 			<%= f.label :date, 'Дата рождения' %>
 			<div class='field'>
-				<%= f.text_field :date, :value => "#{@profile.date}", :class => "datepicker", :placeholder => " дд/мм/гггг" %>
+				<%= f.text_field :date, :value => "#{@profile.date.strftime('%d.%m.%Y')}", :class => "datepicker", :placeholder => " дд/мм/гггг" %>
 			</div>
 		</div>
 		<div class='item' style="margin-bottom: 0px;">
 			<%= f.label :phone, 'Мобильный телефон' %>
 			<div class='field'>
-				<%= f.text_field :phone, :value => "#{@profile.phone}" %>
+				<%= f.text_field :phone, :value => "#{@profile.phone}", :type => "tel", :id => "phone", :placeholder => "+(0xx) xxx xx xx", :min => "10" %>
 			</div>
 		</div>
 		<div class='item' style="margin-bottom: 0px;">

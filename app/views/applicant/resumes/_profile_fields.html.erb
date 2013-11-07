@@ -36,7 +36,7 @@
 		<% if @profile.date.nil? %>
 			<%= f.text_field :date, :class => "datepicker", :placeholder => "дд.мм.гггг" %>
 		<% else %>
-			<%= f.text_field :date, :value => "#{@profile.date}", :class => "datepicker", :placeholder => "дд.мм.гггг" %>
+			<%= f.text_field :date, :value => "#{@profile.date.strftime('%d.%m.%Y')}", :class => "datepicker", :placeholder => "дд.мм.гггг" %>
 		<% end %>
 	</div>
 </div>
