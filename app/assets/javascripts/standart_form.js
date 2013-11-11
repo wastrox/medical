@@ -54,6 +54,7 @@ $(document).on('nested:fieldAdded', function(event){
 		  $('[data-wysihtml5-command="Outdent"]').attr("title", "Обратный отступ");
 		  $('[data-wysihtml5-command="Indent"]').attr("title", "Абзац");
 		});
+		//----------------------------------------------------------------------------------------
 
 		//Ссылка "Загрузить картинку", admin/seo/scope/:id/edit, для nested_form :categories формы scope
 		var uploadPhoto = field.find('a.upload-photo');
@@ -65,6 +66,7 @@ $(document).on('nested:fieldAdded', function(event){
 				$(uploadPhoto).before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
 		   		$(uploadPhoto).text("Изменить картинку");	
 		});
+		//----------------------------------------------------------------------------------------
 });	
 
 $(document).on('nested:fieldRemoved', function(event){
@@ -82,19 +84,38 @@ $(document).ready(function(){
   	$("#phone").inputmask("mask", {"mask": "(099) 999 99 99"});
   	$(".datepicker").inputmask("mask", {"mask": "99.99.9999"})
 
-  	// Для ссылки Загрузать картинку или Загрузить фото
+  	//  ------------------------------------------  Для ссылки Загрузать картинку или Загрузить фото -----------------------------------------------  	
   	$("a.upload-photo").click(function(){
   		$("#file").click();
 	});
 
-  	// Удаляет пустой тег img (когда нет логотипа компании, фотографии соискателя), пустой тег img ломает верстку
-	var img = $("#image-path-photo").attr("src");
-	if (img == "/photos/small/missing.png") {
-	    $("#image-path-photo").css("display", "none");
+	//Для фотографии соискателя и работодателя
+	$('form input[type=file]').change(function() {
+	    var v = $("#file").val();
+	    if (v != '' ) {
+	        $(".photo-msg").remove();
+	        $("#upload-photo-applicant").before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
+			$("#upload-photo-applicant").text("Изменить фото");	
+	        $("#upload-logo-company").before('<p class="photo-msg"> Логотип будет загружен после сохранения</p>');    
+	   		$("#upload-logo-company").text("Изменить логотип");
+			$("#upload-cover").before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
+	   		$("#upload-cover").text("Изменить картинку");	
+		}
+	    else {
+	    	$(".photo-msg").remove();
+	        $(".upload-photo").before('<p class="photo-msg">Фото не выбрано</p>');
+	    }
+	});
+
+	//Изменяет текст ссылки "Загрузить фото" на "Изменить фото", и для Профиля компании также.
+	var imgPath = $('#image-path-photo').attr("src");
+	var regText = /(missing)/i;
+	if (imgPath != undefined) {
+		if (imgPath.search(regText) == -1) {
+	        $("#upload-photo-applicant").text("Изменить");
+	    }
 	}
-	else if (img == "/logos/small/missing.png") {
-	    $("#image-path-photo").css("display", "none");
-	}
+	//---------------------------------------------------------------------------------------------------------------------------------------------
 
 	// Удаляет ссылки remove первых, обязательных, fields_for(Контактная информация компании)
 	$("#contacts-company + .fields > a.red-link").remove();
@@ -162,52 +183,17 @@ $(document).ready(function(){
 	    }
 	});
 
-	//Для фотографии соискателя и работодателя
-	$('form input[type=file]').change(function() {
-	    var v = $("#file").val();
-	    if (v != '' ) {
-	        $(".photo-msg").remove();
-	        $("#upload-photo-applicant").before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
-			$("#upload-photo-applicant").text("Изменить фото");	
-	        $("#upload-logo-company").before('<p class="photo-msg"> Логотип будет загружен после сохранения</p>');    
-    		$("#upload-logo-company").text("Изменить логотип");
-			$("#upload-cover").before('<p class="photo-msg"> Фото будет загружено после сохранения</p>');
-    		$("#upload-cover").text("Изменить картинку");	
-		}
-	    else {
-	    	$(".photo-msg").remove();
-	        $(".upload-photo").before('<p class="photo-msg">Фото не выбрано</p>');
-	    }
-	});
-
-	//Изменяет текст ссылки "Загрузить фото" на "Изменить фото", и для Профиля компании также.
-	var image = $('#image-path-photo').attr("src");
-    if (image != '/photos/small/missing.png' ) {
-        $("#upload-photo-applicant").text("Изменить фото");
-    }
-    if (image != '/logos/small/missing.png') {
-    	$("#upload-logo-company").text("Изменить логотип");
-    }
 
     //Заменяет value чекбокса "Другой вариант"
 	$("input").click(function() {
 		var v = $("#timetable_input").val();
-    	$("#timetable_radio_button").val(v)
+    	$("#timetable_radio_button").val(v);
 	})
 
 	//Окрашивает lable "Период работы" если данные не валидны
 	$(".experience-date > .field_with_errors").parent().parent().parent().find(".period_of_work").css("color", "#FF7C86");
 	//Окрашивает label "Персональные данные" если не валидно
 	$("#personal-date > .field_with_errors").parent().find("label").css("color", "#FF7C86");
-
-	//Убирает логотип и аватар если они пусты
-	var img = $("img.photo-applicant");
-	if (img.attr("alt") == "Missing") {
-    	img.parent().remove();
-	}
-
-	// Заполняется поле зарплата == 0
-	//salary - -- --- ---- $("#salary").attr("value", 0);
 
 	//Автозаполнение для input Города в Резюме
 		(function( $ ) {
@@ -356,4 +342,5 @@ $(document).ready(function(){
     $('[data-wysihtml5-command="Indent"]').attr("title", "Абзац");
   });
 });
+//----------------------------------------------------------------------------------------
 
