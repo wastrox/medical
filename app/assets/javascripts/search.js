@@ -8,8 +8,12 @@ $(document).ready(function(){
 	$("img.photo-applicant").attr("alt", "Фото профиля");
 	
 	// Удаляет контейнер с обложкой СЕО
-	var img = $(".cover_news").attr("src");
-	if (img == "/covers/index/missing.png") {
-	    $(".cover_article_show_pag").css("display", "none");
+	var img = $(".cover_news");
+	var regText = /(missing)/i;
+	var imgPath = img.attr("src");
+	if (img.is(".cover_news") == true) {
+		if (imgPath.search(regText) != -1) {
+		    $(".cover_article_show_pag").css("display", "none");
+		}
 	}
 });
