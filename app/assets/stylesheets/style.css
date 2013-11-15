@@ -1143,6 +1143,10 @@ tr.clear-border td {
 .not-padding {
 	padding-top: 0px !important;
 }
+
+.message_for_unregistered_user {
+	font-weight: bold;
+}
 	
 /*----------------------------------------------------------------------------*/
 
