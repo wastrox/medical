@@ -10,7 +10,6 @@ $(document).ready(function(){
 
 <div id="frame">
 	<div class="cap">
-
 		<% if current_user %>
 		      <% if @resume.employers.where(:id => current_user.id).empty? %>
 					<h2 id="about"><%= @resume.position %></h2>
@@ -20,8 +19,6 @@ $(document).ready(function(){
 		<% else %>
 			<h2 id="about"><%= @resume.position %></h2>
 		<% end %>
-
-
 	</div>
 	<div class="boxed" id="cabinet">
 		<% if flash[:notice] %>
@@ -33,7 +30,12 @@ $(document).ready(function(){
 		<table cellpadding="0" cellspacing="0" class="photo-name-applicant">
 			<tr>
 				<td class="photo-profile"><%= image_tag @resume.profile.photo.url(:show), :class => "photo-applicant" %></td>
-				<td><h2><%= @fullName %></td>
+				<td><% if current_user %>
+						<h2><%= @fullName %></h2>
+					<% else %>
+						<h2><%= @resume.profile.firstname%></h2>
+					<% end %>
+				</td>
 			</tr>
 		</table>
     <table class="paper" border="0" cellpadding="10">
@@ -49,14 +51,25 @@ $(document).ready(function(){
                         	<td>Регион</td>
                         	<td><%= @resume.city %></td>
                         </tr>
-                        <tr>
-                        	<td>Электронная почта</td>
-                        	<td><%= @resume.applicant.email %></td>
-                        </tr>
-                        <tr>
-                        	<td>Телефон</td>
-                        	<td><%= @resume.profile.phone %></td>
-                        </tr>
+                        <% if current_user %>
+	                        <tr>
+	                        	<td>Электронная почта</td>
+	                        	<td><%= @resume.applicant.email %></td>
+	                        </tr>
+	                        <tr>
+	                        	<td>Телефон</td>
+	                        	<td><%= @resume.profile.phone %></td>
+	                        </tr>
+	                    <% else %>
+	                    	<tr>
+	                        	<td>Электронная почта</td>
+	                        	<td><b><%= link_to "Войдите", login_url %> или <%= link_to "Зарегистрируйтесь", signup_url %>, </b> </td>
+	                        </tr>
+	                        <tr>
+	                        	<td>Телефон</td>
+	                        	<td><b>чтобы увидеть контакты работодателя.</b></td>
+	                        </tr>
+	                    <% end %>
                         <tr>
                         	<th colspan="2" class="line-bottom"></th>
                         </tr>
