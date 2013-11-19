@@ -5,13 +5,10 @@ namespace :genxml_vacancies do
     desc ""
     task(:start => :environment) do
 
-    	f = File.open(Rails.root.join('public', 'vacancies.xml'), 'w')
-
-		#@vacancies = Vacancy.where(:state => ["published", "hot"])
 		vacancies = Vacancy.find(:all, :conditions => { :state => ["published", "hot"] })
 
+		# Generate xml file for http://jooble.com.ua/
 		builder = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
-
 		  xml.jobs('hide_contacts' => '1') {
 		    vacancies.each do |vacancy|
 		      xml.job('id' => vacancy.id) {
@@ -28,8 +25,37 @@ namespace :genxml_vacancies do
 		    end
 		  }
 		end
+
+		# Create xml file for http://jooble.com.ua/
+		f = File.open(Rails.root.join('public', 'vacancies.xml'), 'w')
 		f.puts builder.to_xml
 		f.close
+
+		# Generate xml file for http://ua.trovit.com/
+		trovitBuilder = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
+		  xml.trovit {
+		    vacancies.each do |vacancy|
+		      xml.ad('id' => vacancy.id) {
+		        xml.id(){          xml.cdata "#{vacancy.id}" }
+		        xml.title(){       xml.cdata  vacancy.name}
+		        xml.url(){         xml.cdata "http://medical.netbee.ua/vacancy/#{Russian.translit(vacancy.category.scope.title).parameterize}/#{Russian.translit(vacancy.category.name).parameterize}/#{vacancy.to_param}"}
+		        xml.content(){     xml.cdata  vacancy.description }
+		        xml.company() {    xml.cdata vacancy.company.name }
+		        xml.experience() { xml.cdata vacancy.experiences }
+		        xml.category(){    xml.cdata vacancy.category.name }
+		        xml.salary(){ 	   xml.cdata "#{vacancy.salary} грн" }
+		        xml.city(){ 	   xml.cdata vacancy.city }
+		        xml.date(){ 	   xml.cdata vacancy.publicated_at.strftime("%d.%m.%Y") }
+		        xml.expiration_date(){ xml.cdata vacancy.publicated_at.next_month.strftime("%d.%m.%Y") }
+		      }
+		    end
+		  }
+		end
+
+		# Create xml file for http://ua.trovit.com/
+		trovitFile = File.open(Rails.root.join('public', 'vacanciesForTrovit.xml'), 'w')
+		trovitFile.puts trovitBuilder.to_xml
+		trovitFile.close
 
 	end # => close task
 end  # => close namespace
