@@ -70,7 +70,7 @@
                               	<th colspan="2" class="line-bottom"></th>
                               </tr>
                               <tr>
-                                    <% if current_user && current_user.active? %>
+                                    <% if userIsCustomer! %>
                                     	<td>Контактная информация</td>
                                     	<td> <% @vacancy.company.company_contacts.each do |contact| %>
                                     			<div><%= "#{contact.name}: #{contact.phone}" %></v>
@@ -81,8 +81,6 @@
                                                 <td style="height: 40px;"><%= @vacancy.company.employer.email %>
 
                                           </tr>
-                                    <% elsif current_user && current_user.active? == false %>
-                                          <td colspan="2" class="message_for_unregistered_user">Чтобы увидеть контакты работодателя <%= link_to "активируйте ваш профиль", active_recovery_path(:email =>current_user.email) %>.</td>
                                     <% else %>
                                           <td colspan="2" class="message_for_unregistered_user">Чтобы увидеть контакты работодателя <%= link_to "Войдите", login_url %> или <%= link_to "Зарегистрируйтесь", signup_url %>.</td>
                                     <% end %>

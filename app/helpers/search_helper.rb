@@ -15,13 +15,36 @@ module SearchHelper
 		if user.employer? and user.company?
 			company = user.company 
 			if company.published? or company.vip?
-				user = true
+				userEmployer = true
 			else
-				user = false
+				userEmployer = false
 			end
 		else 
-			user = false
+			userEmployer = false
 		end
-		return user
+		return userEmployer
+	end
+
+	def applicant!
+		user = current_user
+		if user.applicant? and user.resume?
+			resume = user.resume
+			case resume.state
+			when "published", "hot", "deferred"
+				userApplicant = true	
+			else
+				userApplicant = false
+			end
+		else
+			userApplicant = false
+		end
+	end
+
+	def userIsCustomer!
+		if current_user and (employer! or applicant!)
+			return true, "user is a customer company medical.netbee.ua"
+		else
+			return false
+		end
 	end
 end
