@@ -9,4 +9,19 @@ module SearchHelper
 		end
 		return salary_out
 	end
+
+	def employer!
+		user = current_user
+		if user.employer? and user.company?
+			company = user.company 
+			if company.published? or company.vip?
+				user = true
+			else
+				user = false
+			end
+		else 
+			user = false
+		end
+		return user
+	end
 end
