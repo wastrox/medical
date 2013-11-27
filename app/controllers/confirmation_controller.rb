@@ -26,6 +26,7 @@ class ConfirmationController < ApplicationController
 
   def yes
     @text = "Спасибо, в ближайшее время мы создадим для Вас бесплатный аккаунт и разместим Вашу информацию на нашем сайте."
+    Notifier.letter_to_admin("Работа привалила, кто-то кликнул на YES", "Уважаемые модераторы, создайте новый аккаунт на нашем замечательном сайте ^_^").deliver
   end
 
   def no
