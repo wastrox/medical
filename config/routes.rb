@@ -19,6 +19,7 @@ Medical::Application.routes.draw do
   get "confirmation/index"
   get "confirmation/yes", to: "confirmation#yes"
   get "confirmation/no", to: "confirmation#no"
+  match "confirmation/deliver_mail", to: "confirmation#deliver_mail"
   
   get 'signup', to: 'accounts#new', as: 'signup'
   get "login", to: "sessions#new", as: "login"

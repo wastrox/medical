@@ -1,15 +1,36 @@
+<style>
+  input {
+      border: 1px solid #CCCCCC;
+      border-radius: 6px;
+      color: #767676;
+      font-size: 14px;
+      height: 35px;
+      padding-left: 7px;
+      width: 240px;
+      margin-bottom: 25px;
+  }
+  
+  .input-sub { margin: 0 0 25px 5px !important;}
+</style>  
+
+
 <div class="link-navigate">
     <h2 class="title">Регистрация</h2>
     <%= link_to "Вход", login_url %>
 </div>
 <div id="content">
 	<div>
-		<% if @text %>
-      <div class="error_messages">
-          <div class="alert alert-block alert-success">
-                <p id="notice" ><%= @text %></p>
-          </div>
-      </div>
-    <% end %>
-	</div>
+      <% if flash[:notice] %>
+        <div class="error_messages">
+            <div class="alert alert-block alert-success">
+                  <p id="notice" ><%= flash[:notice] %></p>
+            </div>
+        </div>
+      <% end %>
+      <p style="margin: 25px 0 25px 0;">Для подтверждения введите ваш email:</p>
+      <%= form_tag :controller => "confirmation", :action => "deliver_mail", method: :get do %>
+            <%= text_field_tag :email, params[:email] %>
+            <%= submit_tag "OK", :class => "input-sub btn btn-warning", :id => "btn-search" %>  
+      <% end %>
+  </div>
 </div><!-- #content-->
