@@ -689,6 +689,10 @@ form label {
 .icon-small img {
 	margin-right: 5px;
 }
+
+input[type="email"] {
+	text-transform: lowercase;
+}
 /*----------------------------------------------------------------------------*/
 
 /*------------------------- create resume long ------------------------------*/

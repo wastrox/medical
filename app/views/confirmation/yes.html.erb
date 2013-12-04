@@ -29,7 +29,7 @@
       <% end %>
       <p style="margin: 25px 0 25px 0;">Для подтверждения введите ваш email:</p>
       <%= form_tag :controller => "confirmation", :action => "deliver_mail", method: :get do %>
-            <%= text_field_tag :email, params[:email] %>
+            <%= text_field_tag :email, params[:email], :type => :email %>
             <%= submit_tag "OK", :class => "input-sub btn btn-warning", :id => "btn-search" %>  
       <% end %>
   </div>
