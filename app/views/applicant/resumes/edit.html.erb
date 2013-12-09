@@ -1,7 +1,7 @@
 <div class="cap">
 	<img src="/assets/save.png" class="icon-save"><a href="#" class="save-link">Сохранить</a>
 	<img src="/assets/delete.png" class="icon-vdelete"><%= link_to("Удалить", applicant_resume_path(@resume.id), :method => :delete, :confirm => 'Вы, уверены, что хотите удалить резюме') %>
-	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to "Отменить", applicant_resume_path(@resume) %>
+	<img src="/assets/cancel.png" class="icon-cancel"><%= link_to("Сделать неактивным", :controller => "resumes", :action => "defer", :id => @resume.id) %>
 </div>
 <div class="boxed">
 	<% if flash[:notice] %>

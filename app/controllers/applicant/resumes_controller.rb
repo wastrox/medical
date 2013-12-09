@@ -104,7 +104,7 @@ end
 
   def defer
     @resume.defer
-    redirect_to applicant_resume_path(@resume)
+    redirect_to applicant_resumes_path
   end
 
   def add_vacancy_responded 

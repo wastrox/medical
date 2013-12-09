@@ -17,7 +17,7 @@ ru:
               vip: "VIP"
               secret: "Конфиденциально"
               rejected: "Отклонена модератором"
-              deferred: "Скрыта"
+              deferred: "Скрыто"
               archive: "В архиве"
               default: "Главная"
       errors:
