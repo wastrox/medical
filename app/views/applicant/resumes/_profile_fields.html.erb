@@ -44,9 +44,9 @@
 	<%= f.label :phone, 'Мобильный телефон' %>
 	<div class='field'>
 		<% if @profile.phone.nil? %>
-			<%= f.text_field :phone, :type => "tel", :id => "phone", :placeholder => "+(0xx) xxx xx xx", :min => "10" %>
+			<%= f.text_field :phone, :type => "tel", :id => "phone", :placeholder => "+xx(0xx) xxx xx xx" %>
 		<% else %>
-			<%= f.text_field :phone, :value => "#{@profile.phone}", :type => "tel", :id => "phone", :placeholder => "+(0xx) xxx xx xx", :min => "10" %>
+			<%= f.text_field :phone, :value => "#{@profile.phone}", :type => "tel", :id => "phone", :placeholder => "+xx(0xx) xxx xx xx" %>
 		<% end %>
 	</div>
 </div>

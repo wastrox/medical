@@ -47,7 +47,7 @@
     	<%= render :partial => "applicant/resumes/experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
     <%end %>
 
-	<%= applicant_fields.link_to_add "Добавить место работы", :experiences, :class => "yellow-link" %>
+	<%= applicant_fields.link_to_add "Добавить место работы", :experiences, :class => "yellow-link", :id => "add-experience" %>
 
 	<div class="clearfix"></div>
 	<span class="line-bottom"></span>
@@ -58,7 +58,7 @@
     	<%= render :partial => "applicant/resumes/education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
     <% end %>
 
-    <%= applicant_fields.link_to_add "Добавить место учебы", :educations, :class => "yellow-link" %>
+    <%= applicant_fields.link_to_add "Добавить место учебы", :educations, :class => "yellow-link", :id => "add-education" %>
 	
 	<div class="clearfix"></div>
 	<span class="line-bottom"></span>

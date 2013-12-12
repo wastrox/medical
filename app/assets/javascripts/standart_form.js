@@ -53,6 +53,7 @@ $(document).on('nested:fieldAdded', function(event){
 		  $('[data-wysihtml5-command="insertOrderedList"]').attr("title", "Нумерованный список");
 		  $('[data-wysihtml5-command="Outdent"]').attr("title", "Обратный отступ");
 		  $('[data-wysihtml5-command="Indent"]').attr("title", "Абзац");
+
 		});
 		//----------------------------------------------------------------------------------------
 
@@ -81,7 +82,16 @@ $(document).on('nested:fieldRemoved', function(event){
 });
 
 $(document).ready(function(){
-  	$("#phone").inputmask("mask", {"mask": "(099) 999 99 99"});
+
+	$('#add_education').click(function(){
+		$('html').scrollTo('#add-education', 500);
+	});
+
+	$('#add_experience').click(function(){
+		$('html').scrollTo('#add-experience', 1000);
+	});
+
+  	$("#phone").inputmask("mask", {"mask": "+" + "99(099) 999 99 99"});
   	$(".datepicker").inputmask("mask", {"mask": "99.99.9999"})
 
   	//  ------------------------------------------  Для ссылки Загрузать картинку или Загрузить фото -----------------------------------------------  	
