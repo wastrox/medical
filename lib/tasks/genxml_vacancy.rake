@@ -59,29 +59,29 @@ namespace :genxml_vacancies do
 
 		#----------------------------------------------------------------------------------------------------------------------------------
 		# Generate xml file for Rabotalux
-		trovitBuilder = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
-		  xml.source('creationTime' => Time.now, 'host' => 'http://medical.netbee.ua/') {
-		    vacancies.each do |vacancy|
-		      xml.vacancy('id' => vacancy.id) {
-		        xml.title_   		vacancy.name
-		        xml.company_    	vacancy.company.name
-		        xml.site_   		"http://#{vacancy.company.site}" 
-		        xml.description_    vacancy.description
-		        xml.source_   		"http://medical.netbee.ua/vacancy/#{Russian.translit(vacancy.category.scope.title).parameterize}/#{Russian.translit(vacancy.category.name).parameterize}/#{vacancy.to_param}"
-		        xml.category_    	vacancy.category.name
-		        xml.date_			vacancy.publicated_at.strftime("%d.%m.%Y")
-		        xml.salary{     		xml.amount_ vacancy.salary 
-		        						xml.currency_ "UAH" }
-		        xml.location_     	vacancy.city
-		      }
-		    end
-		  }
-		end
+		# trovitBuilder = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
+		#   xml.source('creationTime' => Time.now, 'host' => 'http://medical.netbee.ua/') {
+		#     vacancies.each do |vacancy|
+		#       xml.vacancy('id' => vacancy.id) {
+		#         xml.title_   		vacancy.name
+		#         xml.company_    	vacancy.company.name
+		#         xml.site_   		"http://#{vacancy.company.site}" 
+		#         xml.description_    vacancy.description
+		#         xml.source_   		"http://medical.netbee.ua/vacancy/#{Russian.translit(vacancy.category.scope.title).parameterize}/#{Russian.translit(vacancy.category.name).parameterize}/#{vacancy.to_param}"
+		#         xml.category_    	vacancy.category.name
+		#         xml.date_			vacancy.publicated_at.strftime("%d.%m.%Y")
+		#         xml.salary{     		xml.amount_ vacancy.salary 
+		#         						xml.currency_ "UAH" }
+		#         xml.location_     	vacancy.city
+		#       }
+		#     end
+		#   }
+		# end
 
-		# Create xml file for Rabotalux
-		rabotaluxFile = File.open(Rails.root.join('public', 'vacanciesForRabotalux.xml'), 'w')
-		rabotaluxFile.puts trovitBuilder.to_xml
-		rabotaluxFile.close
+		# # Create xml file for Rabotalux
+		# rabotaluxFile = File.open(Rails.root.join('public', 'vacanciesForRabotalux.xml'), 'w')
+		# rabotaluxFile.puts trovitBuilder.to_xml
+		# rabotaluxFile.close
 		#--------------------------------------------------------------------------------------------------------------------------------
 
 	end # => close task
