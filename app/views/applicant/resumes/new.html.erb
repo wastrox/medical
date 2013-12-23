@@ -13,7 +13,7 @@
 		<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
 		<div id="personal-date">
 			<%= applicant_fields.check_box :personal_data %>
-			<%= label :personal_data, "Согласен с условиями" %> <%= link_to "пользовательского соглашения", personal_data_index_url, :class => "personal_data"%>
+			<%= label :personal_data, "Согласен с условиями" %> <%= link_to "пользовательского соглашения", personal_data_index_url, :class => "personal_data", :target => "_blank"%>
 		</div>
 		
 		<span class="line-bottom line-bottom-company"></span>
