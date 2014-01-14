@@ -39,7 +39,7 @@ $(document).ready(function(){
 				</td>
 			</tr>
 		</table>
-    <table class="paper" border="0" cellpadding="10">
+    	<table class="paper" border="0" cellpadding="10">
                         <tr>
                         	<td>Желаемая должность</td>
 	                        <td><%= @resume.position %></td>
@@ -60,6 +60,24 @@ $(document).ready(function(){
 	                        <tr>
 	                        	<td>Телефон</td>
 	                        	<td><%= @resume.profile.phone %></td>
+	                        </tr>
+                        <% elsif current_user && current_user.employer? && !current_user.company %>
+                        	<tr>
+	                        	<td>Электронная почта</td>
+	                        	<td><b><%= link_to "Создайте профиль",new_employer_profile_company_path %> компании, </b> </td>
+	                        </tr>
+	                        <tr>
+	                        	<td>Телефон</td>
+	                        	<td><b>чтобы увидеть контакты соискателя.</b></td>
+	                        </tr>
+	                    <% elsif current_user && current_user.applicant? %>
+                        	<tr>
+	                        	<td>Электронная почта</td>
+	                        	<td><b>Контакты сосикателя могут видеть только</b> </td>
+	                        </tr>
+	                        <tr>
+	                        	<td>Телефон</td>
+	                        	<td><b><%= link_to "зарегистрированные", signup_url %> работодатели.</b></td>
 	                        </tr>
 	                    <% else %>
 	                    	<tr>
@@ -147,7 +165,7 @@ $(document).ready(function(){
 					<tr>
 					      <th colspan="2" class="line-bottom"></th>
 					</tr>
-				</table> 
+		</table> 
 				<% if current_user && current_user.employer? && current_user.company != nil %>
 				      <% if @resume.employers.where(:id => current_user.id).empty? %>
 				      <div id="button-bottom">
