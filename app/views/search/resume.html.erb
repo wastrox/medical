@@ -104,11 +104,12 @@ $(document).ready(function(){
 								<% @resume.experiences.each do |experience| %>
 								<tr>
 									<td><%= experience.position %></td>
-									<td><%= experience.company %>, <%= "#{experience.month_from} #{experience.year_from}" %> – 
+									<td><p><%= experience.company %></p>
+									<%= "#{experience.month_from} #{experience.year_from}" %> – 
 										<% if experience.current_workplace %> 
-											настоящее время. 
+											настоящее время 
 										<% else %> 
-											<%= "#{experience.month_till}  #{experience.year_till}." %>
+											<%= "#{experience.month_till}  #{experience.year_till}" %>
 										<% end %>
 										<p><%= raw experience.achievements %></p>
 									</td>
@@ -130,11 +131,11 @@ $(document).ready(function(){
 							<td><%= "#{education.college}" %></td>
 							<td style="border: 0;">
 								<% unless education.profession.empty? %>
-									<%= "#{education.profession}" %>
+									<%= "специальность #{education.profession}" %>
 								<% end %>
 
 								<% unless education.faculty.empty? %> 
-									<p><%= "Факультет " "#{education.faculty}" %></p>
+									<p><%= "факультет #{education.faculty}" %></p>
 								<% end %> 
 
 								<p><%= "#{education.diploma} -" %> 

@@ -22,7 +22,7 @@
                                   <% unless @company.site.empty? %>
                                         <tr>
                                           <td>Сайт компании</td>
-                                          <td><%= @company.site %></td>
+                                          <td><%= link_to @company.site, "http://#{@company.site}", :target => "_blank" %></td>
                                         </tr>
                                   <% end %>
                                   <tr>

@@ -58,7 +58,8 @@
 								<% @resume.experiences.each do |experience| %>
 								<tr>
 									<td><%= experience.position %></td>
-									<td><%= experience.company %>, <%= "#{experience.month_from} #{experience.year_from}" %> – 
+									<td><p><%= experience.company %></p>
+									 <%= "#{experience.month_from} #{experience.year_from}" %> – 
 										<% if experience.current_workplace %> 
 											настоящее время. 
 										<% else %> 
@@ -84,11 +85,11 @@
 							<td><%= "#{education.college}" %></td>
 							<td style="border: 0;">
 								<% unless education.profession.empty? %>
-									<%= "#{education.profession}" %>
+									<%= "специальность #{education.profession}" %>
 								<% end %>
 
 								<% unless education.faculty.empty? %> 
-									<p><%= "Факультет " "#{education.faculty}" %></p>
+									<p><%= "факультет #{education.faculty}" %></p>
 								<% end %> 
 
 								<p><%= "#{education.diploma} -" %> 

@@ -65,7 +65,7 @@ module ApplicationHelper
     if salary_in != 0 
       salary_out = "#{salary_in} грн" 
     else 
-      salary_out ="не указано" 
+      salary_out ="не указана" 
     end
     return salary_out
   end
