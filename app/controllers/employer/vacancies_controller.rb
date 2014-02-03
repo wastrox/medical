@@ -141,7 +141,15 @@ class Employer::VacanciesController < ApplicationController
   end
   
   def find_vacancy
-    @vacancy = Vacancy.find(params[:id])
+    find_employer
+    find_company
+
+    v = Vacancy.find(params[:id])
+    if v.company == @company
+      @vacancy = v
+    else
+      redirect_to employer_vacancies_url
+    end
   end
   
   def find_contacts

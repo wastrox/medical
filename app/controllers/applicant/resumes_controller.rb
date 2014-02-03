@@ -144,7 +144,7 @@ end
   end
 
   def findResume
-    @resume ||= Resume.find(params[:id])
+    @resume ||= @applicant.resume
   end
 
   def findApplicant

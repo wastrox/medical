@@ -27,6 +27,8 @@ class SearchController < ApplicationController
 		@title = "Резюме #{@resume.position}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Просмотр резюме #{@resume.position}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
 		@keywords = "#{@resume.position}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+
+		redirect_in_true_id(@resume)
 	end
 
 	def vacancy
@@ -37,10 +39,7 @@ class SearchController < ApplicationController
 		@description = "Просмотр вакансии #{@vacancy.name} компании #{@vacancy.company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
 		@keywords = "#{@vacancy.name}, #{@vacancy.company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 
-		respond_to do |format|
-		    format.html
-		    format.xml { render :xml => @vacancy }
-		end
+		redirect_in_true_id(@vacancy)
 	end
 
 	def company
@@ -49,6 +48,8 @@ class SearchController < ApplicationController
 		@title = "Компания #{@company.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Просмотр компании #{@company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
 		@keywords = "#{@company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+
+		redirect_in_true_id(@company)
 	end
 
 	def scope
@@ -94,5 +95,13 @@ class SearchController < ApplicationController
 	def all_company
 		@vip_companies = Company.where(:state => "vip").order("created_at desc")
 		@published_companies = Company.where(:state => "published").order("created_at desc").page(params[:page]).per(20)
+	end
+
+	protected
+
+	def redirect_in_true_id(str)
+		if params[:id]!= str.to_param
+		    redirect_to :action => action_name, :id => str.to_param, :status => 301
+		end
 	end
 end

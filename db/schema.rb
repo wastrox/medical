@@ -143,13 +143,6 @@ ActiveRecord::Schema.define(:version => 20131018122531) do
 
   add_index "hot_vacancies", ["vacancy_id"], :name => "index_hot_vacancies_on_vacancy_id"
 
-  create_table "news", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "profiles", :force => true do |t|
     t.integer  "resume_id"
     t.integer  "applicant_id"

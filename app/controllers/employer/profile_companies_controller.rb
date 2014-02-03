@@ -2,8 +2,8 @@
 class Employer::ProfileCompaniesController < ApplicationController
  layout "profile_company"	
  before_filter :init_company, :only => [:new, :create]
+ before_filter :find_employer, :only => [:index, :create, :show, :add_resume_responded, :edit, :update]
  before_filter :find_company, :only => [:edit, :update, :show]
- before_filter :find_employer, :only => [:index, :create, :show, :add_resume_responded]
  before_filter :require_account_type_employer, :check_account_type
 
   def index
@@ -88,7 +88,7 @@ class Employer::ProfileCompaniesController < ApplicationController
   end
   
   def find_company
-    @company = Company.find(params[:id])
+    @company = @employer.company
   end
   
   def find_employer
