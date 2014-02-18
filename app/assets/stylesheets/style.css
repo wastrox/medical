@@ -2104,7 +2104,8 @@ a.decoration_none {
 	text-align: justify
 }
 
-.seo-banner h1 {
+.seo-banner p {
+	font-weight: bold;
 	font-size: 10px; 
 	color: #888;
 }

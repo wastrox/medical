@@ -14,12 +14,12 @@
       <div class="cap">
             <% if current_user %>
                   <% if @vacancy.applicants.where(:id => current_user.id).empty? %>
-                        <h2 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, " %><span style="white-space: nowrap;"><%= salary_searh_helper(@vacancy) %></span></h2>
+                        <h1 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, " %><span style="white-space: nowrap;"><%= salary_searh_helper(@vacancy) %></span></h1>
                   <% else %>
-                        <h2 id="about">Вы откликнулись на эту вакансию,<%= link_to "Избранные вакансии", applicant_my_vacancies_index_url %></h2>
+                        <h1 id="about">Вы откликнулись на эту вакансию,<%= link_to "Избранные вакансии", applicant_my_vacancies_index_url %></h1>
                   <% end %>
             <% else %>
-                  <h2 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, " %><span style="white-space: nowrap;"><%= salary_searh_helper(@vacancy) %></span></h2>
+                  <h1 id="about"><%= "#{@vacancy.name} (опыт работы #{@vacancy.experiences}, " %><span style="white-space: nowrap;"><%= salary_searh_helper(@vacancy) %></span></h1>
             <% end %>
       </div>
 
