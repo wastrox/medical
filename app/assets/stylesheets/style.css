@@ -2104,8 +2104,8 @@ a.decoration_none {
 	text-align: justify
 }
 
-.seo-banner p {
+#header .seo-banner p.title {
 	font-weight: bold;
-	font-size: 10px; 
+	font-size: 10px !important; 
 	color: #888;
 }
