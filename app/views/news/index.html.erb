@@ -20,7 +20,7 @@
 					<div class="about-page">
 						<% @restArtcles.each do |article| %>
 							<ul class="all_news_list">
-								<li><%= link_to article.title, news_path(article) %> <span class="date_news"><%= article.published_at.strftime("%m.%d.%Y") %></span></li>
+								<li><%= link_to article.title, news_path(article) %> <span class="date_news"><%= article.published_at.strftime("%d.%m.%Y") %></span></li>
 							</ul>
 						<% end %>
 					</div>
