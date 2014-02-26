@@ -16,3 +16,5 @@ db/sphinx/*
 log/*.pid
 config/development.sphinx.conf
 db/schema.rb
+.ruby-gemset
+.ruby-version
