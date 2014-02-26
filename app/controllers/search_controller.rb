@@ -32,14 +32,19 @@ class SearchController < ApplicationController
 	end
 
 	def vacancy
-		@vacancy = Vacancy.find(params[:id])
+		vacancy = Vacancy.find(params[:id])
 		@top_vacancies = Vacancy.where(:state => ["published", "hot"]).order("publicated_at desc").limit(3)
 
-		@title = "Вакансия #{@vacancy.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
-		@description = "Просмотр вакансии #{@vacancy.name} компании #{@vacancy.company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
-		@keywords = "#{@vacancy.name}, #{@vacancy.company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+		@title = "Вакансия #{vacancy.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
+		@description = "Просмотр вакансии #{vacancy.name} компании #{vacancy.company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
+		@keywords = "#{vacancy.name}, #{vacancy.company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 
-		redirect_in_true_id(@vacancy)
+		if params[:city] && params[:city] == Russian.translit(vacancy.city).parameterize
+			@vacancy = vacancy
+			redirect_in_true_id(@vacancy)
+		else
+			redirect_to :action => action_name, :city => Russian.translit(vacancy.city).parameterize, :id => vacancy.to_param, :status => 301	
+		end
 	end
 
 	def company
@@ -64,7 +69,11 @@ class SearchController < ApplicationController
 		@scope = params[:scope]
 
 		@categories = Category.where(:scope_id => scope_id)
-		@vacancies = Vacancy.where(:category_id => @categories, :state => ["published", "hot"]).order("publicated_at desc")
+		if params[:city]
+			@vacancies = Vacancy.where(:category_id => @categories, :city => city_name_params_translit, :state => ["published", "hot"]).order("publicated_at desc")
+		else
+			@vacancies = Vacancy.where(:category_id => @categories, :state => ["published", "hot"]).order("publicated_at desc")
+		end
 
 		@title = "Вакансии, сфера деятельности #{Scope.find(scope_id).title}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Список вакансий медицинских компаний в сфере деятельности #{Scope.find(scope_id).title}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
@@ -81,11 +90,17 @@ class SearchController < ApplicationController
 		category_hash = Hash[*category_array.flatten] 
 		category_id = category_hash[params[:category]]
 
+		
+
 		@scope = params[:scope]
 		@category = params[:category]
 		@category_by_view= Category.find_by_id(category_id)
-
-		@vacancies = Vacancy.where(:category_id => category_id, :state => ["published", "hot"]).order("publicated_at desc")
+		
+		if params[:city]
+			@vacancies = Vacancy.where(:category_id => category_id, :city => city_name_params_translit, :state => ["published", "hot"]).order("publicated_at desc")
+		else
+			@vacancies = Vacancy.where(:category_id => category_id, :state => ["published", "hot"]).order("publicated_at desc")
+		end
 
 		@title = "Вакансии категории #{Category.find(category_id).name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Список вакансий в категории #{Category.find(category_id).name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
@@ -97,7 +112,26 @@ class SearchController < ApplicationController
 		@published_companies = Company.where(:state => "published").order("created_at desc").page(params[:page]).per(20)
 	end
 
+	def city
+		@vacancies = Vacancy.where(:city => city_name_params_translit, :state => ["published", "hot"]).order("publicated_at desc")
+	end
+
 	protected
+
+	def city_class_hash
+		city_array = Array.new
+		City.all.each do |c|
+			city_array << [Russian.translit(c.name).parameterize, c.id]
+		end
+		city_hash = Hash[*city_array.flatten]
+		return city_hash
+	end
+
+	def city_name_params_translit
+		city_id = city_class_hash[params[:city]]
+		city_name = City.find(city_id).name
+		return city_name
+	end
 
 	def redirect_in_true_id(str)
 		if params[:id]!= str.to_param
