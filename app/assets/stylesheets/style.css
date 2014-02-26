@@ -2109,3 +2109,10 @@ a.decoration_none {
 	font-size: 10px !important; 
 	color: #888;
 }
+
+.cap a.news_url {
+	margin: 0px;
+	color: #767676;
+    font-size: 18px;
+    margin-left: 6px;
+}
