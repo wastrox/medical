@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131018122531) do
+ActiveRecord::Schema.define(:version => 20140319100946) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20131018122531) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "scope_id"
-    t.text     "description"
+    t.text     "description",        :null => false
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
@@ -190,7 +190,7 @@ ActiveRecord::Schema.define(:version => 20131018122531) do
     t.string   "title"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-    t.text     "description"
+    t.text     "description",        :null => false
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"

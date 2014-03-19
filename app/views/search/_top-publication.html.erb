@@ -20,7 +20,7 @@
 		<div class="boxed-nav">
 			<ul>
 				<% @top_vacancies.each do |vacancy| %>
-					<li><%= link_to vacancy.name, {:controller => :search, :action => :vacancy, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></li>
+					<li><%= link_to vacancy.name, {:controller => "search", :action => "vacancy", :city =>Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param}, :title => "#{vacancy.name}" %></li>
 					<span class="line-bottom"></span>
 				<% end %>
 			</ul>

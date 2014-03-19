@@ -29,8 +29,5 @@
 <div class="clearfix"></div>
 
 <div class="link-scope">
-	<% Scope.all.each do |scope| %>
-		<% s = Russian.translit(scope.title).parameterize %>
-		<%= link_to "#{scope.title}", {:controller => :search, :action => "scope", :scope => s} %> <span>|</span>
-	<% end %> 
+	<%= render partial: "scope_link" %>
 </div>

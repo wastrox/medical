@@ -4,7 +4,8 @@
 class SearchController < ApplicationController
 	layout "search"
 	skip_before_filter :require_login, :only => [:index, :resume, :vacancy, :company, :scope, :category, :all_company]
-	
+	before_filter :redirect_vacancy, :only => [:scope, :category]
+
 	def index
 		search_params = params[:search].to_s + " " + params[:city].to_s 
 		if params[:sample] == "1"
@@ -137,5 +138,14 @@ class SearchController < ApplicationController
 		if params[:id]!= str.to_param
 		    redirect_to :action => action_name, :id => str.to_param, :status => 301
 		end
+	end
+
+	def redirect_vacancy
+	    if params[:category]
+	    	vacancy = Vacancy.find(params[:category]) rescue nil
+	    	if !vacancy.nil?
+	    		redirect_to :action => :vacancy, :city => Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param, :status => 301
+	    	end
+	    end
 	end
 end

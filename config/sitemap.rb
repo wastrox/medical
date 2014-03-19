@@ -35,7 +35,7 @@ Sitemap::Generator.instance.load :host => "medical.netbee.ua" do
   end
 
   Vacancy.where(:state => ["published", "hot"]).each do |vacancy|
-    literal "/vacancy/#{Russian.translit(vacancy.category.scope.title).parameterize}/#{Russian.translit(vacancy.category.name).parameterize}/#{vacancy.to_param}"
+    literal "/#{Russian.translit(vacancy.city).parameterize}/vacancy/#{Russian.translit(vacancy.category.scope.title).parameterize}/#{Russian.translit(vacancy.category.name).parameterize}/#{vacancy.to_param}"
   end
 
   Company.where(:state => ["published", "vip"]).each do |company|
