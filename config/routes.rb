@@ -31,9 +31,10 @@ Medical::Application.routes.draw do
 
   match "/search", to: "search#index"
 
-  match "vacancy/*scope/*category/:id", to: "search#vacancy"
-  match "vacancy/*scope/*category/", to: "search#category"
-  match "vacancy/*scope", to: "search#scope"
+  match "*city/vacancy/*scope/*category/:id", to: "search#vacancy"
+  match "(*city)/vacancy/*scope/*category/", to: "search#category"
+  match "(*city)/vacancy/*scope", to: "search#scope"
+  match "*city/vacancy/", to: "search#city"
 
   match "search/resume/:id", to: "search#resume"
   match "company/:id", to: "search#company"

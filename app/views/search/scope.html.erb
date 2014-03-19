@@ -5,7 +5,7 @@
 				<% @vacancies.each do |vacancy| %>	
 					<tr>
 						<td><%= image_tag vacancy.company.logo.url(:search), :class => "photo-employer", :title => "Компания #{vacancy.company.name}. Работа в медицине medical.netbee.ua" %></td>
-						<td><%= link_to vacancy.name, {:controller => "search", :action => "vacancy", :scope => @scope, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></td>
+						<td><%= link_to vacancy.name, {:controller => "search", :action => "vacancy", :city =>Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></td>
 						<td><%= vacancy.city %></td>
 	    				<td><%= vacancy.salary %> грн.</td>
 					</tr>
@@ -44,9 +44,6 @@
 <div class="clear"></div>
 
 <div class="link-scope">
-        <% @scopes.each do |scope| %>
-                <% s = Russian.translit(scope.title).parameterize %>
-                <%= link_to "#{scope.title}", {:controller => :search, :action => "scope", :scope => s} %> <span>|</span>
-        <% end %>
+	<%= render partial: "scope_link" %>
 </div>
 
