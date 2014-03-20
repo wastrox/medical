@@ -1,1 +1,21 @@
-<%= debug(@vacancies) %>
+<div id="search-result">
+			<div id="label">
+				<div class="label-search-result">
+					<h2 class="title-last-vacancies"><span class="icon-last-vacancies">ВАКАНСИИ <%= @vacancies.last.city.mb_chars.upcase.to_s %></span></h2>
+					<span class="label-tail-last-vacancies"></span>
+				</div>
+				<div class="label-gray"></div>
+			</div>
+			<table class="search-result" width="100%">
+				<% @vacancies.each do |vacancy| %>	
+					<tr>
+						<td><%= image_tag vacancy.company.logo.url(:search), :class => "photo-employer", :title => "Компания #{vacancy.company.name}. Работа в медицине medical.netbee.ua" %></td>
+						<td><%= link_to vacancy.name, {:controller => "search", :action => "vacancy", :city =>Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></td>
+						<td><%= vacancy.city %></td>
+	    				<td><%= salary_helper(vacancy) %></td>
+					</tr>
+				<% end %>
+			</table>
+			<!-- <div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div> -->
+			<div class="link-more"><b><%= paginate @vacancies %></b></div>
+</div>

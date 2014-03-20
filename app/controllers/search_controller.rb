@@ -3,7 +3,7 @@
 
 class SearchController < ApplicationController
 	layout "search"
-	skip_before_filter :require_login, :only => [:index, :resume, :vacancy, :company, :scope, :category, :all_company]
+	skip_before_filter :require_login, :only => [:index, :resume, :vacancy, :company, :scope, :category, :all_company, :city]
 	before_filter :redirect_vacancy, :only => [:scope, :category]
 
 	def index
@@ -114,7 +114,10 @@ class SearchController < ApplicationController
 	end
 
 	def city
-		@vacancies = Vacancy.where(:city => city_name_params_translit, :state => ["published", "hot"]).order("publicated_at desc")
+		@vacancies = Vacancy.where(:city => city_name_params_translit, :state => ["published", "hot"]).order("publicated_at desc").page(params[:page]).per(20)
+		@title = "Вакансии города #{@vacancies.last.city}"
+		@description = "Просмотр вакансии города #{@vacancies.last.city}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
+		@keywords = "#{@vacancies.last.city}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 	end
 
 	protected
