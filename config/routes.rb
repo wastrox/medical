@@ -1,5 +1,36 @@
 Medical::Application.routes.draw do
   root :to => 'startpage#index'
+
+  match "/admin" => redirect("/admin/companies")
+  
+  namespace :admin do
+    get 'companies', to: 'companies#index'
+    get "search", to: "search#index"
+
+    match "search/choice_user_for_admin/:token", to: 'search#choice_user_for_admin'
+    match 'resumes/published/(:id)' => 'resumes#published'
+    match 'resumes/reject/(:id)' => 'resumes#reject'
+    match 'search/destroy_account_respond/:id' => "search#destroy_account_respond"
+    
+    namespace :companies do
+      resources :profile
+      resources :vacancy  
+      match "profile/:id/vacancies" => "profile#vacancies"
+      match 'profile/reject/(:id)' => 'profile#reject', :via => [:get]
+      match 'profile/vacancies/reject/(:id)' => 'vacancy#reject'
+    end
+
+    namespace :seo do
+      resources :scope
+      resources :categories
+    end
+
+    resources :vacancies
+    resources :resumes
+    resources :tasks
+    resources :articles
+    match 'articles/archive/:id' => "articles#archive", :as => "articles_archive"
+  end
   
   get "categories/new"
   get "categories/edit"
@@ -77,36 +108,5 @@ Medical::Application.routes.draw do
 
     resources :profile_companies #, :only => [:index, :edit, :update, :new, :create, :show]
     resources :vacancies
-	end
-	
-	match "/admin" => redirect("/admin/companies")
-	
-	namespace :admin do
-    get 'companies', to: 'companies#index'
-    get "search", to: "search#index"
-
-    match "search/choice_user_for_admin/:token", to: 'search#choice_user_for_admin'
-    match 'resumes/published/(:id)' => 'resumes#published'
-    match 'resumes/reject/(:id)' => 'resumes#reject'
-    match 'search/destroy_account_respond/:id' => "search#destroy_account_respond"
-    
-    namespace :companies do
-      resources :profile
-      resources :vacancy  
-      match "profile/:id/vacancies" => "profile#vacancies"
-      match 'profile/reject/(:id)' => 'profile#reject', :via => [:get]
-      match 'profile/vacancies/reject/(:id)' => 'vacancy#reject'
-    end
-
-    namespace :seo do
-      resources :scope
-      resources :categories
-    end
-
-    resources :vacancies
-    resources :resumes
-    resources :tasks
-    resources :articles
-    match 'articles/archive/:id' => "articles#archive", :as => "articles_archive"
 	end
 end
