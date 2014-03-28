@@ -36,8 +36,18 @@ gem 'newrelic_rpm'
 gem 'whenever', :require => false
 gem "pdfkit"
 gem "nokogiri"
-#group :development do
-#  gem "wkhtmltopdf-binary", "~> 0.9.5.3"
-#end
+
+group :development, :test do
+	gem 'rspec-rails', '~> 2.14'
+	gem "factory_girl_rails", '~> 4.2.1'
+end
+
+group :test do
+	gem 'faker', "~> 1.1.2"
+	gem 'capybara', '~> 2.1.0'
+	gem 'database_cleaner', '~> 1.0.1'
+	gem 'launchy', '~> 2.3.0'
+	gem 'selenium-webdriver', '~> 2.35.1'
+end
 
 gem 'bootstrap-wysihtml5-rails'
