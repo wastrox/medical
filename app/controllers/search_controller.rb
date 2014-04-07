@@ -36,9 +36,9 @@ class SearchController < ApplicationController
 		vacancy = Vacancy.find(params[:id])
 		@top_vacancies = Vacancy.where(:state => ["published", "hot"]).order("publicated_at desc").limit(3)
 
-		@title = "Вакансия #{vacancy.name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
-		@description = "Просмотр вакансии #{vacancy.name} компании #{vacancy.company.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
-		@keywords = "#{vacancy.name}, #{vacancy.company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+		@title = "Работа #{vacancy.name} в #{vacancy.city}: вакансии в медицине. Сайт трудоустройства medical.netbee.ua"
+		@description = "Просмотр вакансии #{vacancy.name} в #{vacancy.city}, компании #{vacancy.company.name}. Большой выбор вакансий в медицинской сфере. Сайт трудоустройства medical.netbee.ua."
+		@keywords = "#{vacancy.name}, #{vacancy.city}, #{vacancy.company.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 
 		if params[:city] && params[:city] == Russian.translit(vacancy.city).parameterize
 			@vacancy = vacancy
