@@ -26,7 +26,7 @@
       <td><%= link_to vacancy.name, employer_vacancy_path(vacancy.id) %></td>
   	  <td><%= vacancy.city %></td>
       <td><%= vacancy.human_state_name %></td>
-      <td><%= vacancy.publicated_at.next_month.strftime("%d.%m.%Y") %></td>
+      <td><%= vacancy.pending? ? raw("<img src='/assets/line-w.png'>") : vacancy.publicated_at.next_month.strftime("%d.%m.%Y") %></td>
 
       <% case vacancy.state %>
       <% when "deferred", "published", "hot" %>

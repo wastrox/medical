@@ -1478,7 +1478,7 @@ table.list-vacancies th, table.list-vacancies td {
 table.list-vacancies th:last-child {width: 20px;}
 
 table.list-vacancies tr:first-child th:first-child {
-	width: 223px;
+	max-width: 223px;
 }
 
 
