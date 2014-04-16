@@ -2,9 +2,10 @@
 class Employer::ProfileCompaniesController < ApplicationController
  layout "profile_company"	
  before_filter :init_company, :only => [:new, :create]
- before_filter :find_employer, :only => [:index, :create, :show, :add_resume_responded, :edit, :update]
+ before_filter :find_employer, :only => [:index, :create, :show, :add_resume_responded, :edit, :update, :chek_uniq_company_this_employer]
  before_filter :find_company, :only => [:edit, :update, :show]
  before_filter :require_account_type_employer, :check_account_type
+ before_filter :chek_uniq_company_this_employer, :only => [:create]
 
   def index
     @company = @employer.company
@@ -93,6 +94,12 @@ class Employer::ProfileCompaniesController < ApplicationController
   
   def find_employer
     @employer = Employer.find_by_salt(cookies[:salt])
+  end
+
+  def chek_uniq_company_this_employer
+    if @employer.company
+      redirect_to employer_profile_company_path(@employer.company)
+    end
   end
 
 end

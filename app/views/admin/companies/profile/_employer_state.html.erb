@@ -21,12 +21,12 @@
 <div class='item'>
 	<%= label_tag "Зарегистрирован" %>
 	<div class='field'>
-		<%= @company.employer.created_at.localtime.strftime("%F %H:%M") %>
+		<%= !@company.employer.created_at.nil? ? @company.employer.created_at.localtime.strftime("%F %H:%M") : "" %>
 	</div>
 </div>
 <div class='item'>
 	<%= label_tag "Последнее посещение" %>
 	<div class='field'>
-		<%= @company.employer.session_last_time.localtime.strftime("%F %H:%M") %>
+		<%= !@company.employer.session_last_time.nil? ? @company.employer.session_last_time.localtime.strftime("%F %H:%M") : "" %>
 	</div>
 </div>
