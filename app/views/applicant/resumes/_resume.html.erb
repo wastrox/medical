@@ -23,7 +23,7 @@
 	<div class='item'>
 		<%= applicant_fields.label :position, 'Желаемая должность'%>
 		<div class='field'>
-			<%= applicant_fields.text_field :position, :value => "#{@resume.position}" %>
+			<%= applicant_fields.text_field :position, :value => "#{@resume.position}", class: "capitalize_first_wd" %>
 		</div>
 	</div>
 	<div class='item'>

@@ -326,6 +326,39 @@ $(document).ready(function(){
 		});
 		});
 
+	//add a function to jQuery so we can call it on our jQuery collections
+	$.fn.capitalize = function () {
+
+	    //iterate through each of the elements passed in, `$.each()` is faster than `.each()
+	    $.each(this, function () {
+
+	        //split the value of this input by the spaces
+	        var split = this.value.split(' ');
+
+	        //iterate through each of the "words" and capitalize them
+	        for (var i = 0, len = split.length; i < len; i++) {
+	            split[i] = split[i].charAt(0).toUpperCase() + split[i].slice(1);
+	        }
+
+	        //re-join the string and set the value of the element
+	        this.value = split.join(' ');
+	    });
+	    return this;
+	};
+
+	$('.standart_form .capitalize').on('keyup', function () {
+	    $(this).capitalize();
+	}).capitalize();
+
+	$('.standart_form .capitalize_first_wd').on('keydown', function(event) {
+	    if (this.selectionStart == 0 && event.keyCode >= 65 && event.keyCode <= 90 && !(event.shiftKey) && !(event.ctrlKey) && !(event.metaKey) && !(event.altKey)) {
+	       var $t = $(this);
+	       event.preventDefault();
+	       var char = String.fromCharCode(event.keyCode);
+	       $t.val(char + $t.val().slice(this.selectionEnd));
+	       this.setSelectionRange(1,1);
+	    }
+	});
 });
 
 

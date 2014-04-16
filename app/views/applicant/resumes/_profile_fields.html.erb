@@ -4,9 +4,9 @@
 	<%= f.label :lastname, 'Фамилия' %>
 	<div class='field'>
 		<% if @profile.lastname.nil? %>
-			<%= f.text_field :lastname %>
+			<%= f.text_field :lastname, class: "capitalize"  %>
 		<% else %>
-			<%= f.text_field :lastname, :value => "#{@profile.lastname}" %>
+			<%= f.text_field :lastname, :value => "#{@profile.lastname}", class: "capitalize" %>
 		<% end %>
 	</div>
 </div>
@@ -14,9 +14,9 @@
 	<%= f.label :firstname, 'Имя' %>
 	<div class='field'>
 		<% if @profile.firstname.nil? %>
-			<%= f.text_field :firstname %>
+			<%= f.text_field :firstname, class: "capitalize"  %>
 		<% else %>
-			<%= f.text_field :firstname, :value => "#{@profile.firstname}" %>
+			<%= f.text_field :firstname, :value => "#{@profile.firstname}", class: "capitalize"  %>
 		<% end %>
 	</div>
 </div>
@@ -24,9 +24,9 @@
 	<%= f.label :surename, 'Отчество' %>
 	<div class='field'>
 		<% if @profile.surename.nil? %>
-			<%= f.text_field :surename %>
+			<%= f.text_field :surename, class: "capitalize"  %>
 		<% else %>
-			<%= f.text_field :surename, :value => "#{@profile.surename}"%>
+			<%= f.text_field :surename, :value => "#{@profile.surename}", class: "capitalize" %>
 		<% end %>
 	</div>
 </div>
