@@ -1,6 +1,9 @@
 class Company < ActiveRecord::Base
   attr_accessible :logo, :description, :name, :scope, :site, :company_contacts_attributes, :scope_id
 
+  before_create :check_link_company
+  before_update :check_link_company
+
 	has_attached_file :logo, :styles => { :small => "80x109>", :search => "40x38", :vip => "160x90" }, :default_url => "/assets/paperclip/missing_logo_:style.png"
 
   validates_presence_of :description, :name, :scope
@@ -54,5 +57,12 @@ class Company < ActiveRecord::Base
     def to_param
       company_name = Russian.translit(name)
       "#{id}-#{company_name.parameterize}"
+    end
+
+    private
+
+    def check_link_company
+      str = self.site
+      self.site = str.sub(%r(https?://), '').sub(%r((\/*)$), '')
     end
 end
