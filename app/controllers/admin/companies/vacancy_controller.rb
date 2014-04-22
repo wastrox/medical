@@ -11,7 +11,7 @@ class Admin::Companies::VacancyController < ApplicationController
   after_filter  :hot, :only => :update
   after_filter  :reject, :only => :update
   before_filter :destroy, :only => :update
-  before_filter :find_category_list, :only => [:edit]
+  before_filter :find_category_list, :only => [:edit, :update]
   after_filter :update_publicated, :only => [:published, :hot, :update]
   
   def edit
