@@ -1,18 +1,26 @@
-<div id="search-result">
+<div id="search-result" class="block-with-cap">
+	<div class="cap">
+		<h1 id="about">Работа <%= morpher_inflect_helper(@category_by_view.name, "category") %></h1>
+	</div>
+	<div class="boxed">
+		<div class="label">
 			<h2 class="title-last-vacancies"><span class="icon-last-vacancies">СПИСОК ВАКАНСИЙ</span></h2>
 			<span class="label-tail-last-vacancies"></span>
-			<table class="search-result" width="100%">
-				<% @vacancies.each do |vacancy| %>	
-					<tr>
-						<td><%= image_tag vacancy.company.logo.url(:search), :class => "photo-employer", :title => "Компания #{vacancy.company.name}. Работа в медицине medical.netbee.ua" %></td>
-						<td><%= link_to vacancy.name, {:controller => "search", :action => "vacancy", :city =>Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></td>
-						<td><%= vacancy.city %></td>
-	    				<td><%= vacancy.salary %> грн.</td>
-					</tr>
-				<% end %>
-			</table>
-			<div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div>
+			<div class="full-label-gray-last-vacancies"></div>
+		</div>
+		<table class="search-result" width="100%">
+			<% @vacancies.each do |vacancy| %>	
+				<tr>
+					<td><%= image_tag vacancy.company.logo.url(:search), :class => "photo-employer", :title => "Компания #{vacancy.company.name}. Работа в медицине medical.netbee.ua" %></td>
+					<td><%= link_to vacancy.name, {:controller => "search", :action => "vacancy", :city =>Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></td>
+					<td><%= vacancy.city %></td>
+    				<td><%= vacancy.salary %> грн.</td>
+				</tr>
+			<% end %>
+		</table>
+		<div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div>
 	    <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
+	</div>
 </div>
 
 <% unless @category_by_view.description.empty? %>

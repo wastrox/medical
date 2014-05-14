@@ -58,7 +58,8 @@ class SearchController < ApplicationController
 		redirect_in_true_id(@company)
 	end
 
-	def scope
+	#сфера деятельности
+	def scope 
 		scope_array = Array.new
 		@scopes = Scope.find(:all)
 		@scopes.each do |s|

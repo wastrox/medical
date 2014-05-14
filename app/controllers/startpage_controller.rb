@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class StartpageController < ApplicationController
  layout "startpage"
  skip_before_filter :require_login, :only => [:index]
@@ -9,5 +11,6 @@ class StartpageController < ApplicationController
 
 		@companies = Company.where(:state => "vip").sort_by { rand }.slice(0..9)
 		
+		@header = "<h1 class='header-start-page'>Работа в медицине.</h1>"
 	end
 end

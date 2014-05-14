@@ -70,5 +70,7 @@ module Medical
     #config.middleware.use PDFKit::Middleware, :print_media_type => true
 
     config.action_mailer.default_url_options = { :host => "medical.netbee.ua" }
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
