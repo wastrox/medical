@@ -46,13 +46,13 @@
                                     <td>Категория</td>
                                     <td><%= link_to @vacancy.category.name, {:controller => :search, :action => :category, :city => nil, :scope => Russian.translit(@vacancy.category.scope.title).parameterize, :category => Russian.translit(@vacancy.category.name).parameterize} %></td>
                               </tr>
-      						<tr>
-      							<td>Зарплата</td>
-      							<td><%= salary_helper(@vacancy) %></td>
-      						</tr>
+						<tr>
+							<td>Зарплата</td>
+							<td><%= salary_helper(@vacancy) %></td>
+						</tr>
                               <tr>
                               	<td>Регион</td>
-                              	<td><%= @vacancy.city %></td>
+                              	<td><%= link_to @vacancy.city, city_vacancy_path( translit_helper(@vacancy.city) ) %></td>
                               </tr>
                               <tr>
                               	<td>Опыт работы</td>

@@ -65,7 +65,7 @@ Medical::Application.routes.draw do
   match "*city/vacancy/*scope/*category/:id", to: "search#vacancy"
   match "(*city)/vacancy/*scope/*category/", to: "search#category"
   match "(*city)/vacancy/*scope", to: "search#scope"
-  match "*city/vacancy/", to: "search#city"
+  match "*city/vacancy/", to: "search#city", as: :city_vacancy
 
   match "search/resume/:id", to: "search#resume"
   match "company/:id", to: "search#company"

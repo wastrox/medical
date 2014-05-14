@@ -743,7 +743,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .cap {
-	background-color: #f5f3f1;
+	background-color: #f7f7f7;
     border-radius: 14px 14px 0 0;
     padding: 29px 22px 18px 30px;
 }
@@ -2104,7 +2104,7 @@ a.decoration_none {
 	text-align: justify
 }
 
-#header .seo-banner p.title {
+#header .seo-banner {
 	font-size: 13px !important; 
 	color: #888;
 }
@@ -2138,4 +2138,16 @@ a.decoration_none {
 h1.header-start-page {
 	font-size: 13px !important; 
 	font-weight: normal;
+}
+
+.seo-banner > .btn-group {
+	white-space: normal;
+}
+
+.standart-link {
+	border-bottom: 1px dashed #7A7979 !important;
+    color: #767676;
+    outline: medium none;
+    text-decoration: none;
+    font-weight: normal;
 }

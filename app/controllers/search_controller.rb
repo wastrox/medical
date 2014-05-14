@@ -116,9 +116,10 @@ class SearchController < ApplicationController
 
 	def city
 		@vacancies = Vacancy.where(:city => city_name_params_translit, :state => ["published", "hot"]).order("publicated_at desc").page(params[:page]).per(20)
-		@title = "Вакансии города #{@vacancies.last.city}"
-		@description = "Просмотр вакансии города #{@vacancies.last.city}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
-		@keywords = "#{@vacancies.last.city}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+		@city = City.where(name: city_name_params_translit ).first
+		@title = "Вакансии города #{@city.name}"
+		@description = "Просмотр вакансии города #{@city.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
+		@keywords = "#{@city.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 	end
 
 	protected

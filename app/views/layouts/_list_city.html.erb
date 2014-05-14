@@ -1,0 +1,8 @@
+<% array = ["Киев", "Харьков", "Днепропетровск", "Одесса", "Винница", "Севастополь", "Симферополь", "Луганск", "Житомир", "Николаев", "Запорожье", "Донецк", "Полтава"] %>
+<% city = City.where( name: array ) %>
+
+<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+	<% city.each do |city| %>
+		<li><%= link_to city.name, city_vacancy_path(translit_helper(city.name)) %><li>
+	<% end %>
+</ul> 

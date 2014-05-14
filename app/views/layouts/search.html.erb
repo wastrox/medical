@@ -29,7 +29,12 @@
 		<header id="header">
 		<a href="/"><img class="logo" src="/assets/logo-netbee.png" alt="Логотип medical.netbee.ua" title="Логотип. Работа в медицине medical.netbee.ua"></a>
 		<div class="seo-banner">
-			<p class="title">Сайт трудоустройства для жителей Киева, Харькова, Днепропетровска, Одессы, Винницы, Севастополя, Симферополя, Луганска, Житомира, Николаева, Запорожья, Донецка, Полтавы и других городов Украины.</p>
+			<%= raw @header %> 
+			Сайт трудоустройства для жителей 
+			<div class="btn-group"> 
+				<a class="standart-link signup" data-toggle="dropdown" href="#" id="">Киева</a> 
+				<%= render "layouts/list_city" %>
+			</div> и других городов Украины.		
 		</div>
 		<div id="menu">
 			<div class="my-profile">

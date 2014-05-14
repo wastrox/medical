@@ -69,4 +69,8 @@ module ApplicationHelper
     end
     return salary_out
   end
+
+  def translit_helper(str)
+    Russian.translit(str).parameterize
+  end
 end
