@@ -1,0 +1,58 @@
+<h1>Карта сайта</h1>
+<ul>
+	<li>
+		<%= link_to "Работа в медицине medical.netbee.ua", root_path %>
+		<ul>
+			<li>
+				<%= link_to "Список вакансий", { :controller => "search", :action => "index", :sample => "1" }, title: "Список открытых медицинских вакансий на medical.netbee.ua" %>
+				<ul>
+					<% @all_city.each do |city| %> <!-- Список вакансий по городам/сферам деятельности/категориям -->
+						<li>
+							<%= link_to "Работа #{city.name}", city_vacancy_path( translit_helper(city.name) ), title: "Медицинские вакансии, работа в городе #{city.name}." %>
+							<ul>
+								<% @scopes.each do |scope| %>
+									<li>
+										<%= link_to "Работа #{scope.title}", { :controller => :search, :action => :scope, city: translit_helper(city.name), scope: translit_helper(scope.title) }, title: "Работа #{scope.title} #{city.name}" %>
+										<ul>
+											<% scope.categories.each do |category| %>
+												<li>
+													<%= link_to "Работа #{category.name}", { :controller => :search, :action => :category, city: translit_helper(city.name), scope: translit_helper(scope.title), category: translit_helper(category.name) }, title: "Работа #{scope.title} категории #{category.name} #{city.name}" %>
+												</li>
+											<% end %>
+										</ul>
+									</li>
+								<% end %>
+							</ul>
+						</li>
+					<% end %>
+				</ul>
+				<ul>
+					<li>
+						<% @scopes.each do |scope| %> <!-- Список вакансий по /сферам деятельности/категориям -->
+							<li>
+								<%= link_to scope.title, { :controller => :search, :action => :scope, city: nil, scope: translit_helper(scope.title) }, title: "Работа в #{scope.title}" %>
+								<ul>
+									<% scope.categories.each do |category| %>
+										<li>
+											<%= link_to category.name, { :controller => :search, :action => :category, city: nil, scope: translit_helper(scope.title), category: translit_helper(category.name) }, title: "Работа в #{scope.title} категории #{category.name}" %>
+										</li>
+									<% end %>
+								</ul>
+							</li>
+						<% end %>
+					</li>
+				</ul>
+			</li>
+
+			<li><%= link_to "Список резюме", { :controller => "search", :action => "index", :sample => "2" }, title: "Список открытых медицинских резюме на medical.netbee.ua" %></li>
+			
+			<li><%= link_to "Список компаний", companies_url, title: "Список всех зарегистрированных медицинских компаний на medical.netbee.ua" %></li>
+			
+			<li><%= link_to "Новости", news_index_url, title: "Новости медицины, полезные статьи, заметки" %></li>
+			<li><%= link_to "Контакты", contacts_index_url, title: "Контакты компании medical.netbee.ua" %></li>
+			<li><%= link_to "Для пользователей", personal_data_index_url, title: "Полезная информация для пользователей medical.netbee.ua" %></li>
+			<li><%= link_to "О Netbee", about_url, title: "Дополнительная информация о компании medical.netbee.ua, netbee.ua" %></li>
+		</ul>
+	</li>
+</ul>
+

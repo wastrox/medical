@@ -38,7 +38,7 @@
 			<%= raw @header %> 
 			Сайт трудоустройства для жителей 
 			<div class="btn-group"> 
-				<a class="standart-link signup" data-toggle="dropdown" href="#" id="">Киева</a> 
+				<a class="standart-link" data-toggle="dropdown" href="#" id="">Киева</a> 
 				<%= render "layouts/list_city" %>
 			</div> и других городов Украины.		
 		</div>
@@ -67,10 +67,10 @@
 			<div class="btn-group">
 				<a class="btn dropdown-toggle signup" data-toggle="dropdown" href="#" id="btn-drop">Справка</a>
 				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-					<li><%= link_to "Новости", news_index_url %><li>
+					<li><%= link_to "Новости", news_index_url %></li>
 					<li><%= link_to "Контакты", contacts_index_url %></li>
-					<li><%= link_to "Для пользователей", personal_data_index_url %><li>
-					<li><%= link_to "О Netbee", about_url %><li>
+					<li><%= link_to "Для пользователей", personal_data_index_url %></li>
+					<li><%= link_to "О Netbee", about_url %></li>
 				</ul>
 			</div>
 		</div>

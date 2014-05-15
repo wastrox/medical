@@ -49,16 +49,6 @@ module SearchHelper
 	end
 
 	def scope_title_helper
-		@scope == "drugoe" ? "Другие специальности" : @categories.first.scope.title.mb_chars.downcase.to_s
-	end
-
-	def morpher_inflect_helper(str, type)
-		array = Morpher.new("#{str}")
-		case type 
-			when "scope"	
-				return array.singular('где').mb_chars.downcase.to_s
-			when "category"	
-				return array.singular('Т').mb_chars.downcase.to_s
-		end
+	  @scope == "drugoe" ? "Другие специальности" : @categories.first.scope.title.mb_chars.downcase.to_s
 	end
 end

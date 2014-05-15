@@ -109,4 +109,6 @@ Medical::Application.routes.draw do
     resources :profile_companies #, :only => [:index, :edit, :update, :new, :create, :show]
     resources :vacancies
 	end
+
+  get 'sitemap', to: "sitemap#index"
 end

@@ -19,6 +19,10 @@ class Morpher
   def plural(padeg)
     @data[:множественное][padeg.to_sym]
   end
+
+  def puts_data
+    return @data
+  end
  
   private
  

@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Medical</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>	
-  <%= javascript_include_tag "application" %>
+  <title>Карта сайта</title> 
+  
+  <!-- <link rel="canonical" href="http://#{request.host+request.fullpath}"/> этот линк касается СЕО оптимизации, пункт 1.7 Корректное формирование get запросов при маркировке url -->
+
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag "bootstrap_style/bootstrap.min", "bootstrap-tooltip", "style", "bootstrap_buttons", "selectbox", "bootstrap-btn-group", "bootstrap-dropdown", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "selectbox", "about", "bootstrap-btn-group", "bootstrap-tooltip" %>
   <%= csrf_meta_tags %>
   <!-- Google Tag Manager -->
   <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-8KW8"
@@ -16,6 +21,11 @@
   <!-- End Google Tag Manager -->
 </head>
 <body>
-<div class="notice"><p><%= flash[:notice] %></p></div>
+  <div id="wrapper">
+    <div class="notice"><p><%#= flash[:notice] %></p></div>
+    <div id="content" class="start_page">
+      <%= yield %>
+    </div><!-- #content-->
+  </div>
 </body>
 </html>

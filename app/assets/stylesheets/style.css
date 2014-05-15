@@ -2106,7 +2106,7 @@ a.decoration_none {
 
 #header .seo-banner {
 	font-size: 13px !important; 
-	color: #888;
+	color: #767676;
 }
 
 .cap a.news_url {
@@ -2150,4 +2150,10 @@ h1.header-start-page {
     outline: medium none;
     text-decoration: none;
     font-weight: normal;
+    font-size: 13px;
+	display: inline-block;
+}
+
+.standart-link:hover {
+	border-bottom: medium none !important;
 }
