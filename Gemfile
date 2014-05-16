@@ -43,3 +43,5 @@ gem "nokogiri"
 gem 'bootstrap-wysihtml5-rails'
 
 gem 'savon', '~> 2.0'
+
+gem 'ruby-progressbar'

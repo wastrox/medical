@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140319100946) do
+ActiveRecord::Schema.define(:version => 20140516090542) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -52,12 +52,14 @@ ActiveRecord::Schema.define(:version => 20140319100946) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.integer  "morpher_id"
   end
 
   create_table "cities", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "morpher_id"
   end
 
   create_table "companies", :force => true do |t|
@@ -143,6 +145,12 @@ ActiveRecord::Schema.define(:version => 20140319100946) do
 
   add_index "hot_vacancies", ["vacancy_id"], :name => "index_hot_vacancies_on_vacancy_id"
 
+  create_table "morphers", :force => true do |t|
+    t.text     "case"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -202,6 +210,7 @@ ActiveRecord::Schema.define(:version => 20140319100946) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.integer  "morpher_id"
   end
 
   create_table "tasks", :force => true do |t|
