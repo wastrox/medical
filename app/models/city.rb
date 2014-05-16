@@ -7,6 +7,22 @@ class City < ActiveRecord::Base
 
     before_save :case_morphology
 
+    def singular(padeg)
+      begin
+        self.morpher.case[padeg.to_sym] if check_case     
+      rescue Exception => e
+        self.name
+      end
+    end
+
+    def plural(padeg)
+      begin
+        self.morpher.case[:множественное][padeg.to_sym] if check_case
+      rescue Exception => e
+        self.name
+      end
+    end
+
   private
 
   	def case_morphology
@@ -16,11 +32,7 @@ class City < ActiveRecord::Base
 	  	result ? self.morpher_id = result : false
   	end
 
-	def singular(padeg)
-		self.morpher.case[padeg.to_sym]
-	end
-
-	def plural(padeg)
-		self.morpher.case[:множественное][padeg.to_sym]
-	end
+    def check_case
+      self.name == self.morpher.case[:И]
+    end
 end

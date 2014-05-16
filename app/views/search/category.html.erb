@@ -1,6 +1,6 @@
 <div id="search-result" class="block-with-cap">
 	<div class="cap">
-		<h1 id="about">Работа <%= morpher_inflect_helper(@category_by_view.name, "category") %></h1>
+		<h1 id="about">Работа <%= @category_by_view.singular("Т").mb_chars.downcase.to_s %></h1>
 	</div>
 	<div class="boxed">
 		<div class="label">
@@ -35,6 +35,22 @@
 <% end %>
 
 <div class="clearfix"></div>
+
+<div id="frame-other" class="frame-category-profesional">
+      <div class="cap">
+            <h2 id=""><%= @category_by_view.singular("И") %></h2>
+      </div>
+      <div class="boxed">
+      		<ul id="triple">
+			<% Category.where(scope_id: @category_by_view.scope.id ).each do |category| %>
+				<% c = Russian.translit(category.name).parameterize %>
+				<li><%= link_to "#{category.name}", {:controller => :search, :action => "category", :category => c} %></li>
+            <% end %>
+           	</ul>
+      </div> <!-- .boxed -->
+</div> <!-- #frame-other -->
+
+<div class="clear"></div>
 
 <div class="link-scope">
 	<%= render partial: "scope_link" %>

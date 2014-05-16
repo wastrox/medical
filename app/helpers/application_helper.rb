@@ -74,17 +74,4 @@ module ApplicationHelper
     Russian.translit(str).parameterize
   end
 
-  def morpher_inflect_helper(str, type)
-    begin
-      array = Morpher.new(str)
-      case type 
-        when "scope"  
-          return array.singular('где').mb_chars.downcase.to_s
-        when "category" 
-          return array.singular('Т').mb_chars.downcase.to_s
-      end
-    rescue
-      return str
-    end
-  end
 end

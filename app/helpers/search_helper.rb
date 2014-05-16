@@ -49,6 +49,6 @@ module SearchHelper
 	end
 
 	def scope_title_helper
-	  @scope == "drugoe" ? "Другие специальности" : @categories.first.scope.title.mb_chars.downcase.to_s
+	  @scope == "drugoe" ? "Другие специальности" : @categories.first.scope.title
 	end
 end

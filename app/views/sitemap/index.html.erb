@@ -1,22 +1,22 @@
 <h1>Карта сайта</h1>
 <ul>
 	<li>
-		<%= link_to "Работа в медицине medical.netbee.ua", root_path %>
+		<%= link_to "Работа в медицине medical.netbee.ua", root_path, title: "Сайт трудоустройства для жителей Киева, Харькова, Днепропетровска, Одессы, Винницы, Севастополя, Симферополя, Луганска, Житомира, Николаева, Запорожья, Донецка, Полтавы и других городов Украины." %>
 		<ul>
 			<li>
 				<%= link_to "Список вакансий", { :controller => "search", :action => "index", :sample => "1" }, title: "Список открытых медицинских вакансий на medical.netbee.ua" %>
 				<ul>
 					<% @all_city.each do |city| %> <!-- Список вакансий по городам/сферам деятельности/категориям -->
 						<li>
-							<%= link_to "Работа #{city.name}", city_vacancy_path( translit_helper(city.name) ), title: "Медицинские вакансии, работа в городе #{city.name}." %>
+							<%= link_to "Работа #{city.singular('где')}", city_vacancy_path( translit_helper(city.name) ), title: "Медицинские вакансии, работа в #{city.singular('где')}." %>
 							<ul>
 								<% @scopes.each do |scope| %>
 									<li>
-										<%= link_to "Работа #{scope.title}", { :controller => :search, :action => :scope, city: translit_helper(city.name), scope: translit_helper(scope.title) }, title: "Работа #{scope.title} #{city.name}" %>
+										<%= link_to "Работа #{city.singular('где')} #{scope.singular('где')}", { :controller => :search, :action => :scope, city: translit_helper(city.name), scope: translit_helper(scope.title) }, title: "Медицинские вакансии в #{scope.plural('П')} #{city.singular('где')}" %>
 										<ul>
 											<% scope.categories.each do |category| %>
 												<li>
-													<%= link_to "Работа #{category.name}", { :controller => :search, :action => :category, city: translit_helper(city.name), scope: translit_helper(scope.title), category: translit_helper(category.name) }, title: "Работа #{scope.title} категории #{category.name} #{city.name}" %>
+													<%= link_to "Работа #{category.singular("Т")} #{city.singular('где')}", { :controller => :search, :action => :category, city: translit_helper(city.name), scope: translit_helper(scope.title), category: translit_helper(category.name) }, title: "Медицинские вакансии #{category.singular("Т")} #{city.singular('где')}, #{scope.plural('В')}" %>
 												</li>
 											<% end %>
 										</ul>
@@ -30,11 +30,11 @@
 					<li>
 						<% @scopes.each do |scope| %> <!-- Список вакансий по /сферам деятельности/категориям -->
 							<li>
-								<%= link_to scope.title, { :controller => :search, :action => :scope, city: nil, scope: translit_helper(scope.title) }, title: "Работа в #{scope.title}" %>
+								<%= link_to "Работа #{scope.singular('где')}", { :controller => :search, :action => :scope, city: nil, scope: translit_helper(scope.title) }, title: "Медицинские вакансии в #{scope.plural('П')}" %>
 								<ul>
 									<% scope.categories.each do |category| %>
 										<li>
-											<%= link_to category.name, { :controller => :search, :action => :category, city: nil, scope: translit_helper(scope.title), category: translit_helper(category.name) }, title: "Работа в #{scope.title} категории #{category.name}" %>
+											<%= link_to "Работа #{category.singular("Т")}", { :controller => :search, :action => :category, city: nil, scope: translit_helper(scope.title), category: translit_helper(category.name) }, title: "Медицинские вакансии #{category.singular("Т")} #{scope.plural('В')}" %>
 										</li>
 									<% end %>
 								</ul>

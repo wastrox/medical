@@ -1,6 +1,6 @@
 <div id="search-result" class="block-with-cap">
 	<div class="cap">
-		<h1 id="about">Работа <%= morpher_inflect_helper(scope_title_helper, "scope") %></h1>
+		<h1 id="about">Работа <%= @categories.first.scope.singular("где").mb_chars.downcase.to_s %></h1>
 	</div>
 	<div class="boxed">
 		<div class="label">
