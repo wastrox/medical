@@ -6,6 +6,12 @@ class SearchController < ApplicationController
 	skip_before_filter :require_login, :only => [:index, :resume, :vacancy, :company, :scope, :category, :all_company, :city]
 	before_filter :redirect_vacancy, :only => [:scope, :category]
 
+	before_filter :city_seo_list, :only => [:scope, :category, :vacancy, :company, :city]
+
+	add_breadcrumb "medilca.netbee.ua", :root_path, :only => %w(vacancy city scope category)
+	add_breadcrumb "поиск вакансий", { action: :index, sample: "1" }, :only => %w(vacancy city scope category)
+
+
 	def index
 		search_params = params[:search].to_s + " " + params[:city].to_s 
 		if params[:sample] == "1"
@@ -46,6 +52,12 @@ class SearchController < ApplicationController
 		else
 			redirect_to :action => action_name, :city => Russian.translit(vacancy.city).parameterize, :id => vacancy.to_param, :status => 301	
 		end
+
+		add_breadcrumb title_breadcrumbs(get_city, 'где', false), { action: :city }, title: "Работа в #{@vacancy.city}"
+		
+		add_breadcrumb @vacancy.category.scope.title.mb_chars.downcase.to_s, { action: :scope, city: params[:city] }, title: "Вакансии, работа #{title_breadcrumbs(@vacancy.category.scope, 'где', true)}"
+
+		add_breadcrumb @vacancy.category.name.mb_chars.downcase.to_s, { action: :category, city: params[:city] }, title: "Работа #{title_breadcrumbs(@vacancy.category, 'Т', true)}"
 	end
 
 	def company
@@ -69,6 +81,7 @@ class SearchController < ApplicationController
 		scope_id = scope_hash[params[:scope]]
 
 		@scope = params[:scope]
+		city = params[:city]
 
 		@categories = Category.where(:scope_id => scope_id)
 		if params[:city]
@@ -81,7 +94,7 @@ class SearchController < ApplicationController
 		@description = "Список вакансий медицинских компаний в сфере деятельности #{Scope.find(scope_id).title}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
 		@keywords = "#{Scope.find(scope_id).title}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
 
-
+		scaffold_breadcrumbs_scope(city, scope_id)
 	end
 
 	def category
@@ -93,7 +106,7 @@ class SearchController < ApplicationController
 		category_id = category_hash[params[:category]]
 
 		
-
+		city = params[:city]
 		@scope = params[:scope]
 		@category = params[:category]
 		@category_by_view= Category.find_by_id(category_id)
@@ -103,10 +116,14 @@ class SearchController < ApplicationController
 		else
 			@vacancies = Vacancy.where(:category_id => category_id, :state => ["published", "hot"]).order("publicated_at desc")
 		end
+		
 
-		@title = "Вакансии категории #{Category.find(category_id).name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
+
+		@title = "Вакансии категории #{category_find(category_id).name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
 		@description = "Список вакансий в категории #{Category.find(category_id).name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
 		@keywords = "#{Category.find(category_id).name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+
+		scaffold_breadcrumbs_category(city)
 	end
 
 	def all_company
@@ -139,6 +156,12 @@ class SearchController < ApplicationController
 		return city_name
 	end
 
+	def get_city
+		city_id = city_class_hash[params[:city]]
+		city = City.find(city_id)
+		return city
+	end
+
 	def redirect_in_true_id(str)
 		if params[:id]!= str.to_param
 		    redirect_to :action => action_name, :id => str.to_param, :status => 301
@@ -152,5 +175,38 @@ class SearchController < ApplicationController
 	    		redirect_to :action => :vacancy, :city => Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param, :status => 301
 	    	end
 	    end
+	end
+
+	def city_seo_list
+		@city_seo_list = city_name_params_translit if params[:city]
+	end
+
+	def title_breadcrumbs(object, case_str, downcase)
+		downcase ? object.singular(case_str).mb_chars.downcase.to_s : object.singular(case_str)
+	end
+
+	def category_find(id)
+		category = Category.find(id)
+	end
+
+	def scaffold_breadcrumbs_category(city)
+		if city
+			add_breadcrumb title_breadcrumbs(get_city, 'где', false), { action: :city }, title: "Работа #{get_city.singular('Р')}"
+			add_breadcrumb @category_by_view.scope.title.mb_chars.downcase.to_s, { action: :scope, city: city}, title: "Вакансии, работа #{title_breadcrumbs(category_find(@category_by_view).scope, 'где', true)}"
+			add_breadcrumb @category_by_view.name.mb_chars.downcase.to_s, { action: :category, city: city }, title: "Работа #{title_breadcrumbs(category_find(@category_by_view), 'Т', true)}", tag: :span
+		else
+			add_breadcrumb @category_by_view.scope.title.mb_chars.downcase.to_s, { action: :scope, city: nil}, title: "Вакансии, работа #{title_breadcrumbs(category_find(@category_by_view).scope, 'где', true)}"
+			add_breadcrumb @category_by_view.name.mb_chars.downcase.to_s, { action: :category, city: nil }, title: "Работа #{title_breadcrumbs(category_find(@category_by_view), 'Т', true)}", tag: :span
+		end
+	end
+
+	def scaffold_breadcrumbs_scope(city, id)
+		scope = Scope.find(id)
+		if city
+			add_breadcrumb title_breadcrumbs(get_city, 'где', false), { action: :city }, title: "Работа #{get_city.singular('Р')}"
+			add_breadcrumb scope.title.mb_chars.downcase.to_s, { action: :scope, city: city}, title: "Вакансии, работа #{title_breadcrumbs(scope, 'где', true)}"
+		else
+			add_breadcrumb scope.title.mb_chars.downcase.to_s, { action: :scope, city: nil}, title: "Вакансии, работа #{title_breadcrumbs(scope, 'где', true)}"
+		end
 	end
 end

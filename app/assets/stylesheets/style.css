@@ -2144,6 +2144,12 @@ h1.header-start-page {
 	white-space: normal;
 }
 
+.seo-banner > .btn-group > ul {
+	overflow: auto;
+	width: 300px;
+	height: 400px;
+}
+
 .standart-link {
 	border-bottom: 1px dashed #7A7979 !important;
     color: #767676;
@@ -2156,4 +2162,16 @@ h1.header-start-page {
 
 .standart-link:hover {
 	border-bottom: medium none !important;
+}
+
+.breadcrumbs {
+	background-color: #F7F7F7;
+	border-radius: 7px;
+	list-style: none outside none;
+	margin-bottom: 20px;
+	padding: 8px 15px;
+}
+
+.breadcrumbs > span {
+    color: #767676;
 }

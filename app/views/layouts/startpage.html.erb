@@ -38,7 +38,7 @@
 			<%= raw @header %> 
 			Сайт трудоустройства для жителей 
 			<div class="btn-group"> 
-				<a class="standart-link" data-toggle="dropdown" href="#" id="">Киева</a> 
+				<a class="standart-link" data-toggle="dropdown" href="#" id=""><%= @city_seo_list ||= "Киева" %></a> 
 				<%= render "layouts/list_city" %>
 			</div> и других городов Украины.		
 		</div>

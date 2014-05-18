@@ -10,6 +10,11 @@
             }
       });
 </script>
+
+<%= render "layouts/breadcrumbs" %>
+
+<div class="clear"></div>
+
 <div id="frame">
       <div class="cap">
             <% if current_user %>
@@ -121,6 +126,7 @@
 </div>
 
 <%= render :partial => "search/top-publication"%> <!-- TOP Вакансий и Резюме, URL => show resume/:id and vacancy/:id -->
+
 
 <div class="link-scope">
       <% Scope.all.each do |scope| %>

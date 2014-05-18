@@ -1,3 +1,5 @@
+<%= render "layouts/breadcrumbs" %>
+
 <div id="search-result" class="block-with-cap">
 	<div class="cap">
 		<h1 id="about">Работа <%= @categories.first.scope.singular("где").mb_chars.downcase.to_s %></h1>
@@ -13,7 +15,7 @@
 				<tr>
 					<td><%= image_tag vacancy.company.logo.url(:search), :class => "photo-employer", :title => "Компания #{vacancy.company.name}. Работа в медицине medical.netbee.ua" %></td>
 					<td><%= link_to vacancy.name, {:controller => "search", :action => "vacancy", :city =>Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></td>
-					<td><%= vacancy.city %></td>
+					<td><%= link_to vacancy.city, { action: :scope, city: translit_helper(vacancy.city) } %></td>
     				<td><%= vacancy.salary %> грн.</td>
 				</tr>
 			<% end %>
@@ -43,7 +45,7 @@
       		<ul id="triple">
 			<% @categories.each do |category| %>
 				<% c = Russian.translit(category.name).parameterize %>
-				<li><%= link_to "#{category.name}", {:controller => :search, :action => "category", :category => c} %></li>
+				<li><%= link_to "#{category.name}", {:controller => :search, :action => "category", :category => c, city: nil} %></li>
             <% end %>
            	</ul>
       </div> <!-- .boxed -->
