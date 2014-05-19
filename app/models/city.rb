@@ -23,6 +23,10 @@ class City < ActiveRecord::Base
       end
     end
 
+    def push_morphology
+      self.case_morphology
+    end
+
   private
 
   	def case_morphology

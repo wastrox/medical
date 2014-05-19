@@ -8,7 +8,7 @@ class SearchController < ApplicationController
 
 	before_filter :city_seo_list, :only => [:scope, :category, :vacancy, :company, :city]
 
-	add_breadcrumb "medilca.netbee.ua", :root_path, :only => %w(vacancy city scope category)
+	add_breadcrumb "medical.netbee.ua", :root_path, :only => %w(vacancy city scope category)
 	add_breadcrumb "поиск вакансий", { action: :index, sample: "1" }, :only => %w(vacancy city scope category)
 
 

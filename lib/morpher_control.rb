@@ -63,7 +63,7 @@ class MorpherControl
 		end		
 		
 		if morpher.save 
-			puts "#{y morpher.case}"
+			#puts "#{y morpher.case}"
 			return morpher.id
 		else
 			puts "\n Слово #{s} не сохранилось в Morpher."
