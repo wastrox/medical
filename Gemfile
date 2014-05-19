@@ -47,3 +47,5 @@ gem 'savon', '~> 2.0'
 gem 'ruby-progressbar'
 
 gem "breadcrumbs_on_rails"
+
+gem 'dalli'

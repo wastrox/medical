@@ -78,4 +78,7 @@ Medical::Application.configure do
    :password => "MEDICALnetbee22052013"
 }
 
+  # using gem Dalli
+  config.cache_store = :dalli_store
+  config.action_controller.perform_caching = true
 end

@@ -2,13 +2,17 @@
 
 <div id="search-result" class="block-with-cap">
 	<div class="cap">
-		<h1 id="about">Работа <%= @category_by_view.singular("Т").mb_chars.downcase.to_s %></h1>
+		<% if @city %>
+			<h1 id="about">Работа <%= "#{@tag_title_by_category} #{@city}" %></h1>
+		<% else %>
+			<h1 id="about">Работа <%= @tag_title_by_category %></h1>
+		<% end %>
 	</div>
 	<div class="boxed">
 		<div class="label">
-			<h2 class="title-last-vacancies"><span class="icon-last-vacancies">СПИСОК ВАКАНСИЙ</span></h2>
+			<h2 class="title-last-vacancies width-title"><span class="icon-last-vacancies">СПИСОК ВАКАНСИЙ</span></h2>
 			<span class="label-tail-last-vacancies"></span>
-			<div class="full-label-gray-last-vacancies"></div>
+			<% unless @vacancies.empty? %><div class="full-label-gray-last-vacancies"></div><% end %>
 		</div>
 		<table class="search-result" width="100%">
 			<% @vacancies.each do |vacancy| %>	
@@ -20,8 +24,9 @@
 				</tr>
 			<% end %>
 		</table>
-		<div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div>
-	    <%# link_to 'Просмотр', :controller => "search", :action => "show", :id => vacancy.id %>
+		<!-- <div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div> -->
+    	
+    	<%= render "link_create_vacancy" %> 
 	</div>
 </div>
 
@@ -40,7 +45,7 @@
 
 <div id="frame-other" class="frame-category-profesional">
       <div class="cap">
-            <h2 id=""><%= @category_by_view.singular("И") %></h2>
+            <h2 id=""><%= @category_by_view.scope.singular("И") %></h2>
       </div>
       <div class="boxed">
       		<ul id="triple">

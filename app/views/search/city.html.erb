@@ -3,10 +3,10 @@
 <div id="search-result">
 			<div id="label">
 				<div class="label-search-result">
-					<h2 class="title-last-vacancies"><span class="icon-last-vacancies">ВАКАНСИИ <%= @city.name.mb_chars.upcase.to_s %></span></h2>
+					<h1 class="title-last-vacancies width-title"><span class="icon-last-vacancies">ВАКАНСИИ <%= @city.singular("где").mb_chars.upcase.to_s %></span></h1>
 					<span class="label-tail-last-vacancies"></span>
 				</div>
-				<div class="label-gray"></div>
+				<% unless @vacancies.empty? %><div class="full-label-gray-last-vacancies"></div><% end %>
 			</div>
 			<table class="search-result" width="100%">
 				<% @vacancies.each do |vacancy| %>	
@@ -19,7 +19,9 @@
 				<% end %>
 			</table>
 			<!-- <div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div> -->
-			<div class="link-more"><b><%= paginate @vacancies %></b></div>
+    		<%= render "link_create_vacancy" %> 
+
+			<% unless @vacancies.empty? %><div class="link-more"><b><%= paginate @vacancies %></b></div><% end %>
 </div>
 
 <div class="link-scope">

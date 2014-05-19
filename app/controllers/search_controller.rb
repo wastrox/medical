@@ -54,10 +54,9 @@ class SearchController < ApplicationController
 		end
 
 		add_breadcrumb title_breadcrumbs(get_city, 'где', false), { action: :city }, title: "Работа в #{@vacancy.city}"
-		
 		add_breadcrumb @vacancy.category.scope.title.mb_chars.downcase.to_s, { action: :scope, city: params[:city] }, title: "Вакансии, работа #{title_breadcrumbs(@vacancy.category.scope, 'где', true)}"
-
 		add_breadcrumb @vacancy.category.name.mb_chars.downcase.to_s, { action: :category, city: params[:city] }, title: "Работа #{title_breadcrumbs(@vacancy.category, 'Т', true)}"
+		add_breadcrumb @vacancy.name.mb_chars.downcase.to_s, { action: :vacancy, city: params[:city] }
 	end
 
 	def company
@@ -82,17 +81,21 @@ class SearchController < ApplicationController
 
 		@scope = params[:scope]
 		city = params[:city]
+		@city
 
 		@categories = Category.where(:scope_id => scope_id)
 		if params[:city]
+			@city = get_city.singular('где')
 			@vacancies = Vacancy.where(:category_id => @categories, :city => city_name_params_translit, :state => ["published", "hot"]).order("publicated_at desc")
 		else
 			@vacancies = Vacancy.where(:category_id => @categories, :state => ["published", "hot"]).order("publicated_at desc")
 		end
 
-		@title = "Вакансии, сфера деятельности #{Scope.find(scope_id).title}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
-		@description = "Список вакансий медицинских компаний в сфере деятельности #{Scope.find(scope_id).title}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
-		@keywords = "#{Scope.find(scope_id).title}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+		@tag_title_by_scope = @categories.first.scope.singular('где').mb_chars.downcase.to_s
+
+		@title = "Работа #{@tag_title_by_scope} #{@city}: вакансии в медицине. Сайт трудоустройства medical.netbee.ua."
+		@description = "Работа #{@tag_title_by_scope} #{@city}. Большой выбор вакансий в медицинской сфере. Сайт трудоустройства medical.netbee.ua."
+		@keywords = "Работа #{@tag_title_by_scope} #{@city}, вакансии, резюме, медицина, здравоохранение, Украина, Netbee"
 
 		scaffold_breadcrumbs_scope(city, scope_id)
 	end
@@ -110,18 +113,21 @@ class SearchController < ApplicationController
 		@scope = params[:scope]
 		@category = params[:category]
 		@category_by_view= Category.find_by_id(category_id)
-		
+		@city
+
 		if params[:city]
+			@city = get_city.singular('где')
 			@vacancies = Vacancy.where(:category_id => category_id, :city => city_name_params_translit, :state => ["published", "hot"]).order("publicated_at desc")
 		else
 			@vacancies = Vacancy.where(:category_id => category_id, :state => ["published", "hot"]).order("publicated_at desc")
 		end
+
+		@tag_title_by_scope = @category_by_view.scope.singular('где').mb_chars.downcase.to_s
+		@tag_title_by_category = @category_by_view.singular("Т").mb_chars.downcase.to_s 
 		
-
-
-		@title = "Вакансии категории #{category_find(category_id).name}: работа в медицине. Сайт трудоустройства medical.netbee.ua"
-		@description = "Список вакансий в категории #{Category.find(category_id).name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
-		@keywords = "#{Category.find(category_id).name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+		@title = "Работа #{@tag_title_by_scope} #{@tag_title_by_category} #{@city}: вакансии в медицине. Сайт трудоустройства medical.netbee.ua."
+		@description = "Работа #{@tag_title_by_scope} #{@tag_title_by_category} #{@city}. Большой выбор вакансий в медицинской сфере. Сайт трудоустройства medical.netbee.ua."
+		@keywords = "Работа #{@tag_title_by_scope} #{@tag_title_by_category} #{@city}, вакансии, резюме, медицина, здравоохранение, Украина, Netbee"
 
 		scaffold_breadcrumbs_category(city)
 	end
@@ -134,9 +140,12 @@ class SearchController < ApplicationController
 	def city
 		@vacancies = Vacancy.where(:city => city_name_params_translit, :state => ["published", "hot"]).order("publicated_at desc").page(params[:page]).per(20)
 		@city = City.where(name: city_name_params_translit ).first
-		@title = "Вакансии города #{@city.name}"
-		@description = "Просмотр вакансии города #{@city.name}. Самый большой выбор работы в медицине. Сайт трудоустройства medical.netbee.ua."
-		@keywords = "#{@city.name}, поиск, работа, вакансии, резюме, медицина, фармацевтика, здравоохранение, Украина, netbee"
+
+		@title = "Работа #{@city.singular('где')}: вакансии в медицине. Сайт трудоустройства medical.netbee.ua."
+		@description = "Работа #{@city.singular('где')}. Большой выбор вакансий в медицинской сфере. Сайт трудоустройства medical.netbee.ua."
+		@keywords = "Работа #{@city.singular('где')}, вакансии, резюме, медицина, здравоохранение, Украина, Netbee"
+
+		add_breadcrumb title_breadcrumbs(get_city, 'где', false), { action: :city }, title: "Работа #{get_city.singular('Р')}"
 	end
 
 	protected
@@ -178,7 +187,7 @@ class SearchController < ApplicationController
 	end
 
 	def city_seo_list
-		@city_seo_list = city_name_params_translit if params[:city]
+		@city_seo_list = get_city.singular("Р") if params[:city]
 	end
 
 	def title_breadcrumbs(object, case_str, downcase)

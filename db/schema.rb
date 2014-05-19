@@ -151,13 +151,6 @@ ActiveRecord::Schema.define(:version => 20140516090542) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "news", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "profiles", :force => true do |t|
     t.integer  "resume_id"
     t.integer  "applicant_id"
@@ -236,7 +229,7 @@ ActiveRecord::Schema.define(:version => 20140516090542) do
     t.boolean  "delta",              :default => true,                  :null => false
     t.string   "state"
     t.integer  "category_id"
-    t.datetime "publicated_at",      :default => '2013-09-11 10:38:24'
+    t.datetime "publicated_at",      :default => '2014-05-19 12:42:36'
   end
 
   add_index "vacancies", ["company_id"], :name => "index_vacancies_on_company_id"

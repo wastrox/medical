@@ -1,10 +1,12 @@
-<% array = ["Киев", "Харьков", "Днепропетровск", "Одесса", "Винница", "Севастополь", "Симферополь", "Луганск", "Житомир", "Николаев", "Запорожье", "Донецк", "Полтава"] %>
+<%# array = ["Киев", "Харьков", "Днепропетровск", "Одесса", "Винница", "Севастополь", "Симферополь", "Луганск", "Житомир", "Николаев", "Запорожье", "Донецк", "Полтава"] %>
 <%# city = City.where( name: array ) %>
 <% city = City.all %>
 
-
 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 	<% city.each do |city| %>
-		<li><%= link_to city.singular("Р"), city_vacancy_path(translit_helper(city.name)), title: "Сайт трудоустройства для жителей #{city.name}." %><li>
+		<% cache city do %>
+			<% city_name = city.singular("Р") %>
+			<li><%= link_to city_name, city_vacancy_path(translit_helper(city.name)), title: "Сайт трудоустройства для жителей #{city_name}, медицинскии вакансии." %><li>
+		<% end %>
 	<% end %>
 </ul> 

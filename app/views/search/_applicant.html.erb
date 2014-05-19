@@ -1,10 +1,10 @@
 <div id="search-result">
 			<div id="label">
 				<div class="label-search-result">
-					<h2 class="title-last-vacancies"><span class="icon-last-vacancies">СПИСОК ВАКАНСИЙ</span></h2>
+					<h2 class="title-last-vacancies"><span class="icon-last-vacancies width-title">СПИСОК ВАКАНСИЙ</span></h2>
 					<span class="label-tail-last-vacancies"></span>
 				</div>
-				<div class="label-gray"></div>
+				<% unless @vacancies.empty? %><div class="label-gray"></div><% end %>
 			</div>
 			<table class="search-result" width="100%">
 				<% @vacancies.each do |vacancy| %>	
@@ -16,6 +16,12 @@
 					</tr>
 				<% end %>
 			</table>
+			<% if @vacancies.empty? %>
+				<div class="message-full-size">
+					<h3>Таких вакансий у нас еще нет.</h3>
+				</div>	
+			<% else%>
+				<div class="link-more"><b><%= paginate @vacancies %></b></div>	
+			<% end %>
 			<!-- <div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div> -->
-			<div class="link-more"><b><%= paginate @vacancies %></b></div>
 </div>
