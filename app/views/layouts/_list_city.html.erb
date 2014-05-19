@@ -2,11 +2,12 @@
 <%# city = City.where( name: array ) %>
 <% city = City.all %>
 
-<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+<!-- <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"> -->
+<ul id="triple">
 	<% city.each do |city| %>
 		<% cache city do %>
 			<% city_name = city.singular("Р") %>
-			<li><%= link_to city_name, city_vacancy_path(translit_helper(city.name)), title: "Сайт трудоустройства для жителей #{city_name}, медицинские вакансии." %><li>
+			<li><%= link_to city.name, city_vacancy_path(translit_helper(city.name)), title: "Сайт трудоустройства для жителей #{city_name}, медицинские вакансии." %></li>
 		<% end %>
 	<% end %>
 </ul> 

@@ -9,8 +9,8 @@
   <% end %>
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <%= favicon_link_tag 'favicon.ico' %>
-  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "bootstrap-alerts", "bootstrap-btn-group", "bootstrap-dropdown", :media => "all" %>
-  <%= javascript_include_tag "jquery-1.9.1.min", "selectbox", "search", "bootstrap-alerts", "bootstrap-btn-group" %>
+  <%= stylesheet_link_tag "style", "bootstrap_buttons", "selectbox", "bootstrap-alerts", "bootstrap-btn-group", "bootstrap-dropdown", "bootstrap_style/bootstrap-modals", :media => "all" %>
+  <%= javascript_include_tag "jquery-1.9.1.min", "bootstrap_js/bootstrap-modals", "selectbox", "search", "bootstrap-alerts", "bootstrap-btn-group" %>
   <%= csrf_meta_tags %>
   
   <!-- Google Tag Manager -->
@@ -32,8 +32,7 @@
 			<%= raw @header %> 
 			Сайт трудоустройства для жителей 
 			<div class="btn-group"> 
-				<a class="standart-link signup" data-toggle="dropdown" href="#" id=""><%= @city_seo_list ||= "Киева"%></a> 
-				<%= render "layouts/list_city" %>
+				<a class="standart-link" href="#" id="" data-toggle="modal" data-target="#myModal"><%= @city_seo_list ||= "Киева"%></a> 				
 			</div> и других городов Украины.		
 		</div>
 		<div id="menu">
@@ -70,6 +69,7 @@
 		</div>
 	</header><!-- #header-->
 	<div id="content">
+		<%= render "layouts/modals_city_list" %>
 		<%= yield %>
 	</div><!-- #content-->
 </div><!-- #wrapper -->

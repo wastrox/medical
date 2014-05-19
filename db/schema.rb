@@ -229,7 +229,7 @@ ActiveRecord::Schema.define(:version => 20140516090542) do
     t.boolean  "delta",              :default => true,                  :null => false
     t.string   "state"
     t.integer  "category_id"
-    t.datetime "publicated_at",      :default => '2014-05-19 12:42:36'
+    t.datetime "publicated_at",      :default => '2013-09-11 10:38:24'
   end
 
   add_index "vacancies", ["company_id"], :name => "index_vacancies_on_company_id"

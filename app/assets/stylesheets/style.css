@@ -774,9 +774,13 @@ h1, h2, h3, h4, h5 {
 }
 .cap p { font-weight: bold; }
 
+#search-result > .boxed {
+	padding-bottom: 3px;
+}
+
 .boxed {
 	/*padding: 24px 36px;*/
-	padding: 0px 36px;
+	padding: 0px 36px ;
 }
 
 .boxed form a {
@@ -1626,7 +1630,7 @@ table.search-result tbody:first-child tr:first-child td {
 }
 
 table.search-result tbody:last-child tr:last-child td {
-	border-bottom: 1px solid #bfb7af;
+	/*border-bottom: 1px solid #bfb7af;*/
 }
 
 table.search-result tbody tr td:nth-of-type(3) {
@@ -2170,11 +2174,12 @@ h1.header-start-page {
 }
 
 .breadcrumbs {
-	background-color: #F7F7F7;
-	border-radius: 7px;
+	/*background-color: #F7F7F7;*/
+	/*border-radius: 7px;*/
+	font-size: 11px;
 	list-style: none outside none;
-	/*margin-bottom: 20px;*/
-	padding: 8px 15px;
+	margin-bottom: 15px;
+	padding: 8px 0px;
 }
 
 .breadcrumbs > span {
@@ -2190,6 +2195,25 @@ h1.header-start-page {
 	margin: 10px 0px 30px;
 }
 
-.message-full-size > h3 {
+.message-full-size > h3, .message-full-size > h1 {
+	padding: 5px 0px;
+	font-size: 16px;
 	text-align: center
+}
+
+.message-full-size > h1 {
+	font-size: 21px;
+}
+
+.state-title-label {
+	top: -1px !important;
+}
+
+.state-label {
+	position: absolute;
+}
+
+.state-label > span {
+    left: -47px;
+    top: -47px !important;
 }

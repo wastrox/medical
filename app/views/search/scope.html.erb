@@ -1,19 +1,29 @@
 <%= render "layouts/breadcrumbs" %>
 
 <div id="search-result" class="block-with-cap">
-	<div class="cap">
-		<% if @city %>
-			<h1 id="about">Работа <%= "#{@tag_title_by_scope} #{@city}" %></h1>
-		<% else %>
-			<h1 id="about">Работа <%= @tag_title_by_scope %></h1>
-		<% end %>
-	</div>
-	<div class="boxed">
-		<div class="label">
-			<h2 class="title-last-vacancies width-title"><span class="icon-last-vacancies">СПИСОК ВАКАНСИЙ</span></h2>
-			<span class="label-tail-last-vacancies"></span>
-			<% unless @vacancies.empty? %><div class="full-label-gray-last-vacancies"></div><% end %>
+	<% unless @vacancies.empty? %>
+		<div class="cap">
+			<% if @city %>
+				<h1 id="about">Работа <%= "#{@tag_title_by_scope} #{@city}" %></h1>
+			<% else %>
+				<h1 id="about">Работа <%= @tag_title_by_scope %></h1>
+			<% end %>
 		</div>
+	<% end %>
+	<div class="boxed">
+		<% unless @vacancies.empty? %>
+			<div class="label state-label">
+				<h2 class="title-last-vacancies width-title"><span class="icon-last-vacancies">СПИСОК ВАКАНСИЙ</span></h2>
+				<span class="label-tail-last-vacancies"></span>
+				<%# unless @vacancies.empty? %><!-- <div class="full-label-gray-last-vacancies"></div> --><%# end %>
+			</div>
+		<% else %>
+			<div class="label">
+				<h2 class="title-last-vacancies width-title state-title-label"><span class="icon-last-vacancies">СПИСОК ВАКАНСИЙ</span></h2>
+				<span class="label-tail-last-vacancies"></span>
+				<%# unless @vacancies.empty? %><!-- <div class="full-label-gray-last-vacancies"></div> --><%# end %>
+			</div>
+		<% end %>
 		<table class="search-result" width="100%">
 			<% @vacancies.each do |vacancy| %>	
 				<tr>
@@ -24,9 +34,18 @@
 				</tr>
 			<% end %>
 		</table>
-		<!-- <div class="link-more"><b><a href="#" onclick="_gaq.push(['_trackEvent','more','send'])">Показать еще</a></b></div> -->
-	    
-    	<%= render "link_create_vacancy" %> 
+		
+		<% if @vacancies.empty? %>
+			<div class="message-full-size">
+				<% if @city %>
+					<h1 id="about">Работа <%= "#{@tag_title_by_scope} #{@city}" %></h1>
+				<% else %>
+					<h1 id="about">Работа <%= @tag_title_by_scope %></h1>
+				<% end %>
+
+		    	<%= render "link_create_vacancy" %> 
+		    </div>
+	    <% end %> 
 	</div>
 </div>
 
