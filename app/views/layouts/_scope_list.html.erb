@@ -1,0 +1,6 @@
+<div class="link-scope">
+	<% Scope.all.each do |scope| %>
+		<% s = Russian.translit(scope.title).parameterize %>
+		<%= link_to "#{scope.title}", {:controller => :search, :action => "scope", :scope => s}, title: "Список вакансий #{scope.singular("где")}" %> <span>|</span>
+	<% end %> 
+</div>

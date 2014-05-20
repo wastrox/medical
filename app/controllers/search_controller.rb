@@ -167,7 +167,7 @@ class SearchController < ApplicationController
 
 	def get_city
 		city_id = city_class_hash[params[:city]]
-		city = City.find(city_id)
+		city_id ? city = City.find(city_id) : city = nil
 		return city
 	end
 
@@ -187,7 +187,13 @@ class SearchController < ApplicationController
 	end
 
 	def city_seo_list
-		@city_seo_list = get_city.singular("Р") if params[:city]
+		if params[:city] 
+			if get_city
+				@city_seo_list = get_city.singular("Р")
+			else
+				raise ActionController::RoutingError.new('Not Found')
+			end
+		end
 	end
 
 	def title_breadcrumbs(object, case_str, downcase)

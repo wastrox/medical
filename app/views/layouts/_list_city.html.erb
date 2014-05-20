@@ -1,8 +1,5 @@
-<%# array = ["Киев", "Харьков", "Днепропетровск", "Одесса", "Винница", "Севастополь", "Симферополь", "Луганск", "Житомир", "Николаев", "Запорожье", "Донецк", "Полтава"] %>
-<%# city = City.where( name: array ) %>
 <% city = City.all %>
 
-<!-- <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"> -->
 <ul id="triple">
 	<% city.each do |city| %>
 		<% cache city do %>

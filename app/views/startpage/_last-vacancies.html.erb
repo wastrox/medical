@@ -1,10 +1,12 @@
 <table class="vacancies" width="100%">
-				<% @vacancies.each do |vacancy|%>
-					<tr>
-						<td class="vacancy-name"><p><%= link_to "#{vacancy.name}", {:controller => "search", :action => "vacancy", :city =>Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param}, :title => "#{vacancy.name}" %></p></td>
-						<td><%= link_to vacancy.city[0,14], city_vacancy_path( translit_helper(vacancy.city) ) %></td>
-						<td><%= salary_helper(vacancy) %></td>
-					</tr>
-				<% end %>
-			</table>
-			<div class="link-more"><b><%= link_to "Показать еще", { :controller => "search", :action => "index", :sample => "1" }, :onclick =>"_gaq.push(['_trackEvent','more','send'])" %></b></div>
+	<% @vacancies.each do |vacancy|%>
+		<% city = City.where( name: vacancy.city ).first %>
+		<% city ? city_case = city.singular('где') : city_case = vacancy.city %>
+		<tr>
+			<td class="vacancy-name"><p><%= link_to "#{vacancy.name}", {:controller => "search", :action => "vacancy", :city =>Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param}, :title => "#{vacancy.name}" %></p></td>
+			<td><%= link_to vacancy.city[0,14], city_vacancy_path( translit_helper(vacancy.city) ), title: "Медицинские вакансии, работа #{city_case}." %></td>
+			<td><%= salary_helper(vacancy) %></td>
+		</tr>
+	<% end %>
+</table>
+<div class="link-more"><b><%= link_to "Показать еще", { :controller => "search", :action => "index", :sample => "1" }, :onclick =>"_gaq.push(['_trackEvent','more','send'])", title: "Перейти на страницу поиска вакансий" %></b></div>

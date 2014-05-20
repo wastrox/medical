@@ -39,14 +39,8 @@
 			<% end %>
 			</ul>
 			<div class="clear"></div>
-			<div class="link-more" style="position: relative; top: 0px;"><b><%= link_to "Другие компании", companies_url, :onclick =>"_gaq.push(['_trackEvent','more','send'])" %></b></div>
+			<div class="link-more" style="position: relative; top: 0px;"><b><%= link_to "Другие компании", companies_url, :onclick =>"_gaq.push(['_trackEvent','more','send'])", title: "Список компаний" %></b></div>
 		</div>
 		<div class="clear"></div>
 
-
-		<div class="link-scope">
-			<% Scope.all.each do |scope| %>
-				<% s = Russian.translit(scope.title).parameterize %>
-				<%= link_to "#{scope.title}", {:controller => :search, :action => "scope", :scope => s} %> <span>|</span>
-			<% end %> 
-		</div>
+		<%= render "layouts/scope_list" %>
