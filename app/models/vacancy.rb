@@ -33,6 +33,11 @@ class Vacancy < ActiveRecord::Base
       content.delta = true
     end
 
+    after_transition any => [ :published, :hot ] do |vacancy, transition|
+      vacancy.publicated_at = DateTime.now
+      vacancy.save!
+    end
+
     event :request do
       transition [:draft, :wait_company] => :pending
     end
@@ -69,5 +74,9 @@ class Vacancy < ActiveRecord::Base
   def to_param
     vacancy_name = Russian.translit(name)
     "#{id}-#{vacancy_name.parameterize}"
+  end
+
+  def publicated
+    self.publicated_at = Time.now
   end
 end

@@ -15,7 +15,11 @@
 		<td><%= link_to vacancy.company.name, edit_admin_companies_profile_path(vacancy.company)%></td>
 		<td><%= vacancy.human_state_name%></td>
 		<td><%= vacancy.created_at.localtime.to_formatted_s(:db)%></td>
-		<td><%= vacancy.created_at.localtime.next_month.to_formatted_s(:db)%></td>
+		<td>
+			<% if vacancy.published? or vacancy.hot? %>
+				<%= vacancy.publicated_at.localtime.next_month.to_formatted_s(:db)%>
+			<% end %>
+		</td>
 	</tr>
 	<% end %>
 </table>
