@@ -70,7 +70,7 @@
       		<ul id="triple">
 			<% Category.where(scope_id: @category_by_view.scope.id ).each do |category| %>
 				<% c = Russian.translit(category.name).parameterize %>
-				<li><%= link_to "#{category.name}", {:controller => :search, :action => "category", :category => c, city: nil}, title: "Работа #{category.singular("Т").mb_chars.downcase.to_s}" %></li>
+				<li><%= link_to "#{category.name}", {:controller => :search, :action => "category", :category => c}, title: "Работа #{category.singular("Т").mb_chars.downcase.to_s}" %></li>
             <% end %>
            	</ul>
       </div> <!-- .boxed -->
