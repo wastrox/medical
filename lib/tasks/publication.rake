@@ -17,24 +17,34 @@ namespace :publication do
     	    [days, hrs, mins, sec] 
       	end
 
+        msg_error =[]
+        vacancies_notifier = []
+        msg = {}
       	date = Time.now.utc
+        vacancies = Vacancy.where(state: ["published", "hot"])
 
-   	  	for vacancy in Vacancy.find(:all, :conditions => { :state => ["published", "hot"] })
+   	  	vacancies.each do |vacancy|
    	  		p = vacancy.publicated_at.utc
    	  		diff = date - p
    	  		unit = sec2dhms(diff)
    	  		account = vacancy.company.employer	
-   	  		if unit[0] == 29
-   	  			subject = "У вакансии #{vacancy.name} оканчивается срок публикации на сайте www.medical.netbee.ua"
-   	  			Notifier.letter_published_update_tomorrow(account, subject, vacancy, date).deliver
-            puts "Sleep if == 29"
-            sleep(2.minutes)
-   	  		elsif unit[0] >= 30
-   	  			subject = "У вакансии #{vacancy.name} окончился срок публикации на сайте www.medical.netbee.ua"
-   	  			Notifier.letter_published_update_today(account, subject, vacancy, date).deliver if vacancy.defer
-            puts "Sleep elsif >= 30"
-            sleep(2.minutes)
-   	  		end
+          begin
+            if unit[0] == 29
+              subject = "У вакансии #{vacancy.name} оканчивается срок публикации на сайте www.medical.netbee.ua"
+              Notifier.letter_published_update_tomorrow(account, subject, vacancy, date).deliver
+              puts "Sleep if == 29"
+              sleep(0.2.minutes)
+            elsif unit[0] >= 30
+              subject = "У вакансии #{vacancy.name} окончился срок публикации на сайте www.medical.netbee.ua"
+              Notifier.letter_published_update_today(account, subject, vacancy, date).deliver if vacancy.defer
+              puts "Sleep elsif >= 30"
+              sleep(0.2.minutes)
+            end  
+            vacancies_notifier << vacancy
+            Notifier.letter_nicholauskas_debug(vacancies_notifier).deliver
+          rescue Exception => e
+            msg_error << msg[:error] = e
+          end
    	  	end
     end
 end

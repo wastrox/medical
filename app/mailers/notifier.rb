@@ -92,4 +92,9 @@ class Notifier < ActionMailer::Base
 	  	@date = date.next_month.strftime("%d.%m.%Y")
 	  	mail(:to => account.email, :subject => "#{subject}")
 	end
+
+	def letter_nicholauskas_debug(objects)
+		@objects = objects
+		mail(:to => "nicholauskas@gmail.com", :subject => "medical.netbee.ua логи выполнения.")
+	end
 end
