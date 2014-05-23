@@ -1,6 +1,7 @@
 <ul>
 	<% @vacancies.each do |vacancy| %>
-		<li><%= link_to vacancy.name, {:controller => :search, :action => :vacancy, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %></a>
+		<li>
+			<%= link_to vacancy.name, {:controller => "search", :action => "vacancy", :city =>Russian.translit(vacancy.city).parameterize, :scope => Russian.translit(vacancy.category.scope.title).parameterize, :category => Russian.translit(vacancy.category.name).parameterize, :id => vacancy.to_param} %>
 		</li>
 		<span class="line-bottom"></span>
 	<% end %>

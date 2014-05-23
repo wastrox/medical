@@ -36,6 +36,6 @@ every :day, :at => '03:10am' do
   rake "genxml_vacancies:start"
 end
 
-every :day, :at => '08:00am' do	
-  rake "publication:start"
-end
+# every :day, :at => '08:00am' do	
+#   rake "publication:start"
+# end

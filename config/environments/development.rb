@@ -49,7 +49,7 @@ Medical::Application.configure do
    :enable_starttls_auto => true,
    :domain => "netbee.ua",
    :user_name => "nicholauskas@gmail.com",
-   :password => ""
+   :password => "netbee-25"
 }
 
   # using gem Dalli

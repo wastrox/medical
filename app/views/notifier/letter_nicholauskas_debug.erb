@@ -5,14 +5,15 @@
   </head>
   <body>
     <h1>V! Nicholauskas</h1>
-    <p>
 		<ul>
-    <% @objects.each do |object| %>
-      <li><%= object.name %></li>
-      <li><%= object.state %></li>
-      <li><%= object.company.name %></li>
-    <% end %></ul>>
-    </p>
+      <% @objects.each do |object| %>
+        <li>Вакансия <%= object.name %>--(<%= object.id%>) | <%= object.human_state_name %> | Компания <%= object.company.name %> => <% @time.each do |t| %> 
+          <%= t[:day] if t[:id] == object.id %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <p><%#= debug(@msg_error) unless @msg_error.empty? %></p>
     <p>Have a great day!</p>
   </body>
 </html>

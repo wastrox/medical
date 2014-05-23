@@ -93,8 +93,10 @@ class Notifier < ActionMailer::Base
 	  	mail(:to => account.email, :subject => "#{subject}")
 	end
 
-	def letter_nicholauskas_debug(objects)
+	def letter_nicholauskas_debug(objects, time, msg)
+		@time = time
 		@objects = objects
+		@msg_error = msg
 		mail(:to => "nicholauskas@gmail.com", :subject => "medical.netbee.ua логи выполнения.")
 	end
 end
