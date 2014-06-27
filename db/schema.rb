@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(:version => 20140516090542) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "scope_id"
-    t.text     "description",        :null => false
+    t.text     "description",        :default => "", :null => false
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
@@ -65,16 +65,16 @@ ActiveRecord::Schema.define(:version => 20140516090542) do
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.string   "site"
-    t.text     "description"
+    t.text     "description",       :limit => 255
     t.integer  "employer_id"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.string   "state"
-    t.boolean  "delta",             :default => true, :null => false
+    t.boolean  "delta",                            :default => true, :null => false
     t.integer  "scope_id"
   end
 
@@ -182,23 +182,23 @@ ActiveRecord::Schema.define(:version => 20140516090542) do
 
   create_table "resumes", :force => true do |t|
     t.integer  "applicant_id"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.string   "position"
-    t.integer  "salary",          :default => 0
+    t.integer  "salary",                         :default => 0
     t.string   "city"
-    t.text     "additional_info"
+    t.text     "additional_info", :limit => 255
     t.string   "state"
-    t.boolean  "delta",           :default => true, :null => false
+    t.boolean  "delta",                          :default => true, :null => false
   end
 
   add_index "resumes", ["applicant_id"], :name => "index_resumes_on_applicant_id"
 
   create_table "scopes", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.text     "description",        :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.text     "description",        :default => "", :null => false
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
@@ -218,18 +218,18 @@ ActiveRecord::Schema.define(:version => 20140516090542) do
     t.integer  "company_id"
     t.string   "name"
     t.string   "city"
-    t.integer  "salary",             :default => 0
+    t.integer  "salary",                            :default => 0
     t.string   "experiences"
     t.string   "timetable"
-    t.text     "description"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
+    t.text     "description",        :limit => 255
+    t.datetime "created_at",                                                           :null => false
+    t.datetime "updated_at",                                                           :null => false
     t.string   "timetable_other"
     t.integer  "company_contact_id"
-    t.boolean  "delta",              :default => true,                  :null => false
+    t.boolean  "delta",                             :default => true,                  :null => false
     t.string   "state"
     t.integer  "category_id"
-    t.datetime "publicated_at",      :default => '2013-09-11 10:38:24'
+    t.datetime "publicated_at",                     :default => '2014-06-27 09:08:37'
   end
 
   add_index "vacancies", ["company_id"], :name => "index_vacancies_on_company_id"

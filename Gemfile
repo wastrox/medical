@@ -16,6 +16,18 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem 'rspec-rails', "~> 2.13.0"
+  gem "factory_girl_rails", "~> 4.2.1"
+end
+
+group :test do
+	gem "faker", "~> 1.1.2"
+	gem "capybara", "~> 2.0.2"
+	gem "database_cleaner", "~> 0.9.1"
+	gem "launchy", "~> 2.2.0"
+end
+
 gem 'russian', '~> 0.6.0'
 gem "select2-rails"
 gem "nested_form"
@@ -32,7 +44,6 @@ gem 'delayed_job_active_record' #, :git => 'git@github.com:scosman/delayed_job_a
 gem 'state_machine'
 gem 'ruby-graphviz', :require => 'graphviz' # Optional: only required for graphing
 gem 'kaminari'
-gem 'newrelic_rpm'
 gem 'whenever', :require => false
 gem "pdfkit"
 gem "nokogiri"
