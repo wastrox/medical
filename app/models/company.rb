@@ -46,13 +46,6 @@ class Company < ActiveRecord::Base
         transition [:published, :vip, :rejected, :draft] => :pending
       end
     end
-    
-    define_index do
-  		indexes name 
-      indexes created_at, sortable: true
-  		set_property :delta => :delayed
-  		#where " companies.state IN ('published', 'vip')" # Индексирует только опубликованные и горячие компании
-  	end
 
     def to_param
       company_name = Russian.translit(name)

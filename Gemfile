@@ -1,10 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '4.0.3'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
 gem 'mysql2'
 
@@ -38,12 +34,12 @@ gem 'russian', '~> 0.6.0'
 gem "select2-rails"
 gem "nested_form"
 gem 'jquery-rails'
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.5'
 gem "paperclip", "~> 4.1.1"
 gem 'thinking-sphinx', '3.1.1'
-gem 'ts-delayed-delta', '2.0.2',
-  :require => 'thinking_sphinx/deltas/delayed_delta'
+gem 'ts-delayed-delta', '~> 2.0.2'
 
 gem "daemons"
 gem 'delayed_job_active_record' #, :git => 'git@github.com:scosman/delayed_job_active_record.git'
@@ -53,21 +49,16 @@ gem 'kaminari'
 gem 'whenever', :require => false
 gem "pdfkit"
 gem "nokogiri"
+
 #group :development do
 #  gem "wkhtmltopdf-binary", "~> 0.9.5.3"
 #end
 
 gem 'bootstrap-wysihtml5-rails'
-
 gem 'savon', '~> 2.0'
-
 gem 'ruby-progressbar'
-
 gem "breadcrumbs_on_rails"
-
 gem 'dalli'
-
-gem 'ts-resque-delta', '1.1.1'
 
 gem 'rack-ntlm', :git => 'git://github.com/lukefx/rack-ntlm.git' # => if console message: "D, [2014-06-27T17:34:27.105874 #24791] DEBUG -- : Net::NTLM is not available. Install via gem install rubyntlm."
 gem 'i18n', github: 'svenfuchs/i18n'

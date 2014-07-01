@@ -6,5 +6,5 @@ require File.expand_path('../config/application', __FILE__)
 
 Medical::Application.load_tasks
 
-require 'thinking_sphinx/deltas/delayed_delta/tasks'
+# require 'thinking_sphinx/deltas/delayed_delta/tasks'
 

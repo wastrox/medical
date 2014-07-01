@@ -13,14 +13,6 @@ class Vacancy < ActiveRecord::Base
     accepts_nested_attributes_for :hot_vacancy, :allow_destroy => true
 
   validates_presence_of :category_id, :city, :description, :experiences, :name, :salary, :timetable, :company_contact_id
-
-	define_index do
-		indexes name 
-    indexes publicated_at, sortable: true
-		indexes city
-		where " vacancies.state IN ('published', 'hot')" # Индексирует только опубликованные и горячие вакансии
-		set_property :delta => :delayed
-	end
 	
 	state_machine :state, :initial => :draft do
     # после реиндексации delta устанавливается в false для всего контента - так как он проиндексирован.

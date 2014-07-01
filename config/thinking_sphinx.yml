@@ -1,0 +1,23 @@
+development:
+  utf8: true
+  mysql41: 9110
+  enable_star: true
+  morphology: stem_ru
+  mem_limit: 128M
+  html_strip: 1
+  min_infix_len: 3
+  max_matches: 10000
+  bin_path: "/usr/bin"
+  host: 127.0.0.1
+test:
+  utf8: true
+  mysql41: 9111
+  morphology: stem_ru
+  html_strip: 1
+  min_infix_len: 3
+  max_matches: 10000
+production:
+  morphology: stem_ru
+  html_strip: 1
+  min_infix_len: 3
+  max_matches: 10000
