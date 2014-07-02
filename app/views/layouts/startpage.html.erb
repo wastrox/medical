@@ -44,23 +44,21 @@
 			</div> и других городов Украины.		
 		</div>
 		<div id="menu">
-			<div class="my-profile">
+			<div class="my-profile hover-shadow">
 				<% if current_user && current_user.employer? %>
 					<%= render 'layouts/employer_link_navbar'%>
-					<div class="separator"></div>
 				<% elsif current_user && current_user.applicant? %>
 					<%= render 'layouts/applicant_link_navbar'%>
-					<div class="separator"></div>
 				<% elsif current_user && current_user.account_type.nil? && current_user.active? %>
-					<%= link_to "Выбрать тип профиля", confirmation_account_type_url, class: "hover-shadow" %>
-					<div class="separator"></div>
+					<%= link_to "Выбрать тип профиля", confirmation_account_type_url %>
 				<% elsif current_user && current_user.active? == false %>
 					<%# FIXME: подлючить ссылку "Ваш профиль не активирован" %>
-					<%= link_to "Ваш профиль не активирован", active_recovery_path(:email =>current_user.email), class: "hover-shadow" %>
-					<div class="separator"></div>
+					<%= link_to "Ваш профиль не активирован", active_recovery_path(:email =>current_user.email) %>
 				<% end %>
 			</div>
-			<%= link_to_if(current_user, "Выход", logout_path, :class => "signup hover-shadow") do
+			<%= content_tag :div, "", class: "separator" if current_user %>
+
+			<%= link_to_if(current_user, "Выход", logout_path, :class => "signup") do
 				render 'layouts/other_link_navbar' 
 			end %>
 				
