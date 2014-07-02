@@ -11,7 +11,7 @@
 	      </div>
 	<% end %>
 	<%= nested_form_for([:applicant, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>				
-		<%= render :partial => 'resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
+		<%= render 'resume', { :applicant_fields => applicant_fields } %>
 
 		<span class="line-bottom line-bottom-company"></span>
 		

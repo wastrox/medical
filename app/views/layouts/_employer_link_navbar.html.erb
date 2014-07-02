@@ -1,8 +1,6 @@
-					<%= 
-						link_to_if(current_user.company.nil?, "Создать профиль", new_employer_profile_company_path) do 
-							link_to "Профиль компании", employer_profile_companies_url
-						end
-					%>
+<%= link_to_if(current_user.company.nil?, "Создать профиль", new_employer_profile_company_path, class: "hover-shadow" ) do 
+		link_to "Профиль компании", employer_profile_companies_url, class: "hover-shadow"
+	end %>
 				
 				
 

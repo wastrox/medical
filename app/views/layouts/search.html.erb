@@ -38,10 +38,10 @@
 		<div id="menu">
 			<div class="my-profile">
 				<% if current_user && current_user.employer? %>
-					<%= render :partial => 'layouts/employer_link_navbar'%>
+					<%= render 'layouts/employer_link_navbar'%>
 					<div class="separator"></div>
 				<% elsif current_user && current_user.applicant? %>
-					<%= render :partial => 'layouts/applicant_link_navbar'%>
+					<%= render 'layouts/applicant_link_navbar'%>
 					<div class="separator"></div>
 				<% elsif current_user && current_user.account_type.nil? && current_user.active? %>
 					<%= link_to "Выбрать тип профиля", confirmation_account_type_url %>
@@ -52,7 +52,7 @@
 				<% end %>
 			</div>
 				<%= link_to_if(current_user, "Выход", logout_path, :class => "signup") do
-						render :partial => 'layouts/other_link_navbar' 
+						render 'layouts/other_link_navbar' 
 					end %>
 				<div class="separator"></div>
 
@@ -74,7 +74,7 @@
 	</div><!-- #content-->
 </div><!-- #wrapper -->
 <footer id="footer">
-		<%= render :partial => "layouts/footer" %>
+		<%= render "layouts/footer" %>
 </footer><!-- #footer -->
 </body>
 </html>

@@ -25,21 +25,21 @@
 				</div>
 				<div class="label-gray-last-vacancies"></div>
 			</div>
-			<%= render :partial => "last_vacancies" %>
+			<%= render "last_vacancies" %>
 		</div>
 		<div class="companies">
 			<h4 class="title-companies"><span class="icon-companies">КОМПАНИИ</span></h4>
 			<span class="label-tail-companies"></span>
 			<ul class="logoBlock">
-			<% @companies.each do |company|%>
-			            <li><%= link_to({:controller => "/search", :action => "company", :id => company.to_param}, :title => "Компания #{company.name}") do %>
-			            		<%= image_tag company.logo.url(:vip), :title => "Компания #{company.name}. Работа в медицине medical.netbee.ua", :alt => "#{company.name}", :width => "160px", :height => "90px" %>
-			            	<% end %>
-			            </li>
-			<% end %>
+				<% @companies.each do |company|%>
+				            <li class="shadow-radial"><%= link_to({:controller => "/search", :action => "company", :id => company.to_param}, :title => "Компания #{company.name}") do %>
+				            		<%= image_tag company.logo.url(:vip), :title => "Компания #{company.name}. Работа в медицине medical.netbee.ua", :alt => "#{company.name}", :width => "160px", :height => "90px" %>
+				            	<% end %>
+				            </li>
+				<% end %>
 			</ul>
 			<div class="clear"></div>
-			<div class="link-more" style="position: relative; top: 0px;"><b><%= link_to "Другие компании", companies_url, :onclick =>"_gaq.push(['_trackEvent','more','send'])", title: "Список компаний" %></b></div>
+			<div class="link-more" style="position: relative; top: 2px;"><b><%= link_to "Другие компании", companies_url, :onclick =>"_gaq.push(['_trackEvent','more','send'])", title: "Список компаний" %></b></div>
 		</div>
 		<div class="clear"></div>
 

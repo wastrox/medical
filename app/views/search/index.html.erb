@@ -14,9 +14,9 @@
 <% end %>
 
 <% unless @vacancies.nil? %>
-	<%= render :partial => "applicant" %>
+	<%= render "applicant" %>
 <% else %>
-	<%= render :partial => "employer" %>
+	<%= render "employer" %>
 <% end %>
 
 <%= render "layouts/scope_list" %>

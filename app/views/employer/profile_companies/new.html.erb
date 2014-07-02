@@ -6,12 +6,12 @@
 <div class="boxed">
 	<%= nested_form_for(@company, :url => {:action=>"create", :controller=>"employer/profile_companies"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
 		<h2>Общая информация</h2>
-  		<%= render :partial => 'profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
+  		<%= render 'profile_fields', { :employer_fields => employer_fields } %>
 		
 		<span class="line-bottom line-bottom-company"></span>
 	
 		<h2 id="contacts-company">Контактная информация</h2>
-		<%= render :partial => 'contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
+		<%= render 'contact_fields', { :employer_fields => employer_fields }%>
 
 		<span class="line-bottom line-bottom-company"></span>
 

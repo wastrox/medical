@@ -10,17 +10,17 @@
 </div>
 	<div class="boxed">
 		<%= nested_form_for(@company, :url => {:action=>"update", :controller=>"admin/companies/profile"}, :html => { :class => 'standart_form' } ) do |employer_fields| %>
-			<%= render :partial => 'employer_state' %>
+			<%= render 'employer_state' %>
 
 			<span class="line-bottom line-bottom-company"></span>
 
-	  		<%= render :partial => 'employer/profile_companies/profile_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields} %>
+	  		<%= render 'employer/profile_companies/profile_fields', { employer_fields: employer_fields } %>
 		
 			<span class="line-bottom line-bottom-company"></span>
 				
 			<h2 id="contacts-company">Контактная информация</h2>
 
-			<%= render :partial => 'employer/profile_companies/contact_fields', :locals => { :employer => employer_fields.object, :employer_fields => employer_fields}%>
+			<%= render 'employer/profile_companies/contact_fields', { employer_fields: employer_fields } %>
 			
 			<span class="line-bottom line-bottom-company"></span>
 
@@ -44,4 +44,4 @@
 		<div class="clear"></div>
 	</div>
 </div>
-<%= render :partial => "admin/companies/navbar_company"%>
+<%= render "admin/companies/navbar_company"%>

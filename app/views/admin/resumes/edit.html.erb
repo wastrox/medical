@@ -3,11 +3,11 @@
 	<div class="boxed">
 		<%= nested_form_for([:admin, @resume], :html => { :class => 'standart_form' } ) do |applicant_fields| %>	
 
-			<%= render :partial => 'applicant_state' %>
+			<%= render 'applicant_state' %>
 
 			<span class="line-bottom line-bottom-company"></span>
 
-			<%= render :partial => 'applicant/resumes/resume', :locals => { :applicant => applicant_fields.object, :applicant_fields => applicant_fields} %>
+			<%= render 'applicant/resumes/resume', { :applicant_fields => applicant_fields } %>
 			
 			<span class="line-bottom line-bottom-company"></span>
 

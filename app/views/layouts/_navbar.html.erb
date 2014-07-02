@@ -15,11 +15,11 @@
 						</form>
             <div class="header-menu clearfix">
                 <%# --------------------------------------------------------
-				=> FIXME: заменить, пример, render :partial => 'navbar_link' if current_user.account_type? %>
+				=> FIXME: заменить, пример, render 'navbar_link' if current_user.account_type? %>
 				<% if current_user.employer? %>
-					<%= render :partial => 'layouts/employer_link_navbar'%>
+					<%= render 'layouts/employer_link_navbar'%>
 				<% elsif current_user.applicant? %>
-					<%= render :partial => 'layouts/applicant_link_navbar'%>
+					<%= render 'layouts/applicant_link_navbar'%>
 				<% else %>
 					<%= link_to "Выберать тип профиля", confirmation_account_type_url %>
 				<% end %>

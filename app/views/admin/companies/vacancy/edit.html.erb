@@ -62,7 +62,7 @@ $(document).ready(function(){
 
 			<span class="line-bottom line-bottom-company"></span>
 
-			<%= render :partial => "employer/vacancies/form", :locals => { :f => f } %>
+			<%= render "employer/vacancies/form", { :f => f } %>
 
 			<span class="line-bottom line-bottom-company"></span>
 
@@ -95,4 +95,4 @@ $(document).ready(function(){
 		<div class="clear"></div>
 	</div> <!-- boxed -->
 </div> <!-- #frame -->
-<%= render :partial => "admin/companies/navbar_company"%>
+<%= render "admin/companies/navbar_company"%>

@@ -5,7 +5,7 @@ Medical::Application.routes.draw do
   
   namespace :admin do
     get 'companies', to: 'companies#index'
-    post "search", to: "search#index"
+    get "search", to: "search#index"
 
     get "search/choice_user_for_admin/:token", to: 'search#choice_user_for_admin'
     get 'resumes/published/(:id)' => 'resumes#published'
@@ -60,7 +60,7 @@ Medical::Application.routes.draw do
   get "email_recovery", to: "accounts#email_recovery", as: "email_recovery"
   get "active_recovery", to: "accounts#active_recovery", as: "active_recovery"
 
-  post "/search", to: "search#index"
+  match "/search", to: "search#index", via: [ :get, :post ]
 
   get "*city/vacancy/*scope/*category/:id", to: "search#vacancy"
   get "(*city)/vacancy/*scope/*category/", to: "search#category"

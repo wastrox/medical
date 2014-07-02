@@ -7,7 +7,7 @@
 
 	<%= form_for([:employer, @vacancy], :html => {:class => "standart_form"}) do |f| %>
 		<h2>Создание вакансии</h2>
-		<%= render :partial => "form",	 :locals => { :f => f } %>
+		<%= render "form", { :f => f } %>
 
 		<span class="line-bottom line-bottom-company"></span>
 

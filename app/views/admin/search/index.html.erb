@@ -10,11 +10,11 @@
 <% end %>
 
 <% if @vacancies != nil %>
-	<%= render :partial => "vacancies" %>
+	<%= render "vacancies" %>
 <% elsif @resumes != nil %>
-	<%= render :partial => "resumes" %>
+	<%= render "resumes" %>
 <% elsif @companies != nil %>
-    <%= render :partial => "companies" %>
+    <%= render "companies" %>
 <% else %>
-    <%= render :partial => "accounts" %>
+    <%= render "accounts" %>
 <% end %>

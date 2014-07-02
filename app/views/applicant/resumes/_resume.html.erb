@@ -13,7 +13,7 @@
 <h2>Профиль</h2>
 <div class="profile">
     <%= applicant_fields.fields_for :profile do |profile_fields|%>
-			<%= render :partial => 'applicant/resumes/profile_fields', :locals => {:profile => profile_fields.object, :f => profile_fields} %>
+			<%= render 'applicant/resumes/profile_fields', { :f => profile_fields } %>
 		<% end %>
 </div>
 <span class="line-bottom"></span>
@@ -44,7 +44,7 @@
 	<h2 id="experience">Опыт работы</h2>				
 
     <%= applicant_fields.fields_for :experiences do |experience_fields| %>
-    	<%= render :partial => "applicant/resumes/experience_fields", :locals => {:experience => experience_fields.object, :f => experience_fields}  %>
+    	<%= render "applicant/resumes/experience_fields", { :f => experience_fields }  %>
     <%end %>
 
 	<%= applicant_fields.link_to_add "Добавить место работы", :experiences, :class => "yellow-link", :id => "add-experience" %>
@@ -55,7 +55,7 @@
 	<h2 id="education">Образование</h2>
 
     <%= applicant_fields.fields_for :educations do |education_fields| %>
-    	<%= render :partial => "applicant/resumes/education_fields", :locals => {:education => education_fields.object, :f => education_fields}  %>
+    	<%= render "applicant/resumes/education_fields", { :f => education_fields }  %>
     <% end %>
 
     <%= applicant_fields.link_to_add "Добавить место учебы", :educations, :class => "yellow-link", :id => "add-education" %>
