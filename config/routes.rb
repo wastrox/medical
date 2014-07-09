@@ -1,8 +1,10 @@
 Medical::Application.routes.draw do
+  devise_for :accounts
+
   root :to => 'startpage#index'
 
   get "/admin" => redirect("/admin/companies")
-  
+
   namespace :admin do
     get 'companies', to: 'companies#index'
     get "search", to: "search#index"
@@ -11,7 +13,7 @@ Medical::Application.routes.draw do
     get 'resumes/published/(:id)' => 'resumes#published'
     get 'resumes/reject/(:id)' => 'resumes#reject'
     get 'search/destroy_account_respond/:id' => "search#destroy_account_respond"
-    
+
     namespace :companies do
       resources :profile
       resources :vacancy
@@ -31,7 +33,7 @@ Medical::Application.routes.draw do
     resources :articles
     get 'articles/archive/:id' => "articles#archive", :as => "articles_archive"
   end
-  
+
   get "categories/new"
   get "categories/edit"
   get "scope/index"
@@ -43,7 +45,7 @@ Medical::Application.routes.draw do
   get "vacancies/index"
 
   resources "news", :only => [:index, :show]
-  
+
   get "vacancy/index"
   get "vacancy/edit"
   get "resumes/index"
@@ -51,7 +53,7 @@ Medical::Application.routes.draw do
   get "confirmation/yes", to: "confirmation#yes"
   get "confirmation/no", to: "confirmation#no"
   get "confirmation/deliver_mail", to: "confirmation#deliver_mail"
-  
+
   get 'signup', to: 'accounts#new', as: 'signup'
   get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
@@ -74,7 +76,7 @@ Medical::Application.routes.draw do
   get "search/company" => redirect("/search/companies")
 
 get "confirmation" => "confirmation#index"
-  get "confirmation/account_type" => "confirmation#account_type"  
+  get "confirmation/account_type" => "confirmation#account_type"
 get 'activate/:token' => 'accounts#activate', :as => :activate_account
 get 'confirmation/applicant/(/:token)' => 'confirmation#applicant'
 get 'confirmation/employer/(/:token)' => 'confirmation#employer'
@@ -88,12 +90,12 @@ get 'confirmation/employer/(/:token)' => 'confirmation#employer'
   resources :sessions, :only => [:create]
 resources :applicants
 
-  namespace :applicant, :as => 'applicant' do 
+  namespace :applicant, :as => 'applicant' do
     get "my_vacancies/index"
     get "resumes/defer", to: "resumes#defer"
     get "resumes/destroy_vacancy_respond/:id" => "resumes#destroy_vacancy_respond"
     get "resumes/add_vacancy_responded", to: "resumes#add_vacancy_responded"
-    
+
 resources :resumes
 resources :profiles, :only => [:edit, :update]
 end

@@ -1,26 +1,46 @@
 # coding: utf-8
 class Account < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   self.inheritance_column = 'account_type'
 
   attr_accessible :email, :password, :account_type
 
-  validates :email, presence: true, :on => :create
-  validates :password, presence: true, :on => :create
-  
-  validates :email, presence: true, :uniqueness => {:message => "Пользователь с таким email уже зарегистрирован."}
-  
-	has_secure_password
-  before_save :encrypt_password, :access_token 
-		
-  def self.authenticate(email, password)
-     account = find_by_email(email)
-     if account && account.password_digest == BCrypt::Engine.hash_secret(password)
-      user
-    else
-      nil
+  validates_confirmation_of :password, :if => :password_required?
+  # validates :email, presence: true, :on => :create
+  # validates :password, presence: true, :on => :create
+
+  # validates :email, presence: true, :uniqueness => {:message => "Пользователь с таким email уже зарегистрирован."}
+
+	# has_secure_password
+  # before_save :encrypt_password, :access_token
+
+  # def self.authenticate(email, password)
+  #    account = find_by_email(email)
+  #    if account && account.password_digest == BCrypt::Engine.hash_secret(password)
+  #     user
+  #   else
+  #     nil
+  #   end
+  # end
+
+     def self.authenticate(email, password)
+        user = Account.find_for_authentication(:email => email)
+        user.valid_password?(password) ? user : nil
     end
-  end
+
+  # def self.send_reset_password_instructions(attributes={})
+  #   recoverable = find_or_initialize_with_errors(reset_password_keys, attributes, :not_found)
+  #   if !recoverable.approved?
+  #     recoverable.errors[:base] << I18n.t("devise.failure.not_approved")
+  #   elsif recoverable.persisted?
+  #     recoverable.send_reset_password_instructions
+  #   end
+  #   recoverable
+  # end
 
   def active?
     active
@@ -37,7 +57,7 @@ class Account < ActiveRecord::Base
   end
 
 	def send_activation_instructions!
-		Notifier.activation_instructions(self).deliver		
+		Notifier.activation_instructions(self).deliver
 	end
 
   def send_password_recovery!
@@ -60,7 +80,7 @@ class Account < ActiveRecord::Base
      self.account_type = person
 		 save
   end
-  
+
  def employer?  # => FIXME: метод используется в partial layouts/navbar. Заменить универсальным методом для Employer and Applicant
     type = self.account_type
     if type == "Employer"
@@ -69,7 +89,7 @@ class Account < ActiveRecord::Base
       return false
     end
  end
- 
+
  def applicant?  # => FIXME: метод используется в partial layouts/navbar. Заменить универсальным методом для Employer and Applicant
      type = self.account_type
      if type == "Applicant"
@@ -78,11 +98,21 @@ class Account < ActiveRecord::Base
        return false
      end
   end
-	
-	def add_new_session_count 
+
+	def add_new_session_count
 		self.session_count += 1
 		save
 	end
+
+  protected
+
+  # def confirmation_required?
+    # false
+  # end
+
+  def password_required?
+    !persisted? || !password.nil? || !password_confirmation.nil?
+  end
 
 	private
 

@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'rspec-rails', "~> 3.0.1"
   gem "factory_girl_rails", "~> 4.4.1"
+  gem "letter_opener"
 end
 
 group :test do
@@ -50,10 +51,6 @@ gem 'whenever', :require => false
 gem "pdfkit"
 gem "nokogiri"
 
-#group :development do
-#  gem "wkhtmltopdf-binary", "~> 0.9.5.3"
-#end
-
 gem 'bootstrap-wysihtml5-rails'
 gem 'savon', '~> 2.0'
 gem 'ruby-progressbar'
@@ -62,3 +59,5 @@ gem 'dalli'
 
 gem 'rack-ntlm', :git => 'git://github.com/lukefx/rack-ntlm.git' # => if console message: "D, [2014-06-27T17:34:27.105874 #24791] DEBUG -- : Net::NTLM is not available. Install via gem install rubyntlm."
 gem 'i18n', github: 'svenfuchs/i18n'
+
+gem 'devise'

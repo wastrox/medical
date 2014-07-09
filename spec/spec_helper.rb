@@ -1,8 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
+require 'rspec/autorun'
+
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -16,6 +17,10 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+
+  config.mock_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -35,4 +40,10 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  # If you need more of the backtrace for any of these deprecations to
+  # identify where to make the necessary changes, you can configure
+  # `config.raise_errors_for_deprecations!`, and it will turn the
+  # deprecation warnings into errors, giving you the full backtrace.
+  # config.raise_errors_for_deprecations!
 end

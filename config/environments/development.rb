@@ -25,16 +25,19 @@ Medical::Application.configure do
   config.cache_store = :dalli_store
   config.action_controller.perform_caching = true
 
-  config.action_mailer.default_url_options = { :host => "medical.netbee.ua" }
+  config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.delivery_method = :smtp  
-  # config.action_mailer.smtp_settings = {
-  #  :enable_starttls_auto => true,
-  #  :address => "smtp.gmail.com",
-  #  :port => 587,
-  #  :authentication => :plain,
-  #  :enable_starttls_auto => true,
-  #  :domain => "netbee.ua",
-  #  :user_name => "nicholauskas@gmail.com",
-  #  :password => "netbee-25"
-  # }
+
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # config.action_mailer.default_url_options = { :host => "medical.netbee.ua" }
+  config.action_mailer.smtp_settings = {
+   :enable_starttls_auto => true,
+   :address => "smtp.gmail.com",
+   :port => 587,
+   :authentication => :plain,
+   :enable_starttls_auto => true,
+   :domain => "netbee.ua",
+   :user_name => "nicholauskas@gmail.com",
+   :password => "netbee-25"
+  }
 end
