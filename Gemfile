@@ -51,7 +51,7 @@ gem 'whenever', :require => false
 gem "pdfkit"
 gem "nokogiri"
 
-gem 'bootstrap-wysihtml5-rails'
+gem 'bootstrap-wysihtml5-rails', "0.3.1.23"
 gem 'savon', '~> 2.0'
 gem 'ruby-progressbar'
 gem "breadcrumbs_on_rails"

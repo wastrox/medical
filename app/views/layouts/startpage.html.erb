@@ -49,16 +49,16 @@
 					<%= render 'layouts/employer_link_navbar'%>
 				<% elsif current_user && current_user.applicant? %>
 					<%= render 'layouts/applicant_link_navbar'%>
-				<% elsif current_user && current_user.account_type.nil? && current_user.active? %>
+				<% elsif current_user && current_user.account_type.nil? && current_user.confirmed? %>
 					<%= link_to "Выбрать тип профиля", confirmation_account_type_url %>
-				<% elsif current_user && current_user.active? == false %>
+				<% elsif current_user && current_user.unconfirmed? %>
 					<%# FIXME: подлючить ссылку "Ваш профиль не активирован" %>
 					<%= link_to "Ваш профиль не активирован", active_recovery_path(:email =>current_user.email) %>
 				<% end %>
 			</div>
 			<%= content_tag :div, "", class: "separator" if current_user %>
 
-			<%= link_to_if(current_user, "Выход", logout_path, :class => "signup") do
+			<%= link_to_if(current_user, "Выход", destroy_account_session_path, :class => "signup") do
 				render 'layouts/other_link_navbar' 
 			end %>
 				

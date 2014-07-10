@@ -49,6 +49,11 @@ class ConfirmationController < ApplicationController
     end
   end
 
+  # => после уточнения аквиции в конроллере account -> action activate, нужно выбрать тип account -> Employer OR Applicant
+  def type
+    puts "Hello World"
+  end
+
   protected
 
   def find_account

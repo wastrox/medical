@@ -27,11 +27,11 @@
 		    			<% end %>
 		    			</td>
 		    			<td><%= account.account_type %></td>
-		    			<td><%= if account.active? then "Активирован" else "Не активирован" end%></td>
+		    			<td><%= if account.confirmed? then "Активирован" else "Не активирован" end%></td>
 		    			<td><%= account.session_count %></td>
 		    			<td>
 		    				<% unless account.session_last_time.nil? %>
-		    					<%= account.session_last_time.localtime.strftime("%F %H:%M") if account.active? %>
+		    					<%= account.session_last_time.localtime.strftime("%F %H:%M") if account.confirmed? %>
 		    				<% end %>
 		    				<%= link_to({:controller => "/admin/search", :action => "destroy_account_respond", :id => account.id}, :class => "delte-vacancy-respond", :confirm => "Вы уверены, что хотите удалить аккаунт #{account.email}", method: :delete, remote: true) do %>
                   				<img src="/assets/delete.png" class="delte-vacancy-respond">

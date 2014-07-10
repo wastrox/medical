@@ -3,7 +3,7 @@ class Account < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   self.inheritance_column = 'account_type'
 
@@ -41,6 +41,10 @@ class Account < ActiveRecord::Base
   #   end
   #   recoverable
   # end
+
+  def unconfirmed?
+    !self.confirmed?
+  end
 
   def active?
     active
@@ -103,6 +107,23 @@ class Account < ActiveRecord::Base
 		self.session_count += 1
 		save
 	end
+
+  # new function to set the password without knowing the current password used in our confirmation controller. 
+  def attempt_set_password(params)
+    p = {}
+    p[:password] = params[:password]
+    p[:password_confirmation] = params[:password_confirmation]
+    update_attributes(p)
+  end
+  # new function to return whether a password has been set
+  def has_no_password?
+    self.encrypted_password.blank?
+  end
+
+  # new function to provide access to protected method unless_confirmed
+  def only_if_unconfirmed
+    unless_confirmed {yield}
+  end
 
   protected
 

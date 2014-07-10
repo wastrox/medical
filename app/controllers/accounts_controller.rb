@@ -44,7 +44,7 @@ class AccountsController < ApplicationController
     if account.nil?
       flash[:notice] = "Ошибка, проверте поле email!"
       render "reactive"
-    elsif account.active? == false
+    elsif account.unconfirmed?
       account.send_activate_recovery!
       flash[:notice] = "Вам была отправлена ссылка активации профиля на #{account.email}. Перейдите по ссылке, указанной в этом письме."
       redirect_to :controller => 'confirmation', :action => 'index'

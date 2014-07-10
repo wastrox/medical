@@ -1,7 +1,22 @@
 Medical::Application.routes.draw do
-  devise_for :accounts
-
   root :to => 'startpage#index'
+
+  # Devise gem --> authentication <-- http://rdoc.info/github/plataformatec/devise
+  devise_for :accounts, path: "/", controllers: { registrations: "devise/registrations", confirmations: "devise/confirmations" }, 
+             path_names: { sign_in: 'login', sign_out: 'logout' }
+
+  devise_scope :accounts do
+    get "login", to: "devise/sessions#new", as: :login
+    get "logout", to: "devise/sessions#destroy", as: :logout
+  end
+ 
+  get '/confirmation/type', controller: "confirmation", action: "type", as: :confirmation_account_type
+
+  # -----------------------------------------------------------------------------------------------------------------------------
+
+  as :accounts do
+      patch '/confirmation' => 'devise/confirmations#update', :via => :patch, :as => :update_account_confirmation
+  end
 
   get "/admin" => redirect("/admin/companies")
 
@@ -49,14 +64,14 @@ Medical::Application.routes.draw do
   get "vacancy/index"
   get "vacancy/edit"
   get "resumes/index"
-  get "confirmation/index"
-  get "confirmation/yes", to: "confirmation#yes"
-  get "confirmation/no", to: "confirmation#no"
-  get "confirmation/deliver_mail", to: "confirmation#deliver_mail"
+  # get "confirmation/index"
+  # get "confirmation/yes", to: "confirmation#yes"
+  # get "confirmation/no", to: "confirmation#no"
+  # get "confirmation/deliver_mail", to: "confirmation#deliver_mail"
 
-  get 'signup', to: 'accounts#new', as: 'signup'
-  get "login", to: "sessions#new", as: "login"
-  get "logout", to: "sessions#destroy", as: "logout"
+  # get 'signup', to: 'accounts#new', as: 'signup'
+  # get "login", to: "sessions#new", as: "login"
+  # get "logout", to: "sessions#destroy", as: "logout"
   get "recover", to: "accounts#recover", as: "recover"
   get "reactive", to: "accounts#reactive", as: "reactive"
   get "email_recovery", to: "accounts#email_recovery", as: "email_recovery"
@@ -75,20 +90,19 @@ Medical::Application.routes.draw do
   get "companies", to: "search#all_company"
   get "search/company" => redirect("/search/companies")
 
-get "confirmation" => "confirmation#index"
-  get "confirmation/account_type" => "confirmation#account_type"
-get 'activate/:token' => 'accounts#activate', :as => :activate_account
-get 'confirmation/applicant/(/:token)' => 'confirmation#applicant'
-get 'confirmation/employer/(/:token)' => 'confirmation#employer'
+  # get "confirmation" => "confirmation#index"
+  # get "confirmation/account_type" => "confirmation#account_type"
+  # get 'activate/:token' => 'accounts#activate', :as => :activate_account
+  get 'confirmation/applicant/(/:token)' => 'confirmation#applicant'
+  get 'confirmation/employer/(/:token)' => 'confirmation#employer'
 
-  resources :accounts
+  # get "accounts/edit/:token" => 'accounts#edit'
+  # get "accounts/update/:token" => 'accounts#update', :as => "change_password"
 
-  get "accounts/edit/:token" => 'accounts#edit'
-  get "accounts/update/:token" => 'accounts#update', :as => "change_password"
-
-  get "sessions/new/", to: "sessions#new"
-  resources :sessions, :only => [:create]
-resources :applicants
+  # get "sessions/new/", to: "sessions#new"
+  # resources :sessions, :only => [:create]
+  
+  resources :applicants
 
   namespace :applicant, :as => 'applicant' do
     get "my_vacancies/index"

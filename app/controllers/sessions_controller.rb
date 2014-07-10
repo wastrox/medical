@@ -42,7 +42,7 @@ class SessionsController < ApplicationController
   #ошибка в email или не существует такогопользователя
   
   def require_active
-    unless @account.active? 
+    if @account.unconfirmed? 
       redirect_to confirmation_index_url, notice: "Вам было отправлено письмо, с ссылкой активации, на почту, отправить еще одно?"
     end
   end
