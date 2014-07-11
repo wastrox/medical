@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Applicant::ResumesController < ApplicationController
  layout "profile_applicant"
+ 
+  before_action :authenticate_account!
   before_filter :require_account_type_applicant, :check_account_type
   before_filter :findApplicant, :only => [:index, :new, :create, :show, :edit, :update, :add_vacancy_responded, :destroy]
   before_filter :resumeExists?, :only => [:new, :create] # resumeExists? проверка резюме у applicant, если есть -->> /applicant/resume/show

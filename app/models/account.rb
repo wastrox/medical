@@ -27,10 +27,10 @@ class Account < ActiveRecord::Base
   #   end
   # end
 
-     def self.authenticate(email, password)
-        user = Account.find_for_authentication(:email => email)
-        user.valid_password?(password) ? user : nil
-    end
+    #  def self.authenticate(email, password)
+    #     user = Account.find_for_authentication(:email => email)
+    #     user.valid_password?(password) ? user : nil
+    # end
 
   # def self.send_reset_password_instructions(attributes={})
   #   recoverable = find_or_initialize_with_errors(reset_password_keys, attributes, :not_found)

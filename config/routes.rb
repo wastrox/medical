@@ -8,6 +8,7 @@ Medical::Application.routes.draw do
   devise_scope :accounts do
     get "login", to: "devise/sessions#new", as: :login
     get "logout", to: "devise/sessions#destroy", as: :logout
+    get "signup", to: "devise/registrations#new", as: :signup
   end
  
   get '/confirmation/type', controller: "confirmation", action: "type", as: :confirmation_account_type

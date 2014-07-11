@@ -12,6 +12,9 @@ class Scope < ActiveRecord::Base
   belongs_to :morpher
 
   before_save :case_morphology
+  before_save :init_description
+
+  validates :title, presence: true
 
   def singular(padeg)
     begin
@@ -37,6 +40,10 @@ class Scope < ActiveRecord::Base
 	  	result = morpher.push(str, self.morpher_id)
 	  	result ? self.morpher_id = result : false
   	end
+
+    def init_description
+      self.description = "" if self.description.nil?
+    end
 
     def check_case
       self.title == self.morpher.case[:И]

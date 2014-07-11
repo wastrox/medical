@@ -14,6 +14,7 @@ if Scope.all.empty?
 	  Scope.create! do |scope|
 	    scope.id = row[0]
 	    scope.title = row[1]
+	    scope.description = ""
 	  end
 	end
 else
@@ -27,6 +28,7 @@ if Category.all.empty?
 	  	category.id = row[0]
 	    category.name = row[1]
 	    category.scope_id = row[2]
+	    category.description = ""
 	  end
 	end
 else 

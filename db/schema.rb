@@ -62,10 +62,10 @@ ActiveRecord::Schema.define(version: 20140709085429) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
+    t.text     "description",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "scope_id"
-    t.text     "description"
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
@@ -216,9 +216,9 @@ ActiveRecord::Schema.define(version: 20140709085429) do
 
   create_table "scopes", force: true do |t|
     t.string   "title"
+    t.text     "description",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "description"
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
@@ -249,7 +249,7 @@ ActiveRecord::Schema.define(version: 20140709085429) do
     t.boolean  "delta",              default: true,                  null: false
     t.string   "state"
     t.integer  "category_id"
-    t.datetime "publicated_at",      default: '2014-07-09 12:17:26'
+    t.datetime "publicated_at",      default: '2014-07-11 08:38:57'
   end
 
   add_index "vacancies", ["company_id"], name: "index_vacancies_on_company_id", using: :btree
