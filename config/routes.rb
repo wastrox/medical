@@ -3,7 +3,7 @@ Medical::Application.routes.draw do
 
   # Devise gem --> authentication <-- http://rdoc.info/github/plataformatec/devise
   devise_for :accounts, path: "/", controllers: { registrations: "devise/registrations", confirmations: "devise/confirmations" }, 
-             path_names: { sign_in: 'login', sign_out: 'logout' }
+             path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
 
   devise_scope :accounts do
     get "login", to: "devise/sessions#new", as: :login

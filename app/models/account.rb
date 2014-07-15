@@ -46,14 +46,14 @@ class Account < ActiveRecord::Base
     !self.confirmed?
   end
 
-  def active?
-    active
-  end
+  # def active?
+  #   active
+  # end
 
-  def activate!
-    self.active = true
-    save
-  end
+  # def activate!
+  #   self.active = true
+  #   save
+  # end
 
   def deactivate!
     self.active = false
@@ -79,6 +79,10 @@ class Account < ActiveRecord::Base
   def type?
 		account_type
 	end
+
+  def type_not_specified?
+    self.account_type.nil? ? true : false 
+  end
 
 	def create_type(person)
      self.account_type = person

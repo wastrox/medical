@@ -20,11 +20,11 @@ ru:
               deferred: "Скрыто"
               archive: "В архиве"
               default: "Главная"
-      errors:
-          messages:
-              blank: ""
-              accepted: ""
-              invalid: "Неверный email"
+      # errors:
+      #     messages:
+      #         blank: ""
+      #         accepted: ""
+      #         invalid: "Неверный email"
       models:
           profile: "Профиль"
       attributes:

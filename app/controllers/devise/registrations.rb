@@ -1,4 +1,8 @@
 class Devise::RegistrationsController < Devise::RegistrationsController
+  def new
+    logger.debug("---------------------------->")
+  end
+
   def update
     @user = Account.find(current_user.id)
 
