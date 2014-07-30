@@ -1,22 +1,45 @@
-<h2>Sign in</h2>
+<div class="link-navigate">
+    <h2 class="title">Вход</h2>
+    <%= link_to "Зарегистрироваться", signup_path, :onclick => "_gaq.push(['_trackEvent','reginlogin','send'])"
+ %>
+</div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<%= devise_error_messages! %>
+<div id="content">
+  
+  <%= devise_error_messages! %>
+  <% if alert or notice %>
+        <div class="alert alert-block alert-success">
+              <p id="notice" ><%= notice %></p>
+              <p id="alert" ><%= alert %></p>
+        </div>
+  <% end %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name),  html: { class: "standart-form" } ) do |f| %>
+    <div class="item">
+	  	<%= f.label :email %>
+	  	<div class="field">
+  			<%= f.email_field :email, autofocus: true %>
+  		</div>
+  	</div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+    <div class="item">
+	  	<%= f.label :password, "Пароль" %>
+	  	<div class="field">
+  			<%= f.password_field :password, autocomplete: "off" %>
+  		</div>
+  	</div>
+  
+    <% if devise_mapping.rememberable? -%>
+    	<div class="item">
+    	  <div class="field">   
+    		<%= f.check_box :remember_me %> <%#= f.label :remember_me %>
+    	    <label for="remember_me">Запомнить меня</label>
+    	  </div>
+    	</div>
+    <% end -%>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
+    <%= f.submit "Войти", :class => "input-sub btn btn-warning", :id => "btn-login", :onclick => "_gaq.push(['_trackEvent','login','send'])" %>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

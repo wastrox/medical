@@ -249,7 +249,7 @@ ActiveRecord::Schema.define(version: 20140709085429) do
     t.boolean  "delta",              default: true,                  null: false
     t.string   "state"
     t.integer  "category_id"
-    t.datetime "publicated_at",      default: '2014-07-11 08:38:57'
+    t.datetime "publicated_at",      default: '2014-07-29 12:01:11'
   end
 
   add_index "vacancies", ["company_id"], name: "index_vacancies_on_company_id", using: :btree

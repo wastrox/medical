@@ -1,15 +1,36 @@
-<h2>Sign up</h2>
+<div class="link-navigate">
+    <h2 class="title">Регистрация</h2>
+    <%= link_to "Вход", login_url %>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div id="content">
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+	  <%#= devise_error_messages! %>
+	  <% if alert or notice %>
+	        <div class="alert alert-block alert-success">
+	              <p id="notice" ><%= notice %></p>
+	              <p id="alert" ><%= alert %></p>
+	        </div>
+	  <% end %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+	  <div class="item">
+	    <div class="field">
+	      <%= f.label :email %>
+	      <%= f.text_field :email, :type => :email %>
+	    </div>
+	  </div>
+	
+	  <div class="item">
+	    <div class="field">
+	      <%= f.label :password, "Пароль" %>
+	      <%= f.password_field :password %>
+	    </div>
+	  </div>
+	
+	  <br/>
+      <%= f.submit "Зарегистрироваться", :class => "input-sub btn btn-warning", :onclick => "_gaq.push(['_trackEvent', 'reg', 'send'])" %>
+	<% end %>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+	<br/>
+	<%= render "devise/shared/links" %>
+</div>

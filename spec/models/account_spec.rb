@@ -15,13 +15,13 @@ describe Account do
 	end
 	context "exception the record" do
 		it "is invalid without a email" do
-			accoutn = Account.new( email: "nicholauskas@gmail", password: "21345" )
+			accoutn = Account.new( email: "nicholauskas@gmail", password: "12345" )
 			accoutn.valid?
 			expect(accoutn.errors[:email].size).to eq(1)
 		end
 
 		it "is invalid without a email can't be blank" do
-			accoutn = Account.new( password: "21345" )
+			accoutn = Account.new( password: "12345" )
 			accoutn.valid?
 			expect(accoutn.errors[:email].size).to eq(1)
 		end
@@ -33,7 +33,13 @@ describe Account do
 		end
 
 		it "is invalid with a duplicate email address" do
-			accoutn = Account.create( email: "nicholauskas@gmail.com" )
+			accoutn = Account.create( email: "nicholauskas@gmail.com", password: "12345" )
+			accoutn.valid?
+			expect(accoutn.errors[:email].size).to eq(1)
+		end
+
+		it "is invalid with a duplicate email address because of uppercase" do
+			accoutn = Account.create( email: "NICholauskas@gmail.com", password: "12345" )
 			accoutn.valid?
 			expect(accoutn.errors[:email].size).to eq(1)
 		end

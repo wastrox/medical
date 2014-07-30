@@ -150,7 +150,8 @@ end
   end
 
   def findApplicant
-    @applicant = Applicant.find_by_salt(cookies[:salt])
+    # @applicant = Applicant.find_by_salt(cookies[:salt])
+    @applicant = current_user
   end
 
   def	resumeExists?
