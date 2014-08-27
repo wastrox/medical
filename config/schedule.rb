@@ -33,14 +33,14 @@ every :day, :at => '03:00am' do
 end
 
 # Backup databases Tree 1
-every :day, :at => '01:25pm' do
-  command "cd /var/www/medical && backup perform -t tree --config-file=~/Backup/models/tree.rb"
-end
+#every :day, :at => '01:25pm' do
+#  command "cd /var/www/medical && backup perform -t tree --config-file=~/Backup/models/tree.rb"
+#end
 
 # Backup databases Tree 2
-every :day, :at => '07:00pm' do
-  command "cd /var/www/medical && backup perform -t tree --config-file=~/Backup/models/tree.rb"
-end
+#every :day, :at => '07:00pm' do
+#  command "cd /var/www/medical && backup perform -t tree --config-file=~/Backup/models/tree.rb"
+#end
 
 every :day, :at => '03:10am' do
   rake "genxml_vacancies:start"
