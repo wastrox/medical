@@ -23,7 +23,7 @@ every :day, :at => '02:20am' do
   rake "sitemap:generate"
 end
 
-every :day, :at => '02:35am' do
+every 5.day, :at => '02:35am' do
   rake "ts:rebuild"
 end
 
