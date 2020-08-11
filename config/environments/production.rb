@@ -75,7 +75,7 @@ Medical::Application.configure do
    :enable_starttls_auto => true,
    :domain => "netbee.ua",
    :user_name => "medical@netbee.ua",
-   :password => "MEDICALnetbee22052013"
+   :password => "fDkvt4yQ7CFa6Dd"
 }
 
   # using gem Dalli
